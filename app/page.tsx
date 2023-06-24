@@ -105,7 +105,7 @@ export default function Home() {
         <p className="mt-4 text-lg">Join our ministries to get connected through service</p>
         <div className="grid mt-10 gap-14 md:grid-cols-2 lg:grid-cols-3">
         <Link href="/">
-            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+            <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
               <div className="after:absolute after:inset-0 after:bg-black/20">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={heroOne} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
@@ -113,7 +113,7 @@ export default function Home() {
             </div>
           </Link>
           <Link href="/">
-            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+            <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
               <div className="after:absolute after:inset-0 after:bg-black/20">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={matrimonios} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
@@ -121,7 +121,7 @@ export default function Home() {
             </div>
           </Link>
           <Link href="/">
-            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+            <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
               <div className="after:absolute after:inset-0 after:bg-black/20">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={uno} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
@@ -129,7 +129,7 @@ export default function Home() {
             </div>
           </Link>
           <Link href="/">
-            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+            <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
               <div className="after:absolute after:inset-0 after:bg-black/20">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={conectados} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
@@ -137,7 +137,7 @@ export default function Home() {
             </div>
           </Link>
           <Link href="/">
-            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+            <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
               <div className="after:absolute after:inset-0 after:bg-black/20">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={pre} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
@@ -145,7 +145,7 @@ export default function Home() {
             </div>
           </Link>
           <Link href="/">
-            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+            <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
               <div className="after:absolute after:inset-0 after:bg-black/20">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={kids} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
