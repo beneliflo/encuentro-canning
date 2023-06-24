@@ -13,6 +13,7 @@ import YoutubeIcon from '../public/youtube.svg'
 import logoIEC from '../public/logo-iec.png'
 
 import heroOne from '../public/hero.jpg'
+import heroTwo from '../public/hero2.jpg'
 
 export default function Home() {
   const [mount, setMount] = useState(false);
@@ -65,17 +66,28 @@ export default function Home() {
               <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Edades</Link></li>
               <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Contacto</Link></li>
             </ul>
-            <ul className="flex max-h-6">
-              <li><Link href="/"><Image className="max-h-full hover:opacity-80 transition-opacity ease-in-out duration-150" src={FacebookIcon} alt="facebook icon" /></Link></li>
-              <li><Link href="/"><Image className="max-h-full hover:opacity-80 transition-opacity ease-in-out duration-150" src={InstagramIcon} alt="instagram icon" /></Link></li>
-              <li><Link href="/"><Image className="max-h-full hover:opacity-80 transition-opacity ease-in-out duration-150" src={YoutubeIcon} alt="youtube icon" /></Link></li>
+            <ul className="flex items-center gap-5">
+              <li><Link href="https://www.facebook.com/ElEncuentro.Canning"><Image className="w-6 hover:opacity-80 transition-opacity ease-in-out duration-150" src={FacebookIcon} alt="facebook icon" /></Link></li>
+              <li><Link href="https://www.instagram.com/encuentrocanning/"><Image className="w-6 hover:opacity-80 transition-opacity ease-in-out duration-150" src={InstagramIcon} alt="instagram icon" /></Link></li>
+              <li><Link href="https://www.youtube.com/@elencuentrocanning3177"><Image className="w-8 hover:opacity-80 transition-opacity ease-in-out duration-150" src={YoutubeIcon} alt="youtube icon" /></Link></li>
+              <li>
+                <Link href="https://www.youtube.com/@elencuentrocanning3177">
+                  <div className="relative flex items-center gap-2">
+                    <div className="flex relative h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </div>
+                    <p className="text-white text-sm font-semibold">EN VIVO</p>
+                  </div>
+                </Link>
+              </li>
             </ul>
           </nav>
         </header>
         <div className={cn('absolute inset-0 transition-opacity duration-300 ease-in filter brightness-75', mount ? 'opacity-100' : 'opacity-0')}>
           <div ref={sliderRef} className="keen-slider h-full">
             <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
-            <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+            <div className="keen-slider__slide"><Image src={heroTwo} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
             <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
           </div>
         </div>
