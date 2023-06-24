@@ -15,6 +15,12 @@ import logoIEC from '../public/logo-iec.png'
 import heroOne from '../public/hero.jpg'
 import heroTwo from '../public/hero2.jpg'
 
+import uno from '../public/uno.jpg'
+import kids from '../public/kids.jpg'
+import pre from '../public/pre.jpg'
+import conectados from '../public/conectados.jpg'
+import matrimonios from '../public/matrimonios.jpg'
+
 export default function Home() {
   const [mount, setMount] = useState(false);
 
@@ -56,40 +62,96 @@ export default function Home() {
   )
   return (
     <main>
+      {/* Hero */}
       <div className="h-screen max-h-96 md:max-h-[1000px] overflow-hidden relative">
-        <header className="flex items-center relative z-10 px-10 py-6">
+        <header className="relative z-10 flex items-center px-10 py-6">
           <Link href="/"><Image className="w-9" src={logoIEC} alt="IEC Logo" /></Link>
-          <nav className="flex justify-end w-full md:justify-between ml-10">
-            <ul className="text-white gap-10 hidden md:flex">
-              <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Quienes somos</Link></li>
-              <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Ministerios</Link></li>
-              <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Edades</Link></li>
-              <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Contacto</Link></li>
+          <nav className="flex justify-end w-full ml-10 md:justify-between">
+            <ul className="hidden gap-10 text-white md:flex">
+              <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Quienes somos</Link></li>
+              <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Ministerios</Link></li>
+              <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Edades</Link></li>
+              <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Contacto</Link></li>
             </ul>
             <ul className="flex items-center gap-5">
-              <li><Link href="https://www.facebook.com/ElEncuentro.Canning"><Image className="w-6 hover:opacity-80 transition-opacity ease-in-out duration-150" src={FacebookIcon} alt="facebook icon" /></Link></li>
-              <li><Link href="https://www.instagram.com/encuentrocanning/"><Image className="w-6 hover:opacity-80 transition-opacity ease-in-out duration-150" src={InstagramIcon} alt="instagram icon" /></Link></li>
-              <li><Link href="https://www.youtube.com/@elencuentrocanning3177"><Image className="w-8 hover:opacity-80 transition-opacity ease-in-out duration-150" src={YoutubeIcon} alt="youtube icon" /></Link></li>
+              <li><Link href="https://www.facebook.com/ElEncuentro.Canning"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" /></Link></li>
+              <li><Link href="https://www.instagram.com/encuentrocanning/"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" /></Link></li>
+              <li><Link href="https://www.youtube.com/@elencuentrocanning3177"><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" /></Link></li>
               <li>
                 <Link href="https://www.youtube.com/@elencuentrocanning3177">
                   <div className="relative flex items-center gap-2">
-                    <div className="flex relative h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    <div className="relative flex w-3 h-3">
+                      <span className="absolute inline-flex w-full h-full bg-red-400 rounded-full opacity-75 animate-ping"></span>
+                      <span className="relative inline-flex w-3 h-3 bg-red-500 rounded-full"></span>
                     </div>
-                    <p className="text-white text-sm font-semibold">EN VIVO</p>
+                    <p className="text-sm font-semibold text-white">EN VIVO</p>
                   </div>
                 </Link>
               </li>
             </ul>
           </nav>
         </header>
-        <div className={cn('absolute inset-0 transition-opacity duration-300 ease-in filter brightness-75', mount ? 'opacity-100' : 'opacity-0')}>
-          <div ref={sliderRef} className="keen-slider h-full">
-            <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
-            <div className="keen-slider__slide"><Image src={heroTwo} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
-            <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+        <div className={cn('absolute inset-0 transition-opacity duration-300 ease-in', mount ? 'opacity-100' : 'opacity-0')}>
+          <div ref={sliderRef} className="h-full keen-slider">
+            <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/20"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+            <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/20"><Image src={heroTwo} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+            <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/20"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
           </div>
+        </div>
+      </div>
+      {/* Ministries section */}
+      <div className="container py-12">
+        <h1 className="text-5xl font-bold">Experience. Connect. Grow</h1>
+        <p className="mt-4 text-lg">Join our ministries to get connected through service</p>
+        <div className="grid mt-10 gap-14 md:grid-cols-2 lg:grid-cols-3">
+        <Link href="/">
+            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+              <div className="after:absolute after:inset-0 after:bg-black/20">
+                <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={heroOne} alt="uno" fill style={{objectFit: "cover"}} />
+              </div>
+              <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Ecuentros</p>
+            </div>
+          </Link>
+          <Link href="/">
+            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+              <div className="after:absolute after:inset-0 after:bg-black/20">
+                <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={matrimonios} alt="uno" fill style={{objectFit: "cover"}} />
+              </div>
+              <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Matrimonios</p>
+            </div>
+          </Link>
+          <Link href="/">
+            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+              <div className="after:absolute after:inset-0 after:bg-black/20">
+                <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={uno} alt="uno" fill style={{objectFit: "cover"}} />
+              </div>
+              <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">UNO</p>
+            </div>
+          </Link>
+          <Link href="/">
+            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+              <div className="after:absolute after:inset-0 after:bg-black/20">
+                <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={conectados} alt="uno" fill style={{objectFit: "cover"}} />
+              </div>
+              <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Conectados</p>
+            </div>
+          </Link>
+          <Link href="/">
+            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+              <div className="after:absolute after:inset-0 after:bg-black/20">
+                <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={pre} alt="uno" fill style={{objectFit: "cover"}} />
+              </div>
+              <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Familia PRE</p>
+            </div>
+          </Link>
+          <Link href="/">
+            <div className="relative h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
+              <div className="after:absolute after:inset-0 after:bg-black/20">
+                <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={kids} alt="uno" fill style={{objectFit: "cover"}} />
+              </div>
+              <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Encuentro Kids</p>
+            </div>
+          </Link>
         </div>
       </div>
     </main>
