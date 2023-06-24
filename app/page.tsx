@@ -72,7 +72,7 @@ export default function Home() {
             </ul>
           </nav>
         </header>
-        <div className={cn('absolute inset-0 transition-opacity duration-300 ease-in', mount ? 'opacity-100' : 'opacity-0')}>
+        <div className={cn('absolute inset-0 transition-opacity duration-300 ease-in filter brightness-75', mount ? 'opacity-100' : 'opacity-0')}>
           <div ref={sliderRef} className="keen-slider h-full">
             <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
             <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
