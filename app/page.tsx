@@ -10,6 +10,7 @@ import cn from 'classnames'
 import FacebookIcon from '../public/facebook.svg'
 import InstagramIcon from '../public/instagram.svg'
 import YoutubeIcon from '../public/youtube.svg'
+import logoIEC from '../public/logo-iec.png'
 
 export default function Home() {
   const [mount, setMount] = useState(false);
@@ -54,7 +55,7 @@ export default function Home() {
     <main>
       <div className="h-screen max-h-[1000px] overflow-hidden relative">
         <header className="flex items-center relative z-10 px-10 py-6">
-          <Image className="mr-10" src="/logo-iec.png" alt="IEC Logo" width="35" height="50" />
+          <Image className="mr-10 w-9" src={logoIEC} alt="IEC Logo" />
           <nav className="flex justify-between w-full">
             <ul className="flex text-white gap-10">
               <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Quienes somos</Link></li>
