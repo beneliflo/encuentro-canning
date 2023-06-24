@@ -55,11 +55,11 @@ export default function Home() {
   )
   return (
     <main>
-      <div className="h-screen max-h-[1000px] overflow-hidden relative">
+      <div className="h-screen max-h-96 md:max-h-[1000px] overflow-hidden relative">
         <header className="flex items-center relative z-10 px-10 py-6">
           <Image className="mr-10 w-9" src={logoIEC} alt="IEC Logo" />
-          <nav className="flex justify-between w-full">
-            <ul className="flex text-white gap-10">
+          <nav className="flex justify-end w-full md:justify-between">
+            <ul className="text-white gap-10 hidden md:flex">
               <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Quienes somos</Link></li>
               <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Ministerios</Link></li>
               <li><Link className="hover:opacity-80 transition-opacity ease-in-out duration-150" href="/">Edades</Link></li>
