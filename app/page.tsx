@@ -1,7 +1,8 @@
+'use client'
+
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Metadata } from 'next'
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import cn from 'classnames'
@@ -9,11 +10,6 @@ import cn from 'classnames'
 import FacebookIcon from '../public/facebook.svg'
 import InstagramIcon from '../public/instagram.svg'
 import YoutubeIcon from '../public/youtube.svg'
- 
-export const metadata: Metadata = {
-  title: 'Encuentro Canning',
-  description: 'Encuentro Canning',
-}
 
 export default function Home() {
   const [mount, setMount] = useState(false);
