@@ -12,6 +12,8 @@ import InstagramIcon from '../public/instagram.svg'
 import YoutubeIcon from '../public/youtube.svg'
 import logoIEC from '../public/logo-iec.png'
 
+import heroOne from '../public/hero.jpg'
+
 export default function Home() {
   const [mount, setMount] = useState(false);
 
@@ -72,9 +74,9 @@ export default function Home() {
         </header>
         <div className={cn('absolute inset-0 transition-opacity duration-300 ease-in', mount ? 'opacity-100' : 'opacity-0')}>
           <div ref={sliderRef} className="keen-slider h-full">
-            <div className="keen-slider__slide"><Image src="/hero.jpg" alt="adoracion" fill style={{objectFit: "cover"}} /></div>
-            <div className="keen-slider__slide"><Image src="/hero.jpg" alt="adoracion" fill style={{objectFit: "cover"}} /></div>
-            <div className="keen-slider__slide"><Image src="/hero.jpg" alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+            <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+            <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+            <div className="keen-slider__slide"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
           </div>
         </div>
       </div>
