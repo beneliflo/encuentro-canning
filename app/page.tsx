@@ -205,7 +205,7 @@ export default function Home() {
         </div>
       </div>
       {/* Instagram section */}
-      <div className="container py-14 md:py-20">
+      {/* <div className="container py-14 md:py-20">
         <h1 className="text-5xl font-bold">Stories & Articles</h1>
         <div className="min-h-[580px] sm:min-h-[966px] md:min-h-[1184px] lg:min-h-[1474px] xl:min-h-[1972px] mt-10">
           <iframe
@@ -215,7 +215,7 @@ export default function Home() {
             style={{ width: '100%', minHeight: 'inherit', border: 0, overflow: 'hidden' }}
           />
         </div>
-      </div>
+      </div> */}
       <footer className="text-white bg-black">
         <div className="container py-14 md:py-20">
           <Image className="w-9" src={logoIEC} alt="IEC Logo" />
