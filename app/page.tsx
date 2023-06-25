@@ -6,6 +6,7 @@ import Link from 'next/link'
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import cn from 'classnames'
+import { Dancing_Script } from 'next/font/google'
 
 import FacebookIcon from '../public/facebook.svg'
 import InstagramIcon from '../public/instagram.svg'
@@ -20,6 +21,11 @@ import kids from '../public/kids.jpg'
 import pre from '../public/pre.jpg'
 import conectados from '../public/conectados.jpg'
 import matrimonios from '../public/matrimonios.jpg'
+
+import imageOne from '../public/image-1.jpg'
+import imageTwo from '../public/image-2.jpg'
+
+const dancing_script = Dancing_Script({ subsets: ['latin'] })
 
 export default function Home() {
   const [mount, setMount] = useState(false);
@@ -93,20 +99,38 @@ export default function Home() {
         </header>
         <div className={cn('absolute inset-0 transition-opacity duration-300 ease-in', mount ? 'opacity-100' : 'opacity-0')}>
           <div ref={sliderRef} className="h-full keen-slider">
-            <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/20"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
-            <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/20"><Image src={heroTwo} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
-            <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/20"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+            <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+            <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroTwo} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+            <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+          </div>
+        </div>
+      </div>
+      {/* Palabra Rhema section */}
+      <div className="container text-center py-14 md:py-20">
+        <h1 className={cn('text-4xl md:text-6xl', dancing_script.className)}>"Si permanece la obra de alguno que ha edificado sobre el fundamento, recibirá recompensa."</h1>
+        <p className="mt-4 text-xl">1 Corintios 3:14 (LBLA)</p>
+      </div>
+      {/* Quienes somos? section */}
+      <div className="bg-slate-50">
+        <div className="container flex flex-col-reverse gap-24 md:grid md:grid-cols-2 py-14 md:py-20">
+          <div className="flex flex-col">
+            <Image className="overflow-hidden rounded-2xl max-w-[80%]" src={imageOne} alt="Image One" />
+            <Image className="overflow-hidden rounded-2xl max-w-[80%] self-end -mt-20" src={imageTwo} alt="Image Two" />
+          </div>
+          <div className="flex flex-col justify-center">
+            <h1 className="text-5xl font-bold">Empowered by God to reach others for Christ</h1>
+            <p className="mt-4 text-lg">Our community makes us unique. They have an energy that reverberates around them. Their mission in life is to ensure the wonder in the world is not overlooked.</p>
           </div>
         </div>
       </div>
       {/* Ministries section */}
-      <div className="container py-12">
-        <h1 className="text-5xl font-bold">Experience. Connect. Grow</h1>
-        <p className="mt-4 text-lg">Join our ministries to get connected through service</p>
+      <div className="container py-14 md:py-20">
+        <h1 className="text-5xl font-bold">Experience. Connect. Grow.</h1>
+        <p className="mt-4 text-lg">Join our ministries to get connected through service.</p>
         <div className="grid mt-10 gap-14 md:grid-cols-2 lg:grid-cols-3">
         <Link href="/">
             <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-              <div className="after:absolute after:inset-0 after:bg-black/20">
+              <div className="after:absolute after:inset-0 after:bg-black/30">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={heroOne} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
               <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Ecuentros</p>
@@ -114,7 +138,7 @@ export default function Home() {
           </Link>
           <Link href="/">
             <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-              <div className="after:absolute after:inset-0 after:bg-black/20">
+              <div className="after:absolute after:inset-0 after:bg-black/30">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={matrimonios} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
               <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Matrimonios</p>
@@ -122,7 +146,7 @@ export default function Home() {
           </Link>
           <Link href="/">
             <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-              <div className="after:absolute after:inset-0 after:bg-black/20">
+              <div className="after:absolute after:inset-0 after:bg-black/30">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={uno} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
               <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">UNO</p>
@@ -130,7 +154,7 @@ export default function Home() {
           </Link>
           <Link href="/">
             <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-              <div className="after:absolute after:inset-0 after:bg-black/20">
+              <div className="after:absolute after:inset-0 after:bg-black/30">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={conectados} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
               <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Conectados</p>
@@ -138,7 +162,7 @@ export default function Home() {
           </Link>
           <Link href="/">
             <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-              <div className="after:absolute after:inset-0 after:bg-black/20">
+              <div className="after:absolute after:inset-0 after:bg-black/30">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={pre} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
               <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Familia PRE</p>
@@ -146,7 +170,7 @@ export default function Home() {
           </Link>
           <Link href="/">
             <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-              <div className="after:absolute after:inset-0 after:bg-black/20">
+              <div className="after:absolute after:inset-0 after:bg-black/30">
                 <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={kids} alt="uno" fill style={{objectFit: "cover"}} />
               </div>
               <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Encuentro Kids</p>
