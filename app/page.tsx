@@ -194,13 +194,27 @@ export default function Home() {
           <Image className="overflow-hidden rounded-2xl" src={pastorPrincipal} alt="Sebastian Sennewald" />
         </div>
       </div>
-      {/* Ministries section */}
-      <div className="container text-center py-14 md:py-20">
-        <div className="flex flex-col justify-center md:flex-row">
-          <h1 className="text-4xl font-semibold md:text-5xl md:pr-10 md:mr-10 md:border-r-2 md:border-r-black">Join Us at Church</h1>
-          <p className="mt-2 text-3xl md:text-5xl md:mt-0">Domingos 10:00 AM</p>
+      {/* Join us at church section */}
+      <div className="relative bg-black before:bg-section-pattern before:absolute before:inset-0">
+        <div className="container text-center py-14 md:py-20">
+          <div className="flex flex-col justify-center text-white md:flex-row">
+            <h1 className="text-4xl font-semibold md:text-5xl md:pr-10 md:mr-10 md:border-r-2 md:white-r-black">Join Us at Church</h1>
+            <p className="mt-2 text-3xl md:text-5xl md:mt-0">Domingos 10:00 AM</p>
+          </div>
+          <div className="overflow-hidden mt-14 rounded-2xl" dangerouslySetInnerHTML={{ __html: mapEmbedCode }} />
         </div>
-        <div className="overflow-hidden mt-14 rounded-2xl" dangerouslySetInnerHTML={{ __html: mapEmbedCode }} />
+      </div>
+      {/* Instagram section */}
+      <div className="container py-14 md:py-20">
+        <h1 className="text-5xl font-bold">Stories & Articles</h1>
+        <div className="min-h-[580px] sm:min-h-[966px] md:min-h-[1184px] lg:min-h-[1474px] xl:min-h-[1972px] mt-10">
+          <iframe
+            src="//lightwidget.com/widgets/e7ad60d6260157e18caf61c91f47d7d5.html"
+            allowTransparency
+            className="lightwidget-widget"
+            style={{ width: '100%', minHeight: 'inherit', border: 0, overflow: 'hidden' }}
+          />
+        </div>
       </div>
       <footer className="text-white bg-black">
         <div className="container py-14 md:py-20">
