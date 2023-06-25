@@ -25,6 +25,8 @@ import matrimonios from '../public/matrimonios.jpg'
 import imageOne from '../public/image-1.jpg'
 import imageTwo from '../public/image-2.jpg'
 
+import pastorPrincipal from '../public/sebastian-sennewald.jpg'
+
 const dancing_script = Dancing_Script({ subsets: ['latin'] })
 
 export default function Home() {
@@ -66,6 +68,9 @@ export default function Home() {
       },
     ]
   )
+
+  const mapEmbedCode = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.5866264193533!2d-58.51235886463723!3d-34.88144292619042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd76848809fd5%3A0xa4dcb81c015f76f2!2sIglesia%20el%20encuentro!5e0!3m2!1ses-419!2sar!4v1687666073992!5m2!1ses-419!2sar" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+
   return (
     <main>
       {/* Hero */}
@@ -178,6 +183,48 @@ export default function Home() {
           </Link>
         </div>
       </div>
+      {/* Nustros pastores section */}
+      <div className="bg-gradient-to-br relative from-[#FF5D68]/70 to-[#01D6DA]/70 before:bg-section-pattern before:absolute before:inset-0">
+        <div className="container relative flex flex-col gap-24 md:flex-row md:grid md:grid-cols-2 py-14 md:py-20">
+          <div className="flex flex-col justify-center">
+            <h1 className="text-5xl font-bold">Sebastian Sennewald</h1>
+            <h2 className="text-3xl">Pastor Principal</h2>
+            <p className="mt-4 text-lg">Our church has a strong connection to the community and commenced on October 31st, 1931. We are a generational contemporary church with a rich history. We really are a place where you can belong and grow! Jamie & Caroline have 3 sons, and they believe in rising up the next generation with the wisdom of those who have gone before. Jamie & Caroline have a practical outlook on life and love community. It’s our passion to see you get connected, grow in your relationship with God and others and live your best life.</p>
+          </div>
+          <Image className="overflow-hidden rounded-2xl" src={pastorPrincipal} alt="Sebastian Sennewald" />
+        </div>
+      </div>
+      {/* Ministries section */}
+      <div className="container text-center py-14 md:py-20">
+        <div className="flex flex-col justify-center md:flex-row">
+          <h1 className="text-4xl font-semibold md:text-5xl md:pr-10 md:mr-10 md:border-r-2 md:border-r-black">Join Us at Church</h1>
+          <p className="mt-2 text-3xl md:text-5xl md:mt-0">Domingos 10:00 AM</p>
+        </div>
+        <div className="overflow-hidden mt-14 rounded-2xl" dangerouslySetInnerHTML={{ __html: mapEmbedCode }} />
+      </div>
+      <footer className="text-white bg-black">
+        <div className="container py-14 md:py-20">
+          <Image className="w-9" src={logoIEC} alt="IEC Logo" />
+          <div className="flex flex-col gap-10 mt-6 md:flex-row md:gap-36">
+            <div className="flex flex-col">
+              <h3 className="mb-2 text-xl font-semibold">Contacto</h3>
+              <a href="https://api.whatsapp.com/send?phone=28202555000" target="_blank">(001)321-123-4567</a>
+              <a href="mailto:example@example.com" target="_blank">example@example.com</a>
+            </div>
+            <div className="flex flex-col">
+              <h3 className="mb-2 text-xl font-semibold">Dirección</h3>
+              <p>Encuentro Canning</p>
+              <a href="https://www.google.com.ar/maps/place/Iglesia+el+encuentro/@-34.8814429,-58.5123589,16.73z/data=!4m14!1m7!3m6!1s0x95bcd6e29f559e37:0x9fb84b4fbbe33140!2sHipocrates+3320,+B1801BZH+Canning,+Provincia+de+Buenos+Aires!3b1!8m2!3d-34.8818915!4d-58.5085267!3m5!1s0x95bcd76848809fd5:0xa4dcb81c015f76f2!8m2!3d-34.8832805!4d-58.5116071!16s%2Fg%2F11jz6tncjs?entry=ttu" target="_blank">Hipocrates 3320, Canning, Buenos Aires</a>
+            </div>
+          </div>
+          <ul className="flex flex-wrap gap-4 mt-10">
+            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Quienes somos</Link></li>
+            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Ministerios</Link></li>
+            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Edades</Link></li>
+            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Contacto</Link></li>
+          </ul>
+        </div>
+      </footer>
     </main>
   )
 }
