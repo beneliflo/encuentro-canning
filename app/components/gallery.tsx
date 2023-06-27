@@ -45,28 +45,37 @@ export default function Gallery() {
       <h1 className="text-5xl font-bold">Stories & Articles</h1>
       <div className="mt-10">
         {instagramData && (
-            <Masonry
-          breakpointCols={4}
-          className="flex gap-4"
-          columnClassName="bg-clip-padding flex flex-col gap-4"
-        >
-          {instagramData.data.slice(0, window.innerWidth < 768 ? 10 : 22).map((item) => (
-              <div className="relative" key={item.id}>
-                {item.media_type === 'VIDEO' ? (
-                  <Image className='object-cover' src={item.thumbnail_url} alt={item.caption} width={0}
-  height={0}
-  sizes="100vw"
-  style={{ width: '100%', height: 'auto' }} />
-                ) : (
-                  <Image className='object-cover' src={item.media_url} alt={item.caption} width={0}
-  height={0}
-  sizes="100vw"
-  style={{ width: '100%', height: 'auto' }} />
-                )}
-              </div>
-            ))}
-        </Masonry>
-            
+          <Masonry
+            breakpointCols={4}
+            className="flex gap-4"
+            columnClassName="bg-clip-padding flex flex-col gap-4"
+          >
+            {instagramData.data.slice(0, window.innerWidth < 768 ? 10 : 22).map((item) => (
+                <div className="relative" key={item.id}>
+                  {item.media_type === 'VIDEO' ? (
+                    <Image
+                      className='object-cover'
+                      src={item.thumbnail_url}
+                      alt={item.caption}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  ) : (
+                    <Image
+                      className='object-cover'
+                      src={item.media_url}
+                      alt={item.caption}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  )}
+                </div>
+              ))}
+          </Masonry>
         )}
       </div>
     </div>
