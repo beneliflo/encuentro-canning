@@ -39,8 +39,6 @@ export default function Gallery() {
     fetchData();
   }, []);
 
-  console.log(instagramData)
-
   return (
     <div className="container py-14 md:py-20">
       <h1 className="text-5xl font-bold">Stories & Articles</h1>
