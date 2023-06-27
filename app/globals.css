@@ -30,19 +30,30 @@ body {
   align-items: center;
 }
 
+#vivo{
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
 
   #mobile-menu{
     display: block;
   }
 
-  #envivo{
+
+  #vivo{
+    display: block;
+  }
+
+  #redes{
     display: none;
   }
 
   .showMenuNav{
     position: fixed;
     z-index: 1;
+    background: rgba(0, 0, 0,.97);
+    color: #ffffff;
   }
 
   Header{
