@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 interface InstagramData {
   data: {
@@ -8,12 +9,13 @@ interface InstagramData {
     caption: string;
     media_type: string;
     media_url: string;
+    thumbnail_url: string;
   }[];
 }
 
 export async function fetchInstagramData() {
   const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY;
-  const apiUrl = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url&access_token=${accessToken}`;
+  const apiUrl = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url&access_token=${accessToken}`;
 
   try {
     const response = await fetch(apiUrl);
@@ -37,15 +39,21 @@ export default function Gallery() {
     fetchData();
   }, []);
 
+  console.log(instagramData)
+
   return (
     <div className="container py-14 md:py-20">
       <h1 className="text-5xl font-bold">Stories & Articles</h1>
-      <div>
+      <div className="mt-10">
         {instagramData && (
-          <ul>
-            {instagramData.data.map((item) => (
-              <li key={item.id}>
-                <img src={item.media_url} alt={item.caption} />
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {instagramData.data.slice(0, window.innerWidth < 768 ? 10 : undefined).map((item) => (
+              <li className="relative aspect-square" key={item.id}>
+                {item.media_type === 'VIDEO' ? (
+                  <Image src={item.thumbnail_url} alt={item.caption} fill style={{ objectFit: 'cover'}} />
+                ) : (
+                  <Image src={item.media_url} alt={item.caption} fill style={{ objectFit: 'cover'}} />
+                )}
               </li>
             ))}
           </ul>
