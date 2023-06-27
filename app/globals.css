@@ -7,7 +7,7 @@ body {
   background: white;
 }
 
-.mobile-menu{
+#mobile-menu{
   display: none;
 }
 
@@ -31,7 +31,25 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  .mobile-menu{
+
+  #mobile-menu{
     display: block;
   }
+
+  #envivo{
+    display: none;
+  }
+
+  .showMenuNav{
+    position: fixed;
+    z-index: 1;
+  }
+
+  Header{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+  }
+
 }
