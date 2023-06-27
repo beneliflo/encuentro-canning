@@ -28,6 +28,13 @@ export async function fetchInstagramData() {
   }
 }
 
+const breakpointColumnsObj = {
+  default: 4,
+  1024: 3,
+  768: 2,
+  640: 1
+};
+
 export default function Gallery() {
   const [instagramData, setInstagramData] = useState<InstagramData | null>(null);
 
@@ -46,7 +53,7 @@ export default function Gallery() {
       <div className="mt-10">
         {instagramData && (
           <Masonry
-            breakpointCols={4}
+            breakpointCols={breakpointColumnsObj}
             className="flex gap-4"
             columnClassName="bg-clip-padding flex flex-col gap-4"
           >
