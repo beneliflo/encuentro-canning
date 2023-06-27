@@ -14,6 +14,7 @@ body {
 .hideMenuNav {
   display: none;
 }
+
 .showMenuNav {
   display: block;
   position: absolute;
@@ -30,11 +31,7 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-
   .mobile-menu{
     display: block;
   }
-
-  
-
 }

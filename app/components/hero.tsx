@@ -88,9 +88,9 @@ export default function Hero() {
         {/* Menu hamburgesa mobile */}
         <div className="flex items-center justify-between py-8 border-gray-400">
           <nav className='mobile-menu'>
-            <section className="flex MOBILE-MENU lg:hidden">
+            <section className="flex lg:hidden">
               <div
-                className="space-y-2 HAMBURGER-ICON"
+                className="space-y-2"
                 onClick={() => setIsNavOpen((prev) => !prev)}
               >
                 <span className="block h-0.5 w-8 animate-pulse bg-white"></span>
