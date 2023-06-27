@@ -47,7 +47,7 @@ export default function Gallery() {
       <div className="mt-10">
         {instagramData && (
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {instagramData.data.slice(0, window.innerWidth < 768 ? 10 : undefined).map((item) => (
+            {instagramData.data.slice(0, window.innerWidth < 768 ? 10 : 24).map((item) => (
               <li className="relative aspect-square" key={item.id}>
                 {item.media_type === 'VIDEO' ? (
                   <Image src={item.thumbnail_url} alt={item.caption} fill style={{ objectFit: 'cover'}} />
