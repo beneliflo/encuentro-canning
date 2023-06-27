@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+const isProd = process.env.NODE_ENV === 'production'
+const baseUrl = isProd ? '/encuentro-canning' : ''
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -16,6 +19,11 @@ module.exports = {
       'lg': '1024px',
       'xl': '1344px',
     },
+    extend: {
+      backgroundImage: {
+        'section-pattern': `url('${baseUrl}/grain-pattern.png')`,
+      }
+    }
   },
   plugins: [],
 }
