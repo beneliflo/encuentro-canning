@@ -1,5 +1,3 @@
-'use client'
-
 import cn from 'classnames'
 import { Dancing_Script } from 'next/font/google'
 
@@ -25,9 +23,7 @@ export default function Home() {
         <p className="mt-4 text-xl">1 Corintios 3:14 (LBLA)</p>
       </div>
       <Who />
-      {/* Ministries section */}
       <Ministries />
-      {/* Nustros pastores section */}
       <Pastors />
       {/* Join us at church section */}
       <div className="container text-center py-14 md:py-20">
@@ -37,7 +33,6 @@ export default function Home() {
         </div>
         <div className="overflow-hidden mt-14 rounded-2xl" dangerouslySetInnerHTML={{ __html: mapEmbedCode }} />
       </div>
-      {/* Instagram section */}
       <Gallery />
       <Footer />
     </main>
