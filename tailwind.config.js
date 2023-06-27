@@ -15,6 +15,11 @@ module.exports = {
       'md': '768px',
       'lg': '1024px',
       'xl': '1344px',
+    },
+    extend: {
+      backgroundImage: {
+        'section-pattern': "url('/grain-pattern.png')",
+      }
     }
   },
   plugins: [],
