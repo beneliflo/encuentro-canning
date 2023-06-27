@@ -116,7 +116,7 @@ export default function Home() {
         <p className="mt-4 text-xl">1 Corintios 3:14 (LBLA)</p>
       </div>
       {/* Quienes somos? section */}
-      <div className="bg-gradient-to-br relative from-[#5800EA]/70 to-[#D400F1]/70 before:bg-section-pattern before:absolute before:inset-0">
+      <div className="bg-gradient-to-br relative from-[#5800EA]/70 to-[#D400F1]/70 before:bg-[url(/grain-pattern.png)] before:absolute before:inset-0">
         <div className="container relative flex flex-col-reverse gap-24 md:grid md:grid-cols-2 py-14 md:py-20">
           <div className="flex flex-col">
             <Image className="overflow-hidden rounded-2xl max-w-[80%]" src={imageOne} alt="Image One" />
@@ -184,7 +184,7 @@ export default function Home() {
         </div>
       </div>
       {/* Nustros pastores section */}
-      <div className="bg-gradient-to-br relative from-[#FF5D68]/70 to-[#01D6DA]/70 before:bg-section-pattern before:absolute before:inset-0">
+      <div className="bg-gradient-to-br relative from-[#FF5D68]/70 to-[#01D6DA]/70 before:bg-[url(/grain-pattern.png)] before:absolute before:inset-0">
         <div className="container relative flex flex-col gap-24 md:flex-row md:grid md:grid-cols-2 py-14 md:py-20">
           <div className="flex flex-col justify-center">
             <h1 className="text-5xl font-bold">Sebastian Sennewald</h1>
