@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Masonry from 'react-masonry-css';
 
+import { fetchInstagramData } from '@/app/api/instagram/route'
+
 interface InstagramData {
   data: {
     id: string;
@@ -12,20 +14,6 @@ interface InstagramData {
     media_url: string;
     thumbnail_url: string;
   }[];
-}
-
-export async function fetchInstagramData() {
-  const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY;
-  const apiUrl = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url&access_token=${accessToken}`;
-
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching Instagram data:', error);
-    return null;
-  }
 }
 
 const breakpointColumnsObj = {
