@@ -12,7 +12,7 @@ export default function Pastors() {
           <h2 className="text-3xl">Pastor Principal</h2>
           <p className="mt-4 text-lg">Our church has a strong connection to the community and commenced on October 31st, 1931. We are a generational contemporary church with a rich history. We really are a place where you can belong and grow! Jamie & Caroline have 3 sons, and they believe in rising up the next generation with the wisdom of those who have gone before. Jamie & Caroline have a practical outlook on life and love community. It’s our passion to see you get connected, grow in your relationship with God and others and live your best life.</p>
         </div>
-        <Image className="overflow-hidden rounded-2xl" src={pastorPrincipal} alt="Sebastian Sennewald" />
+        <Image className="overflow-hidden rounded-2xl" src={pastorPrincipal} alt="Sebastian Sennewald" loading='eager' />
       </div>
     </div>
   )

@@ -56,6 +56,7 @@ export default function Gallery() {
                       height={0}
                       sizes="100vw"
                       style={{ width: '100%', height: 'auto' }}
+                      loading='eager'
                     />
                   ) : (
                     <Image
@@ -66,6 +67,7 @@ export default function Gallery() {
                       height={0}
                       sizes="100vw"
                       style={{ width: '100%', height: 'auto' }}
+                      loading='eager'
                     />
                   )}
                 </div>

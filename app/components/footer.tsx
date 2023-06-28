@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="text-white bg-black">
       <div className="container py-14 md:py-20">
-        <Image className="w-9" src={logoIEC} alt="IEC Logo" />
+        <Image className="w-9" src={logoIEC} alt="IEC Logo" loading='eager' />
         <div className="flex flex-col gap-10 mt-6 md:flex-row md:gap-36">
           <div className="flex flex-col">
             <h3 className="mb-2 text-xl font-semibold">Contacto</h3>

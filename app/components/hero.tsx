@@ -58,7 +58,7 @@ export default function Hero() {
   return (
     <div className="h-screen max-h-96 md:max-h-[1000px] overflow-hidden relative">
       <header className="relative z-10 flex items-center px-10 py-6">
-        <Link href="/"><Image className="w-9" src={logoIEC} alt="IEC Logo" /></Link>
+        <Link href="/"><Image className="w-9" src={logoIEC} alt="IEC Logo" loading='eager' /></Link>
         <nav className="flex justify-end w-full ml-10 md:justify-between">
           <ul className="hidden gap-10 text-white md:flex">
             <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Quienes somos</Link></li>
@@ -67,9 +67,9 @@ export default function Hero() {
             <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Contacto</Link></li>
           </ul>
           <ul className="flex items-center gap-5">
-            <li><Link href="https://www.facebook.com/ElEncuentro.Canning"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" /></Link></li>
-            <li><Link href="https://www.instagram.com/encuentrocanning/"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" /></Link></li>
-            <li><Link href="https://www.youtube.com/@elencuentrocanning3177"><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" /></Link></li>
+            <li><Link href="https://www.facebook.com/ElEncuentro.Canning"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" loading='eager' /></Link></li>
+            <li><Link href="https://www.instagram.com/encuentrocanning/"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" loading='eager' /></Link></li>
+            <li><Link href="https://www.youtube.com/@elencuentrocanning3177"><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" loading='eager' /></Link></li>
             <li>
               <Link href="https://www.youtube.com/@elencuentrocanning3177">
                 <div className="relative flex items-center gap-2">
@@ -86,8 +86,8 @@ export default function Hero() {
       </header>
       <div className={cn('absolute inset-0 transition-opacity duration-300 ease-in', mount ? 'opacity-100' : 'opacity-0')}>
         <div ref={sliderRef} className="h-full keen-slider">
-          <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
-          <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroTwo} alt="adoracion" fill style={{objectFit: "cover"}} /></div>
+          <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} loading='eager' /></div>
+          <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroTwo} alt="adoracion" fill style={{objectFit: "cover"}} loading='eager' /></div>
         </div>
       </div>
     </div>
