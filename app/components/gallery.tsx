@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Masonry from 'react-masonry-css';
 
-import { fetchInstagramData } from '@/app/api/instagram/route'
+import { fetchInstagramData } from '@/app/api/instagram'
 
 interface InstagramData {
   data: {
