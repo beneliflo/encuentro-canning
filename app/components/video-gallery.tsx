@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { fetchYoutubeData } from '@/app/api/youtube'
+import { fetchYoutubeData } from '@/app/lib/youtube'
 
 interface VideoItem {
   id: string;
