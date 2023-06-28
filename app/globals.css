@@ -38,6 +38,7 @@ body {
 
   #mobile-menu{
     display: block;
+    cursor: pointer;
   }
 
 
@@ -52,7 +53,7 @@ body {
   .showMenuNav{
     position: fixed;
     z-index: 1;
-    background: rgba(0, 0, 0,.97);
+    background: rgba(0, 0, 0,.90);
     color: #ffffff;
   }
 
@@ -62,5 +63,25 @@ body {
     flex-direction: row;
     align-items: center;
   }
+  
+  .showMenuNav {
+    animation: open-menu .4s linear forwards;
+  }
+  
+  .hideMenuNav {
+    animation: close-menu .4s linear forwards;
+  }
+
+  
+  @keyframes open-menu {
+    0% {width: 0;} /*You can use animation what do You need*/
+    100% {width: 100%;}
+  }
+  
+  @keyframes close-menu {
+    0% {width: 100%;}
+    100% {width: 0;}
+  }
+  
 
 }

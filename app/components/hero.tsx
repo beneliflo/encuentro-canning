@@ -69,11 +69,11 @@ export default function Hero() {
             <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Contacto</Link></li>
           </ul>
           <ul id="redes" className="flex items-center gap-5">
-            <li><Link href="https://www.facebook.com/ElEncuentro.Canning"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" /></Link></li>
-            <li><Link href="https://www.instagram.com/encuentrocanning/"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" /></Link></li>
-            <li><Link href="https://www.youtube.com/@elencuentrocanning3177"><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" /></Link></li>
+            <li><Link href="https://www.facebook.com/ElEncuentro.Canning" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" /></Link></li>
+            <li><Link href="https://www.instagram.com/encuentrocanning/" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" /></Link></li>
+            <li><Link href="https://www.youtube.com/@elencuentrocanning3177" target='_blank'><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" /></Link></li>
             <li>
-              <Link href="https://www.youtube.com/@elencuentrocanning3177">
+              <Link href="https://www.youtube.com/@elencuentrocanning3177" target='_blank'>
                 <div className="relative flex items-center gap-2">
                   <div className="relative flex w-3 h-3">
                     <span className="absolute inline-flex w-full h-full bg-red-400 rounded-full opacity-75 animate-ping"></span>
@@ -85,7 +85,7 @@ export default function Hero() {
             </li>
           </ul>
           <li id="vivo">
-              <Link href="https://www.youtube.com/@elencuentrocanning3177">
+              <Link href="https://www.youtube.com/@elencuentrocanning3177" target='_blank'>
                 <div className="relative flex items-center gap-2">
                   <div className="relative flex w-3 h-3">
                     <span className="absolute inline-flex w-full h-full bg-red-400 rounded-full opacity-75 animate-ping"></span>
@@ -115,7 +115,7 @@ export default function Hero() {
                     onClick={() => setIsNavOpen(false)}
                   >
                     <svg
-                      className="h-8 w-8 text-gray-600"
+                      className="h-10 w-10 mt-4 mr-1 text-white"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -127,24 +127,24 @@ export default function Hero() {
                       <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                   </div>
-                  <ul className="flex flex-col items-center justify-between mt-40 min-h-[250px]">
-                    <li className="border-gray-400 my-8 uppercase">
+                  <ul className="flex flex-col items-center justify-evenly mt-40 min-h-[250px]">
+                    <li className="border-gray-400 uppercase font-bold">
                       <a href="/">Quienes somos</a>
                     </li>
-                    <li className="border-gray-400 my-8 uppercase">
+                    <li className="border-gray-400 uppercase font-bold">
                       <a href="/">Ministerios</a>
                     </li>
-                    <li className="border-gray-400 my-8 uppercase">
+                    <li className="border-gray-400 uppercase font-bold">
                       <a href="/">Edades</a>
                     </li>
-                    <li className="border-gray-400 my-8 uppercase">
+                    <li className="border-gray-400 uppercase font-bold">
                       <a href="/">Contacto</a>
                     </li>
                   </ul>
                     <ul className="flex flex-row items-center justify-evenly mt-40 min-w-[200px]">
-                      <li><Link href="https://www.facebook.com/ElEncuentro.Canning"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" /></Link></li>
-                      <li><Link href="https://www.instagram.com/encuentrocanning/"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" /></Link></li>
-                      <li><Link href="https://www.youtube.com/@elencuentrocanning3177"><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" /></Link></li>
+                      <li><Link href="https://www.facebook.com/ElEncuentro.Canning" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" /></Link></li>
+                      <li><Link href="https://www.instagram.com/encuentrocanning/" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" /></Link></li>
+                      <li><Link href="https://www.youtube.com/@elencuentrocanning3177" target='_blank'><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" /></Link></li>
                     </ul>
                 </div>
               </section>
