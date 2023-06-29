@@ -43,13 +43,8 @@ export default function VideoGallery() {
     
     fetchData();
   }, []);
-  
-  if (!youtubeData) {
-    // Handle the case when youtubeData is null or undefined
-    return null;
-  }
 
-  const sortedItems = youtubeData.items.sort((a: VideoItem, b: VideoItem) => {
+  const sortedItems = youtubeData?.items.sort((a: VideoItem, b: VideoItem) => {
     const publishedAtA = a.snippet?.publishedAt || '';
     const publishedAtB = b.snippet?.publishedAt || '';
     return new Date(publishedAtB).getTime() - new Date(publishedAtA).getTime();
