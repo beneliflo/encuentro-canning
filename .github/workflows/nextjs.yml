@@ -25,7 +25,6 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  NEXT_PUBLIC_INSTAGRAM_KEY: ${{secrets.NEXT_PUBLIC_INSTAGRAM_KEY}}
   NEXT_PUBLIC_YOUTUBE_API_KEY: ${{secrets.NEXT_PUBLIC_YOUTUBE_API_KEY}}
 
 jobs:
