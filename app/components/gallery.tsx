@@ -36,30 +36,37 @@ const breakpointColumnsObj = {
 export default function Gallery() {
   const [instagramData, setInstagramData] = useState<InstagramData[]>([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetchInstagramData();
-      setInstagramData(data.data);
-    }
+  async function fetchData() {
+    const data = await fetchInstagramData();
+    setInstagramData(data.data);
+  }
 
-    fetchData();
+  useEffect(() => {
+    const cachedData = localStorage.getItem('instagramData');
+
+    if (cachedData) {
+      setInstagramData(JSON.parse(cachedData));
+    } else {
+      fetchData();
+    }
   }, []);
 
   const imageCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 22;
+  const displayedData = instagramData.slice(0, imageCount);
 
   return (
     <div className="container py-14 md:py-20">
       <h1 className="text-5xl font-bold">Stories & Articles</h1>
       <div className="mt-10">
-        {instagramData.length > 0 && (
+        {displayedData.length > 0 && (
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="flex gap-4"
             columnClassName="bg-clip-padding flex flex-col gap-4"
           >
-            {instagramData.slice(0, imageCount).map(({ item }: InstagramData) => (
+            {displayedData.map(({ item }: InstagramData) => (
               <div className="relative" key={item.id}>
-                {item.media_type === 'VIDEO' ? (
+                {item?.media_type === 'VIDEO' ? (
                   <Image
                     className="object-cover"
                     src={item.thumbnail_url}
@@ -73,8 +80,8 @@ export default function Gallery() {
                 ) : (
                   <Image
                     className="object-cover"
-                    src={item.media_url}
-                    alt={item.caption}
+                    src={item?.media_url}
+                    alt={item?.caption}
                     width={0}
                     height={0}
                     sizes="100vw"
