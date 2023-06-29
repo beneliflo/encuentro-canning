@@ -17,13 +17,11 @@ async function fetchInstagramData() {
 }
 
 interface InstagramData {
-  item: {
-    id: string;
-    caption: string;
-    media_type: string;
-    media_url: string;
-    thumbnail_url: string;
-  };
+  id: string;
+  media_type: string;
+  thumbnail_url: string;
+  caption: string;
+  media_url: string;
 }
 
 const breakpointColumnsObj = {
@@ -54,6 +52,8 @@ export default function Gallery() {
   const imageCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 22;
   const displayedData = instagramData.slice(0, imageCount);
 
+  console.log(displayedData)
+
   return (
     <div className="container py-14 md:py-20">
       <h1 className="text-5xl font-bold">Stories & Articles</h1>
@@ -64,7 +64,7 @@ export default function Gallery() {
             className="flex gap-4"
             columnClassName="bg-clip-padding flex flex-col gap-4"
           >
-            {displayedData.map(({ item }: InstagramData) => (
+            {displayedData.map((item) => (
               <div className="relative" key={item?.id}>
                 {item?.media_type === 'VIDEO' ? (
                   <Image
