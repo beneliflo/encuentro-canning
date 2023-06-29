@@ -17,7 +17,7 @@ export default function Ministries() {
       <div className="grid mt-10 gap-14 md:grid-cols-2 lg:grid-cols-3">
       <Link href="/">
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-            <div className="after:absolute after:inset-0 after:bg-black/30">
+            <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
               <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={heroOne} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
             <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Encuentros</p>
@@ -25,7 +25,7 @@ export default function Ministries() {
         </Link>
         <Link href="/">
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-            <div className="after:absolute after:inset-0 after:bg-black/30">
+            <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
               <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={matrimonios} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
             <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Matrimonios</p>
@@ -33,7 +33,7 @@ export default function Ministries() {
         </Link>
         <Link href="/">
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-            <div className="after:absolute after:inset-0 after:bg-black/30">
+            <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
               <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={uno} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
             <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">UNO</p>
@@ -41,7 +41,7 @@ export default function Ministries() {
         </Link>
         <Link href="/">
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-            <div className="after:absolute after:inset-0 after:bg-black/30">
+            <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
               <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={conectados} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
             <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Conectados</p>
@@ -49,7 +49,7 @@ export default function Ministries() {
         </Link>
         <Link href="/">
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-            <div className="after:absolute after:inset-0 after:bg-black/30">
+            <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
               <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={pre} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
             <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Familia PRE</p>
@@ -57,7 +57,7 @@ export default function Ministries() {
         </Link>
         <Link href="/">
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group">
-            <div className="after:absolute after:inset-0 after:bg-black/30">
+            <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
               <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={kids} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
             <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Encuentro Kids</p>
