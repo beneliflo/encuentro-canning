@@ -38,6 +38,23 @@ interface YouTubeData {
 }
 
 export default function VideoGallery() {
+  const [modal, setModal] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(true);
+  const [videoId, setVideoId] = useState<string | null>(null);
+
+  const openModal = (videoId: string) => {
+    setModal(!modal);
+    setVideoId(videoId);
+  };
+
+  const toggleModal = () => {
+    setModal(prevModal => !prevModal);
+  };
+
+  const spinner = () => {
+    setVideoLoading(!videoLoading);
+  };
+
   const [youtubeData, setYoutubeData] = useState<any>(null);
 
   useEffect(() => {
@@ -59,22 +76,50 @@ export default function VideoGallery() {
     <div className="container pt-14 md:pt-20">
       <h1 className="text-5xl font-bold">Watch now</h1>
       {sortedItems && (
-        <ul className="grid gap-8 mt-10 sm:grid-cols-2 md:grid-cols-3">
-          {sortedItems.map(({ id, snippet = {} }: VideoItem) => {
-            const { title, thumbnails = {}, resourceId = {} } = snippet;
-            const { high } = thumbnails;
-            return (
-              <li className="overflow-hidden border border-gray-800 rounded-lg" key={id}>
-                <Link href={`https://www.youtube.com/watch?v=${resourceId.videoId}`} target='_blank'>
-                  <p className="relative w-full aspect-video">
-                    <Image fill style={{ objectFit: 'cover' }} src={high?.url} alt={title} loading='eager' />
-                  </p>
-                  <h3 className="p-3 text-sm font-semibold">{title}</h3>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          <ul className="grid gap-8 mt-10 sm:grid-cols-2 md:grid-cols-3">
+            {sortedItems.map(({ id, snippet = {} }: VideoItem) => {
+              const { title, thumbnails = {}, resourceId = {} } = snippet;
+              const { high } = thumbnails;
+              return (
+                <li className="overflow-hidden border border-gray-800 rounded-lg" key={id}>
+                  <div className="cursor-pointer" onClick={() => resourceId.videoId && openModal(resourceId.videoId)}>
+                    <p className="relative w-full aspect-video">
+                      <Image fill style={{ objectFit: 'cover' }} src={high?.url} alt={title} loading='eager' />
+                    </p>
+                    <h3 className="p-3 text-sm font-semibold">{title}</h3>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+          {modal && (
+            <section className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" onClick={toggleModal}>
+              <div className="flex items-center justify-center h-screen">
+                <div className="aspect-video w-full max-w-[1280px] shadow-lg rounded-lg bg-transparent">
+                  <div className="relative flex w-full h-full bottom-9">
+                    {videoLoading ? (
+                      <div className="fixed text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                        <p>Loading...</p>
+                      </div>
+                    ) : null}
+                    <iframe
+                      className="z-50 rounded-lg"
+                      onLoad={spinner}
+                      loading="lazy"
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${videoId}`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+        </>
       )}
     </div>
   )
