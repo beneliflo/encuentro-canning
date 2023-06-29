@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Masonry from 'react-masonry-css';
 
 const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_KEY;
-const apiUrl = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url&access_token=${accessToken}`;
+const apiUrl = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink&access_token=${accessToken}`;
 
 async function fetchInstagramData() {
   const res = await fetch(apiUrl);
@@ -22,6 +23,7 @@ interface InstagramData {
   thumbnail_url: string;
   caption: string;
   media_url: string;
+  permalink: string;
 }
 
 const breakpointColumnsObj = {
@@ -65,29 +67,39 @@ export default function Gallery() {
             columnClassName="bg-clip-padding flex flex-col gap-4"
           >
             {displayedData.map((item) => (
-              <div className="relative" key={item?.id}>
+              <div className="relative overflow-hidden border border-gray-800 rounded-lg" key={item?.id}>
                 {item?.media_type === 'VIDEO' ? (
-                  <Image
-                    className="object-cover"
-                    src={item.thumbnail_url}
-                    alt={item.caption}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: '100%', height: 'auto' }}
-                    loading="eager"
-                  />
+                  <Link href={item.permalink} target='_blank'>
+                    <Image
+                      className="object-cover"
+                      src={item.thumbnail_url}
+                      alt={item.caption}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                      loading="eager"
+                    />
+                    <p className="p-3 text-sm font-semibold line-clamp-2">
+                      <span className="line-clamp-2">{item.caption}</span>
+                    </p>
+                  </Link>
                 ) : (
-                  <Image
-                    className="object-cover"
-                    src={item?.media_url}
-                    alt={item?.caption}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    style={{ width: '100%', height: 'auto' }}
-                    loading="eager"
-                  />
+                  <Link href={item.permalink} target='_blank'>
+                    <Image
+                      className="object-cover"
+                      src={item?.media_url}
+                      alt={item?.caption}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                      loading="eager"
+                    />
+                    <p className="p-3 text-sm font-semibold line-clamp-2">
+                      <span className="line-clamp-2">{item.caption}</span>
+                    </p>
+                  </Link>
                 )}
               </div>
             ))}

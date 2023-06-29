@@ -56,7 +56,7 @@ export default function VideoGallery() {
   });
 
   return (
-    <div className="container py-14 md:py-20">
+    <div className="container pt-14 md:pt-20">
       <h1 className="text-5xl font-bold">Watch now</h1>
       {sortedItems && (
         <ul className="grid gap-8 mt-10 sm:grid-cols-2 md:grid-cols-3">
