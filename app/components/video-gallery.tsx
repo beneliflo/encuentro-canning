@@ -37,10 +37,6 @@ interface YouTubeData {
   items: VideoItem[];
 }
 
-interface Props {
-  youtubeData: YouTubeData;
-}
-
 export default function VideoGallery() {
   const [youtubeData, setYoutubeData] = useState<any>(null);
 
