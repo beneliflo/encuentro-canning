@@ -67,11 +67,11 @@ export default function Hero() {
             <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Contacto</Link></li>
           </ul>
           <ul className="flex items-center gap-5">
-            <li><Link href="https://www.facebook.com/ElEncuentro.Canning"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" loading='eager' /></Link></li>
-            <li><Link href="https://www.instagram.com/encuentrocanning/"><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" loading='eager' /></Link></li>
-            <li><Link href="https://www.youtube.com/@elencuentrocanning3177"><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" loading='eager' /></Link></li>
+            <li><Link href="https://www.facebook.com/ElEncuentro.Canning" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" loading='eager' /></Link></li>
+            <li><Link href="https://www.instagram.com/encuentrocanning/" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" loading='eager' /></Link></li>
+            <li><Link href="https://www.youtube.com/@elencuentrocanning3177" target='_blank'><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" loading='eager' /></Link></li>
             <li>
-              <Link href="https://www.youtube.com/@elencuentrocanning3177">
+              <Link href="https://www.youtube.com/@elencuentrocanning3177" target='_blank'>
                 <div className="relative flex items-center gap-2">
                   <div className="relative flex w-3 h-3">
                     <span className="absolute inline-flex w-full h-full bg-red-400 rounded-full opacity-75 animate-ping"></span>
