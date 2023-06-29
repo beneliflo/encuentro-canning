@@ -24,13 +24,13 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-env:
-  NEXT_PUBLIC_YOUTUBE_API_KEY: ${{secrets.NEXT_PUBLIC_YOUTUBE_API_KEY}}
-
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_YOUTUBE_API_KEY: ${{secrets.NEXT_PUBLIC_YOUTUBE_API_KEY}}
+      NEXT_PUBLIC_INSTAGRAM_KEY: ${{secrets.NEXT_PUBLIC_INSTAGRAM_KEY}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
