@@ -65,7 +65,7 @@ export default function Gallery() {
             columnClassName="bg-clip-padding flex flex-col gap-4"
           >
             {displayedData.map(({ item }: InstagramData) => (
-              <div className="relative" key={item.id}>
+              <div className="relative" key={item?.id}>
                 {item?.media_type === 'VIDEO' ? (
                   <Image
                     className="object-cover"

@@ -37,7 +37,7 @@ export default function Home() {
         </div>
       </div>
       <VideoGallery />
-      <Gallery />
+      {/* <Gallery /> */}
       <Footer />
     </main>
   )
