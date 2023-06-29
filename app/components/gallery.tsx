@@ -54,8 +54,6 @@ export default function Gallery() {
   const imageCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 22;
   const displayedData = instagramData.slice(0, imageCount);
 
-  console.log(displayedData)
-
   return (
     <div className="container py-14 md:py-20">
       <h1 className="text-5xl font-bold">Stories & Articles</h1>
