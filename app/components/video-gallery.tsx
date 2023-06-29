@@ -97,7 +97,7 @@ export default function VideoGallery() {
             <section className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" onClick={toggleModal}>
               <div className="flex items-center justify-center h-screen">
                 <div className="aspect-video w-full max-w-[1280px] shadow-lg rounded-lg bg-transparent">
-                  <div className="relative flex w-full h-full bottom-9">
+                  <div className="relative flex w-full h-full">
                     {videoLoading ? (
                       <div className="fixed text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                         <p>Loading...</p>
