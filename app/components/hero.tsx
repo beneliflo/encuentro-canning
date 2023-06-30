@@ -14,6 +14,7 @@ import YoutubeIcon from '../../public/youtube.svg'
 import logoIEC from '../../public/logo-iec.png'
 import heroOne from '../../public/hero.jpg'
 import heroTwo from '../../public/hero2.jpg'
+import heroThree from '../../public/hero3.jpg'
 
 export default function Hero() {
   const [mount, setMount] = useState(false);
@@ -34,7 +35,7 @@ export default function Hero() {
           if (mouseOver) return
           timeout = setTimeout(() => {
             slider.next()
-          }, 3000)
+          }, 2000)
         }
         slider.on("created", () => {
           setMount(true)
@@ -86,8 +87,9 @@ export default function Hero() {
       </header>
       <div className={cn('absolute inset-0 transition-opacity duration-300 ease-in', mount ? 'opacity-100' : 'opacity-0')}>
         <div ref={sliderRef} className="h-full keen-slider">
-          <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover"}} loading='eager' /></div>
-          <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroTwo} alt="adoracion" fill style={{objectFit: "cover"}} loading='eager' /></div>
+          <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroThree} alt="adoracion" fill style={{objectFit: "cover", objectPosition: 'top' }} loading='eager' /></div>
+          <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroOne} alt="adoracion" fill style={{objectFit: "cover" }} loading='eager' /></div>
+          <div className="keen-slider__slide after:absolute after:inset-0 after:bg-black/30"><Image src={heroTwo} alt="adoracion" fill style={{objectFit: "cover" }} loading='eager' /></div>
         </div>
       </div>
     </div>
