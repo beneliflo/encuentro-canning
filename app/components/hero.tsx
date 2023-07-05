@@ -84,7 +84,7 @@ export default function Hero() {
               </Link>
             </li>
           </ul>
-          <li id="vivo">
+          <li className='md:hidden list-none'>
               <Link href="https://www.youtube.com/@elencuentrocanning3177" target='_blank'>
                 <div className="relative flex items-center gap-2">
                   <div className="relative flex w-3 h-3">
@@ -97,7 +97,7 @@ export default function Hero() {
             </li>
         </nav>
         {/* Menu hamburgesa mobile */}
-        <div id="mobile-menu" className="flex items-center ml-10 justify-between border-gray-400 py-8">
+        <div id="mobile-menu" className="cursor-pointer md:hidden flex items-center ml-6 justify-between border-gray-400 py-8">
             <nav >
               <section className="MOBILE-MENU flex lg:hidden">
                 <div

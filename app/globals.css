@@ -7,15 +7,7 @@ body {
   background: white;
 }
 
-#mobile-menu{
-  display: none;
-}
-
-.hideMenuNav {
-  display: none;
-}
-
-.showMenuNav {
+.hideMenuNav{
   display: block;
   position: absolute;
   width: 100%;
@@ -30,21 +22,24 @@ body {
   align-items: center;
 }
 
-#vivo{
-  display: none;
+
+.showMenuNav {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background: white;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
+
 @media only screen and (max-width: 768px) {
-
-  #mobile-menu{
-    display: block;
-    cursor: pointer;
-  }
-
-
-  #vivo{
-    display: block;
-  }
 
   #redes{
     display: none;
@@ -55,6 +50,7 @@ body {
     z-index: 1;
     background: rgba(0, 0, 0,.90);
     color: #ffffff;
+    animation: open-menu 500ms linear forwards;
   }
 
   Header{
@@ -64,12 +60,12 @@ body {
     align-items: center;
   }
   
-  .showMenuNav {
-    animation: open-menu .4s linear forwards;
-  }
-  
   .hideMenuNav {
-    animation: close-menu .4s linear forwards;
+    position: fixed;
+    z-index: 1;
+    background: rgba(0, 0, 0,.90);
+    color: #ffffff;
+    animation: close-menu 500ms linear forwards;
   }
 
   
@@ -80,7 +76,7 @@ body {
   
   @keyframes close-menu {
     0% {width: 100%;}
-    100% {width: 0;}
+    100% {width: 0; opacity: 0;}
   }
   
 
