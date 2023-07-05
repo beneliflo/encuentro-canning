@@ -20,7 +20,7 @@ export default function Ministries() {
             <div className="after:absolute after:inset-0 after:bg-black/30">
               <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={heroOne} alt="uno" fill style={{objectFit: "cover"}} />
             </div>
-            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Ecuentros</p>
+            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Encuentros</p>
           </div>
         </Link>
         <Link href="/">
