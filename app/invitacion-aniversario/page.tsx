@@ -4,10 +4,10 @@ import Invitation from './components/invitation'
 
 export const metadata: Metadata = {
   title: 'Invitacion Aniversario',
-  description: 'Invitacion especial a nuestro primer aniversario',
+  description: 'Invitacion a nuestro primer aniversario',
   openGraph: {
-    title: 'Acme',
-    description: 'Acme is a...',
+    title: 'Invitacion Aniversario',
+    description: 'Invitacion a nuestro primer aniversario',
   },
 }
 
