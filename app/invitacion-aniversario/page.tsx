@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function InvitationPage() {
   
   return (
-    <main className="bg-[url('/invitation/bg.jpg')] bg-cover bg-no-repeat">
+    <main className="bg-[url('/invitation/bg.jpg')] bg-cover bg-no-repeat h-screen overflow-auto bg-center">
       <Invitation />
     </main>
   )
