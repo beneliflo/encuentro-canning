@@ -74,7 +74,7 @@
 .open .letter {
   transform: translateY(-1000px);
   opacity: 0;
-  transition: transform 1.2s .6s ease, z-index .6s, opacity .6s 1.2s;
+  transition: transform 1.2s .6s ease, z-index .6s, opacity .6s 1s;
   z-index: 2;
 }
 

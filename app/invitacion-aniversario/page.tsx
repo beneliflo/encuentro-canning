@@ -95,7 +95,7 @@ export default function Invitation() {
         <div className="flex items-center justify-center w-full h-screen overflow-hidden">
           <div className={cn(styles.envelopeWrapper, open ? styles.open : styles.close)}>
             <Tilt scale={1.15} transitionSpeed={2500}>
-              <div className={cn('cursor-pointer scale-150', styles.envelope, open ? styles.open : styles.close)} onClick={toggleOpen}>
+              <div className={cn('cursor-pointer sm:scale-150', styles.envelope, open ? styles.open : styles.close)} onClick={toggleOpen}>
                 <div className={cn(styles.front, styles.flap)}></div>
                 <div className={cn(styles.front, styles.pocket)}></div>
                 <div className={styles.letter} />
