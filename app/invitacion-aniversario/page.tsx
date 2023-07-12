@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Invitacion Aniversario',
   description: 'Invitacion a nuestro primer aniversario',
   openGraph: {
-    images: '/invitation/og-image.png',
+    images: 'https://encuentrocanning.org/invitation/og-image.png',
   },
 }
 
