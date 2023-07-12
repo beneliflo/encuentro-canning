@@ -106,9 +106,9 @@ export default function Invitation() {
       }
       {letter &&
         <div className="max-w-[960px] mx-auto animate-slideFadeUp bg-white">
-          <div className="relative border-b-[10px] border-[#DFA23E]">
+          <div className="relative sm:border-b-[15px] sm:border-[#DFA23E]">
             <Image src={photoTop} alt='photo top' loading='eager' />
-            {/* <Image src={goldTop} alt='gold top' loading='eager' className="absolute -bottom-1 max-h-[30px] w-full" /> */}
+            <Image src={goldTop} alt='gold top' loading='eager' className="absolute -bottom-1 max-h-[20px] w-full sm:hidden" />
           </div>
           <div className="flex flex-col p-6 sm:p-10">
             <h3 className={cn('text-3xl sm:text-5xl lg:text-6xl font-bold', snellRoundhand.className)}>Te invitamos a:</h3>
@@ -126,9 +126,9 @@ export default function Invitation() {
               <p className={cn('text-2xl sm:text-4xl font-bold', openSauce.className)}>VIERNES 25/08 | 19hs</p>
             </div>
           </div>
-          <div className="relative border-t-[10px] border-[#DFA23E]">
+          <div className="relative sm:border-t-[15px] sm:border-[#DFA23E]">
             <Image src={photoBottom} alt='photo bottom' loading='eager' />
-            {/* <Image src={goldBottom} alt='gold bottom' loading='eager' className="absolute -top-1 max-h-[30px] w-full" /> */}
+            <Image src={goldBottom} alt='gold bottom' loading='eager' className="absolute -top-1 max-h-[20px] w-full sm:hidden" />
           </div>
         </div>
       }
