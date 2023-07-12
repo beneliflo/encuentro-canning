@@ -90,7 +90,7 @@ export default function Invitation() {
   };
   
   return (
-    <main>
+    <main className="bg-[url('/invitation/bg.jpg')] bg-cover bg-no-repeat">
       {!letter &&
         <div className="flex items-center justify-center w-full h-screen overflow-hidden">
           <div className={cn(styles.envelopeWrapper, open ? styles.open : styles.close)}>
@@ -105,7 +105,7 @@ export default function Invitation() {
         </div>
       }
       {letter &&
-        <div className="max-w-[960px] mx-auto animate-slideFadeUp">
+        <div className="max-w-[960px] mx-auto animate-slideFadeUp bg-white">
           <div className="relative">
             <Image src={photoTop} alt='photo top' loading='eager' />
             <Image src={goldTop} alt='gold top' loading='eager' className="absolute -bottom-1 max-h-[30px] w-full" />
