@@ -127,7 +127,7 @@ export default function Invitation() {
               </h1>
               <div className="flex flex-col items-center max-w-2xl mx-auto text-center">
                 <p className={cn('text-xl sm:text-3xl', objectSans.className)}>Compartí con nosotros la alegría de ver el <b>sueño de Dios</b> hecho realidad. <br /><b>2 Corintios 9:8</b></p>
-                <Image src={split} alt="split" loading='eager' className="max-w-[200px] sm:max-w-full my-6 sm:my-10" />
+                <Image src={split} alt="split" loading='eager' className="max-w-[200px] sm:max-w-[340px] my-6 sm:my-10" />
                 <p className={cn('text-2xl sm:text-4xl font-bold', openSauce.className)}>VIERNES 25/08 | 19hs</p>
               </div>
             </div>
