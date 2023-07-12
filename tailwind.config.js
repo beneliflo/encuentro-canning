@@ -25,10 +25,15 @@ module.exports = {
         slideFadeUp: {
           '0%': { transform: 'translateY(10%)', opacity: 0 },
           '100%': { transform: 'translateY(0)', opacity: 1 },
+        },
+        zoomFadeIn: {
+          '0%': { transform: 'scale(3)', opacity: 0 },
+          '100%': { transform: 'scale(1)', opacity: 1 },
         }
       },
       animation: {
         slideFadeUp: 'slideFadeUp 1s ease',
+        zoomFadeIn: 'zoomFadeIn 1s ease',
       }
     }
   },
