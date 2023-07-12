@@ -6,7 +6,7 @@ const nextConfig = {
   images: { 
     unoptimized: true
   },
-  assetPrefix: isProd ? '/encuentro-canning' : undefined,
+  assetPrefix: isProd ? '/' : undefined,
 }
  
 module.exports = nextConfig
