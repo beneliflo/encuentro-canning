@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import imageOne from '../../public/image-1.jpg'
-import imageTwo from '../../public/image-2.jpg'
+import imageOne from '@/public/image-1.jpg'
+import imageTwo from '@/public/image-2.jpg'
 
 export default function Who() {
 

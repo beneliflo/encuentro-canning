@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import pastorPrincipal from '../../public/sebastian-sennewald.jpg'
+import pastorPrincipal from '@/public/sebastian-sennewald.jpg'
 
 export default function Pastors() {
 

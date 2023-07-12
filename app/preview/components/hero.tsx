@@ -7,14 +7,14 @@ import cn from 'classnames'
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 
-import FacebookIcon from '../../public/facebook.svg'
-import InstagramIcon from '../../public/instagram.svg'
-import YoutubeIcon from '../../public/youtube.svg'
+import FacebookIcon from '@/public/facebook.svg'
+import InstagramIcon from '@/public/instagram.svg'
+import YoutubeIcon from '@/public/youtube.svg'
 
-import logoIEC from '../../public/logo-iec.png'
-import heroOne from '../../public/hero.jpg'
-import heroTwo from '../../public/hero2.jpg'
-import heroThree from '../../public/hero3.jpg'
+import logoIEC from '@/public/logo-iec.png'
+import heroOne from '@/public/hero.jpg'
+import heroTwo from '@/public/hero2.jpg'
+import heroThree from '@/public/hero3.jpg'
 
 export default function Hero() {
   const [mount, setMount] = useState(false);

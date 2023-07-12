@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import heroOne from '../../public/hero.jpg'
-import uno from '../../public/uno.jpg'
-import kids from '../../public/kids.jpg'
-import pre from '../../public/pre.jpg'
-import conectados from '../../public/conectados.jpg'
-import matrimonios from '../../public/matrimonios.jpg'
+import heroOne from '@/public/hero.jpg'
+import uno from '@/public/uno.jpg'
+import kids from '@/public/kids.jpg'
+import pre from '@/public/pre.jpg'
+import conectados from '@/public/conectados.jpg'
+import matrimonios from '@/public/matrimonios.jpg'
 
 export default function Ministries() {
 

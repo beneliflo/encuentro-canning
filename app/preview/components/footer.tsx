@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import logoIEC from '../../public/logo-iec.png'
+import logoIEC from '@/public/logo-iec.png'
 
 export default function Footer() {
 
