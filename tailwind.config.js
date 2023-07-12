@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const isProd = process.env.NODE_ENV === 'production'
-const baseUrl = isProd ? '' : undefined
 
 module.exports = {
   content: [
@@ -21,7 +19,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'section-pattern': `url('${baseUrl}/grain-pattern.png')`,
+        'section-pattern': `url('/grain-pattern.png')`,
       }
     }
   },
