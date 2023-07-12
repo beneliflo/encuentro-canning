@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const isProd = process.env.NODE_ENV === 'production'
-const baseUrl = isProd ? '/encuentro-canning' : ''
+const baseUrl = isProd ? '' : undefined
 
 module.exports = {
   content: [
