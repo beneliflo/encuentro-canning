@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
+import Link from 'next/link'
 import localFont from 'next/font/local'
+import { Titillium_Web } from 'next/font/google'
 
 import photoTop from '@/public/invitation/photo-top.png'
 import photoBottom from '@/public/invitation/photo-bottom.png'
@@ -12,8 +14,16 @@ import goldBottom from '@/public/invitation/gold-bottom.png'
 import split from '@/public/invitation/split.svg'
 import splashTop from '@/public/invitation/splash-top.png'
 import splashBottom from '@/public/invitation/splash-bottom.png'
+import confirmationBottom from '@/public/invitation/confirmation-bottom.png'
 
 import styles from '../styles.module.css'
+
+const titillium_web = Titillium_Web({
+  weight: ['400', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+})
+ 
 
 const snellRoundhand = localFont({
   src: [
@@ -138,6 +148,21 @@ export default function Invitation() {
             <div className="relative">
               <Image src={photoBottom} alt='photo bottom' loading='eager' />
               <Image src={goldBottom} alt='gold bottom' loading='eager' className="absolute -top-1 max-h-[20px] w-full" />
+            </div>
+            {/* Confirmation */}
+            <div className="relative bg-[url('/invitation/bg-confirmation.png')] bg-cover bg-top bg-no-repeat p-6 sm:p-10 flex flex-col">
+              <h2 className={cn('text-5xl sm:text-6xl font-normal text-[#B48D48] sm:leading-[0.5] leading-[0.55] pt-8 pb-12 sm:pt-12 sm:pb-24 text-center lg:text-left', snellRoundhand.className)}>
+                <p className="block transform lg:translate-x-24">Gran</p>
+                Inaguración
+              </h2>
+              <p className={cn('text-xl sm:text-4xl font-bold text-center max-w-2xl mx-auto mb-10', objectSans.className)}>SE REQUIERE CONFIRMACIÓN DE ASISTENCIA PREVIA</p>
+              <Link className={cn(titillium_web.className, 'transition bg-[#DFA23E] hover:bg-[#B48D48] px-3 py-2 rounded-lg max-w-max font-bold text-sm border border-[#B48D48] text-white mx-auto')} href='https://wa.me/5491168194422?text=Confirmo%20mi%20asistencia'>CONFIRME SU PRESENCIA AQUÍ</Link>
+              <p className={cn('text-2xl sm:text-4xl font-normal text-center mt-40 max-w-lg mx-auto mb-20', titillium_web.className)}>CÓDIGO DE VESTIMENTA ELEGANTE SPORT</p>
+              <h1 className={cn('uppercase text-5xl sm:text-8xl font-bold leading-[0.85] text-center relative z-10 mb-20', theSeasons.className)}>
+                <p className="block transform lg:translate-x-20">Encuentro</p>
+                <p className="block transform lg:-translate-x-32">Canning</p>
+              </h1>
+              <Image src={confirmationBottom} alt='confirmation bottom' loading='eager' className="absolute inset-x-0 bottom-0" />
             </div>
           </div>
         </div>
