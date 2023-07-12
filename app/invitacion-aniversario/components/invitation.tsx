@@ -166,7 +166,7 @@ export default function Invitation() {
                 <p className={cn('text-xl sm:text-3xl font-bold text-center uppercase', objectSans.className)}>Hipócrates 3320, Canning, Ezeiza</p>
                 <div className="overflow-hidden rounded-2xl" dangerouslySetInnerHTML={{ __html: mapEmbedCode }} />
               </div>
-              <p className={cn('text-2xl sm:text-4xl font-normal text-center mt-20 max-w-lg mx-auto mb-20', titillium_web.className)}>CÓDIGO DE VESTIMENTA ELEGANTE SPORT</p>
+              <p className={cn('text-2xl sm:text-4xl font-normal text-center mt-20 max-w-lg mx-auto mb-20 border-double border-4 border-[#DFA23E] py-4 rounded-lg', titillium_web.className)}>CÓDIGO DE VESTIMENTA ELEGANTE SPORT</p>
               <h1 className={cn('uppercase text-5xl sm:text-8xl font-bold leading-[0.85] text-center relative z-10 mb-20', theSeasons.className)}>
                 <p className="block transform lg:translate-x-20">Encuentro</p>
                 <p className="block transform lg:-translate-x-32">Canning</p>
