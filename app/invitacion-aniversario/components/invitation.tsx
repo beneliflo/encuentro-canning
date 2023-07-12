@@ -85,6 +85,8 @@ const openSauce = localFont({
   ],
 })
 
+const mapEmbedCode = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.5866264193533!2d-58.51235886463723!3d-34.88144292619042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd76848809fd5%3A0xa4dcb81c015f76f2!2sIglesia%20el%20encuentro!5e0!3m2!1ses-419!2sar!4v1687666073992!5m2!1ses-419!2sar" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+
 export default function Invitation() {
   const [open, setOpen] = useState(false);
   const [letter, setLetter] = useState(false);
@@ -156,8 +158,15 @@ export default function Invitation() {
                 Inaguración
               </h2>
               <p className={cn('text-xl sm:text-4xl font-bold text-center max-w-2xl mx-auto mb-10', objectSans.className)}>SE REQUIERE CONFIRMACIÓN DE ASISTENCIA PREVIA</p>
-              <Link className={cn(titillium_web.className, 'transition bg-[#DFA23E] hover:bg-[#B48D48] px-3 py-2 rounded-lg max-w-max font-bold text-sm border border-[#B48D48] text-white mx-auto')} href='https://wa.me/5491168194422?text=Confirmo%20mi%20asistencia'>CONFIRME SU PRESENCIA AQUÍ</Link>
-              <p className={cn('text-2xl sm:text-4xl font-normal text-center mt-40 max-w-lg mx-auto mb-20', titillium_web.className)}>CÓDIGO DE VESTIMENTA ELEGANTE SPORT</p>
+              <div className="flex flex-col gap-4">
+                <Link className={cn(titillium_web.className, 'transition bg-[#DFA23E] hover:bg-[#B48D48] px-3 py-2 rounded-lg max-w-max font-bold text-sm border border-[#B48D48] text-white mx-auto')} href='https://wa.me/5491168194422?text=Confirmo%20mi%20asistencia'>CONFIRME SU PRESENCIA AQUÍ</Link>
+                <Link className={cn(titillium_web.className, 'transition bg-[#DFA23E] hover:bg-[#B48D48] px-3 py-2 rounded-lg max-w-max font-bold text-sm border border-[#B48D48] text-white mx-auto')} href='https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MDlndTVyZnZlZzE5azhlN2k3N2k4cGZyZHEgZWxlbmN1ZW50cm9jYW5uaW5nLm9rQG0&tmsrc=elencuentrocanning.ok%40gmail.com'>AÑADIR A CALENDARIO</Link>
+              </div>
+              <div className="flex flex-col gap-6 mt-20">
+                <p className={cn('text-xl sm:text-3xl font-bold text-center uppercase', objectSans.className)}>Hipócrates 3320, Canning, Ezeiza</p>
+                <div className="overflow-hidden rounded-2xl" dangerouslySetInnerHTML={{ __html: mapEmbedCode }} />
+              </div>
+              <p className={cn('text-2xl sm:text-4xl font-normal text-center mt-20 max-w-lg mx-auto mb-20', titillium_web.className)}>CÓDIGO DE VESTIMENTA ELEGANTE SPORT</p>
               <h1 className={cn('uppercase text-5xl sm:text-8xl font-bold leading-[0.85] text-center relative z-10 mb-20', theSeasons.className)}>
                 <p className="block transform lg:translate-x-20">Encuentro</p>
                 <p className="block transform lg:-translate-x-32">Canning</p>
