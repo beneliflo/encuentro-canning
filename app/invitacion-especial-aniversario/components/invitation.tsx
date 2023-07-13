@@ -14,6 +14,8 @@ import goldTop from '@/public/invitation/gold-top.png'
 import goldBottom from '@/public/invitation/gold-bottom.png'
 import split from '@/public/invitation/split.svg'
 import confirmationBottom from '@/public/invitation/confirmation-bottom.png'
+import specialGuestBottom from '@/public/invitation/special-guest-bottom.png'
+import wave from '@/public/invitation/wave.png'
 
 import styles from '../styles.module.css'
 
@@ -123,7 +125,7 @@ export default function Invitation() {
       }
       {letter &&
         <div className="max-w-[992px] mx-auto animate-slideFadeUp p-4">
-          <div className="overflow-hidden bg-white rounded-2xl">
+          <div className="overflow-hidden bg-[#F5F3F5] rounded-2xl">
             <Fade triggerOnce>
               <div className="relative z-10">
                 <Image src={photoTop} alt='photo top' loading='eager' />
@@ -193,6 +195,20 @@ export default function Invitation() {
                 </h1>
               </Fade>
               <Image src={confirmationBottom} alt='confirmation bottom' loading='eager' className="absolute inset-x-0 bottom-0" />
+            </div>
+            {/* Special Guest */}
+            <div className="bg-[#F5F3F5] p-6 sm:p-10 relative" style={{paddingBottom: '34%'}}>
+              <Image src={wave} alt='special guest bottom' loading='eager' className="absolute inset-x-0 top-0 max-w-xl mx-auto" />
+              <div className="relative">
+                <Fade triggerOnce cascade direction='up'>
+                  <h1 className={cn('text-xl sm:text-7xl font-bold sm:px-10 sm:pt-10 !leading-normal', objectSans.className)}><p className="flex justify-between">SOS <span>NUESTRO</span></p> INVITADO <br />ESPECIAL</h1>
+                  <h2 className={cn('text-xl sm:text-3xl max-w-xl mx-auto text-center my-40', objectSans.className)}>POR ESO AL FINAL DEL ENCUENTRO, TE INVITAMOS A COMPARTIR UN AGASAJO EN LA <b>PLANTA ALTA</b>.</h2>
+                  <h3 className={cn('text-xl sm:text-3xl max-w-2xl mx-auto text-center', objectSans.className)}>Por razones de espacio y seguridad rogamos <b>no asistir con niños</b> menores de 10 años <b>(solamente PARA el agasajo)</b></h3>
+                </Fade>
+              </div>
+              <Fade triggerOnce>
+                <Image src={specialGuestBottom} alt='special guest bottom' loading='eager' className="absolute inset-x-0 bottom-0" />
+              </Fade>
             </div>
           </div>
         </div>
