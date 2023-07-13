@@ -17,7 +17,7 @@ export default function Home() {
         <div className="relative">
           <div className="container text-center py-14 md:py-20">
             <div className="flex flex-col justify-center text-white xl:flex-row">
-              <h1 className="text-4xl font-semibold md:text-5xl xl:pr-10 xl:mr-10 xl:border-r-2 xl:border-r-white">Hipócrate 3320 - Canning</h1>
+              <h1 className="text-4xl font-semibold md:text-5xl xl:pr-10 xl:mr-10 xl:border-r-2 xl:border-r-white">Hipócrates 3320 - Canning</h1>
               <p className="mt-6 text-3xl md:text-5xl xl:mt-0">Domingos 10:00 AM</p>
             </div>
             <div className="overflow-hidden mt-14 rounded-2xl" dangerouslySetInnerHTML={{ __html: mapEmbedCode }} />
