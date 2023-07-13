@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   openGraph: {
     images: 'https://encuentrocanning.org/invitation/og-image.png',
   },
+  twitter: {
+    images: ['https://encuentrocanning.org/invitation/og-image.png'],
+  },
 }
 
 export default function InvitationPage() {

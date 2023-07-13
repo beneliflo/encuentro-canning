@@ -11,6 +11,12 @@ export const metadata: Metadata = {
     default: 'Encuentro Canning', // a default is required when creating a template
   },
   description: 'Encuentro Canning',
+  openGraph: {
+    images: 'https://encuentrocanning.org/og-image.png',
+  },
+  twitter: {
+    images: ['https://encuentrocanning.org/og-image.png'],
+  },
 }
 
 export default function RootLayout({
