@@ -129,13 +129,13 @@ export default function Invitation() {
             </div>
             <div className="relative flex flex-col p-6 sm:p-10 bg-[url('/invitation/bg-invitation.png')] bg-cover bg-no-repeat bg-center">
               <h3 className={cn('text-3xl sm:text-5xl lg:text-6xl font-bold', snellRoundhand.className)}>Te invitamos a:</h3>
-              <h2 className={cn('text-5xl sm:text-8xl lg:text-[6.25rem] font-normal text-[#B48D48] sm:leading-[0.5] leading-[0.55] mt-8 mb-12 sm:mt-12 sm:mb-24 text-center lg:text-right lg:mr-16', snellRoundhand.className)}>
+              <h2 className={cn('text-5xl sm:text-8xl lg:text-[6rem] font-normal text-[#B48D48] sm:leading-[0.5] leading-[0.55] mt-8 mb-12 sm:mt-12 sm:mb-24 text-center lg:text-right lg:mr-16', snellRoundhand.className)}>
                 <p className="block transform lg:-translate-x-44">Gran</p>
                 Inaguración
               </h2>
-              <h1 className={cn('uppercase text-5xl sm:text-8xl lg:text-[7.5rem] font-bold leading-[0.85] mb-12 text-center lg:text-left', theSeasons.className)}>
+              <h1 className={cn('uppercase text-5xl sm:text-8xl lg:text-[7rem] font-bold leading-[0.85] text-center relative z-10 mb-12', theSeasons.className)}>
                 <p className="block transform lg:translate-x-20">Encuentro</p>
-                <p className="block">Canning</p>
+                <p className="block transform lg:-translate-x-32">Canning</p>
               </h1>
               <div className="flex flex-col items-center max-w-2xl mx-auto text-center">
                 <p className={cn('text-xl sm:text-3xl', objectSans.className)}>Compartí con nosotros la alegría de ver el <b>sueño de Dios</b> hecho realidad. <br /><b>2 Corintios 9:8</b></p>
