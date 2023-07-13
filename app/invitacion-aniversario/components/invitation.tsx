@@ -12,8 +12,6 @@ import photoBottom from '@/public/invitation/photo-bottom.png'
 import goldTop from '@/public/invitation/gold-top.png'
 import goldBottom from '@/public/invitation/gold-bottom.png'
 import split from '@/public/invitation/split.svg'
-import splashTop from '@/public/invitation/splash-top.png'
-import splashBottom from '@/public/invitation/splash-bottom.png'
 import confirmationBottom from '@/public/invitation/confirmation-bottom.png'
 
 import styles from '../styles.module.css'
@@ -129,14 +127,13 @@ export default function Invitation() {
               <Image src={photoTop} alt='photo top' loading='eager' />
               <Image src={goldTop} alt='gold top' loading='eager' className="absolute -bottom-1 max-h-[20px] w-full" />
             </div>
-            <div className="relative flex flex-col p-6 sm:p-10">
-              <Image src={splashTop} alt='splash top' loading='eager' className="absolute inset-x-0 top-0" />
+            <div className="relative flex flex-col p-6 sm:p-10 bg-[url('/invitation/bg-invitation.png')] bg-cover bg-no-repeat bg-center">
               <h3 className={cn('text-3xl sm:text-5xl lg:text-6xl font-bold', snellRoundhand.className)}>Te invitamos a:</h3>
               <h2 className={cn('text-5xl sm:text-8xl lg:text-[6.25rem] font-normal text-[#B48D48] sm:leading-[0.5] leading-[0.55] mt-8 mb-12 sm:mt-12 sm:mb-24 text-center lg:text-right lg:mr-16', snellRoundhand.className)}>
                 <p className="block transform lg:-translate-x-44">Gran</p>
                 Inaguración
               </h2>
-              <h1 className={cn('uppercase text-5xl sm:text-8xl lg:text-[8.45rem] font-bold leading-[0.85] mb-12 text-center lg:text-left', theSeasons.className)}>
+              <h1 className={cn('uppercase text-5xl sm:text-8xl lg:text-[7.5rem] font-bold leading-[0.85] mb-12 text-center lg:text-left', theSeasons.className)}>
                 <p className="block transform lg:translate-x-20">Encuentro</p>
                 <p className="block">Canning</p>
               </h1>
@@ -145,7 +142,6 @@ export default function Invitation() {
                 <Image src={split} alt="split" loading='eager' className="max-w-[200px] sm:max-w-[340px] my-6 sm:my-10" />
                 <p className={cn('text-2xl sm:text-4xl font-bold', openSauce.className)}>VIERNES 25/08 | 19hs</p>
               </div>
-              <Image src={splashBottom} alt='splash bottom' loading='eager' className="absolute inset-x-0 bottom-0" />
             </div>
             <div className="relative">
               <Image src={photoBottom} alt='photo bottom' loading='eager' />
