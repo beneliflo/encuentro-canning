@@ -141,9 +141,9 @@ export default function Invitation() {
                 </h2>
               </Fade>
               <Fade triggerOnce direction='up'>
-                <h1 className={cn('uppercase text-[2.75rem] sm:text-8xl lg:text-[7rem] font-bold leading-[0.85] text-center relative z-10 mb-12', theSeasons.className)}>
-                  <p className="block transform lg:translate-x-20">Encuentro</p>
-                  <p className="block transform lg:-translate-x-32">Canning</p>
+                <h1 className={cn('uppercase text-[2.75rem] sm:text-7xl md:text-[6.5rem] lg:text-[7rem] font-bold leading-[0.85] text-center lg:text-left relative z-10 mb-12', theSeasons.className)}>
+                  <p className="block">El Encuentro</p>
+                  <p className="block">Canning</p>
                 </h1>
               </Fade>
               <div className="flex flex-col items-center max-w-2xl mx-auto text-center">
@@ -187,9 +187,9 @@ export default function Invitation() {
               </div>
               <Fade triggerOnce cascade>
                 <p className={cn('text-2xl sm:text-4xl font-normal text-center mt-20 max-w-lg mx-auto mb-20 border-double border-4 border-[#DFA23E] py-4 rounded-lg', titillium_web.className)}>CÓDIGO DE VESTIMENTA ELEGANTE SPORT</p>
-                <h1 className={cn('uppercase text-5xl sm:text-8xl font-bold leading-[0.85] text-center relative z-10 mb-20', theSeasons.className)}>
-                  <p className="block transform lg:translate-x-20">Encuentro</p>
-                  <p className="block transform lg:-translate-x-32">Canning</p>
+                <h1 className={cn('uppercase text-4xl sm:text-7xl font-bold leading-[0.85] text-center relative z-10 mb-20', theSeasons.className)}>
+                  <p className="block">El Encuentro</p>
+                  <p className="block">Canning</p>
                 </h1>
               </Fade>
               <Image src={confirmationBottom} alt='confirmation bottom' loading='eager' className="absolute inset-x-0 bottom-0" />
