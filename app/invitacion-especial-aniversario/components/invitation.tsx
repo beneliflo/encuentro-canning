@@ -191,7 +191,7 @@ export default function Invitation() {
               </Fade>
               <div className="flex flex-col justify-center gap-4 text-center">
                 <Fade triggerOnce cascade direction='up'>
-                  <Link className={cn(titillium_web.className, 'inline-block transition bg-[#DFA23E] hover:bg-[#B48D48] px-4 py-2 rounded-full max-w-max font-bold text-base border border-[#B48D48] text-white mx-auto')} href='https://wa.me/5491168194422?text=Confirmo%20mi%20asistencia%20al%20AGASAJO'>CONFIRME SU PRESENCIA AQUÍ</Link>
+                  <Link className={cn(titillium_web.className, 'inline-block transition bg-[#DFA23E] hover:bg-[#B48D48] px-4 py-2 rounded-full max-w-max font-bold text-base border border-[#B48D48] text-white mx-auto')} href='https://wa.me/5491168194422?text=Invitación%Especial:%Confirmo%20mi%20asistencia%20a%20la%20inauguración%20(19hs)%20con%20(Ingrese%20cantidad%20de%20acompañantes%20aquí)'>CONFIRME SU PRESENCIA AQUÍ</Link>
                   <Link className={cn(titillium_web.className, 'inline-block transition bg-[#DFA23E] hover:bg-[#B48D48] px-4 py-2 rounded-full max-w-max font-bold text-base border border-[#B48D48] text-white mx-auto')} href='https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDI0c2JrMjBnZm5wbnVsdmVtajJzbGQ2ZmYgZWxlbmN1ZW50cm9jYW5uaW5nLm9rQG0&tmsrc=elencuentrocanning.ok%40gmail.com'>AÑADIR A CALENDARIO</Link>
                 </Fade>
               </div>
