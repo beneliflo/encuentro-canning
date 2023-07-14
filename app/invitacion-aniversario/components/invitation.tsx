@@ -171,12 +171,12 @@ export default function Invitation() {
                 </h2>
               </Fade>
               <Fade triggerOnce direction='up'>
-                <p className={cn('text-xl sm:text-4xl font-bold text-center max-w-2xl mx-auto mb-10', objectSans.className)}>SE REQUIERE CONFIRMACIÓN DE ASISTENCIA PREVIA</p>
+                <p className={cn('text-xl sm:text-4xl font-bold text-center max-w-2xl mx-auto mb-10 uppercase', objectSans.className)}>Por cuestiones de capacidad te pedimos que confirmes tu asistencia y la de tus acompañante</p>
               </Fade>
               <div className="flex flex-col justify-center gap-4 text-center">
                 <Fade triggerOnce cascade direction='up'>
-                  <Link className={cn(titillium_web.className, 'inline-block transition bg-[#DFA23E] hover:bg-[#B48D48] px-4 py-2 rounded-full max-w-max font-bold text-base border border-[#B48D48] text-white mx-auto')} href='https://wa.me/5491168194422?text=Confirmo%20mi%20asistencia%20a%20la%20inauguración%20(19hs)%20con%20(Ingrese%20cantidad%20de%20acompañantes%20aquí)'>CONFIRMESU PRESENCIA AQUÍ</Link>
-                  <Link className={cn(titillium_web.className, 'inline-block transition bg-[#DFA23E] hover:bg-[#B48D48] px-4 py-2 rounded-full max-w-max font-bold text-base border border-[#B48D48] text-white mx-auto')} href='https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDI0c2JrMjBnZm5wbnVsdmVtajJzbGQ2ZmYgZWxlbmN1ZW50cm9jYW5uaW5nLm9rQG0&tmsrc=elencuentrocanning.ok%40gmail.com'>AÑADIR A CALENDARIO</Link>
+                  <Link className={cn(titillium_web.className, 'inline-block transition bg-[#DFA23E] hover:bg-[#B48D48] px-4 py-2 rounded-full max-w-max font-bold text-base border border-[#B48D48] text-white mx-auto uppercase')} href='https://wa.me/5491168194422?text=Confirmo%20mi%20asistencia%20a%20la%20inauguración%20(19hs)%20con%20(Ingrese%20cantidad%20de%20acompañantes%20aquí)'>Confirmar asistencia aquí</Link>
+                  <Link className={cn(titillium_web.className, 'inline-block transition bg-[#DFA23E] hover:bg-[#B48D48] px-4 py-2 rounded-full max-w-max font-bold text-base border border-[#B48D48] text-white mx-auto uppercase')} href='https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDI0c2JrMjBnZm5wbnVsdmVtajJzbGQ2ZmYgZWxlbmN1ZW50cm9jYW5uaW5nLm9rQG0&tmsrc=elencuentrocanning.ok%40gmail.com'>AÑADIR A CALENDARIO</Link>
                 </Fade>
               </div>
               <div className="flex flex-col gap-6 mt-20">
