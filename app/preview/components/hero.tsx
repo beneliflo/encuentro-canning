@@ -35,8 +35,12 @@ export default function Hero() {
           if (mouseOver) return
           timeout = setTimeout(() => {
             slider.next()
-          }, 2000)
+          }, 4000)
         }
+        slider.on("created", () => {
+          setMount(true)
+          nextTimeout()
+        })
         slider.on("dragStarted", clearNextTimeout)
         slider.on("animationEnded", nextTimeout)
         slider.on("updated", nextTimeout)
