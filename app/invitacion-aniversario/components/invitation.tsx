@@ -171,7 +171,7 @@ export default function Invitation() {
                 </h2>
               </Fade>
               <Fade triggerOnce direction='up'>
-                <p className={cn('text-xl sm:text-4xl font-bold text-center max-w-2xl mx-auto mb-10 uppercase', objectSans.className)}>Por cuestiones de capacidad te pedimos que confirmes tu asistencia y la de tus acompañante</p>
+                <p className={cn('text-xl sm:text-4xl font-bold text-center max-w-2xl mx-auto mb-10 uppercase', objectSans.className)}>Por cuestiones de capacidad te pedimos que confirmes tu asistencia y la de tus acompañantes</p>
               </Fade>
               <div className="flex flex-col justify-center gap-4 text-center">
                 <Fade triggerOnce cascade direction='up'>
