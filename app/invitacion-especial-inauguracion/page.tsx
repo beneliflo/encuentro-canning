@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import Invitation from './components/invitation'
 
 export const metadata: Metadata = {
-  title: 'Invitacion Especial Aniversario',
-  description: 'Invitacion especial a nuestro primer aniversario',
+  title: 'Invitación Especial Inauguración',
+  description: 'Invitación especial a nuestra inauguración',
   openGraph: {
     images: 'https://encuentrocanning.org/invitation/og-special-image.png',
   },
