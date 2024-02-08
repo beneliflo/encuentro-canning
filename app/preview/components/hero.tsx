@@ -64,9 +64,9 @@ export default function Hero() {
             <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Contacto</Link></li>
           </ul>
           <ul className="flex items-center gap-5">
-            <li><Link href="https://www.facebook.com/ElEncuentro.Canning" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" loading='eager' /></Link></li>
-            <li><Link href="https://www.instagram.com/encuentrocanning/" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" loading='eager' /></Link></li>
-            <li><Link href="https://www.youtube.com/@encuentrocanning" target='_blank'><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" loading='eager' /></Link></li>
+            <li className="flex items-center"><Link href="https://www.facebook.com/ElEncuentro.Canning" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" loading='eager' /></Link></li>
+            <li className="flex items-center"><Link href="https://www.instagram.com/encuentrocanning/" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" loading='eager' /></Link></li>
+            <li className="flex items-center"><Link href="https://www.youtube.com/@encuentrocanning" target='_blank'><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" loading='eager' /></Link></li>
             {/* <li>
               <Link href="https://www.youtube.com/@encuentrocanning" target='_blank'>
                 <div className="relative flex items-center gap-2">
