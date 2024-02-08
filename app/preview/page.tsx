@@ -6,7 +6,7 @@ import Who from './components/who'
 import Ministries from './components/ministries'
 import Pastors from './components/pastors'
 import VideoGallery from './components/video-gallery'
-import Gallery from './components/gallery'
+// import Gallery from './components/gallery'
 import Footer from './components/footer'
 
 const dancing_script = Dancing_Script({ subsets: ['latin'] })
@@ -36,7 +36,6 @@ export default function Home() {
         </div>
       </div>
       <VideoGallery />
-      <Gallery />
       <Footer />
     </main>
   )
