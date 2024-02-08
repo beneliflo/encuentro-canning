@@ -19,19 +19,25 @@ export default function Ministries() {
             <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
               <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={heroOne} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
-            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Encuentros</p>
+            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl xl:leading-tight">Grupos de Conexión</p>
           </div>
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group cursor-default">
             <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
               <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={matrimonios} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
-            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Matrimonios</p>
+            <p className="relative text-3xl font-semibold text-center text-white xl:leading-tight lg:text-4xl xl:text-5xl">Espacio <br /> Viernes</p>
           </div>
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group cursor-default">
             <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
-              <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={uno} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
+              <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={kids} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
-            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">UNO</p>
+            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl xl:leading-tight">Encuentro <br /> Kids</p>
+          </div>
+          <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group cursor-default">
+            <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
+              <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={pre} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
+            </div>
+            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl xl:leading-tight">Familia <br /> PRE</p>
           </div>
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group cursor-default">
             <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
@@ -41,15 +47,9 @@ export default function Ministries() {
           </div>
           <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group cursor-default">
             <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
-              <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={pre} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
+              <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={uno} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
             </div>
-            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Familia PRE</p>
-          </div>
-          <div className="relative h-96 md:h-[520px] rounded-2xl overflow-hidden items-center flex justify-center group cursor-default">
-            <div className="absolute w-full h-full after:absolute after:inset-0 after:bg-black/30">
-              <Image className="transition-all duration-300 ease-in-out group-hover:scale-110" src={kids} alt="uno" fill style={{objectFit: "cover"}} loading='eager' />
-            </div>
-            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">Encuentro Kids</p>
+            <p className="relative text-3xl font-semibold text-center text-white lg:text-4xl xl:text-5xl">UNO</p>
           </div>
         </div>
       </div>

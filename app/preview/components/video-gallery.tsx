@@ -74,11 +74,11 @@ export default function VideoGallery() {
 
   return (
     <div className="container pt-14 md:pt-20">
-      <h1 className="text-5xl font-bold">Watch now</h1>
+      <h1 className="text-5xl font-bold">MIRANOS ONLINE</h1>
       {sortedItems && (
         <>
           <ul className="grid gap-8 mt-10 sm:grid-cols-2 md:grid-cols-3">
-            {sortedItems.map(({ id, snippet = {} }: VideoItem) => {
+            {sortedItems.slice(0, 12).map(({ id, snippet = {} }: VideoItem) => {
               const { title, thumbnails = {}, resourceId = {} } = snippet;
               const { high } = thumbnails;
               return (
@@ -93,6 +93,9 @@ export default function VideoGallery() {
               );
             })}
           </ul>
+
+          <a className="rounded-lg table text-sm font-semibold py-2.5 px-4 bg-black text-white hover:bg-black/90 my-10 mx-auto" href="https://www.youtube.com/@encuentrocanning"><span>Mirá más <span>→</span></span></a>
+
           {modal && (
             <section className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" onClick={toggleModal}>
               <div className="flex items-center justify-center h-screen">

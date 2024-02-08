@@ -23,17 +23,7 @@ export default function Home() {
       </div>
       {/* <Who /> */}
       <Ministries />
-      <Pastors />
-      {/* Join us at church section */}
-      <div className="relative bg-black before:bg-section-pattern before:absolute before:inset-0">
-        <div className="container text-center py-14 md:py-20">
-          <div className="flex flex-col justify-center text-white md:flex-row">
-            <h1 className="text-4xl font-semibold md:text-5xl md:pr-10 md:mr-10 md:border-r-2 md:border-r-white">Join Us at Church</h1>
-            <p className="mt-2 text-3xl md:text-5xl md:mt-0">Domingos 10:00 AM</p>
-          </div>
-          <div className="overflow-hidden mt-14 rounded-2xl" dangerouslySetInnerHTML={{ __html: mapEmbedCode }} />
-        </div>
-      </div>
+      {/* <Pastors /> */}
       <VideoGallery />
       <Footer />
     </main>

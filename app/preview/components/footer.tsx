@@ -18,14 +18,14 @@ export default function Footer() {
           <div className="flex flex-col">
             <h3 className="mb-2 text-xl font-semibold">Dirección</h3>
             <p>Encuentro Canning</p>
-            <a href="https://www.google.com.ar/maps/place/Iglesia+el+encuentro/@-34.8814429,-58.5123589,16.73z/data=!4m14!1m7!3m6!1s0x95bcd6e29f559e37:0x9fb84b4fbbe33140!2sHipocrates+3320,+B1801BZH+Canning,+Provincia+de+Buenos+Aires!3b1!8m2!3d-34.8818915!4d-58.5085267!3m5!1s0x95bcd76848809fd5:0xa4dcb81c015f76f2!8m2!3d-34.8832805!4d-58.5116071!16s%2Fg%2F11jz6tncjs?entry=ttu" target="_blank">Hipocrates 3320, Canning, Buenos Aires</a>
+            <a href="https://maps.app.goo.gl/2tqQEnDjh4HERhQ36" target="_blank">Hipocrates 3320, Canning, Buenos Aires</a>
           </div>
         </div>
         <ul className="flex flex-wrap gap-4 mt-10">
-          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Quienes somos</Link></li>
-          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Ministerios</Link></li>
-          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Edades</Link></li>
-          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Contacto</Link></li>
+          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Conocenos</Link></li>
+          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Conectate</Link></li>
+          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Comunidad</Link></li>
+          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Recursos</Link></li>
         </ul>
       </div>
     </footer>
