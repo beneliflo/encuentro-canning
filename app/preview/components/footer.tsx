@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import logoIEC from '@/public/logo-iec.png'
 
-import ContactForm from './contact-form'
+// import ContactForm from './contact-form'
 
 export default function Footer() {
 
@@ -30,7 +30,7 @@ export default function Footer() {
           <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Recursos</Link></li>
         </ul>
       </div>
-      <ContactForm />
+      {/* <ContactForm /> */}
     </footer>
   )
 }
