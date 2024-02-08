@@ -58,15 +58,20 @@ export default function Hero() {
         <Link href="/"><Image className="w-9" src={logoIEC} alt="IEC Logo" loading='eager' /></Link>
         <nav className="flex justify-end w-full ml-10 md:justify-between">
           <ul className="hidden gap-10 text-white md:flex">
-            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Quienes somos</Link></li>
-            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Ministerios</Link></li>
-            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Edades</Link></li>
-            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Contacto</Link></li>
+            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Conocenos</Link></li>
+            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Conectate</Link></li>
+            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Comunidad</Link></li>
+            <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Recursos</Link></li>
           </ul>
           <ul className="flex items-center gap-5">
             <li className="flex items-center"><Link href="https://www.facebook.com/ElEncuentro.Canning" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={FacebookIcon} alt="facebook icon" loading='eager' /></Link></li>
             <li className="flex items-center"><Link href="https://www.instagram.com/encuentrocanning/" target='_blank'><Image className="w-6 transition-opacity duration-150 ease-in-out hover:opacity-80" src={InstagramIcon} alt="instagram icon" loading='eager' /></Link></li>
             <li className="flex items-center"><Link href="https://www.youtube.com/@encuentrocanning" target='_blank'><Image className="w-8 transition-opacity duration-150 ease-in-out hover:opacity-80" src={YoutubeIcon} alt="youtube icon" loading='eager' /></Link></li>
+            <li>
+              <button className="px-5 py-2 text-sm font-semibold leading-5 text-white rounded-full bg-sky-500 hover:bg-sky-700">
+                DAR
+              </button>
+            </li>
             {/* <li>
               <Link href="https://www.youtube.com/@encuentrocanning" target='_blank'>
                 <div className="relative flex items-center gap-2">

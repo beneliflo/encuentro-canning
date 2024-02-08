@@ -21,7 +21,7 @@ export default function Home() {
       <div className="container text-center py-14 md:py-20">
         <h1 className={cn('text-4xl md:text-5xl md:leading-snug', unbounded.className)}>“SOMOS UNA FAMILIA APASIONADA POR JESÚS, QUE SE MULTIPLICA, PREDICA CON PODER Y SIRVE CON COMPASIÓN”</h1>
       </div>
-      <Who />
+      {/* <Who /> */}
       <Ministries />
       <Pastors />
       {/* Join us at church section */}
