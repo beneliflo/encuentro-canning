@@ -27,12 +27,12 @@ const titillium_web = Titillium_Web({
 const snellRoundhand = localFont({
   src: [
     {
-      path: '../../fonts/snell-roundhand/SnellBT-Regular.otf',
+      path: '../../../fonts/snell-roundhand/SnellBT-Regular.otf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../fonts/snell-roundhand/SnellRoundhand-BoldScript.otf',
+      path: '../../../fonts/snell-roundhand/SnellRoundhand-BoldScript.otf',
       weight: '700',
       style: 'normal',
     },
@@ -42,12 +42,12 @@ const snellRoundhand = localFont({
 const theSeasons = localFont({
   src: [
     {
-      path: '../../fonts/the-seasons/Fontspring-DEMO-theseasons-reg.otf',
+      path: '../../../fonts/the-seasons/Fontspring-DEMO-theseasons-reg.otf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../fonts/the-seasons/Fontspring-DEMO-theseasons-bd.otf',
+      path: '../../../fonts/the-seasons/Fontspring-DEMO-theseasons-bd.otf',
       weight: '700',
       style: 'normal',
     },
@@ -57,12 +57,12 @@ const theSeasons = localFont({
 const objectSans = localFont({
   src: [
     {
-      path: '../../fonts/object-sans/ObjectSans-Regular.otf',
+      path: '../../../fonts/object-sans/ObjectSans-Regular.otf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../fonts/object-sans/ObjectSans-Heavy.otf',
+      path: '../../../fonts/object-sans/ObjectSans-Heavy.otf',
       weight: '700',
       style: 'normal',
     },
@@ -72,12 +72,12 @@ const objectSans = localFont({
 const openSauce = localFont({
   src: [
     {
-      path: '../../fonts/open-sauce/OpenSauceOne-Regular.ttf',
+      path: '../../../fonts/open-sauce/OpenSauceOne-Regular.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../fonts/open-sauce/OpenSauceOne-Bold.ttf',
+      path: '../../../fonts/open-sauce/OpenSauceOne-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
