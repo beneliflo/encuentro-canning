@@ -4,6 +4,7 @@ import Hero from './components/homepage/hero';
 import AulaSensorial from './components/homepage/aula-sensorial';
 import NuestrosEncuentros from './components/homepage/nuestros-encuentros';
 import NuestraMision from './components/homepage/nuestra-mision';
+import Contactanos from './components/homepage/contactanos';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <AulaSensorial />
       <NuestrosEncuentros />
       <NuestraMision />
+      <Contactanos />
     </main>
   );
 }
