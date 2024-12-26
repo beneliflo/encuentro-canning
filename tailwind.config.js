@@ -9,13 +9,13 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: '1.25rem',
     },
     screens: {
       'sm': '640px',
       'md': '768px',
       'lg': '1024px',
-      'xl': '1344px',
+      'xl': '1280px',
     },
     extend: {
       backgroundImage: {
