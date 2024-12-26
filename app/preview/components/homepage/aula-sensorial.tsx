@@ -6,15 +6,17 @@ import cn from 'classnames';
 
 export default function AulaSensorial() {
   return (
-    <div className="bg-[url('/aula-sensorial-bg.png')] bg-center">
-      <div className="container text-right justify-items-end text-hueso font-pragmatica py-7">
-        <h3 className="text-xl font-bold leading-10 md:text-3xl">Marzo 2025</h3>
-        <h2 className="text-5xl md:text-8xl lg:text-[107px] font-bold md:leading-[110px] uppercase tracking-[1px]">
+    <div className="bg-[url('/aula-sensorial-bg.png')] bg-bottom py-10">
+      <div className="container text-right justify-items-end text-hueso font-pragmatica">
+        <h3 className="mb-8 text-xl font-bold leading-10 md:text-3xl">
+          Marzo 2025
+        </h3>
+        <h2 className="text-5xl md:text-8xl lg:text-[107px] font-bold md:leading-[110px] uppercase tracking-[1px] mb-8">
           Aula
           <br />
           Sensorial
         </h2>
-        <p className="mb-8 text-xl md:text-3xl font-bold md:leading-10 max-w-[750px]">
+        <p className="mb-10 text-xl md:text-3xl font-bold md:leading-10 max-w-[750px]">
           Sala equipada para la estimulación sensorial en niños con trastornos
           del neurodesarrollo
         </p>
