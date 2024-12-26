@@ -14,6 +14,7 @@ export default function Hero() {
         url="/hero-with-values.mp4"
         playing
         muted
+        loop
         width="100%"
         height="auto"
       />
