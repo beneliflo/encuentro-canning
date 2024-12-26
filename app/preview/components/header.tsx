@@ -116,7 +116,7 @@ export default function Header() {
             </svg>
           </Link>
         </div>
-        <div>
+        <div className="hidden xl:block">
           <ul className="flex text-lg font-bold uppercase text-[#EFF0EF] gap-6 items-center">
             <li>
               <Link href="#">Conocenos</Link>
@@ -135,7 +135,7 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="hidden xl:block">
           <ul className="flex items-center gap-4">
             <li>
               <Link href="#">

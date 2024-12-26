@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="py-10 bg-dark">
       <div className="container">
-        <div className="flex gap-x-6">
+        <div className="flex flex-col gap-6 md:flex-row">
           <div>
             <div className="mb-10">
               <h3 className="mb-5 text-2xl font-bold font-pragmatica text-hueso">

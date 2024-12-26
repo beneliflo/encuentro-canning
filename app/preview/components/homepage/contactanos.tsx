@@ -10,7 +10,7 @@ export default function Contactanos() {
       <div className="py-12 bg-cel">
         <div className="container">
           <div className="flex gap-x-24">
-            <div>
+            <div className="hidden lg:block">
               <Image
                 src="/phone-mockup.png"
                 width={247}
@@ -24,7 +24,7 @@ export default function Contactanos() {
                 Dejanos tu motivo de oración
               </h2>
               <form className="flex flex-col gap-1">
-                <div className="grid grid-cols-6 gap-1">
+                <div className="grid gap-1 md:grid-cols-6">
                   <div className="col-span-3">
                     <input
                       id="first-name"
@@ -46,7 +46,7 @@ export default function Contactanos() {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-6 gap-1">
+                <div className="grid gap-1 md:grid-cols-6">
                   <div className="col-span-3">
                     <input
                       id="email"
@@ -97,7 +97,7 @@ export default function Contactanos() {
           <h2 className="font-pragmatica font-bold text-[32px] leading-10 text-hueso mb-3">
             también podes escribirnos por estos canales
           </h2>
-          <div className="flex items-center justify-center gap-x-11">
+          <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-11">
             <Link
               href="mailto:example@example.com"
               className="text-2xl font-bold underline font-pragmatica text-cel"

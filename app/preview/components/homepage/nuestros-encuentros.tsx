@@ -8,12 +8,12 @@ export default function NuestrosEncuentros() {
   return (
     <div className="py-12 bg-dark">
       <div className="container">
-        <h2 className="font-bold font-pragmatica text-[107px] leading-[110px] text-hueso uppercase">
+        <h2 className="font-bold font-pragmatica text-4xl md:text-8xl lg:text-[107px] md:leading-[110px] text-hueso uppercase">
           <p>Nuestros</p>
           <p className="text-right">Encuentros</p>
         </h2>
         <div className="mt-24">
-          <ul className="grid grid-cols-3 gap-4 font-bold text-center font-pragmatica text-hueso">
+          <ul className="grid gap-4 font-bold text-center md:grid-cols-3 font-pragmatica text-hueso">
             <li className="relative aspect-[363/260]">
               <Link href="#">
                 <Image

@@ -11,7 +11,7 @@ export default function NuestraMision() {
         <h2 className="font-pragmatica text-turquesa font-bold text-[32px] leading-[40px]">
           Nuestra misión:
         </h2>
-        <p className="text-dark font-pragmatica font-bold text-[76px] leading-[85px] mt-12 text-balance">
+        <p className="text-dark font-pragmatica font-bold text-4xl md:text-6xl lg:text-[76px] lg:leading-[85px] mt-12 text-balance">
           Somos una familia apasionada por Jesus, que se multiplica, predica con
           poder y sirve con compasión.
         </p>
