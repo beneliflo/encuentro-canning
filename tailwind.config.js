@@ -28,6 +28,7 @@ module.exports = {
         hueso: '#EFF0EF',
         dark: '#242424',
         cel: '#6C8A8C',
+        turquesa: '#B78665',
       },
       backgroundImage: {
         'section-pattern': `url('/grain-pattern.png')`,
