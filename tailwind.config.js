@@ -12,12 +12,18 @@ module.exports = {
       padding: '1.25rem',
     },
     screens: {
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
     },
     extend: {
+      fontFamily: {
+        pragmatica: ['pragmatica-extended', 'sans-serif'],
+      },
+      colors: {
+        hueso: '#EFF0EF',
+      },
       backgroundImage: {
         'section-pattern': `url('/grain-pattern.png')`,
       },
@@ -29,13 +35,13 @@ module.exports = {
         zoomFadeIn: {
           '0%': { transform: 'scale(3)', opacity: 0 },
           '100%': { transform: 'scale(1)', opacity: 1 },
-        }
+        },
       },
       animation: {
         slideFadeUp: 'slideFadeUp 1s ease',
         zoomFadeIn: 'zoomFadeIn 1s ease',
-      }
-    }
+      },
+    },
   },
   plugins: [],
-}
+};

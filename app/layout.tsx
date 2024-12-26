@@ -39,6 +39,9 @@ export default function RootLayout({
           gtag('config', 'G-09SLGMTFY9');
         `}
       </Script>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/duw6mjz.css" />
+      </head>
       <body className={roboto.className}>{children}</body>
     </html>
   );
