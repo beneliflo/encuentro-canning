@@ -1,36 +1,52 @@
-import Image from 'next/image'
-import Link from 'next/link'
+'use client';
 
-import logoIEC from '@/public/logo-iec.png'
+import Image from 'next/image';
+import Link from 'next/link';
+import cn from 'classnames';
 
-// import ContactForm from './contact-form'
+const mapEmbedCode =
+  '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.5866264193533!2d-58.51235886463723!3d-34.88144292619042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd76848809fd5%3A0xa4dcb81c015f76f2!2sIglesia%20el%20encuentro!5e0!3m2!1ses-419!2sar!4v1687666073992!5m2!1ses-419!2sar" width="100%" height="148" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
 
 export default function Footer() {
-
   return (
-    <footer className="text-white bg-black">
-      <div className="container py-14 md:py-20">
-        <Image className="w-9" src={logoIEC} alt="IEC Logo" loading='eager' />
-        <div className="flex flex-col gap-10 mt-6 md:flex-row md:gap-36">
-          <div className="flex flex-col">
-            <h3 className="mb-2 text-xl font-semibold">Contacto</h3>
-            <a href="https://api.whatsapp.com/send?phone=28202555000" target="_blank">(001)321-123-4567</a>
-            <a href="mailto:example@example.com" target="_blank">example@example.com</a>
+    <footer className="py-10 bg-dark">
+      <div className="container">
+        <div className="flex flex-col gap-6 md:flex-row">
+          <div>
+            <div className="mb-10">
+              <h3 className="mb-5 text-2xl font-bold font-pragmatica text-hueso">
+                Nuestras reuniones:
+              </h3>
+              <p className="mb-2 text-sm font-medium uppercase text-cel">
+                Reunión central - domingos 10 am
+              </p>
+              <p className="text-sm font-medium uppercase text-cel">
+                Reunión de oración - jueves 7 pm
+              </p>
+            </div>
+            <div>
+              <h3 className="mb-5 text-2xl font-bold font-pragmatica text-hueso">
+                Dónde estamos:
+              </h3>
+              <div
+                className="mb-2 overflow-hidden rounded"
+                dangerouslySetInnerHTML={{ __html: mapEmbedCode }}
+              />
+              <Link
+                href="https://maps.app.goo.gl/thmoWViy1H4Fr1tW6"
+                className="text-sm font-black underline uppercase text-cel"
+              >
+                Hipocrates 3320, Canning, Buenos Aires
+              </Link>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <h3 className="mb-2 text-xl font-semibold">Dirección</h3>
-            <p>Encuentro Canning</p>
-            <a href="https://maps.app.goo.gl/2tqQEnDjh4HERhQ36" target="_blank">Hipocrates 3320, Canning, Buenos Aires</a>
+          <div className="flex-auto">
+            <h3 className="mb-5 text-2xl font-bold font-pragmatica text-hueso">
+              Mapa de sitio:
+            </h3>
           </div>
         </div>
-        <ul className="flex flex-wrap gap-4 mt-10">
-          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Conocenos</Link></li>
-          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Conectate</Link></li>
-          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Comunidad</Link></li>
-          <li><Link className="transition-opacity duration-150 ease-in-out hover:opacity-80" href="/">Recursos</Link></li>
-        </ul>
       </div>
-      {/* <ContactForm /> */}
     </footer>
-  )
+  );
 }

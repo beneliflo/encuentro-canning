@@ -1,9 +1,13 @@
-import { Metadata } from 'next'
-import Script from 'next/script'
-import './globals.css'
-import { Inter } from 'next/font/google'
+import { Metadata } from 'next';
+import Script from 'next/script';
+import './globals.css';
+import { Roboto } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['100', '400', '500', '700', '900'],
+  variable: '--font-roboto',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -17,15 +21,15 @@ export const metadata: Metadata = {
   twitter: {
     images: ['https://encuentrocanning.org/og-image.png'],
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={roboto.variable}>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-09SLGMTFY9" />
       <Script id="google-analytics">
         {`
@@ -36,7 +40,10 @@ export default function RootLayout({
           gtag('config', 'G-09SLGMTFY9');
         `}
       </Script>
-      <body className={inter.className}>{children}</body>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/duw6mjz.css" />
+      </head>
+      <body className="font-roboto">{children}</body>
     </html>
-  )
+  );
 }
