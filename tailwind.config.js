@@ -1,3 +1,5 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -20,10 +22,12 @@ module.exports = {
     extend: {
       fontFamily: {
         pragmatica: ['pragmatica-extended', 'sans-serif'],
+        roboto: ['var(--font-roboto)', ...fontFamily.sans],
       },
       colors: {
         hueso: '#EFF0EF',
         dark: '#242424',
+        cel: '#6C8A8C',
       },
       backgroundImage: {
         'section-pattern': `url('/grain-pattern.png')`,

@@ -6,6 +6,7 @@ import { Roboto } from 'next/font/google';
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['100', '400', '700'],
+  variable: '--font-roboto',
 });
 
 export const metadata: Metadata = {
@@ -28,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={roboto.variable}>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-09SLGMTFY9" />
       <Script id="google-analytics">
         {`
@@ -42,7 +43,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/duw6mjz.css" />
       </head>
-      <body className={roboto.className}>{children}</body>
+      <body className="font-roboto">{children}</body>
     </html>
   );
 }
