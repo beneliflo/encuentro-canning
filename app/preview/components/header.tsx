@@ -6,7 +6,7 @@ import cn from 'classnames';
 
 export default function Header() {
   return (
-    <header className="backdrop-blur-md bg-white/[0.03] fixed w-full top-0 z-10">
+    <header className="fixed top-0 z-10 w-full backdrop-blur-md bg-black/50">
       <div className="container flex items-center justify-between py-5">
         <div>
           <Link href="#">
@@ -138,7 +138,10 @@ export default function Header() {
         <div className="hidden xl:block">
           <ul className="flex items-center gap-4">
             <li>
-              <Link href="#">
+              <Link
+                href="https://www.youtube.com/@encuentrocanning/videos"
+                target="_blank"
+              >
                 <svg
                   width="23"
                   height="16"
@@ -154,7 +157,10 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link
+                href="https://www.instagram.com/encuentrocanning/"
+                target="_blank"
+              >
                 <svg
                   width="21"
                   height="20"
@@ -170,7 +176,10 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link
+                href="https://www.facebook.com/Encuentro.Canning"
+                target="_blank"
+              >
                 <svg
                   width="11"
                   height="20"
@@ -186,7 +195,10 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link
+                href="https://open.spotify.com/show/7jYkC3fMVa8wJWQveIVguJ?si=243cbf0ed2ec4906"
+                target="_blank"
+              >
                 <svg
                   width="21"
                   height="20"
@@ -202,7 +214,10 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link
+                href="https://maps.app.goo.gl/thmoWViy1H4Fr1tW6"
+                target="_blank"
+              >
                 <svg
                   width="15"
                   height="20"
