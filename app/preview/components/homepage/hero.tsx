@@ -10,26 +10,28 @@ const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 export default function Hero() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [currentWord, setCurrentWord] = useState('FAMILIA');
+  const [videoProgress, setVideoProgress] = useState(0); // Para almacenar el tiempo de progreso del video
 
-  // Lista de palabras y sus duraciones en segundos
   const words = ['FAMILIA', 'PASION', 'COMPASION', 'PROPOSITO', 'PODER'];
-  const durations = [19, 19, 17, 11, 11]; // Duraciones correspondientes a cada palabra
+  const appearAtSeconds = [0, 19, 37, 54, 66]; // Segundos en los que aparecen las palabras
+  const disappearAtSeconds = [19, 37, 54, 66, 77]; // Segundos en los que desaparecen las palabras (inicio de la siguiente palabra)
 
+  // Función para calcular la palabra a mostrar en función del progreso del video
   useEffect(() => {
     if (isVideoPlaying) {
-      let index = 0; // Índice inicial de la palabra
-      const changeWord = () => {
-        setCurrentWord(words[index]); // Cambiar la palabra
-        index = (index + 1) % words.length; // Avanzar al siguiente índice
-
-        // Establecer el próximo cambio de palabra después de la duración de la palabra actual
-        setTimeout(changeWord, durations[index] * 1000); // Convertir la duración a milisegundos
-      };
-
-      // Iniciar el ciclo de cambio de palabras
-      changeWord();
+      for (let i = 0; i < words.length; i++) {
+        if (
+          videoProgress >= appearAtSeconds[i] &&
+          videoProgress < disappearAtSeconds[i]
+        ) {
+          setCurrentWord(words[i]);
+          return;
+        }
+      }
     }
-  }, [isVideoPlaying]);
+  }, [videoProgress]); // Solo actualiza el estado cuando el progreso del video cambia
+
+  console.log(videoProgress);
 
   return (
     <div className="relative flex items-center justify-center overflow-hidden h-dvh">
@@ -49,20 +51,20 @@ export default function Hero() {
       {/* Video */}
       <div
         className={cn(
-          'transition-opacity duration-500 absolute inset-0',
+          'absolute inset-0',
           isVideoPlaying ? 'opacity-100' : 'opacity-0'
         )}
       >
         <ReactPlayer
           className="hero-player"
           url="/hero-video.mp4"
-          playsinline
           playing
           muted
           loop
           width="100%"
           height="100%"
           onReady={() => setIsVideoPlaying(true)}
+          onProgress={({ playedSeconds }) => setVideoProgress(playedSeconds)} // Actualiza el progreso del video
         />
       </div>
 
