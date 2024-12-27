@@ -6,7 +6,7 @@ import cn from 'classnames';
 
 export default function NuestrosEncuentros() {
   return (
-    <div className="py-12 bg-dark">
+    <div className="py-20 bg-dark">
       <div className="container">
         <h2 className="font-bold font-pragmatica text-4xl md:text-8xl lg:text-[107px] md:leading-[110px] text-hueso uppercase">
           <p>Nuestros</p>
