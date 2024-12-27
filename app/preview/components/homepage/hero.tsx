@@ -45,7 +45,7 @@ export default function Hero() {
   console.log(videoProgress);
 
   return (
-    <div className="relative flex items-center justify-center overflow-hidden h-dvh">
+    <div className="relative flex items-center justify-center overflow-hidden h-dvh max-h-[600px] md:max-h-none md:min-h-[880px]">
       {/* Placeholder */}
       {!isVideoPlaying && (
         <div className="absolute inset-0 flex items-center justify-center bg-black">
@@ -81,10 +81,10 @@ export default function Hero() {
 
       {/* Textos intercalados */}
       <div className="container absolute z-10 text-white">
-        <p className="font-bold text-5xl lg:text-[12rem] leading-none font-pragmatica">
+        <p className="font-bold text-5xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-none font-pragmatica">
           {currentWord}
         </p>
-        <p className="text-2xl font-light tracking-wider lg:pl-3 lg:text-6xl">
+        <p className="text-2xl font-light tracking-wider md:pl-1.5 md:text-5xl xl:pl-2 xl:text-[3.3rem]">
           {currentSubtitle}
         </p>
       </div>
