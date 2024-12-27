@@ -6,7 +6,7 @@ import cn from 'classnames';
 
 export default function AulaSensorial() {
   return (
-    <div className="bg-[url('/aula-sensorial-bg.png')] bg-bottom py-20">
+    <div className="bg-[url('/aula-sensorial-bg.png')] bg-bottom py-10 md:py-20">
       <div className="container flex flex-col gap-5 text-right text-hueso font-pragmatica">
         <h3 className="mb-8 text-xl font-bold leading-10 md:text-3xl">
           Marzo 2025

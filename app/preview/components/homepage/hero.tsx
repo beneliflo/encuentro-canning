@@ -10,9 +10,20 @@ const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 export default function Hero() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [currentWord, setCurrentWord] = useState('FAMILIA');
+  const [currentSubtitle, setCurrentSubtitle] = useState(
+    'un lugar donde pertenecer'
+  );
   const [videoProgress, setVideoProgress] = useState(0); // Para almacenar el tiempo de progreso del video
 
-  const words = ['FAMILIA', 'PASION', 'COMPASION', 'PROPOSITO', 'PODER'];
+  const words = ['FAMILIA', 'PASIÓN', 'COMPASIÓN', 'PROPÓSITO', 'PODER'];
+  const subtitles = [
+    'un lugar donde pertenecer',
+    'el encuentro más maravilloso',
+    'amando al estilo Jesús',
+    'discípulos que hacen discípulos',
+    'un milagro te está esperando',
+  ];
+
   const appearAtSeconds = [0, 19, 37, 54, 66]; // Segundos en los que aparecen las palabras
   const disappearAtSeconds = [19, 37, 54, 66, 77]; // Segundos en los que desaparecen las palabras (inicio de la siguiente palabra)
 
@@ -25,6 +36,7 @@ export default function Hero() {
           videoProgress < disappearAtSeconds[i]
         ) {
           setCurrentWord(words[i]);
+          setCurrentSubtitle(subtitles[i]);
           return;
         }
       }
@@ -69,8 +81,13 @@ export default function Hero() {
       </div>
 
       {/* Textos intercalados */}
-      <div className="absolute z-10 text-4xl font-bold text-white">
-        <p className="text-center">{currentWord}</p>
+      <div className="container absolute z-10 text-white">
+        <p className="font-bold text-5xl lg:text-[12rem] leading-none font-pragmatica">
+          {currentWord}
+        </p>
+        <p className="text-2xl font-light tracking-wider lg:pl-3 lg:text-6xl">
+          {currentSubtitle}
+        </p>
       </div>
     </div>
   );
