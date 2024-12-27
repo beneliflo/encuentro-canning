@@ -13,7 +13,7 @@ export default function Hero() {
   const [currentSubtitle, setCurrentSubtitle] = useState(
     'un lugar donde pertenecer'
   );
-  const [videoProgress, setVideoProgress] = useState(0); // Para almacenar el tiempo de progreso del video
+  const [videoProgress, setVideoProgress] = useState(0);
 
   const words = ['FAMILIA', 'PASIÓN', 'COMPASIÓN', 'PROPÓSITO', 'PODER'];
   const subtitles = [
@@ -24,10 +24,9 @@ export default function Hero() {
     'un milagro te está esperando',
   ];
 
-  const appearAtSeconds = [0, 19, 37, 54, 66]; // Segundos en los que aparecen las palabras
-  const disappearAtSeconds = [19, 37, 54, 66, 77]; // Segundos en los que desaparecen las palabras (inicio de la siguiente palabra)
+  const appearAtSeconds = [0, 19, 37, 54, 66];
+  const disappearAtSeconds = [19, 37, 54, 66, 77];
 
-  // Función para calcular la palabra a mostrar en función del progreso del video
   useEffect(() => {
     if (isVideoPlaying) {
       for (let i = 0; i < words.length; i++) {
@@ -41,7 +40,7 @@ export default function Hero() {
         }
       }
     }
-  }, [videoProgress]); // Solo actualiza el estado cuando el progreso del video cambia
+  }, [videoProgress]);
 
   console.log(videoProgress);
 
@@ -76,7 +75,7 @@ export default function Hero() {
           width="100%"
           height="100%"
           onReady={() => setIsVideoPlaying(true)}
-          onProgress={({ playedSeconds }) => setVideoProgress(playedSeconds)} // Actualiza el progreso del video
+          onProgress={({ playedSeconds }) => setVideoProgress(playedSeconds)}
         />
       </div>
 
