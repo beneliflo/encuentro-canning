@@ -6,3 +6,7 @@ body {
   color: black;
   background: white;
 }
+
+.hero-player > video {
+  object-fit: cover;
+}
