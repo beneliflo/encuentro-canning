@@ -13,7 +13,7 @@ export default function Hero() {
 
   // Lista de palabras y sus duraciones en segundos
   const words = ['FAMILIA', 'PASION', 'COMPASION', 'PROPOSITO', 'PODER'];
-  const durations = [5, 21, 17, 11, 11]; // Duraciones correspondientes a cada palabra
+  const durations = [19, 19, 17, 11, 11]; // Duraciones correspondientes a cada palabra
 
   useEffect(() => {
     if (isVideoPlaying) {
