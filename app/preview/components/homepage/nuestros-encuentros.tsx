@@ -24,7 +24,7 @@ export default function NuestrosEncuentros() {
                 />
                 <div className="absolute inset-0 bg-dark/45" />
                 <p className="absolute inset-0 flex items-center justify-center text-[43px] leading-[50px] px-6">
-                  Grupos de conexión
+                  Grupos de Vida Nueva
                 </p>
               </Link>
             </li>
@@ -117,7 +117,7 @@ export default function NuestrosEncuentros() {
         </div>
         <div className="mt-10 text-center">
           <h3 className="mb-5 text-3xl font-bold text-white font-pragmatica">
-            SE PARTE DE ESTA GRAN FAMILIA
+            SÉ PARTE DE ESTA GRAN FAMILIA
           </h3>
           <Link
             href="#"
