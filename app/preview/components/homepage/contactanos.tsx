@@ -99,16 +99,18 @@ export default function Contactanos() {
           </h2>
           <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-11">
             <Link
-              href="mailto:example@example.com"
+              href="mailto:info@encuentrocanning.org"
               className="text-2xl font-bold underline font-pragmatica text-cel"
             >
-              example@example.com
+              info@encuentrocanning.org
             </Link>
             <Link
-              href="tel:+5491122334455"
+              href="https://wa.me/5491168194422?text=Hola,%20vengo%20de%20la%20página%20web%20de%20la%20Iglesia%20Encuentro%20Canning"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-2xl font-bold underline font-pragmatica text-cel"
             >
-              +54 9 11 2233-4455
+              +54 9 11 6819-4422
             </Link>
           </div>
         </div>

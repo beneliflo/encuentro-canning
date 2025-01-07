@@ -12,38 +12,33 @@ export default function Footer() {
     <footer className="py-10 bg-dark">
       <div className="container">
         <div className="flex flex-col gap-6 md:flex-row">
-          <div>
+          <div className="md:w-1/2">
+            <h3 className="mb-5 text-2xl font-bold font-pragmatica text-hueso">
+              Dónde estamos:
+            </h3>
+            <div
+              className="mb-2 overflow-hidden rounded"
+              dangerouslySetInnerHTML={{ __html: mapEmbedCode }}
+            />
+            <Link
+              href="https://maps.app.goo.gl/thmoWViy1H4Fr1tW6"
+              className="text-sm font-black underline uppercase text-cel"
+            >
+              Hipocrates 3320, Canning, Buenos Aires
+            </Link>
+          </div>
+          <div className="md:text-right md:w-1/2">
             <div className="mb-10">
               <h3 className="mb-5 text-2xl font-bold font-pragmatica text-hueso">
                 Nuestras reuniones:
               </h3>
-              <p className="mb-2 text-sm font-medium uppercase text-cel">
+              <p className="mb-2 text-base font-medium uppercase text-cel">
                 Reunión central - domingos 10 am
               </p>
-              <p className="text-sm font-medium uppercase text-cel">
+              <p className="text-base font-medium uppercase text-cel">
                 Reunión de oración - jueves 7 pm
               </p>
             </div>
-            <div>
-              <h3 className="mb-5 text-2xl font-bold font-pragmatica text-hueso">
-                Dónde estamos:
-              </h3>
-              <div
-                className="mb-2 overflow-hidden rounded"
-                dangerouslySetInnerHTML={{ __html: mapEmbedCode }}
-              />
-              <Link
-                href="https://maps.app.goo.gl/thmoWViy1H4Fr1tW6"
-                className="text-sm font-black underline uppercase text-cel"
-              >
-                Hipocrates 3320, Canning, Buenos Aires
-              </Link>
-            </div>
-          </div>
-          <div className="flex-auto">
-            <h3 className="mb-5 text-2xl font-bold font-pragmatica text-hueso">
-              Mapa de sitio:
-            </h3>
           </div>
         </div>
       </div>
