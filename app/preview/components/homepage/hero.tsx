@@ -42,6 +42,8 @@ export default function Hero() {
     }
   }, [videoProgress]);
 
+  console.log(videoProgress);
+
   return (
     <div className="relative flex items-center justify-center overflow-hidden h-dvh max-h-[600px] md:max-h-none md:min-h-[880px]">
       {/* Placeholder */}

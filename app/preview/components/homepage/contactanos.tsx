@@ -2,30 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import cn from 'classnames';
 
 export default function Contactanos() {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
-    const response = await fetch('/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await response.json();
-    if (result.success) {
-      alert('Mensaje enviado correctamente.');
-    } else {
-      alert('Hubo un problema enviando tu mensaje.');
-    }
-  };
-
   return (
     <>
       <div className="py-12 bg-cel">
@@ -44,26 +23,26 @@ export default function Contactanos() {
               <h2 className="font-pragmatica font-bold text-[43px] leading-[50px] text-hueso mb-12 text-center">
                 Dejanos tu motivo de oración
               </h2>
-              <form className="flex flex-col gap-1" onSubmit={handleSubmit}>
+              <form className="flex flex-col gap-1">
                 <div className="grid gap-1 md:grid-cols-6">
                   <div className="col-span-3">
                     <input
                       id="first-name"
-                      name="firstName"
+                      name="first-name"
                       type="text"
                       autoComplete="given-name"
                       placeholder="Nombre"
-                      className="input-style"
+                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
                   </div>
                   <div className="col-span-3">
                     <input
                       id="last-name"
-                      name="lastName"
+                      name="last-name"
                       type="text"
                       autoComplete="family-name"
                       placeholder="Apellido"
-                      className="input-style"
+                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
                   </div>
                 </div>
@@ -74,8 +53,8 @@ export default function Contactanos() {
                       name="email"
                       type="email"
                       autoComplete="email"
-                      placeholder="Email"
-                      className="input-style"
+                      placeholder="email"
+                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
                   </div>
                   <div className="col-span-3">
@@ -85,7 +64,7 @@ export default function Contactanos() {
                       type="phone"
                       autoComplete="phone"
                       placeholder="Celular"
-                      className="input-style"
+                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
                   </div>
                 </div>
@@ -95,7 +74,8 @@ export default function Contactanos() {
                     name="about"
                     rows={3}
                     placeholder="Escribe tu pedido de oración o motivo de contacto"
-                    className="input-style"
+                    className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
+                    defaultValue={''}
                   />
                 </div>
                 <div className="mt-2">
@@ -111,10 +91,11 @@ export default function Contactanos() {
           </div>
         </div>
       </div>
+
       <div className="bg-dark py-9">
         <div className="container text-center">
           <h2 className="font-pragmatica font-bold text-[32px] leading-10 text-hueso mb-3">
-            También podés escribirnos por estos canales
+            también podes escribirnos por estos canales
           </h2>
           <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-11">
             <Link
