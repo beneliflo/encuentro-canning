@@ -2,9 +2,12 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useForm, ValidationError } from '@formspree/react';
 import cn from 'classnames';
 
 export default function Contactanos() {
+  const [state, handleSubmit] = useForm('mpwwoboj');
+
   return (
     <>
       <div className="py-12 bg-cel">
@@ -23,14 +26,14 @@ export default function Contactanos() {
               <h2 className="font-pragmatica font-bold text-[43px] leading-[50px] text-hueso mb-12 text-center">
                 Dejanos tu motivo de oración
               </h2>
-              <form className="flex flex-col gap-1">
+              <form className="flex flex-col gap-1" onSubmit={handleSubmit}>
                 <div className="grid gap-1 md:grid-cols-6">
                   <div className="col-span-3">
                     <input
                       id="first-name"
                       name="first-name"
+                      required
                       type="text"
-                      autoComplete="given-name"
                       placeholder="Nombre"
                       className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
@@ -39,8 +42,8 @@ export default function Contactanos() {
                     <input
                       id="last-name"
                       name="last-name"
+                      required
                       type="text"
-                      autoComplete="family-name"
                       placeholder="Apellido"
                       className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
@@ -51,18 +54,18 @@ export default function Contactanos() {
                     <input
                       id="email"
                       name="email"
+                      required
                       type="email"
-                      autoComplete="email"
                       placeholder="email"
                       className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
                   </div>
                   <div className="col-span-3">
                     <input
-                      id="phone"
-                      name="phone"
+                      id="number"
+                      name="number"
+                      required
                       type="phone"
-                      autoComplete="phone"
                       placeholder="Celular"
                       className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
@@ -70,8 +73,9 @@ export default function Contactanos() {
                 </div>
                 <div>
                   <textarea
-                    id="about"
-                    name="about"
+                    id="message"
+                    name="message"
+                    required
                     rows={3}
                     placeholder="Escribe tu pedido de oración o motivo de contacto"
                     className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
@@ -79,12 +83,19 @@ export default function Contactanos() {
                   />
                 </div>
                 <div className="mt-2">
-                  <button
-                    type="submit"
-                    className="font-pragmatica font-bold text-[32px] leading-10 text-hueso bg-dark py-5 rounded-lg uppercase w-full"
-                  >
-                    Enviar
-                  </button>
+                  {state.succeeded ? (
+                    <p className="w-full py-5 text-lg font-bold leading-10 uppercase rounded-lg font-pragmatica text-hueso">
+                      Formulario enviado. Nos contactaremos en la brevedad.
+                    </p>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="font-pragmatica font-bold text-[32px] leading-10 text-hueso bg-dark py-5 rounded-lg uppercase w-full"
+                      disabled={state.submitting}
+                    >
+                      Enviar
+                    </button>
+                  )}
                 </div>
               </form>
             </div>
