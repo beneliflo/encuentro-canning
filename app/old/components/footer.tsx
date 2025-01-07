@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 import logoIEC from '@/public/logo-iec.png';
 
-// import ContactForm from './contact-form'
-
 export default function Footer() {
   return (
     <footer className="text-white bg-black">
@@ -67,7 +65,6 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-      {/* <ContactForm /> */}
     </footer>
   );
 }
