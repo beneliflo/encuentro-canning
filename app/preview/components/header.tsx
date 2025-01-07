@@ -6,7 +6,7 @@ import cn from 'classnames';
 
 export default function Header() {
   return (
-    <header className="fixed top-0 z-10 w-full backdrop-blur-md bg-black/50">
+    <header className="fixed top-0 z-20 w-full backdrop-blur-md bg-black/50">
       <div className="container flex items-center justify-between py-5">
         <div>
           <Link href="#">
