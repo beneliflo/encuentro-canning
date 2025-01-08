@@ -9,7 +9,7 @@ export default function Header() {
     <header className="fixed top-0 z-20 w-full backdrop-blur-md bg-black/50">
       <div className="container flex items-center justify-between py-5">
         <div>
-          <Link href="#">
+          <Link href="/">
             <svg
               width="300"
               height="44"
@@ -121,20 +121,45 @@ export default function Header() {
         <div className="hidden xl:block">
           <ul className="flex text-lg font-bold uppercase text-[#EFF0EF] gap-6 items-center">
             <li>
-              <Link href="#">Conocenos</Link>
+              <Link
+                href="/conocenos"
+                className="relative transition duration-150 ease-in-out hover:after:w-full after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-150"
+              >
+                Conocenos
+              </Link>
             </li>
             <li>
-              <Link href="#">Encuentros</Link>
+              <Link
+                href="#"
+                className="relative transition duration-150 ease-in-out hover:after:w-full after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-150"
+              >
+                Encuentros
+              </Link>
             </li>
             <li>
-              <Link href="#">Conectate</Link>
+              <Link
+                href="#"
+                className="relative transition duration-150 ease-in-out hover:after:w-full after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-150"
+              >
+                Conectate
+              </Link>
             </li>
-            <li>
-              <Link href="#">Recursos</Link>
-            </li>
-            <li>
-              <Link href="#">Más</Link>
-            </li>
+            {/* <li>
+              <Link
+                href="#"
+                className="relative transition duration-150 ease-in-out hover:after:w-full after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-150"
+              >
+                Recursos
+              </Link>
+            </li> */}
+            {/* <li>
+              <Link
+                href="#"
+                className="relative transition duration-150 ease-in-out hover:after:w-full after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-150"
+              >
+                Más
+              </Link>
+            </li> */}
           </ul>
         </div>
         <div className="hidden xl:block">

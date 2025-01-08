@@ -10,7 +10,7 @@ export default function Contactanos() {
 
   return (
     <>
-      <div className="py-12 bg-cel">
+      <div id="contactanos" className="py-12 bg-cel">
         <div className="container">
           <div className="flex gap-x-24">
             <div className="hidden lg:block">
