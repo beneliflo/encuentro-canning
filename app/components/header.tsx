@@ -118,7 +118,7 @@ export default function Header() {
             </svg>
           </Link>
         </div>
-        <div className="hidden xl:block">
+        {/* <div className="hidden xl:block">
           <ul className="flex text-lg font-bold uppercase text-[#EFF0EF] gap-6 items-center">
             <li>
               <Link
@@ -144,24 +144,24 @@ export default function Header() {
                 Conectate
               </Link>
             </li>
-            {/* <li>
+            <li>
               <Link
                 href="#"
                 className="relative transition duration-150 ease-in-out hover:after:w-full after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-150"
               >
                 Recursos
               </Link>
-            </li> */}
-            {/* <li>
+            </li>
+            <li>
               <Link
                 href="#"
                 className="relative transition duration-150 ease-in-out hover:after:w-full after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-150"
               >
                 Más
               </Link>
-            </li> */}
+            </li>
           </ul>
-        </div>
+        </div> */}
         <div className="hidden xl:block">
           <ul className="flex items-center gap-4">
             <li>
@@ -263,14 +263,14 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div>
+        {/* <div>
           <Link
             href="#"
             className="text-lg font-bold uppercase text-[#EFF0EF] py-3 px-2 rounded bg-[#6C8A8C]"
           >
             Donar
           </Link>
-        </div>
+        </div> */}
       </div>
     </header>
   );
