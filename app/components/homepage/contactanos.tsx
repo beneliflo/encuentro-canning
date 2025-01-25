@@ -23,8 +23,8 @@ export default function Contactanos() {
               />
             </div>
             <div className="flex-auto">
-              <h2 className="font-pragmatica font-bold text-[43px] leading-[50px] text-hueso mb-12 text-center">
-                Dejanos tu motivo de oración
+              <h2 className="font-pragmatica font-bold text-[43px] leading-[50px] text-hueso mb-12 text-center text-balance">
+                Dejanos tu motivo de oración o mensaje
               </h2>
               <form className="flex flex-col gap-1" onSubmit={handleSubmit}>
                 <div className="grid gap-1 md:grid-cols-6">

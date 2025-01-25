@@ -23,10 +23,10 @@ export default function AulaSensorial() {
           </p>
         </div>
         <Link
-          href="#"
-          className="text-xl font-bold underline md:text-3xl md:leading-8"
+          href="#contactanos"
+          className="flex self-end text-xl font-bold underline md:text-3xl md:leading-8"
         >
-          Donar al proyecto
+          Quiero más info
         </Link>
       </div>
     </div>
