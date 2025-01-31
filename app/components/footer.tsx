@@ -10,6 +10,20 @@ const mapEmbedCode =
 export default function Footer() {
   return (
     <footer className="py-10 bg-dark">
+      <Link
+        href="https://wa.me/5491168194422?text=Hola,%20vengo%20de%20la%20página%20web%20de%20la%20Iglesia%20Encuentro%20Canning"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-1 right-1 sm:bottom-4 sm:right-4"
+      >
+        <Image
+          src="/whatsapp-icon.png"
+          width={80}
+          height={80}
+          alt="whatsapp icon"
+          className="w-16 h-16 md:w-20 md:h-20"
+        />
+      </Link>
       <div className="container">
         <div className="flex flex-col gap-6 md:flex-row">
           <div className="md:w-1/2">
