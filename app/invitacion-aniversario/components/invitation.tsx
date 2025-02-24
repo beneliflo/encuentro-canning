@@ -7,10 +7,15 @@ import Link from 'next/link'
 
 import headerInvitacion from '@/public/invitation/header-invitacion.png'
 import logoEncuentro from '@/public/invitation/logo-encuentro.png'
+import aniversarioNumber from '@/public/invitation/8aniversario.png'
+import textOne from '@/public/invitation/text-1.png'
+import textOneMobile from '@/public/invitation/text-1-mobile.png'
+import aulaSensorial from '@/public/invitation/aula-sensorial.png'
+import qrForm from '@/public/invitation/qr-form.png'
+import textTwo from '@/public/invitation/text-2.png'
+import textTwoMobile from '@/public/invitation/text-2-mobile.png'
 
 import styles from '../styles.module.css'
-
-const mapEmbedCode = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.5866264193533!2d-58.51235886463723!3d-34.88144292619042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd76848809fd5%3A0xa4dcb81c015f76f2!2sIglesia%20el%20encuentro!5e0!3m2!1ses-419!2sar!4v1687666073992!5m2!1ses-419!2sar" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
 
 export default function Invitation() {
   const [open, setOpen] = useState(false);
@@ -48,10 +53,30 @@ export default function Invitation() {
         </div>
       }
       {letter &&
-        <div className="max-w-[840px] mx-auto animate-slideFadeUp p-4">
+        <div className="max-w-[832px] w-full mx-auto animate-slideFadeUp p-4">
           <div className="overflow-hidden bg-white rounded-lg">
-            <div className='relative'><Image src={headerInvitacion} alt="Header invitacion" />
-            <Image src={logoEncuentro} alt="Logo Encuentro" width={350} height={117} className='absolute inset-0 m-auto' />
+            <div>
+              <div className='relative'>
+                <Image src={headerInvitacion} alt="Header invitacion" />
+                <Image src={logoEncuentro} alt="Logo Encuentro" className='absolute inset-0 m-auto sm:max-w-[350px] max-w-40' />
+              </div>
+            </div>
+            <div className='px-5 sm:py-11 py-5'>
+              <Image src={aniversarioNumber} alt="8 Aniversario" className='mb-5' />
+              <Image src={textOne} alt="Te invitamos..." className='max-w-[690px] w-full hidden sm:block' />
+              <Image src={textOneMobile} alt="Te invitamos..." className='sm:hidden' />
+              <div className='flex flex-col sm:flex-row sm:pl-8 sm:-translate-y-4 -translate-y-2'>
+                <div className='px-5 sm:px-0'>
+                  <Image src={aulaSensorial} alt="Aula Sensorial" />
+                </div>
+                <div className='flex-col items-center justify-center text-center -translate-y-6 sm:flex hidden'>
+                  <Image src={qrForm} alt="qr form" />
+                  <p className='uppercase tracking-[1px] text-lg font-normal'>Confirmar Asistencia</p>
+                </div>
+                <p className='uppercase tracking-[1px] text-center text-base font-bold sm:hidden underline mt-8 mb-5'>Confirmar Asistencia <Link href="https://forms.gle/bypbr9QT29SJL4rv8" target='_blank'>Aquí</Link></p>
+              </div>
+              <Image src={textTwo} alt="Viernes 14 de Marzo" className='hidden sm:block' />
+              <Image src={textTwoMobile} alt="Viernes 14 de Marzo" className='sm:hidden' />
             </div>
           </div>
         </div>
