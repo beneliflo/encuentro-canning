@@ -6,16 +6,13 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s | Encuentro Canning',
-    default: 'Encuentro Canning', // a default is required when creating a template
-  },
-  description: 'Encuentro Canning',
+  title: 'Invitación 8vo Aniversario | Encuentro Canning',
+  description: 'Invitación al 8vo Aniversario de Encuentro Canning',
   openGraph: {
-    images: 'https://encuentrocanning.org/og-image.png',
+    images: 'https://encuentrocanning.org/invitation/og-image.png',
   },
   twitter: {
-    images: ['https://encuentrocanning.org/og-image.png'],
+    images: ['https://encuentrocanning.org/invitation/og-image.png'],
   },
 }
 
