@@ -6,11 +6,11 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://encuentrocanning.org'),
-  title: 'Invitación 8vo Aniversario',
-  description: 'Invitación al 8vo Aniversario de Encuentro Canning',
+  title: '',
+  description: '',
   openGraph: {
-    title: 'Invitación 8vo Aniversario | Encuentro Canning',
-    description: 'Invitación al 8vo Aniversario de Encuentro Canning',
+    title: '',
+    description: '',
     url: 'https://encuentrocanning.org/invitacion-aniversario',
     siteName: 'Encuentro Canning',
     images: [
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Invitación 8vo Aniversario | Encuentro Canning',
-    description: 'Invitación al 8vo Aniversario de Encuentro Canning',
+    title: '',
+    description: '',
     images: ['https://encuentrocanning.org/invitation/og-image.png'],
   },
 }
