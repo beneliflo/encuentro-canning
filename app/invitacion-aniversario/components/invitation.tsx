@@ -71,9 +71,9 @@ export default function Invitation() {
                 </div>
                 <div className='flex-col items-center justify-center text-center -translate-y-6 sm:flex hidden'>
                   <Image src={qrForm} alt="qr form" />
-                  <p className='uppercase tracking-[1px] text-lg font-normal'>Confirmar Asistencia</p>
+                  <div className='uppercase tracking-[1px] text-center text-sm font-normal hidden sm:block'><Link type='button' href="https://forms.gle/bypbr9QT29SJL4rv8" target='_blank' className='px-3 py-2 bg-[#efb810] rounded-full text-white'>Confirmar Asistencia</Link></div>
                 </div>
-                <p className='uppercase tracking-[1px] text-center text-base font-bold sm:hidden underline mt-8 mb-5'>Confirmar Asistencia <Link href="https://forms.gle/bypbr9QT29SJL4rv8" target='_blank'>Aquí</Link></p>
+                <div className='uppercase tracking-[1px] text-center text-sm font-normal sm:hidden mt-8 mb-5'><Link type='button' href="https://forms.gle/bypbr9QT29SJL4rv8" target='_blank' className='px-3 py-2 bg-[#efb810] rounded-full text-white'>Confirmar Asistencia Aquí</Link></div>
               </div>
               <Image src={textTwo} alt="Viernes 14 de Marzo" className='hidden sm:block' />
               <Image src={textTwoMobile} alt="Viernes 14 de Marzo" className='sm:hidden' />
