@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://encuentrocanning.org'),
   title: 'Invitación 8vo Aniversario',
   description: 'Invitación al 8vo Aniversario de Encuentro Canning',
   openGraph: {

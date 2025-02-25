@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://encuentrocanning.org'),
   title: {
     template: '%s | Encuentro Canning',
     default: 'Encuentro Canning', // a default is required when creating a template
