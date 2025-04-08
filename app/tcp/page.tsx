@@ -51,16 +51,15 @@ export default function TCPPage() {
       </section>
 
       {/* Visión congreso imagen */}
-      <section id="vision" className="py-32 bg-black text-white scroll-mt-20">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h2 className="text-4xl md:text-6xl font-bold">VISIÓN DEL CONGRESO</h2>
-            <p className="text-xl leading-relaxed">Únete a nosotros en una experiencia transformadora de tres días donde la presencia de Dios y el poder del Espíritu Santo se manifestarán de manera extraordinaria.</p>
-          </div>
-          <div className="aspect-[4/3] relative">
-            {/* Vision image will be added */}
-          </div>
-        </div>
+      <section id="vision" className="scroll-mt-20">
+        <Image
+          width={1920}
+          height={1080}
+          src="/tcp/vision.png"
+          alt="TCP Vision"
+          className="w-full h-auto"
+          priority
+        />
       </section>
 
       {/* Info basica con fondo video */}
