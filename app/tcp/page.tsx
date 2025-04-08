@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
+import VideoSection from '../components/tcp/VideoSection'
 
 export default function TCPPage() {
   return (
@@ -140,19 +141,7 @@ export default function TCPPage() {
       </section>
 
       {/* Video YT */}
-      <section className="py-32 bg-black text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-16">ES AQUI Y ES AHORA</h2>
-          <div className="max-w-5xl mx-auto aspect-video rounded-lg overflow-hidden">
-            <iframe
-              className="w-full h-full"
-              src="https://youtu.be/GRFkWF1Ousg?si=PadjCwkYrBwt7zoI"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </section>
+      <VideoSection />
 
       {/* Preguntas frecuentes */}
       <section id="faq" className="py-32 scroll-mt-20">
