@@ -11,7 +11,7 @@ export default function TCPPage() {
 
       {/* Hero section with image */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20">
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/65 z-10" />
         <div className="relative">
           <picture>
             <source
@@ -35,8 +35,8 @@ export default function TCPPage() {
           </picture>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="z-20 text-center space-y-4 sm:space-y-6 md:space-y-8 px-4 max-w-screen-sm">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-[700] text-white tracking-tight leading-tight">
-                TCP 2025
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-[700] text-white tracking-wide leading-tight">
+              TESTIGOS CON PODER 2025
               </h1>
               <Link 
                 href="https://go.eventik.app/tcp2025"
@@ -77,8 +77,17 @@ export default function TCPPage() {
         </video>
         <div className="relative z-20 container mx-auto px-4 text-white">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[700] tracking-tight">22-24 DE MAYO 2025</h2>
-            <p className="text-base sm:text-lg md:text-xl font-[500]">Iglesia El Encuentro Canning</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[700] tracking-tight">22 al 24 DE MAYO 2025</h2>
+            <p className="text-base sm:text-lg md:text-xl font-[500]">
+              <a 
+                href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                HIPOCRATES 3320, CANNING - IGLESIA ENCUENTRO CANNING
+              </a>
+            </p>
           </div>
         </div>
       </section>
