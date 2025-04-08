@@ -109,13 +109,29 @@ export default function TCPPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-6xl font-[700] tracking-tight text-center mb-16 md:mb-24">ORADORES</h2>
           <div className="max-w-4xl mx-auto space-y-24">
-            {speakers.map((speaker) => (
-              <div key={speaker.name} className="space-y-4">
-                <h3 className="text-2xl md:text-3xl font-[600] uppercase">{speaker.name}</h3>
-                <div className="prose prose-lg max-w-none space-y-4">
-                  {speaker.bio.split('\n\n').map((paragraph, i) => (
-                    <p key={i}>{paragraph}</p>
-                  ))}
+            {speakers.map((speaker, index) => (
+              <div 
+                key={speaker.name} 
+                className={`grid md:grid-cols-2 gap-8 items-start ${
+                  index % 2 === 0 ? '' : 'md:[direction:rtl]'
+                }`}
+              >
+                <div className="md:w-[300px] aspect-[3/4] relative rounded-lg overflow-hidden justify-self-center md:justify-self-auto">
+                  <Image
+                    src={`/tcp/speakers/${speaker.name}.png`}
+                    alt={speaker.name}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 768px) 300px, 100vw"
+                  />
+                </div>
+                <div className={`space-y-4 md:[direction:ltr]`}>
+                  <h3 className="text-2xl md:text-3xl font-[600] uppercase">{speaker.name}</h3>
+                  <div className="prose prose-lg max-w-none space-y-4">
+                    {speaker.bio.split('\n\n').map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
