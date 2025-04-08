@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'Neue Haas Grotesk Roman';
+  src: url('/fonts/NeueHaasGrotesk-55Roman.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Medium';
+  src: url('/fonts/NeueHaasGrotesk-65Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Bold';
+  src: url('/fonts/NeueHaasGrotesk-75Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+:root {
+  --font-roman: 'Neue Haas Grotesk Roman', sans-serif;
+  --font-medium: 'Neue Haas Grotesk Medium', sans-serif;
+  --font-bold: 'Neue Haas Grotesk Bold', sans-serif;
+}
+
+body {
+  font-family: var(--font-roman);
+  background-color: white;
+  color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-bold);
+}
+
+.font-medium {
+  font-family: var(--font-medium);
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Video container styles */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* FAQ section styles */
+.faq-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+}
+
+/* Social icons styles */
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.2s ease;
+}
+
+.social-icon:hover {
+  opacity: 0.7;
+}
