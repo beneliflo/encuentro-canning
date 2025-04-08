@@ -195,10 +195,10 @@ export default function TCPPage() {
       </section>
 
       {/* Contacto */}
-      <section className="py-32 text-center">
+      <section className="py-20 text-center bg-black text-white">
         <div className="container mx-auto px-4">
-          <p className="text-xl mb-12">Para más información, escribinos a <a href="mailto:info@emuba.org" className="underline">info@emuba.org</a></p>
-          <SocialIcons />
+          <p className="text-xl mb-12">Para más información, escribinos a <a href="mailto:info@emuba.org" className="underline hover:no-underline">info@emuba.org</a></p>
+          <SocialIcons className="text-white" />
         </div>
       </section>
     </main>
