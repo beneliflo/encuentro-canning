@@ -160,7 +160,7 @@ export default function TCPPage() {
           <h2 className="text-4xl md:text-6xl font-bold text-center mb-16">PREGUNTAS FRECUENTES</h2>
           <div className="max-w-3xl mx-auto space-y-8">
             {faqs.map((faq) => (
-              <div key={faq.question} className="border-b border-gray-200 pb-4">
+              <div key={faq.question} className="border-b border-gray-200 pb-4 last:border-b-0">
                 <h3 className="font-bold mb-2">{faq.question}</h3>
                 <div className="space-y-4">
                   {faq.answer.split('\n\n').map((paragraph, i) => (
@@ -184,12 +184,16 @@ export default function TCPPage() {
       </section>
 
       {/* Logo animado */}
-      <section className="py-32 bg-black">
-        <div className="container mx-auto px-4">
-          <div className="w-40 h-40 mx-auto">
-            {/* Animated logo will be added */}
-          </div>
-        </div>
+      <section className="bg-black">
+        <video
+          className="w-full"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/tcp/web tcp logo rojo.mp4" type="video/mp4" />
+        </video>
       </section>
 
       {/* Contacto */}
