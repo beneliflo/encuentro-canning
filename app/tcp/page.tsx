@@ -83,17 +83,24 @@ export default function TCPPage() {
       </section>
 
       {/* Oradores imagen tipo poster */}
-      <section className="py-32 bg-black text-white">
-        <div className="container mx-auto px-4 text-center space-y-12">
-          <div className="aspect-[21/9] relative rounded-lg overflow-hidden">
-            {/* Speakers poster image will be added */}
+      <section className="scroll-mt-20 bg-black">
+        <div className="relative">
+          <Image
+            src="/tcp/oradores.png"
+            alt="TCP Oradores"
+            width={1920}
+            height={1080}
+            className="w-full h-auto"
+            priority
+          />
+          <div className="absolute inset-x-0 bottom-0 flex items-center justify-center pb-12">
+            <a 
+              href="#speakers" 
+              className="inline-block px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white bg-black border border-black hover:bg-white hover:text-black transition-colors text-xs sm:text-sm md:text-base uppercase tracking-wide"
+            >
+              Conoce a los oradores
+            </a>
           </div>
-          <a 
-            href="#speakers" 
-            className="inline-block px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white border border-white hover:bg-white hover:text-black transition-colors text-xs sm:text-sm md:text-base uppercase tracking-wide"
-          >
-            Conoce a los oradores
-          </a>
         </div>
       </section>
 
