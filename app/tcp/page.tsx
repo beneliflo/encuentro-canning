@@ -142,11 +142,11 @@ export default function TCPPage() {
       {/* Video YT */}
       <section className="py-32 bg-black text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-16">ESTO VIVIMOS EL AÑO PASADO</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-16">ES AQUI Y ES AHORA</h2>
           <div className="max-w-5xl mx-auto aspect-video rounded-lg overflow-hidden">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/BtWCsWOqerM"
+              src="https://youtu.be/GRFkWF1Ousg?si=PadjCwkYrBwt7zoI"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
