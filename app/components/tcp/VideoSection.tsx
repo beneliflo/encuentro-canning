@@ -1,16 +1,11 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-import { useState, useEffect } from 'react'
-
-const ReactPlayer = dynamic(() => import('react-player'), {
-  ssr: false,
-})
+import { useState, useEffect, useRef } from 'react'
 
 export default function VideoSection() {
   const [isClient, setIsClient] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
-
+  const videoRef = useRef<HTMLVideoElement>(null)
+  
   useEffect(() => {
     setIsClient(true)
   }, [])
@@ -22,35 +17,19 @@ export default function VideoSection() {
         <div className="max-w-5xl mx-auto rounded-lg overflow-hidden">
           <div className="relative pt-[56.25%] bg-black/20">
             {isClient && (
-              <>
-                {!isPlaying && (
-                  <div 
-                    className="absolute inset-0 cursor-pointer group"
-                    onClick={() => setIsPlaying(true)}
-                    style={{
-                      backgroundImage: 'url(https://img.youtube.com/vi/GRFkWF1Ousg/maxresdefault.jpg)',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center'
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-36 h-36 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <div className="w-0 h-0 border-t-[20px] border-t-transparent border-l-[35px] border-l-white border-b-[20px] border-b-transparent ml-3" />
-                      </div>
-                    </div>
-                  </div>
-                )}
-                <div className={`absolute inset-0 transition-opacity duration-300 ${isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                  <ReactPlayer
-                    url="https://www.youtube.com/watch?v=GRFkWF1Ousg"
-                    width="100%"
-                    height="100%"
-                    playing={isPlaying}
-                    controls
-                  />
-                </div>
-              </>
+              <div className="absolute inset-0">
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  controls
+                  playsInline
+                  preload="auto"
+                >
+                  <source src="/tcp/FINAL PROMO TCP 1080.mp4" type="video/mp4" />
+                </video>
+              </div>
             )}
           </div>
         </div>
