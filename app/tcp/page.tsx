@@ -19,6 +19,7 @@ export default function TCPPage() {
             muted 
             loop 
             playsInline
+            preload="auto"
           >
             <source src="/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
           </video>
@@ -33,6 +34,7 @@ export default function TCPPage() {
                     height={480}
                     className="w-full h-auto"
                     priority
+                    quality={90}
                   />
                 </div>
                 <p className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-[700] text-white tracking-wide">
@@ -73,6 +75,7 @@ export default function TCPPage() {
           muted 
           loop 
           playsInline
+          preload="auto"
         >
           <source src="/tcp/VIDEO FECHA TCP.mp4" type="video/mp4" />
         </video>
@@ -84,6 +87,7 @@ export default function TCPPage() {
             height={600}
             className="w-full h-auto"
             priority
+            quality={90}
           />
           <p className="w-[45%] h-[18%] right-0 bottom-[35%] absolute">
             <a 
@@ -107,6 +111,8 @@ export default function TCPPage() {
             height={1080}
             className="w-full h-auto"
             priority
+            quality={90}
+            loading="lazy"
           />
           <div className="absolute inset-x-0 bottom-0 flex items-center justify-center pb-12">
             <a 
@@ -138,6 +144,8 @@ export default function TCPPage() {
                     fill
                     className="object-cover"
                     sizes="(min-width: 768px) 300px, 100vw"
+                    loading="eager"
+                    quality={85}
                   />
                 </div>
                 <div className={`space-y-4 md:[direction:ltr]`}>
@@ -194,6 +202,7 @@ export default function TCPPage() {
           muted
           loop
           playsInline
+          preload="auto"
         >
           <source src="/tcp/web tcp logo rojo.mp4" type="video/mp4" />
         </video>

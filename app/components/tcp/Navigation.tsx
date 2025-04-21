@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 type NavLinksProps = {
   isMobile?: boolean
@@ -16,10 +16,10 @@ const navLinks = [
   { href: '#faq', label: 'FAQ' },
 ]
 
-function NavLinks({ isMobile, onLinkClick }: NavLinksProps) {
+const NavLinks = ({ isMobile, onLinkClick }: NavLinksProps) => {
   const linkClass = isMobile
-    ? 'block hover:text-gray-300 transition-colors'
-    : 'hover:text-gray-300 transition-colors'
+    ? 'block hover:text-gray-300 transition-colors duration-200'
+    : 'hover:text-gray-300 transition-colors duration-200'
 
   return (
     <>
@@ -35,7 +35,7 @@ function NavLinks({ isMobile, onLinkClick }: NavLinksProps) {
       ))}
       <Link 
         href="https://go.eventik.app/tcp2025"
-        className={`${isMobile ? 'inline-block' : ''} px-4 py-2 border border-white hover:bg-white hover:text-black transition-colors`}
+        className={`${isMobile ? 'inline-block' : ''} px-4 py-2 border border-white hover:bg-white hover:text-black transition-colors duration-200`}
         target="_blank"
         rel="noopener noreferrer"
         onClick={onLinkClick}
@@ -49,13 +49,13 @@ function NavLinks({ isMobile, onLinkClick }: NavLinksProps) {
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev)
+  }, [])
 
-  const closeMobileMenu = () => {
+  const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false)
-  }
+  }, [])
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10">
