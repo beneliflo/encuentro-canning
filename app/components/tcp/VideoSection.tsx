@@ -13,7 +13,7 @@ export default function VideoSection() {
   return (
     <section className="py-32 bg-black text-white">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-6xl font-bold mb-16">ES AQUI Y ES AHORA</h2>
+        <h2 className="text-4xl md:text-6xl font-bold mb-16">ES AQUÍ Y ES AHORA</h2>
         <div className="max-w-5xl mx-auto rounded-lg overflow-hidden">
           <div className="relative pt-[56.25%] bg-black/20">
             {isClient && (
