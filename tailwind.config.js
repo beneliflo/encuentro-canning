@@ -23,6 +23,7 @@ module.exports = {
       fontFamily: {
         pragmatica: ['pragmatica-extended', 'sans-serif'],
         roboto: ['var(--font-roboto)', ...fontFamily.sans],
+        'neue-haas': ['neue-haas-grotesk-display', 'sans-serif'],
       },
       colors: {
         hueso: '#EFF0EF',
