@@ -112,7 +112,6 @@ export default function TCPPage() {
             className="w-full h-auto"
             priority
             quality={90}
-            loading="lazy"
           />
           <div className="absolute inset-x-0 bottom-0 flex items-center justify-center pb-12">
             <a 
