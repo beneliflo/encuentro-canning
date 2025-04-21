@@ -22,6 +22,7 @@ export default function VideoSection() {
             muted
             loop
             playsInline
+            controls
             preload="auto"
           >
             <source src="/tcp/FINAL PROMO TCP 1080.mp4" type="video/mp4" />
