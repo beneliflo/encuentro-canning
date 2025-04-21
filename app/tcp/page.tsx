@@ -9,38 +9,39 @@ export default function TCPPage() {
     <main className="min-h-screen bg-white font-neue-haas">
       <Navigation />
 
-      {/* Hero section with image */}
+      {/* Hero section with video */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20">
         <div className="absolute inset-0 bg-black/65 z-10" />
-        <div className="relative">
-          <picture>
-            <source
-              media="(min-width: 1024px)"
-              srcSet="https://emuba.eventik.app/wp-content/uploads/2025/02/eventik-copia.png"
-            />
-            <source
-              media="(min-width: 640px)"
-              srcSet="https://emuba.eventik.app/wp-content/uploads/2025/02/eventik-copia.png?w=1024"
-            />
-            <Image
-              src="https://emuba.eventik.app/wp-content/uploads/2025/02/eventik-copia.png?w=640"
-              alt="TCP 2025 Hero"
-              width={640}
-              height={360}
-              sizes="100vw"
-              className="w-full h-auto"
-              priority
-              quality={90}
-            />
-          </picture>
+        <div className="relative h-[calc(100vh-5rem)] min-h-[500px] overflow-hidden">
+          <video 
+            className="absolute inset-0 w-full h-full object-cover"
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          >
+            <source src="/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="z-20 text-center space-y-4 sm:space-y-6 md:space-y-8 px-4 max-w-screen-sm">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-[700] text-white tracking-wide leading-tight">
-              TESTIGOS CON PODER 2025
-              </h1>
+            <div className="z-20 text-center space-y-4 sm:space-y-6 md:space-y-8 px-4 w-full max-w-screen-xl">
+              <div className="space-y-2 sm:space-y-3 md:space-y-4">
+                <div className="w-full max-w-[60%] sm:max-w-[55%] md:max-w-[50%] lg:max-w-[45%] mx-auto">
+                  <Image
+                    src="/tcp/tcp-logo.png"
+                    alt="Testigos Con Poder Logo"
+                    width={1200}
+                    height={480}
+                    className="w-full h-auto"
+                    priority
+                  />
+                </div>
+                <p className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-[700] text-white tracking-wide">
+                  2025
+                </p>
+              </div>
               <Link 
                 href="https://go.eventik.app/tcp2025"
-                className="inline-block px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white border border-white hover:bg-white hover:text-black transition-colors text-xs sm:text-sm md:text-base uppercase tracking-wide font-[600]"
+                className="inline-block px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white border border-white hover:bg-white hover:text-black transition-colors text-xs sm:text-sm md:text-base lg:text-lg uppercase tracking-wide font-[600]"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -73,11 +74,18 @@ export default function TCPPage() {
           loop 
           playsInline
         >
-          {/* Video source will be added */}
+          <source src="/tcp/VIDEO FECHA TCP.mp4" type="video/mp4" />
         </video>
         <div className="relative z-20 container mx-auto px-4 text-white">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[700] tracking-tight">22 al 24 DE MAYO 2025</h2>
+          <div className="text-center space-y-8">
+          <Image
+            src="/tcp/tcp-reserva.png"
+            alt="TCP Fechas"
+            width={1920}
+            height={600}
+            className="w-full h-auto"
+            priority
+          />
             <p className="text-base sm:text-lg md:text-xl font-[500]">
               <a 
                 href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8" 
@@ -229,8 +237,8 @@ El propósito de su ministerio es equipar a la iglesia para vivir un evangelismo
 Desde 1987, ha participado en dirección de campañas urbanas, así como en la capacitación en evangelismo. Ha sido fundamental para traer visión y desafío a las iglesias de la ciudad en la movilización del cuerpo de Cristo para el ministerio urbano.`
   },
   {
-    name: 'Daniela Freidzon-McCabe',
-    bio: `Daniela Freidzon-McCabe es pastora y oradora internacional de la iglesia Rey de Reyes en Buenos Aires, Argentina. Tiene la pasión por alcanzar a esta generación y verla vivir y experimentar la plenitud de Cristo a través de una vida empoderada por el Espíritu.
+    name: 'Daniela Freidzon',
+    bio: `Daniela Freidzon es pastora y oradora internacional de la iglesia Rey de Reyes en Buenos Aires, Argentina. Tiene la pasión por alcanzar a esta generación y verla vivir y experimentar la plenitud de Cristo a través de una vida empoderada por el Espíritu.
 
 Es co-presidenta del ministerio Empowered21 Women's Alliance y miembro de la Junta Directiva de la Alianza Evangélica Nacional Argentina (ACIERA). Actualmente, Daniela supervisa el ministerio para adolescentes, universitarios y profesionales con su esposo, Chad McCabe, mientras participa activamente en programas de ayuda social.`
   }
