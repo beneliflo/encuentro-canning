@@ -77,7 +77,6 @@ export default function TCPPage() {
           <source src="/tcp/VIDEO FECHA TCP.mp4" type="video/mp4" />
         </video>
         <div className="relative z-20 container mx-auto px-4 text-white">
-          <div className="text-center space-y-8">
           <Image
             src="/tcp/tcp-reserva.png"
             alt="TCP Fechas"
@@ -86,17 +85,15 @@ export default function TCPPage() {
             className="w-full h-auto"
             priority
           />
-            <p className="text-base sm:text-lg md:text-xl font-[500]">
-              <a 
-                href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:underline"
-              >
-                HIPOCRATES 3320, CANNING - IGLESIA ENCUENTRO CANNING
-              </a>
-            </p>
-          </div>
+          <p className="w-[45%] h-[18%] right-0 bottom-[35%] absolute">
+            <a 
+              href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block h-full"
+            >
+            </a>
+          </p>
         </div>
       </section>
 
