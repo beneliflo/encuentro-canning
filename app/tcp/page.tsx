@@ -10,9 +10,11 @@ export default function TCPPage() {
       <Navigation />
 
       {/* Hero section with video */}
-      <section className="relative bg-black pt-14 md:pt-16 lg:pt-20">
-        <div className="absolute inset-0 bg-black/65 z-10" />
-        <div className="relative h-[calc(100vh-5rem)] min-h-[500px] overflow-hidden">
+      <section className="relative bg-black pt-14 md:pt-16 lg:pt-20 flex flex-col">
+        {/* Hero container with video and image */}
+        <div className="relative h-[40vh] sm:h-[50vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[300px] overflow-hidden flex flex-col">
+          {/* Video background */}
+          <div className="absolute inset-0 bg-black/65 z-10" />
           <video 
             className="absolute inset-0 w-full h-full object-cover"
             autoPlay 
@@ -23,33 +25,30 @@ export default function TCPPage() {
           >
             <source src="/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="z-20 text-center space-y-4 sm:space-y-6 md:space-y-8 px-4 w-full max-w-screen-xl">
-              <div className="space-y-2 sm:space-y-3 md:space-y-4">
-                <div className="w-full max-w-[60%] sm:max-w-[55%] md:max-w-[50%] lg:max-w-[45%] mx-auto">
-                  <Image
-                    src="/tcp/tcp-logo.png"
-                    alt="Testigos Con Poder Logo"
-                    width={1200}
-                    height={480}
-                    className="w-full h-auto"
-                    priority
-                    quality={90}
-                  />
-                </div>
-                <p className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-[700] text-white tracking-wide">
-                  2025
-                </p>
-              </div>
-              <Link 
-                href="https://go.eventik.app/tcp2025"
-                className="inline-block px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white border border-white hover:bg-white hover:text-black transition-colors text-xs sm:text-sm md:text-base lg:text-lg uppercase tracking-wide font-[600]"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Comprar Entradas
-              </Link>
-            </div>
+          
+          {/* PALABRA HERO image absolute at bottom */}
+          <div className="absolute inset-x-0 bottom-0 z-20 pointer-events-none">
+            <Image
+              src="/tcp/PALABRA HERO.png"
+              alt="Testigos Con Poder 2025"
+              width={1920}
+              height={1080}
+              className="w-full h-auto object-cover"
+              priority
+              quality={90}
+            />
+          </div>
+          
+          {/* Button in the middle */}
+          <div className="flex-grow flex justify-center items-center z-30">
+            <Link 
+              href="https://go.eventik.app/tcp2025"
+              className="inline-block px-8 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-3 md:py-5 lg:py-6 text-white border border-white hover:bg-white hover:text-black transition-colors text-base sm:text-sm md:text-base lg:text-2xl uppercase tracking-wide font-[600]"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Comprar Entradas →
+            </Link>
           </div>
         </div>
       </section>
@@ -67,7 +66,7 @@ export default function TCPPage() {
       </section>
 
       {/* Info basica con fondo video */}
-      <section id="info" className="relative py-32 overflow-hidden scroll-mt-20">
+      <section id="info" className="relative py-12 md:py-32 overflow-hidden scroll-mt-20">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <video 
           className="absolute inset-0 w-full h-full object-cover"
@@ -103,32 +102,37 @@ export default function TCPPage() {
 
       {/* Oradores imagen tipo poster */}
       <section className="scroll-mt-20 bg-black">
-        <div className="relative">
-          <Image
-            src="/tcp/oradores.png"
-            alt="TCP Oradores"
-            width={1920}
-            height={1080}
-            className="w-full h-auto"
-            priority
-            quality={90}
-          />
-          <div className="absolute inset-x-0 bottom-0 flex items-center justify-center pb-12">
+        <div className="relative bg-cover bg-center h-[40vh] md:h-auto" style={{ backgroundImage: 'url(/tcp/oradores.png)' }}>
+          {/* Desktop view - regular image */}
+          <div className="hidden md:block">
+            <Image
+              src="/tcp/oradores.png"
+              alt="TCP Oradores"
+              width={1920}
+              height={1080}
+              className="w-full h-auto"
+              priority
+              quality={90}
+            />
+          </div>
+          
+          {/* Button for both views */}
+          <div className="absolute inset-x-0 bottom-0 flex items-center justify-center pb-8 md:pb-12">
             <a 
               href="#speakers" 
-              className="inline-block px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white bg-black border border-black hover:bg-white hover:text-black transition-colors text-xs sm:text-sm md:text-base uppercase tracking-wide"
+              className="inline-block px-6 sm:px-6 md:px-8 py-3 sm:py-3 md:py-4 text-white bg-black border border-black hover:bg-white hover:text-black transition-colors text-sm sm:text-sm md:text-base uppercase tracking-wide font-[600]"
             >
-              Conoce a los oradores
+              Conoce a los oradores →
             </a>
           </div>
         </div>
       </section>
 
       {/* Biografias de oradores */}
-      <section id="speakers" className="py-32 scroll-mt-20">
+      <section id="speakers" className="py-12 md:py-32 scroll-mt-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-6xl font-[700] tracking-tight text-center mb-16 md:mb-24">ORADORES</h2>
-          <div className="max-w-4xl mx-auto space-y-24">
+          <h2 className="text-4xl md:text-6xl font-[700] tracking-tight text-center mb-8 md:mb-24">ORADORES</h2>
+          <div className="max-w-4xl mx-auto space-y-8 md:space-y-24">
             {speakers.map((speaker, index) => (
               <div 
                 key={speaker.name} 
@@ -165,7 +169,7 @@ export default function TCPPage() {
       <VideoSection />
 
       {/* Preguntas frecuentes */}
-      <section id="faq" className="py-32 scroll-mt-20">
+      <section id="faq" className="py-12 md:py-32 scroll-mt-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-6xl font-bold text-center mb-16">PREGUNTAS FRECUENTES</h2>
           <div className="max-w-3xl mx-auto space-y-8">
@@ -208,7 +212,7 @@ export default function TCPPage() {
       </section>
 
       {/* Contacto */}
-      <section className="py-20 text-center bg-black text-white">
+      <section className="py-12 md:py-20 text-center bg-black text-white">
         <div className="container mx-auto px-4">
           <p className="text-xl mb-12">Para más información, escribinos a <a href="mailto:info@emuba.org" className="underline hover:no-underline">info@emuba.org</a></p>
           <SocialIcons className="text-white" />
