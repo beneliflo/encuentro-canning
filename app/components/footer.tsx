@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="py-10 bg-dark">
       <Link
-        href="https://wa.me/5491168194422?text=Hola,%20vengo%20de%20la%20página%20web%20de%20la%20Iglesia%20Encuentro%20Canning"
+        href="https://wa.me/5491138055931?text=Hola,%20vengo%20de%20la%20página%20web%20de%20la%20Iglesia%20Encuentro%20Canning"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-1 right-1 sm:bottom-4 sm:right-4"
@@ -59,7 +59,7 @@ export default function Footer() {
           <ul className="flex gap-8 md:justify-end">
             <li>
               <Link
-                href="https://wa.me/5491168194422?text=Hola,%20vengo%20de%20la%20página%20web%20de%20la%20Iglesia%20Encuentro%20Canning"
+                href="https://wa.me/5491138055931?text=Hola,%20vengo%20de%20la%20página%20web%20de%20la%20Iglesia%20Encuentro%20Canning"
                 target="_blank"
                 rel="noopener noreferrer"
               >
