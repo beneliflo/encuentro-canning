@@ -1,6 +1,7 @@
 import Header from './components/header';
 import Hero from './components/homepage/hero';
 import AulaSensorial from './components/homepage/aula-sensorial';
+import ColegioEncuentro from './components/homepage/colegio-encuentro';
 import NuestrosEncuentros from './components/homepage/nuestros-encuentros';
 import NuestraMision from './components/homepage/nuestra-mision';
 import Contactanos from './components/homepage/contactanos';
@@ -12,6 +13,7 @@ export default function Home() {
       <Header />
       <Hero />
       <AulaSensorial />
+      <ColegioEncuentro />
       <NuestrosEncuentros />
       <NuestraMision />
       <Contactanos />

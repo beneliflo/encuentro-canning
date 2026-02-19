@@ -15,7 +15,7 @@ export default function Contactanos() {
           <div className="flex gap-x-24">
             <div className="hidden lg:block">
               <Image
-                src="/phone-mockup.png"
+                src="/images/phone-mockup.png"
                 width={247}
                 height={479}
                 alt="phone"
@@ -90,7 +90,7 @@ export default function Contactanos() {
                   ) : (
                     <button
                       type="submit"
-                      className="font-pragmatica font-bold text-[32px] leading-10 text-hueso bg-dark py-5 rounded-lg uppercase w-full"
+                      className="font-pragmatica font-bold text-[32px] leading-10 text-hueso bg-dark py-5 rounded-lg uppercase w-full cursor-pointer"
                       disabled={state.submitting}
                     >
                       Enviar

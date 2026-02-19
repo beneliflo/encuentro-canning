@@ -23,13 +23,13 @@ export default function TCPPage() {
             playsInline
             preload="auto"
           >
-            <source src="/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
+            <source src="/videos/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
           </video>
           
           {/* PALABRA HERO image absolute at bottom */}
           <div className="absolute inset-x-0 bottom-0 z-20 pointer-events-none">
             <Image
-              src="/tcp/PALABRA HERO.png"
+              src="/images/tcp/PALABRA HERO.png"
               alt="Testigos Con Poder 2025"
               width={1920}
               height={1080}
@@ -58,7 +58,7 @@ export default function TCPPage() {
         <Image
           width={1920}
           height={1080}
-          src="/tcp/vision.png"
+          src="/images/tcp/vision.png"
           alt="TCP Vision"
           className="w-full h-auto"
           priority
@@ -76,11 +76,11 @@ export default function TCPPage() {
           playsInline
           preload="auto"
         >
-          <source src="/tcp/VIDEO FECHA TCP.mp4" type="video/mp4" />
+          <source src="/videos/tcp/VIDEO FECHA TCP.mp4" type="video/mp4" />
         </video>
         <div className="relative z-20 container mx-auto px-4 text-white">
           <Image
-            src="/tcp/tcp-reserva.png"
+            src="/images/tcp/tcp-reserva.png"
             alt="TCP Fechas"
             width={1920}
             height={600}
@@ -102,11 +102,11 @@ export default function TCPPage() {
 
       {/* Oradores imagen tipo poster */}
       <section className="scroll-mt-20 bg-black">
-        <div className="relative bg-cover bg-center h-[40vh] md:h-auto" style={{ backgroundImage: 'url(/tcp/oradores.png)' }}>
+        <div className="relative bg-cover bg-center h-[40vh] md:h-auto" style={{ backgroundImage: 'url(/images/tcp/oradores.png)' }}>
           {/* Desktop view - regular image */}
           <div className="hidden md:block">
             <Image
-              src="/tcp/oradores.png"
+              src="/images/tcp/oradores.png"
               alt="TCP Oradores"
               width={1920}
               height={1080}
@@ -142,7 +142,7 @@ export default function TCPPage() {
               >
                 <div className="md:w-[300px] aspect-3/4 relative rounded-lg overflow-hidden justify-self-center md:justify-self-auto">
                   <Image
-                    src={`/tcp/speakers/${speaker.name}.png`}
+                    src={`/images/tcp/speakers/${speaker.name}.png`}
                     alt={speaker.name}
                     fill
                     className="object-cover"
@@ -207,7 +207,7 @@ export default function TCPPage() {
           playsInline
           preload="auto"
         >
-          <source src="/tcp/web tcp logo rojo.mp4" type="video/mp4" />
+          <source src="/videos/tcp/web tcp logo rojo.mp4" type="video/mp4" />
         </video>
       </section>
 

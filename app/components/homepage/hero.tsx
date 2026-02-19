@@ -53,7 +53,7 @@ export default function Hero() {
         )}
       >
         <Image
-          src="/hero-video-placeholder.png"
+          src="/images/hero-video-placeholder.png"
           width={1920}
           height={1080}
           alt="Loading..."
@@ -71,7 +71,7 @@ export default function Hero() {
         <ReactPlayer
           ref={playerRef}
           className="hero-player"
-          src="/hero-video.mp4"
+          src="/videos/hero-video.mp4"
           playing
           muted
           loop
