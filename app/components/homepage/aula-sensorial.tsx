@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function AulaSensorial() {
@@ -9,7 +10,7 @@ export default function AulaSensorial() {
 
   return (
     <div className="bg-[url('/images/aula-sensorial-bg.jpg')] bg-bottom py-10 md:py-20 bg-cover">
-      <div className="container flex flex-col lg:flex-row lg:items-center gap-8 text-hueso font-pragmatica [text-shadow:2px_2px_10px_rgba(0,0,0,0.3),0_0_20px_rgba(0,0,0,0.1)]">
+      <div className="container flex flex-col lg:flex-row lg:items-center gap-8 text-white font-pragmatica [text-shadow:2px_2px_10px_rgba(0,0,0,0.3),0_0_20px_rgba(0,0,0,0.1)]">
         {/* Video - izquierda */}
         <div className="relative w-full lg:w-2/5 rounded-lg overflow-hidden shadow-2xl text-shadow-none aspect-video shrink-0 order-last lg:order-first" onContextMenu={(e) => e.preventDefault()}>
           <video
@@ -53,9 +54,13 @@ export default function AulaSensorial() {
           <h3 className="text-2xl lg:text-4xl font-bold uppercase tracking-[1px] md:mb-2">
             Aula Sensorial
           </h3>
-          <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold md:leading-[110px] uppercase tracking-[1px] md:mb-8">
-            Club de Valientes
-          </h2>
+          <Image
+            src="/images/logo-club-de-valientes.png"
+            width={600}
+            height={200}
+            alt="Club de Valientes"
+            className="self-end md:mb-8 w-80 md:w-auto"
+          />
           <div className="justify-items-end">
             <p className="mb-4 md:mb-10 text-xl md:text-3xl font-bold md:leading-10 max-w-[750px]">
               Sala equipada para la estimulación sensorial en niños con trastornos
