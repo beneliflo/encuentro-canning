@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import cn from 'classnames';
@@ -8,6 +8,7 @@ import cn from 'classnames';
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 export default function Hero() {
+  const playerRef = useRef<any>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [currentWord, setCurrentWord] = useState('FAMILIA');
   const [currentSubtitle, setCurrentSubtitle] = useState(
@@ -45,17 +46,20 @@ export default function Hero() {
   return (
     <div className="relative flex items-center justify-center overflow-hidden h-dvh max-h-[600px] md:max-h-none md:min-h-[880px]">
       {/* Placeholder */}
-      {!isVideoPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black">
-          <Image
-            src="/hero-video-placeholder.png"
-            width={1920}
-            height={1080}
-            alt="Loading..."
-            className="object-cover w-full h-full"
-          />
-        </div>
-      )}
+      <div
+        className={cn(
+          'absolute inset-0 flex items-center justify-center bg-black transition-opacity duration-500',
+          isVideoPlaying ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        )}
+      >
+        <Image
+          src="/hero-video-placeholder.png"
+          width={1920}
+          height={1080}
+          alt="Loading..."
+          className="object-cover w-full h-full"
+        />
+      </div>
 
       {/* Video */}
       <div
@@ -65,15 +69,20 @@ export default function Hero() {
         )}
       >
         <ReactPlayer
+          ref={playerRef}
           className="hero-player"
-          url="/hero-video.mp4"
+          src="/hero-video.mp4"
           playing
           muted
           loop
           width="100%"
           height="100%"
+          wrapper={(props: React.HTMLAttributes<HTMLDivElement>) => <div {...props} />}
           onReady={() => setIsVideoPlaying(true)}
-          onProgress={({ playedSeconds }) => setVideoProgress(playedSeconds)}
+          onTimeUpdate={() => {
+            const el = playerRef.current?.getInternalPlayer?.() as HTMLVideoElement | undefined;
+            if (el?.currentTime != null) setVideoProgress(el.currentTime);
+          }}
         />
       </div>
 

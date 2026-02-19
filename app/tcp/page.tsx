@@ -40,10 +40,10 @@ export default function TCPPage() {
           </div>
           
           {/* Button in the middle */}
-          <div className="flex-grow flex justify-center items-center z-30">
+          <div className="grow flex justify-center items-center z-30">
             <Link 
               href="https://go.eventik.app/tcp2025"
-              className="inline-block px-8 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-3 md:py-5 lg:py-6 text-white border border-white hover:bg-white hover:text-black transition-colors text-base sm:text-sm md:text-base lg:text-2xl uppercase tracking-wide font-[600]"
+              className="inline-block px-8 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-3 md:py-5 lg:py-6 text-white border border-white hover:bg-white hover:text-black transition-colors text-base sm:text-sm md:text-base lg:text-2xl uppercase tracking-wide font-semibold"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -120,7 +120,7 @@ export default function TCPPage() {
           <div className="absolute inset-x-0 bottom-0 flex items-center justify-center pb-8 md:pb-12">
             <a 
               href="#speakers" 
-              className="inline-block px-6 sm:px-6 md:px-8 py-3 sm:py-3 md:py-4 text-white bg-black border border-black hover:bg-white hover:text-black transition-colors text-sm sm:text-sm md:text-base uppercase tracking-wide font-[600]"
+              className="inline-block px-6 sm:px-6 md:px-8 py-3 sm:py-3 md:py-4 text-white bg-black border border-black hover:bg-white hover:text-black transition-colors text-sm sm:text-sm md:text-base uppercase tracking-wide font-semibold"
             >
               Conoce a los oradores →
             </a>
@@ -131,7 +131,7 @@ export default function TCPPage() {
       {/* Biografias de oradores */}
       <section id="speakers" className="py-12 md:py-32 scroll-mt-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-6xl font-[700] tracking-tight text-center mb-8 md:mb-24">ORADORES</h2>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-center mb-8 md:mb-24">ORADORES</h2>
           <div className="max-w-4xl mx-auto space-y-8 md:space-y-24">
             {speakers.map((speaker, index) => (
               <div 
@@ -140,7 +140,7 @@ export default function TCPPage() {
                   index % 2 === 0 ? '' : 'md:[direction:rtl]'
                 }`}
               >
-                <div className="md:w-[300px] aspect-[3/4] relative rounded-lg overflow-hidden justify-self-center md:justify-self-auto">
+                <div className="md:w-[300px] aspect-3/4 relative rounded-lg overflow-hidden justify-self-center md:justify-self-auto">
                   <Image
                     src={`/tcp/speakers/${speaker.name}.png`}
                     alt={speaker.name}
@@ -152,7 +152,7 @@ export default function TCPPage() {
                   />
                 </div>
                 <div className={`space-y-4 md:[direction:ltr]`}>
-                  <h3 className="text-2xl md:text-3xl font-[600] uppercase">{speaker.name}</h3>
+                  <h3 className="text-2xl md:text-3xl font-semibold uppercase">{speaker.name}</h3>
                   <div className="prose prose-lg max-w-none space-y-4">
                     {speaker.bio.split('\n\n').map((paragraph, i) => (
                       <p key={i}>{paragraph}</p>

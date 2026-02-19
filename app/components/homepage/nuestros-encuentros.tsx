@@ -14,11 +14,11 @@ export default function NuestrosEncuentros() {
         </h2>
         <div className="mt-10 md:mt-24">
           <ul className="grid gap-4 font-bold text-center md:grid-cols-3 font-pragmatica text-hueso">
-            <li className="relative aspect-[363/260] pointer-events-none">
+            <li className="relative aspect-363/260 pointer-events-none">
               {/* <Link href="#"> */}
               <Image
                 src="/grupo-conexion-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -28,11 +28,11 @@ export default function NuestrosEncuentros() {
               </p>
               {/* </Link> */}
             </li>
-            <li className="relative aspect-[363/260] pointer-events-none">
+            <li className="relative aspect-363/260 pointer-events-none">
               {/* <Link href="#"> */}
               <Image
                 src="/espacio-viernes-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -45,11 +45,11 @@ export default function NuestrosEncuentros() {
               </span>
               {/* </Link> */}
             </li>
-            <li className="relative aspect-[363/260] pointer-events-none">
+            <li className="relative aspect-363/260 pointer-events-none">
               {/* <Link href="#"> */}
               <Image
                 src="/encuentro-kids-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -62,11 +62,11 @@ export default function NuestrosEncuentros() {
               </span>
               {/* </Link> */}
             </li>
-            <li className="relative aspect-[363/260] pointer-events-none">
+            <li className="relative aspect-363/260 pointer-events-none">
               {/* <Link href="#"> */}
               <Image
                 src="/familia-pre-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -79,11 +79,11 @@ export default function NuestrosEncuentros() {
               </span>
               {/* </Link> */}
             </li>
-            <li className="relative aspect-[363/260] pointer-events-none">
+            <li className="relative aspect-363/260 pointer-events-none">
               {/* <Link href="#"> */}
               <Image
                 src="/conectados-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -96,11 +96,11 @@ export default function NuestrosEncuentros() {
               </span>
               {/* </Link> */}
             </li>
-            <li className="relative aspect-[363/260] pointer-events-none">
+            <li className="relative aspect-363/260 pointer-events-none">
               {/* <Link href="#"> */}
               <Image
                 src="/uno-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -121,7 +121,7 @@ export default function NuestrosEncuentros() {
           </h3>
           <Link
             href="#contactanos"
-            className="px-8 py-1 rounded bg-cel text-[32px] leading-[40px] text-hueso font-bold font-pragmatica"
+            className="px-8 py-1 rounded-sm bg-cel text-[32px] leading-[40px] text-hueso font-bold font-pragmatica"
           >
             Quiero ser parte
           </Link>

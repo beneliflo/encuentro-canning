@@ -174,7 +174,7 @@ export default function Header() {
         {/* <div>
           <Link
             href="#"
-            className="text-lg font-bold uppercase text-[#EFF0EF] py-3 px-2 rounded bg-[#6C8A8C]"
+            className="text-lg font-bold uppercase text-[#EFF0EF] py-3 px-2 rounded-sm bg-[#6C8A8C]"
           >
             Donar
           </Link>
