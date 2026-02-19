@@ -18,7 +18,7 @@ export default function NuestrosEncuentros() {
               {/* <Link href="#"> */}
               <Image
                 src="/grupo-conexion-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -32,7 +32,7 @@ export default function NuestrosEncuentros() {
               {/* <Link href="#"> */}
               <Image
                 src="/espacio-viernes-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -49,7 +49,7 @@ export default function NuestrosEncuentros() {
               {/* <Link href="#"> */}
               <Image
                 src="/encuentro-kids-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -66,7 +66,7 @@ export default function NuestrosEncuentros() {
               {/* <Link href="#"> */}
               <Image
                 src="/familia-pre-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -83,7 +83,7 @@ export default function NuestrosEncuentros() {
               {/* <Link href="#"> */}
               <Image
                 src="/conectados-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
@@ -100,7 +100,7 @@ export default function NuestrosEncuentros() {
               {/* <Link href="#"> */}
               <Image
                 src="/uno-img.png"
-                layout="fill"
+                fill
                 className="object-cover"
                 alt="grupo de conexion"
               />
