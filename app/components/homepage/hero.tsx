@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import cn from 'classnames';
@@ -8,6 +8,7 @@ import cn from 'classnames';
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 export default function Hero() {
+  const playerRef = useRef<any>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [currentWord, setCurrentWord] = useState('FAMILIA');
   const [currentSubtitle, setCurrentSubtitle] = useState(
@@ -65,15 +66,20 @@ export default function Hero() {
         )}
       >
         <ReactPlayer
+          ref={playerRef}
           className="hero-player"
-          url="/hero-video.mp4"
+          src="/hero-video.mp4"
           playing
           muted
           loop
           width="100%"
           height="100%"
+          wrapper={(props: React.HTMLAttributes<HTMLDivElement>) => <div {...props} />}
           onReady={() => setIsVideoPlaying(true)}
-          onProgress={({ playedSeconds }) => setVideoProgress(playedSeconds)}
+          onTimeUpdate={() => {
+            const el = playerRef.current?.getInternalPlayer?.() as HTMLVideoElement | undefined;
+            if (el?.currentTime != null) setVideoProgress(el.currentTime);
+          }}
         />
       </div>
 
