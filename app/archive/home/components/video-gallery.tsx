@@ -97,7 +97,7 @@ export default function VideoGallery() {
           <a className="rounded-lg table text-sm font-semibold py-2.5 px-4 bg-black text-white hover:bg-black/90 my-10 mx-auto" href="https://www.youtube.com/@encuentrocanning"><span>Mirá más <span>→</span></span></a>
 
           {modal && (
-            <section className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" onClick={toggleModal}>
+            <section className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs" onClick={toggleModal}>
               <div className="flex items-center justify-center h-screen">
                 <div className="aspect-video w-full max-w-[1280px] shadow-lg rounded-lg bg-transparent">
                   <div className="relative flex w-full h-full">

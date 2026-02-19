@@ -31,7 +31,7 @@ export default function Footer() {
               Dónde estamos:
             </h3>
             <div
-              className="mb-2 overflow-hidden rounded"
+              className="mb-2 overflow-hidden rounded-sm"
               dangerouslySetInnerHTML={{ __html: mapEmbedCode }}
             />
             <Link

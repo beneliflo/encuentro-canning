@@ -5,7 +5,7 @@ import pastorPrincipal from '@/public/sebastian-sennewald.jpg'
 export default function Pastors() {
 
   return (
-    <div className="bg-gradient-to-br relative from-[#FF5D68]/70 to-[#01D6DA]/70 before:bg-section-pattern before:absolute before:inset-0">
+    <div className="bg-linear-to-br relative from-[#FF5D68]/70 to-[#01D6DA]/70 before:bg-section-pattern before:absolute before:inset-0">
       <div className="container relative flex flex-col gap-24 md:flex-row md:grid md:grid-cols-2 py-14 md:py-20">
         <div className="flex flex-col justify-center">
           <h1 className="text-5xl font-bold">Sebastian Sennewald</h1>

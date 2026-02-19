@@ -46,17 +46,20 @@ export default function Hero() {
   return (
     <div className="relative flex items-center justify-center overflow-hidden h-dvh max-h-[600px] md:max-h-none md:min-h-[880px]">
       {/* Placeholder */}
-      {!isVideoPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black">
-          <Image
-            src="/hero-video-placeholder.png"
-            width={1920}
-            height={1080}
-            alt="Loading..."
-            className="object-cover w-full h-full"
-          />
-        </div>
-      )}
+      <div
+        className={cn(
+          'absolute inset-0 flex items-center justify-center bg-black transition-opacity duration-500',
+          isVideoPlaying ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        )}
+      >
+        <Image
+          src="/hero-video-placeholder.png"
+          width={1920}
+          height={1080}
+          alt="Loading..."
+          className="object-cover w-full h-full"
+        />
+      </div>
 
       {/* Video */}
       <div

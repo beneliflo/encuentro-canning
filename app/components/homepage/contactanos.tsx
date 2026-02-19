@@ -35,7 +35,7 @@ export default function Contactanos() {
                       required
                       type="text"
                       placeholder="Nombre"
-                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
+                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline-solid outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline-solid focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
                   </div>
                   <div className="col-span-3">
@@ -45,7 +45,7 @@ export default function Contactanos() {
                       required
                       type="text"
                       placeholder="Apellido"
-                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
+                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline-solid outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline-solid focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
                   </div>
                 </div>
@@ -57,7 +57,7 @@ export default function Contactanos() {
                       required
                       type="email"
                       placeholder="email"
-                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
+                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline-solid outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline-solid focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
                   </div>
                   <div className="col-span-3">
@@ -67,7 +67,7 @@ export default function Contactanos() {
                       required
                       type="phone"
                       placeholder="Celular"
-                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
+                      className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline-solid outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline-solid focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     />
                   </div>
                 </div>
@@ -78,7 +78,7 @@ export default function Contactanos() {
                     required
                     rows={3}
                     placeholder="Escribe tu pedido de oración o motivo de contacto"
-                    className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
+                    className="block w-full rounded-lg bg-white px-8 py-5 text-lg text-gray-900 outline-solid outline-1 -outline-offset-1 outline-gray-300 placeholder:text-[#608B8C]/60 focus:outline-solid focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 font-extrabold placeholder:uppercase placeholder:text-lg"
                     defaultValue={''}
                   />
                 </div>

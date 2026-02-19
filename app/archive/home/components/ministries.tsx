@@ -11,7 +11,7 @@ import matrimonios from '@/public/matrimonios.jpg'
 export default function Ministries() {
 
   return (
-    <div className="bg-gradient-to-br relative from-[#5800EA]/70 to-[#D400F1]/70 before:bg-section-pattern before:absolute before:inset-0">
+    <div className="bg-linear-to-br relative from-[#5800EA]/70 to-[#D400F1]/70 before:bg-section-pattern before:absolute before:inset-0">
       <div className="container py-14 md:py-20">
         <h1 className="text-6xl font-bold text-center">CONECTATE</h1>
         <div className="grid mt-20 gap-14 md:grid-cols-2 lg:grid-cols-3">
