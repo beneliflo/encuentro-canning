@@ -11,14 +11,14 @@ export default function Header() {
         <div>
           <Link href="/">
             <Image
-              src="/IEC-logo.png"
+              src="/images/IEC-logo.png"
               width={300}
               height={42}
               alt="Encuentro Canning Logo"
               className="hidden sm:block"
             />
             <Image
-              src="/IEC-icon.png"
+              src="/images/IEC-icon.png"
               width={42}
               height={42}
               alt="Encuentro Canning Icon"

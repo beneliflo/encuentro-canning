@@ -17,7 +17,7 @@ export default function Footer() {
         className="fixed bottom-1 right-1 sm:bottom-4 sm:right-4"
       >
         <Image
-          src="/whatsapp-icon.png"
+          src="/images/whatsapp-icon.png"
           width={80}
           height={80}
           alt="whatsapp icon"

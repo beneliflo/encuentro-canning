@@ -25,7 +25,7 @@ export default function VideoSection() {
             controls
             preload="auto"
           >
-            <source src="/tcp/FINAL PROMO TCP 1080.mp4" type="video/mp4" />
+            <source src="/videos/tcp/FINAL PROMO TCP 1080.mp4" type="video/mp4" />
           </video>
         )}
       </div>

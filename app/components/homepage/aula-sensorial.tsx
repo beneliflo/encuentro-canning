@@ -8,7 +8,7 @@ export default function AulaSensorial() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
-    <div className="bg-[url('/aula-sensorial-bg.jpg')] bg-bottom py-10 md:py-20 bg-cover">
+    <div className="bg-[url('/images/aula-sensorial-bg.jpg')] bg-bottom py-10 md:py-20 bg-cover">
       <div className="container flex flex-col lg:flex-row lg:items-center gap-8 text-hueso font-pragmatica [text-shadow:2px_2px_10px_rgba(0,0,0,0.3),0_0_20px_rgba(0,0,0,0.1)]">
         {/* Video - izquierda */}
         <div className="relative w-full lg:w-2/5 rounded-lg overflow-hidden shadow-2xl text-shadow-none aspect-video shrink-0 order-last lg:order-first" onContextMenu={(e) => e.preventDefault()}>

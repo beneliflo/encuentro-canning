@@ -62,7 +62,7 @@ export default function Navigation() {
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="h-6 md:h-8 lg:h-12">
           <Image
-            src="/tcp/tcp-logo.png"
+            src="/images/tcp/tcp-logo.png"
             alt="TCP Logo"
             width={100}
             height={20}

@@ -15,7 +15,7 @@ export default function Contactanos() {
           <div className="flex gap-x-24">
             <div className="hidden lg:block">
               <Image
-                src="/phone-mockup.png"
+                src="/images/phone-mockup.png"
                 width={247}
                 height={479}
                 alt="phone"
