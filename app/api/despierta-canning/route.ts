@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { enqueue, readQueue, removeFromQueue, updateAttempt } from '@/lib/submission-queue';
 
 const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN!;
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID!;
@@ -132,6 +133,71 @@ async function createDespiertaGuest(
   }
 }
 
+export async function processSubmission(payload: {
+  hostFirstName: string;
+  hostLastName: string;
+  hostPhone: string;
+  role: string;
+  locationName?: string;
+  guests: { firstName: string; lastName: string }[];
+}): Promise<void> {
+  const { hostFirstName, hostLastName, hostPhone, role, locationName, guests } = payload;
+
+  // 1. Normalize phone
+  const phoneNormalized = normalizePhone(hostPhone);
+
+  // 2. Find or create host in People
+  let hostPersonId: string;
+  const existingPerson = await findPersonByPhone(phoneNormalized);
+
+  if (existingPerson) {
+    hostPersonId = existingPerson.id;
+  } else {
+    hostPersonId = await createPerson(hostFirstName, hostLastName, hostPhone);
+  }
+
+  // 3. Create Despierta Canning registration
+  const hostRegId = await createDespiertaRegistration(
+    hostPersonId,
+    role,
+    role === 'Host - Other place' ? locationName : undefined
+  );
+
+  // 4. Process each guest
+  for (const guest of guests) {
+    const guestPersonId = await createPerson(
+      guest.firstName,
+      guest.lastName,
+      undefined,
+      [hostPersonId]
+    );
+
+    await createDespiertaGuest(guest.firstName, guest.lastName, guestPersonId, hostRegId);
+  }
+}
+
+function drainQueue(): void {
+  const queue = readQueue();
+  if (queue.length === 0) return;
+
+  console.log(`Auto-retrying ${queue.length} queued submission(s)...`);
+
+  (async () => {
+    for (const item of queue) {
+      try {
+        await processSubmission(item.payload);
+        removeFromQueue(item.id);
+        console.log(`Queued submission ${item.id} processed successfully.`);
+      } catch (err) {
+        const errorMsg = err instanceof Error ? err.message : String(err);
+        updateAttempt(item.id, errorMsg);
+        console.error(`Queued submission ${item.id} failed again:`, errorMsg);
+        break;
+      }
+    }
+  })();
+}
+
 export async function POST(request: NextRequest) {
   try {
     if (!AIRTABLE_TOKEN || !AIRTABLE_BASE_ID) {
@@ -178,41 +244,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 1. Normalize phone
-    const phoneNormalized = normalizePhone(hostPhone);
-
-    // 2. Find or create host in People
-    let hostPersonId: string;
-    const existingPerson = await findPersonByPhone(phoneNormalized);
-
-    if (existingPerson) {
-      hostPersonId = existingPerson.id;
-    } else {
-      hostPersonId = await createPerson(hostFirstName.trim(), hostLastName.trim(), hostPhone.trim());
-    }
-
-    // 3. Create Despierta Canning registration
-    const hostRegId = await createDespiertaRegistration(
-      hostPersonId,
+    const submissionPayload = {
+      hostFirstName: hostFirstName.trim(),
+      hostLastName: hostLastName.trim(),
+      hostPhone: hostPhone.trim(),
       role,
-      role === 'Host - Other place' ? locationName?.trim() : undefined
-    );
+      locationName: role === 'Host - Other place' ? locationName?.trim() : undefined,
+      guests: validGuests.map((g) => ({
+        firstName: g.firstName!.trim(),
+        lastName: g.lastName?.trim() ?? '',
+      })),
+    };
 
-    // 4. Process each guest
-    for (const guest of validGuests) {
-      const guestFirstName = guest.firstName!.trim();
-      const guestLastName = guest.lastName?.trim() ?? '';
+    try {
+      await processSubmission(submissionPayload);
 
-      // Create guest person in People with "Invited by" link
-      const guestPersonId = await createPerson(
-        guestFirstName,
-        guestLastName,
-        undefined,
-        [hostPersonId]
-      );
-
-      // Create Despierta Canning Guests record
-      await createDespiertaGuest(guestFirstName, guestLastName, guestPersonId, hostRegId);
+      // Airtable is up — auto-retry queued submissions in background
+      drainQueue();
+    } catch (airtableError) {
+      console.error('Airtable failed, saving to queue:', airtableError);
+      try {
+        enqueue(submissionPayload);
+        console.log('Submission queued successfully for later retry.');
+      } catch (queueError) {
+        console.error('Queue save also failed:', queueError);
+        return NextResponse.json(
+          { error: 'Error al enviar el formulario. Intentá de nuevo más tarde.' },
+          { status: 500 }
+        );
+      }
     }
 
     return NextResponse.json({ success: true }, { status: 200 });
