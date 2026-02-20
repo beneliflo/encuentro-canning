@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const ROLES = [
   { value: 'Host - Home', label: 'Anfitrión - Casa' },
@@ -22,6 +22,23 @@ export default function DespiertaCanning2026() {
   );
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+
+  const resetForm = useCallback(() => {
+    setHostFirstName('');
+    setHostLastName('');
+    setHostPhone('');
+    setRole('');
+    setLocationName('');
+    setGuests(Array.from({ length: 10 }, () => ({ firstName: '', lastName: '' })));
+    setStatus('idle');
+    setErrorMsg('');
+  }, []);
+
+  useEffect(() => {
+    if (status !== 'success') return;
+    const timer = setTimeout(resetForm, 5000);
+    return () => clearTimeout(timer);
+  }, [status, resetForm]);
 
   const isCohost = role === 'Co-host';
 
@@ -76,24 +93,6 @@ export default function DespiertaCanning2026() {
     }
   };
 
-  if (status === 'success') {
-    return (
-      <main className="min-h-screen bg-hueso flex items-center justify-center px-5 py-16">
-        <div className="w-full max-w-lg text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-10">
-            <div className="text-5xl mb-4">🎉</div>
-            <h1 className="text-2xl font-bold text-dark mb-3 font-neue-haas">
-              ¡Registro exitoso!
-            </h1>
-            <p className="text-dark/70">
-              Gracias por registrarte en Despierta Canning 2026. Nos vemos pronto.
-            </p>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
   return (
     <main className="min-h-screen bg-hueso px-5 py-12 md:py-16">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
@@ -139,6 +138,14 @@ export default function DespiertaCanning2026() {
             Registro de anfitrión
           </h2>
 
+        {status === 'success' ? (
+          <div className="bg-white rounded-2xl shadow-lg p-10 text-center">
+            <div className="text-5xl mb-4">👍</div>
+            <h3 className="text-2xl font-bold text-dark mb-3 font-neue-haas">
+              ¡Registro exitoso!
+            </h3>
+          </div>
+        ) : (
         <form
           onSubmit={handleSubmit}
           className="bg-white rounded-2xl shadow-lg p-6 md:p-8 space-y-6"
@@ -335,6 +342,7 @@ export default function DespiertaCanning2026() {
             {status === 'submitting' ? 'Enviando...' : 'Registrarse'}
           </button>
         </form>
+        )}
         </div>
       </div>
     </main>
