@@ -57,7 +57,34 @@ export default function RootLayout({
           gtag('config', 'G-09SLGMTFY9');
         `}
       </Script>
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Church',
+              name: 'Iglesia Encuentro Canning',
+              alternateName: 'Encuentro Canning',
+              url: 'https://encuentrocanning.org',
+              logo: 'https://encuentrocanning.org/images/IEC-logo.png',
+              image: 'https://encuentrocanning.org/og-image.png',
+              description:
+                'Iglesia Encuentro Canning — una comunidad de fe en Canning, Buenos Aires.',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Canning',
+                addressRegion: 'Buenos Aires',
+                addressCountry: 'AR',
+              },
+              sameAs: [
+                'https://www.instagram.com/encuentrocanning',
+              ],
+            }),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
