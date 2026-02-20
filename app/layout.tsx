@@ -13,13 +13,26 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://encuentrocanning.org'),
   title: {
     template: '%s | Encuentro Canning',
-    default: 'Encuentro Canning', // a default is required when creating a template
+    default: 'Encuentro Canning | Iglesia en Canning, Buenos Aires',
   },
-  description: 'Encuentro Canning',
+  description:
+    'Iglesia Encuentro Canning — una comunidad de fe en Canning, Buenos Aires. Cultos, eventos, aula sensorial y más. ¡Te esperamos!',
+  keywords: [
+    'Encuentro Canning',
+    'iglesia Canning',
+    'iglesia evangélica Canning',
+    'iglesia Buenos Aires',
+    'comunidad cristiana Canning',
+    'Ezeiza',
+  ],
   openGraph: {
+    type: 'website',
+    locale: 'es_AR',
+    siteName: 'Encuentro Canning',
     images: 'https://encuentrocanning.org/og-image.png',
   },
   twitter: {
+    card: 'summary_large_image',
     images: ['https://encuentrocanning.org/og-image.png'],
   },
 };
@@ -30,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={roboto.variable}>
+    <html lang="es" className={roboto.variable}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/duw6mjz.css" />
       </head>

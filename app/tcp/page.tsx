@@ -1,8 +1,31 @@
+import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
+
+export const metadata: Metadata = {
+  title: 'Testigos Con Poder 2025 — Congreso de Evangelismo',
+  description:
+    'Testigos Con Poder 2025 — Congreso de evangelismo en Encuentro Canning. 3 días de plenarias con Chris Overstreet, Sebastián Sennewald, Peter DeArruda y Daniela Freidzon. ¡Comprá tu entrada!',
+  keywords: [
+    'Testigos Con Poder',
+    'TCP 2025',
+    'congreso evangelismo',
+    'Encuentro Canning',
+    'Chris Overstreet',
+    'Sebastián Sennewald',
+    'Peter DeArruda',
+    'Daniela Freidzon',
+    'congreso cristiano Buenos Aires',
+  ],
+  openGraph: {
+    title: 'Testigos Con Poder 2025 — Congreso de Evangelismo',
+    description:
+      '3 días de plenarias con oradores internacionales. Congreso de evangelismo en Encuentro Canning, Buenos Aires.',
+  },
+}
 
 export default function TCPPage() {
   return (
