@@ -2,11 +2,51 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useForm, ValidationError } from '@formspree/react';
-import cn from 'classnames';
+import { useState, type FormEvent } from 'react';
 
 export default function Contactanos() {
-  const [state, handleSubmit] = useForm('mpwwoboj');
+  const [submitting, setSubmitting] = useState(false);
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(null);
+
+    const form = e.currentTarget;
+    const data = {
+      firstName: (form.elements.namedItem('first-name') as HTMLInputElement).value.trim(),
+      lastName: (form.elements.namedItem('last-name') as HTMLInputElement).value.trim(),
+      email: (form.elements.namedItem('email') as HTMLInputElement).value.trim(),
+      phone: (form.elements.namedItem('number') as HTMLInputElement).value.trim(),
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim(),
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error || 'Error al enviar el formulario.');
+      }
+
+      setSucceeded(true);
+      form.reset();
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Error al enviar el formulario. Intentá de nuevo más tarde.'
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
     <>
@@ -82,18 +122,23 @@ export default function Contactanos() {
                     defaultValue={''}
                   />
                 </div>
+                {error && (
+                  <p className="w-full py-3 text-base font-bold text-red-300 font-pragmatica">
+                    {error}
+                  </p>
+                )}
                 <div className="mt-2">
-                  {state.succeeded ? (
+                  {succeeded ? (
                     <p className="w-full py-5 text-lg font-bold leading-10 uppercase rounded-lg font-pragmatica text-hueso">
                       Formulario enviado. Nos contactaremos en la brevedad.
                     </p>
                   ) : (
                     <button
                       type="submit"
-                      className="font-pragmatica font-bold text-[32px] leading-10 text-hueso bg-dark py-5 rounded-lg uppercase w-full cursor-pointer"
-                      disabled={state.submitting}
+                      className="font-pragmatica font-bold text-[32px] leading-10 text-hueso bg-dark py-5 rounded-lg uppercase w-full cursor-pointer disabled:opacity-50"
+                      disabled={submitting}
                     >
-                      Enviar
+                      {submitting ? 'Enviando...' : 'Enviar'}
                     </button>
                   )}
                 </div>
