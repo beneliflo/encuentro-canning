@@ -1,31 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { enqueue, readQueue, removeFromQueue, updateAttempt } from '@/lib/submission-queue';
+import {
+  upsertPerson,
+  upsertDespiertaRegistration,
+  upsertDespiertaGuest,
+} from '@/lib/airtable';
 
 const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN!;
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID!;
-const PEOPLE_TABLE = process.env.AIRTABLE_PEOPLE_TABLE ?? 'People';
-const DESPIERTA_TABLE = process.env.AIRTABLE_DESPIERTA_TABLE ?? 'Despierta Canning';
-const DESPIERTA_GUESTS_TABLE = process.env.AIRTABLE_DESPIERTA_GUESTS_TABLE ?? 'Despierta Canning Guests';
-
-const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}`;
-
-const headers = {
-  Authorization: `Bearer ${AIRTABLE_TOKEN}`,
-  'Content-Type': 'application/json',
-};
-
-function normalizePhone(phone: string): string {
-  return phone.replace(/\D/g, '');
-}
-
-function escapeFormulaValue(value: string): string {
-  return value.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-}
-
-interface AirtableRecord {
-  id: string;
-  fields: Record<string, unknown>;
-}
 
 const VALID_ROLES = [
   'Anfitrión - Casa',
@@ -33,101 +15,6 @@ const VALID_ROLES = [
   'Anfitrión - Otro lugar',
   'Co-anfitrión',
 ];
-
-async function findPersonByPhone(phoneNormalized: string): Promise<AirtableRecord | null> {
-  const safePhone = escapeFormulaValue(phoneNormalized);
-  const formula = `OR({Phone normalized} = '${safePhone}', {Telefono} = '${safePhone}')`;
-  const url = `${AIRTABLE_URL}/${encodeURIComponent(PEOPLE_TABLE)}?filterByFormula=${encodeURIComponent(formula)}&maxRecords=1`;
-
-  const res = await fetch(url, { headers, method: 'GET' });
-
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Airtable People search failed: ${res.status} – ${body}`);
-  }
-
-  const data = await res.json();
-  const records: AirtableRecord[] = data.records ?? [];
-  return records.length > 0 ? records[0] : null;
-}
-
-async function createPerson(
-  firstName: string,
-  lastName: string,
-  phone?: string,
-  invitedBy?: string[]
-): Promise<string> {
-  const fields: Record<string, unknown> = {
-    'Nombre': firstName,
-    'Apellido': lastName,
-  };
-  if (phone) fields['Telefono'] = phone;
-  if (invitedBy && invitedBy.length > 0) {
-    fields['Invitado de Despierta Canning por'] = invitedBy;
-  }
-
-  const res = await fetch(`${AIRTABLE_URL}/${encodeURIComponent(PEOPLE_TABLE)}`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({ fields }),
-  });
-
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Airtable People create failed: ${res.status} – ${body}`);
-  }
-
-  const data = await res.json();
-  return data.id as string;
-}
-
-async function createDespiertaRegistration(
-  personId: string,
-  role: string,
-  locationName?: string
-): Promise<string> {
-  const fields: Record<string, unknown> = {
-    'Persona Anfitriona': [personId],
-    Rol: role,
-  };
-  if (locationName) fields['Lugar de Encuentro'] = locationName;
-  fields['Fecha de Registro'] = new Date().toISOString();
-
-  const res = await fetch(`${AIRTABLE_URL}/${encodeURIComponent(DESPIERTA_TABLE)}`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({ fields }),
-  });
-
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Airtable Despierta Canning create failed: ${res.status} – ${body}`);
-  }
-
-  const data = await res.json();
-  return data.id as string;
-}
-
-async function createDespiertaGuest(
-  guestPersonId: string,
-  hostRegId: string
-): Promise<void> {
-  const res = await fetch(`${AIRTABLE_URL}/${encodeURIComponent(DESPIERTA_GUESTS_TABLE)}`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({
-      fields: {
-        'Persona Invitada': [guestPersonId],
-        'Anfitrion': [hostRegId],
-      },
-    }),
-  });
-
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Airtable Despierta Canning Guests create failed: ${res.status} – ${body}`);
-  }
-}
 
 export async function processSubmission(payload: {
   hostFirstName: string;
@@ -139,39 +26,39 @@ export async function processSubmission(payload: {
 }): Promise<void> {
   const { hostFirstName, hostLastName, hostPhone, role, locationName, guests } = payload;
 
-  // 1. Normalize phone
-  const phoneNormalized = normalizePhone(hostPhone);
+  // 1. Upsert host in People (match by phone, update missing fields)
+  const hostPersonId = await upsertPerson({
+    firstName: hostFirstName,
+    lastName: hostLastName,
+    phone: hostPhone,
+  });
 
-  // 2. Find or create host in People
-  let hostPersonId: string;
-  const existingPerson = await findPersonByPhone(phoneNormalized);
-
-  if (existingPerson) {
-    hostPersonId = existingPerson.id;
-  } else {
-    hostPersonId = await createPerson(hostFirstName, hostLastName, hostPhone);
-  }
-
-  // 3. Create Despierta Canning registration
-  const hostRegId = await createDespiertaRegistration(
-    hostPersonId,
-    role,
+  // 2. Upsert Despierta Canning registration (one per host)
+  const resolvedLocation =
     role === 'Anfitrión - Casa' ? 'Casa' :
     role === 'Anfitrión - Iglesia' ? 'Iglesia' :
     role === 'Anfitrión - Otro lugar' ? locationName :
-    undefined
+    undefined;
+
+  const hostFullName = `${hostFirstName} ${hostLastName}`.trim();
+  const hostRegId = await upsertDespiertaRegistration(
+    hostPersonId,
+    hostFullName,
+    role,
+    resolvedLocation
   );
 
-  // 4. Process each guest
+  // 3. Upsert each guest (no duplicates)
   for (const guest of guests) {
-    const guestPersonId = await createPerson(
-      guest.firstName,
-      guest.lastName,
-      undefined,
-      [hostPersonId]
-    );
+    // Guests have no phone/email — upsert by name, with invitedBy link
+    const guestPersonId = await upsertPerson({
+      firstName: guest.firstName,
+      lastName: guest.lastName,
+      invitedByDespierta: [hostPersonId],
+    });
 
-    await createDespiertaGuest(guestPersonId, hostRegId);
+    const guestFullName = `${guest.firstName} ${guest.lastName}`.trim();
+    await upsertDespiertaGuest(guestPersonId, guestFullName, hostRegId);
   }
 }
 
