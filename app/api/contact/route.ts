@@ -60,10 +60,10 @@ async function createPerson(
     headers,
     body: JSON.stringify({
       fields: {
-        'First name': firstName,
-        'Last name': lastName,
+        'Nombre': firstName,
+        'Apellido': lastName,
         Email: email,
-        Phone: phone,
+        Telefono: phone,
       },
     }),
   });
@@ -90,13 +90,13 @@ async function createContactMessage(fields: {
     headers,
     body: JSON.stringify({
       fields: {
-        'First name': fields.firstName,
-        'Last name': fields.lastName,
-        Email: fields.email,
-        Phone: fields.phone,
-        Message: fields.message,
-        Source: 'Website',
-        'Linked Person': [fields.personId],
+        'Nombre': fields.firstName,
+        'Apellido': fields.lastName,
+        'Correo electrónico': fields.email,
+        'Teléfono': fields.phone,
+        'Mensaje': fields.message,
+        'Canal': 'Website',
+        'Persona vinculada': [fields.personId],
       },
     }),
   });

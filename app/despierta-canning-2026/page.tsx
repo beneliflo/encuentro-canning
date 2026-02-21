@@ -3,10 +3,10 @@
 import { useState, useEffect, useCallback } from 'react';
 
 const ROLES = [
-  { value: 'Host - Home', label: 'Anfitrión - Casa' },
-  { value: 'Host - Church', label: 'Anfitrión - Iglesia' },
-  { value: 'Host - Other place', label: 'Anfitrión - Otro lugar' },
-  { value: 'Co-host', label: 'Co-anfitrión' },
+  { value: 'Anfitrión - Casa', label: 'Anfitrión - Casa' },
+  { value: 'Anfitrión - Iglesia', label: 'Anfitrión - Iglesia' },
+  { value: 'Anfitrión - Otro lugar', label: 'Anfitrión - Otro lugar' },
+  { value: 'Co-anfitrión', label: 'Co-anfitrión' },
 ];
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
@@ -40,7 +40,7 @@ export default function DespiertaCanning2026() {
     return () => clearTimeout(timer);
   }, [status, resetForm]);
 
-  const isCohost = role === 'Co-host';
+  const isCohost = role === 'Co-anfitrión';
 
   const addGuest = () => setGuests((prev) => [...prev, { firstName: '', lastName: '' }]);
 
@@ -73,7 +73,7 @@ export default function DespiertaCanning2026() {
           hostLastName: hostLastName.trim(),
           hostPhone: hostPhone.trim(),
           role,
-          locationName: role === 'Host - Other place' ? locationName.trim() : undefined,
+          locationName: role === 'Anfitrión - Otro lugar' ? locationName.trim() : undefined,
           guests: validGuests.map((g) => ({ firstName: g.firstName.trim(), lastName: g.lastName.trim() })),
         }),
       });
@@ -228,7 +228,7 @@ export default function DespiertaCanning2026() {
               </p>
             </div>
 
-            {role === 'Host - Other place' && (
+            {role === 'Anfitrión - Otro lugar' && (
               <div>
                 <label htmlFor="locationName" className="block text-sm font-medium text-dark/80 mb-1">
                   Nombre del lugar

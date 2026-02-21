@@ -28,15 +28,15 @@ interface AirtableRecord {
 }
 
 const VALID_ROLES = [
-  'Host - Home',
-  'Host - Church',
-  'Host - Other place',
-  'Co-host',
+  'Anfitrión - Casa',
+  'Anfitrión - Iglesia',
+  'Anfitrión - Otro lugar',
+  'Co-anfitrión',
 ];
 
 async function findPersonByPhone(phoneNormalized: string): Promise<AirtableRecord | null> {
   const safePhone = escapeFormulaValue(phoneNormalized);
-  const formula = `OR({Phone normalized} = '${safePhone}', {Phone} = '${safePhone}')`;
+  const formula = `OR({Phone normalized} = '${safePhone}', {Telefono} = '${safePhone}')`;
   const url = `${AIRTABLE_URL}/${encodeURIComponent(PEOPLE_TABLE)}?filterByFormula=${encodeURIComponent(formula)}&maxRecords=1`;
 
   const res = await fetch(url, { headers, method: 'GET' });
@@ -58,12 +58,12 @@ async function createPerson(
   invitedBy?: string[]
 ): Promise<string> {
   const fields: Record<string, unknown> = {
-    'First name': firstName,
-    'Last name': lastName,
+    'Nombre': firstName,
+    'Apellido': lastName,
   };
-  if (phone) fields['Phone'] = phone;
+  if (phone) fields['Telefono'] = phone;
   if (invitedBy && invitedBy.length > 0) {
-    fields['Invited by (Despierta Canning)'] = invitedBy;
+    fields['Invitado de Despierta Canning por'] = invitedBy;
   }
 
   const res = await fetch(`${AIRTABLE_URL}/${encodeURIComponent(PEOPLE_TABLE)}`, {
@@ -87,11 +87,11 @@ async function createDespiertaRegistration(
   locationName?: string
 ): Promise<string> {
   const fields: Record<string, unknown> = {
-    'Linked Person': [personId],
-    Role: role,
+    'Persona Anfitriona': [personId],
+    Rol: role,
   };
-  if (locationName) fields['Location name'] = locationName;
-  fields['Event date'] = new Date().toISOString();
+  if (locationName) fields['Lugar de Encuentro'] = locationName;
+  fields['Fecha de Registro'] = new Date().toISOString();
 
   const res = await fetch(`${AIRTABLE_URL}/${encodeURIComponent(DESPIERTA_TABLE)}`, {
     method: 'POST',
@@ -109,8 +109,6 @@ async function createDespiertaRegistration(
 }
 
 async function createDespiertaGuest(
-  firstName: string,
-  lastName: string,
   guestPersonId: string,
   hostRegId: string
 ): Promise<void> {
@@ -119,10 +117,8 @@ async function createDespiertaGuest(
     headers,
     body: JSON.stringify({
       fields: {
-        'First name': firstName,
-        'Last name': lastName,
-        'Guest Person': [guestPersonId],
-        'Host registration': [hostRegId],
+        'Persona Invitada': [guestPersonId],
+        'Anfitrion': [hostRegId],
       },
     }),
   });
@@ -160,7 +156,10 @@ export async function processSubmission(payload: {
   const hostRegId = await createDespiertaRegistration(
     hostPersonId,
     role,
-    role === 'Host - Other place' ? locationName : undefined
+    role === 'Anfitrión - Casa' ? 'Casa' :
+    role === 'Anfitrión - Iglesia' ? 'Iglesia' :
+    role === 'Anfitrión - Otro lugar' ? locationName :
+    undefined
   );
 
   // 4. Process each guest
@@ -172,7 +171,7 @@ export async function processSubmission(payload: {
       [hostPersonId]
     );
 
-    await createDespiertaGuest(guest.firstName, guest.lastName, guestPersonId, hostRegId);
+    await createDespiertaGuest(guestPersonId, hostRegId);
   }
 }
 
@@ -232,7 +231,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const isCohost = role === 'Co-host';
+    const isCohost = role === 'Co-anfitrión';
     const validGuests = Array.isArray(guests)
       ? guests.filter((g) => g.firstName?.trim())
       : [];
@@ -249,7 +248,10 @@ export async function POST(request: NextRequest) {
       hostLastName: hostLastName.trim(),
       hostPhone: hostPhone.trim(),
       role,
-      locationName: role === 'Host - Other place' ? locationName?.trim() : undefined,
+      locationName: role === 'Anfitrión - Casa' ? 'Casa' :
+        role === 'Anfitrión - Iglesia' ? 'Iglesia' :
+        role === 'Anfitrión - Otro lugar' ? locationName?.trim() :
+        undefined,
       guests: validGuests.map((g) => ({
         firstName: g.firstName!.trim(),
         lastName: g.lastName?.trim() ?? '',
