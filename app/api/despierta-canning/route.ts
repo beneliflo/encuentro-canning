@@ -149,9 +149,10 @@ export async function POST(request: NextRequest) {
       await processSubmission(submissionPayload);
 
       // Airtable is up — auto-retry queued submissions in background
-      drainQueue();
+      try { drainQueue(); } catch { /* ignore queue errors in read-only filesystems */ }
     } catch (airtableError) {
-      console.error('Airtable failed, saving to queue:', airtableError);
+      const errMsg = airtableError instanceof Error ? airtableError.message : String(airtableError);
+      console.error('Airtable processSubmission failed:', errMsg, JSON.stringify(submissionPayload));
       try {
         enqueue(submissionPayload);
         console.log('Submission queued successfully for later retry.');
@@ -166,7 +167,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.error('Despierta Canning registration error:', error);
+    const errDetail = error instanceof Error ? `${error.message}\n${error.stack}` : String(error);
+    console.error('Despierta Canning registration error:', errDetail);
     return NextResponse.json(
       { error: 'Error al enviar el formulario. Intentá de nuevo más tarde.' },
       { status: 500 }
