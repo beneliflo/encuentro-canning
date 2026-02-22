@@ -95,7 +95,7 @@ export default function DespiertaCanning2026() {
   };
 
   return (
-    <main className="min-h-screen bg-hueso px-5 py-12 md:py-16">
+    <main className="min-h-screen bg-[#FCF7E3] px-5 py-12 md:py-16">
       <div className="mx-auto max-w-6xl">
         {/* Full-width logo header */}
         <div className="flex justify-center -mt-10 md:-mt-20 mb-0">
@@ -104,7 +104,7 @@ export default function DespiertaCanning2026() {
             alt="Despierta Canning 2026"
             width={400}
             height={400}
-            className="w-72 md:w-[36rem] h-auto"
+            className="w-72 md:w-xl h-auto"
             priority
           />
         </div>
