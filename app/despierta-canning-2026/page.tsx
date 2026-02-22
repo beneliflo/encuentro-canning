@@ -58,7 +58,7 @@ export default function DespiertaCanning2026() {
     setStatus('submitting');
     setErrorMsg('');
 
-    const validGuests = guests.filter((g) => g.firstName.trim());
+    const validGuests = guests.filter((g) => g.firstName.trim() || g.lastName.trim());
     if (!isCohost && validGuests.length === 0) {
       setErrorMsg('Debés agregar al menos un invitado.');
       setStatus('error');
