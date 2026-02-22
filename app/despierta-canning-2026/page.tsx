@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 
 const ROLES = [
   { value: 'Anfitrión - Casa', label: 'Anfitrión - Casa' },
@@ -94,8 +95,21 @@ export default function DespiertaCanning2026() {
   };
 
   return (
-    <main className="min-h-screen bg-hueso px-5 py-12 md:py-16">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+    <main className="min-h-screen bg-[#FCF7E3] px-5 py-12 md:py-16">
+      <div className="mx-auto max-w-6xl">
+        {/* Full-width logo header */}
+        <div className="flex justify-center -mt-10 md:-mt-20 mb-0">
+          <Image
+            src="/images/logo-despierta-canning.png"
+            alt="Despierta Canning 2026"
+            width={400}
+            height={400}
+            className="w-72 md:w-xl h-auto"
+            priority
+          />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
         {/* Left column: intro text */}
         <div className="space-y-5">
           <h1 className="text-3xl md:text-4xl font-bold text-dark font-neue-haas uppercase leading-tight">
@@ -105,6 +119,8 @@ export default function DespiertaCanning2026() {
           <div className="space-y-4 text-sm md:text-base text-dark/80 leading-relaxed">
             <p>
               <strong>¡Bienvenido/a a DESPIERTA CANNING!</strong><br />
+            </p>
+            <p>
               Nos alegramos que hayas decidido responder al llamado de Dios de ser usado para compartir el evangelio transformador de Cristo con tus seres queridos y relaciones.
             </p>
             <p>
@@ -334,12 +350,13 @@ export default function DespiertaCanning2026() {
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="w-full rounded-lg bg-cel py-3 text-sm font-semibold text-white hover:bg-cel/90 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            className="w-full rounded-lg bg-[#015F60] py-3 text-sm font-semibold text-white hover:bg-[#015F60]/90 disabled:opacity-50 disabled:cursor-not-allowed transition"
           >
             {status === 'submitting' ? 'Enviando...' : 'Registrarse'}
           </button>
         </form>
         )}
+        </div>
         </div>
       </div>
     </main>
