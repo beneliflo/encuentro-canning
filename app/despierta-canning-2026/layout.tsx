@@ -17,6 +17,21 @@ export const metadata: Metadata = {
     title: 'Anfitriones Despierta Canning 2026 — Registro',
     description:
       'Registrate como anfitrión de Despierta Canning 2026 y anotá a tus invitados.',
+    images: [
+      {
+        url: '/og-image-despierta-canning.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Despierta Canning 2026',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Anfitriones Despierta Canning 2026 — Registro',
+    description:
+      'Registrate como anfitrión de Despierta Canning 2026 y anotá a tus invitados.',
+    images: ['/og-image-despierta-canning.jpg'],
   },
 };
 
