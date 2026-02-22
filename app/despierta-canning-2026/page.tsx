@@ -108,9 +108,6 @@ export default function DespiertaCanning2026() {
               Nos alegramos que hayas decidido responder al llamado de Dios de ser usado para compartir el evangelio transformador de Cristo con tus seres queridos y relaciones.
             </p>
             <p>
-              Este material tiene como objetivo introducirte en las particularidades del programa, darte una visión fresca para ganar almas, entender el rol y responsabilidades del anfitrión, y darte las herramientas para ser efectivo en la misión de llevar a Jesús a tantos que lo necesitan.
-            </p>
-            <p>
               Durante los meses de Marzo a Mayo de 2026, nos embarcaremos con nuestra iglesia en una aventura de fe para ver a nuestro Dios: alcanzar, salvar, sanar y liberar tantas personas y familias que lo necesitan desesperadamente.
             </p>
             <p>
