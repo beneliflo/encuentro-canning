@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
 
     const isCohost = role === 'Co-anfitrión';
     const validGuests = Array.isArray(guests)
-      ? guests.filter((g) => g.firstName?.trim())
+      ? guests.filter((g) => g.firstName?.trim() || g.lastName?.trim())
       : [];
 
     if (!isCohost && validGuests.length === 0) {
