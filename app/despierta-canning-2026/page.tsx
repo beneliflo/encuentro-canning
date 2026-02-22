@@ -98,7 +98,7 @@ export default function DespiertaCanning2026() {
     <main className="min-h-screen bg-hueso px-5 py-12 md:py-16">
       <div className="mx-auto max-w-6xl">
         {/* Full-width logo header */}
-        <div className="flex justify-center -my-10 md:-my-20 mb-0 md:-mb-32">
+        <div className="flex justify-center -mt-10 md:-mt-20 mb-0">
           <Image
             src="/images/logo-despierta-canning.png"
             alt="Despierta Canning 2026"
@@ -350,7 +350,7 @@ export default function DespiertaCanning2026() {
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="w-full rounded-lg bg-cel py-3 text-sm font-semibold text-white hover:bg-cel/90 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            className="w-full rounded-lg bg-[#015F60] py-3 text-sm font-semibold text-white hover:bg-[#015F60]/90 disabled:opacity-50 disabled:cursor-not-allowed transition"
           >
             {status === 'submitting' ? 'Enviando...' : 'Registrarse'}
           </button>
