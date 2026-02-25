@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useCallback } from 'react'
 
@@ -12,7 +11,6 @@ type NavLinksProps = {
 const navLinks = [
   { href: '#vision', label: 'Visión' },
   { href: '#info', label: 'Info' },
-  { href: '#speakers', label: 'Oradores' },
   { href: '#faq', label: 'FAQ' },
 ]
 
@@ -33,15 +31,6 @@ const NavLinks = ({ isMobile, onLinkClick }: NavLinksProps) => {
           {link.label}
         </a>
       ))}
-      <Link 
-        href="https://go.eventik.app/tcp2025"
-        className={`${isMobile ? 'inline-block' : ''} px-4 py-2 border border-white hover:bg-white hover:text-black transition-colors duration-200`}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={onLinkClick}
-      >
-        Comprar Entradas
-      </Link>
     </>
   )
 }
@@ -83,6 +72,9 @@ export default function Navigation() {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8 text-sm text-white font-medium uppercase tracking-wide">
           <NavLinks />
+          <span className="px-4 py-2 border border-white">
+            Muy pronto
+          </span>
         </div>
       </nav>
 
@@ -92,6 +84,9 @@ export default function Navigation() {
       >
         <div className="container mx-auto px-4 py-6 space-y-6 text-sm text-white font-medium uppercase tracking-wide">
           <NavLinks isMobile onLinkClick={closeMobileMenu} />
+          <span className="inline-block px-4 py-2 border border-white">
+            Muy pronto
+          </span>
         </div>
       </div>
     </header>

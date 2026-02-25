@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
@@ -62,16 +61,11 @@ export default function TCPPage() {
             />
           </div>
           
-          {/* Button in the middle */}
+          {/* Muy pronto text in the middle */}
           <div className="grow flex justify-center items-center z-30">
-            <Link 
-              href="https://go.eventik.app/tcp2025"
-              className="inline-block px-8 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-3 md:py-5 lg:py-6 text-white border border-white hover:bg-white hover:text-black transition-colors text-base sm:text-sm md:text-base lg:text-2xl uppercase tracking-wide font-semibold"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Comprar Entradas →
-            </Link>
+            <span className="inline-block px-8 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-3 md:py-5 lg:py-6 text-white border border-white text-base sm:text-sm md:text-base lg:text-2xl uppercase tracking-wide font-semibold">
+              Muy pronto
+            </span>
           </div>
         </div>
       </section>
