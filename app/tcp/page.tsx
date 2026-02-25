@@ -45,6 +45,7 @@ export default function TCPPage() {
             playsInline
             preload="auto"
           >
+            <source src="/videos/tcp/VIDEO HOME TCP.webm" type="video/webm" />
             <source src="/videos/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
           </video>
           
@@ -93,27 +94,32 @@ export default function TCPPage() {
           playsInline
           preload="auto"
         >
+          <source src="/videos/tcp/VIDEO FECHA TCP.webm" type="video/webm" />
           <source src="/videos/tcp/VIDEO FECHA TCP.mp4" type="video/mp4" />
         </video>
         <div className="relative z-20 container mx-auto px-4 text-white">
-          <Image
-            src="/images/tcp/tcp-reserva.png"
-            alt="TCP Fechas"
-            width={1920}
-            height={600}
-            className="w-full h-auto"
-            priority
-            quality={90}
-          />
-          <p className="w-[45%] h-[18%] right-0 bottom-[35%] absolute">
-            <a 
-              href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block h-full"
-            >
-            </a>
-          </p>
+          <div className="flex flex-col md:flex-row items-start justify-between gap-6 md:gap-12 py-8 md:py-16 font-bebas-neue">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight">
+              Reservá la fecha
+            </h2>
+            <div className="text-right">
+              <p className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight">
+                28 al 30 de mayo
+              </p>
+              <a 
+                href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-end gap-2 text-2xl sm:text-3xl md:text-5xl mt-2 hover:underline w-full"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 md:w-9 md:h-9 shrink-0 -mx-1 -translate-y-[0.1em]">
+                  <path d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z" />
+                </svg>
+                Hipócrates 3320, Canning
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -187,6 +193,7 @@ export default function TCPPage() {
           playsInline
           preload="auto"
         >
+          <source src="/videos/tcp/web tcp logo rojo.webm" type="video/webm" />
           <source src="/videos/tcp/web tcp logo rojo.mp4" type="video/mp4" />
         </video>
       </section>
