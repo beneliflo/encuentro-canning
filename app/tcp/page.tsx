@@ -145,43 +145,6 @@ export default function TCPPage() {
         </div>
       </section>
 
-      {/* Biografias de oradores */}
-      <section id="speakers" className="py-12 md:py-32 scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-center mb-8 md:mb-24">ORADORES</h2>
-          <div className="max-w-4xl mx-auto space-y-8 md:space-y-24">
-            {speakers.map((speaker, index) => (
-              <div 
-                key={speaker.name} 
-                className={`grid md:grid-cols-2 gap-8 items-start ${
-                  index % 2 === 0 ? '' : 'md:[direction:rtl]'
-                }`}
-              >
-                <div className="md:w-[300px] aspect-3/4 relative rounded-lg overflow-hidden justify-self-center md:justify-self-auto">
-                  <Image
-                    src={`/images/tcp/speakers/${speaker.name}.png`}
-                    alt={speaker.name}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 300px, 100vw"
-                    loading="eager"
-                    quality={85}
-                  />
-                </div>
-                <div className={`space-y-4 md:[direction:ltr]`}>
-                  <h3 className="text-2xl md:text-3xl font-semibold uppercase">{speaker.name}</h3>
-                  <div className="prose prose-lg max-w-none space-y-4">
-                    {speaker.bio.split('\n\n').map((paragraph, i) => (
-                      <p key={i}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Video YT */}
       <VideoSection />
 
@@ -238,37 +201,6 @@ export default function TCPPage() {
     </main>
   )
 }
-
-const speakers = [
-  {
-    name: 'Chris Overstreet',
-    bio: `Chris Overstreet es evangelista y fundador de "Compassion To Action" un ministerio con la misión de alcanzar al mundo mediante la compasión de Jesús.
-
-Chris equipa a los creyentes para vivir un estilo de vida sobrenatural, de manera que puedan ver salvaciones, milagros, y vidas transformadas como parte de su día a día. Fue pastor en Bethel Church, Redding, por 15 años, y en 2018 inició con su ministerio en Vancouver, Washington.
-
-A lo largo de estos años ha desarrollado relaciones estratégicas en la comunidad y al mismo tiempo capacita, equipa y moviliza a las personas a las calles, a la compasión y a vivir el evangelismo sobrenatural como algo cotidiano.`
-  },
-  {
-    name: 'Sebastián Sennewald',
-    bio: `Sebastián Sennewald es evangelista y pastor de la Iglesia Encuentro Canning, en Buenos Aires. Junto con Paula, su esposa, presiden la iglesia local desde el año 2017.
-
-Estudió en el Instituto Bíblico Elim y New York School of Urban Ministry (NYSUM). En 2009 fundó EMUBA con la visión de encender y entrenar a la iglesia local para amar, servir y predicar con poder y creatividad a Cristo en las ciudades del mundo.
-
-El propósito de su ministerio es equipar a la iglesia para vivir un evangelismo como estilo de vida, sabiendo que predicar y hacer discípulos es la misión suprema de todo cristiano y la mejor manera de esperar el regreso de Cristo.`
-  },
-  {
-    name: 'Peter DeArruda',
-    bio: `Peter DeArruda es el presidente del ministerio "New York School of Urban Ministry" (NYSUM). Él y su esposa, Darleen, sirven como misioneros urbanos durante los últimos 34 años allí. Estudió en el Instituto Bíblico Zion, se graduó del Instituto Bíblico Elim en 1980 y obtuvo su licenciatura en religión y filosofía de Houghton College en 1981.
-
-Desde 1987, ha participado en dirección de campañas urbanas, así como en la capacitación en evangelismo. Ha sido fundamental para traer visión y desafío a las iglesias de la ciudad en la movilización del cuerpo de Cristo para el ministerio urbano.`
-  },
-  {
-    name: 'Daniela Freidzon',
-    bio: `Daniela Freidzon es pastora y oradora internacional de la iglesia Rey de Reyes en Buenos Aires, Argentina. Tiene la pasión por alcanzar a esta generación y verla vivir y experimentar la plenitud de Cristo a través de una vida empoderada por el Espíritu.
-
-Es co-presidenta del ministerio Empowered21 Women's Alliance y miembro de la Junta Directiva de la Alianza Evangélica Nacional Argentina (ACIERA). Actualmente, Daniela supervisa el ministerio para adolescentes, universitarios y profesionales con su esposo, Chad McCabe, mientras participa activamente en programas de ayuda social.`
-  }
-]
 
 const faqs = [
   {
