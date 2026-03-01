@@ -1,12 +1,18 @@
 import { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
-import { Roboto } from 'next/font/google';
+import { Roboto, Bebas_Neue } from 'next/font/google';
 
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['100', '400', '500', '700', '900'],
   variable: '--font-roboto',
+});
+
+const bebasNeue = Bebas_Neue({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-bebas-neue',
 });
 
 export const metadata: Metadata = {
@@ -43,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={roboto.variable}>
+    <html lang="es" className={`${roboto.variable} ${bebasNeue.variable}`}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/duw6mjz.css" />
       </head>

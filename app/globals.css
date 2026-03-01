@@ -17,6 +17,7 @@
     var(--font-roboto), ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-neue-haas: neue-haas-grotesk-display, sans-serif;
+  --font-bebas-neue: var(--font-bebas-neue), sans-serif;
 
   --color-hueso: #eff0ef;
   --color-dark: #242424;

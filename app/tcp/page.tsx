@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
@@ -46,6 +45,7 @@ export default function TCPPage() {
             playsInline
             preload="auto"
           >
+            <source src="/videos/tcp/VIDEO HOME TCP.webm" type="video/webm" />
             <source src="/videos/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
           </video>
           
@@ -62,16 +62,11 @@ export default function TCPPage() {
             />
           </div>
           
-          {/* Button in the middle */}
+          {/* Muy pronto text in the middle */}
           <div className="grow flex justify-center items-center z-30">
-            <Link 
-              href="https://go.eventik.app/tcp2025"
-              className="inline-block px-8 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-3 md:py-5 lg:py-6 text-white border border-white hover:bg-white hover:text-black transition-colors text-base sm:text-sm md:text-base lg:text-2xl uppercase tracking-wide font-semibold"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Comprar Entradas →
-            </Link>
+            <span className="inline-block px-8 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-3 md:py-5 lg:py-6 text-white border border-white text-base sm:text-sm md:text-base lg:text-2xl uppercase tracking-wide font-semibold">
+              Muy pronto
+            </span>
           </div>
         </div>
       </section>
@@ -99,27 +94,32 @@ export default function TCPPage() {
           playsInline
           preload="auto"
         >
+          <source src="/videos/tcp/VIDEO FECHA TCP.webm" type="video/webm" />
           <source src="/videos/tcp/VIDEO FECHA TCP.mp4" type="video/mp4" />
         </video>
         <div className="relative z-20 container mx-auto px-4 text-white">
-          <Image
-            src="/images/tcp/tcp-reserva.png"
-            alt="TCP Fechas"
-            width={1920}
-            height={600}
-            className="w-full h-auto"
-            priority
-            quality={90}
-          />
-          <p className="w-[45%] h-[18%] right-0 bottom-[35%] absolute">
-            <a 
-              href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block h-full"
-            >
-            </a>
-          </p>
+          <div className="flex flex-col md:flex-row items-start justify-between gap-6 md:gap-12 py-8 md:py-16 font-bebas-neue">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight">
+              Reservá la fecha
+            </h2>
+            <div className="text-right">
+              <p className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight">
+                28 al 30 de mayo
+              </p>
+              <a 
+                href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-end gap-2 text-2xl sm:text-3xl md:text-5xl mt-2 hover:underline w-full"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 md:w-9 md:h-9 shrink-0 -mx-1 -translate-y-[0.1em]">
+                  <path d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z" />
+                </svg>
+                Hipócrates 3320, Canning
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -147,43 +147,6 @@ export default function TCPPage() {
             >
               Conoce a los oradores →
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Biografias de oradores */}
-      <section id="speakers" className="py-12 md:py-32 scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-center mb-8 md:mb-24">ORADORES</h2>
-          <div className="max-w-4xl mx-auto space-y-8 md:space-y-24">
-            {speakers.map((speaker, index) => (
-              <div 
-                key={speaker.name} 
-                className={`grid md:grid-cols-2 gap-8 items-start ${
-                  index % 2 === 0 ? '' : 'md:[direction:rtl]'
-                }`}
-              >
-                <div className="md:w-[300px] aspect-3/4 relative rounded-lg overflow-hidden justify-self-center md:justify-self-auto">
-                  <Image
-                    src={`/images/tcp/speakers/${speaker.name}.png`}
-                    alt={speaker.name}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 300px, 100vw"
-                    loading="eager"
-                    quality={85}
-                  />
-                </div>
-                <div className={`space-y-4 md:[direction:ltr]`}>
-                  <h3 className="text-2xl md:text-3xl font-semibold uppercase">{speaker.name}</h3>
-                  <div className="prose prose-lg max-w-none space-y-4">
-                    {speaker.bio.split('\n\n').map((paragraph, i) => (
-                      <p key={i}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -230,6 +193,7 @@ export default function TCPPage() {
           playsInline
           preload="auto"
         >
+          <source src="/videos/tcp/web tcp logo rojo.webm" type="video/webm" />
           <source src="/videos/tcp/web tcp logo rojo.mp4" type="video/mp4" />
         </video>
       </section>
@@ -244,37 +208,6 @@ export default function TCPPage() {
     </main>
   )
 }
-
-const speakers = [
-  {
-    name: 'Chris Overstreet',
-    bio: `Chris Overstreet es evangelista y fundador de "Compassion To Action" un ministerio con la misión de alcanzar al mundo mediante la compasión de Jesús.
-
-Chris equipa a los creyentes para vivir un estilo de vida sobrenatural, de manera que puedan ver salvaciones, milagros, y vidas transformadas como parte de su día a día. Fue pastor en Bethel Church, Redding, por 15 años, y en 2018 inició con su ministerio en Vancouver, Washington.
-
-A lo largo de estos años ha desarrollado relaciones estratégicas en la comunidad y al mismo tiempo capacita, equipa y moviliza a las personas a las calles, a la compasión y a vivir el evangelismo sobrenatural como algo cotidiano.`
-  },
-  {
-    name: 'Sebastián Sennewald',
-    bio: `Sebastián Sennewald es evangelista y pastor de la Iglesia Encuentro Canning, en Buenos Aires. Junto con Paula, su esposa, presiden la iglesia local desde el año 2017.
-
-Estudió en el Instituto Bíblico Elim y New York School of Urban Ministry (NYSUM). En 2009 fundó EMUBA con la visión de encender y entrenar a la iglesia local para amar, servir y predicar con poder y creatividad a Cristo en las ciudades del mundo.
-
-El propósito de su ministerio es equipar a la iglesia para vivir un evangelismo como estilo de vida, sabiendo que predicar y hacer discípulos es la misión suprema de todo cristiano y la mejor manera de esperar el regreso de Cristo.`
-  },
-  {
-    name: 'Peter DeArruda',
-    bio: `Peter DeArruda es el presidente del ministerio "New York School of Urban Ministry" (NYSUM). Él y su esposa, Darleen, sirven como misioneros urbanos durante los últimos 34 años allí. Estudió en el Instituto Bíblico Zion, se graduó del Instituto Bíblico Elim en 1980 y obtuvo su licenciatura en religión y filosofía de Houghton College en 1981.
-
-Desde 1987, ha participado en dirección de campañas urbanas, así como en la capacitación en evangelismo. Ha sido fundamental para traer visión y desafío a las iglesias de la ciudad en la movilización del cuerpo de Cristo para el ministerio urbano.`
-  },
-  {
-    name: 'Daniela Freidzon',
-    bio: `Daniela Freidzon es pastora y oradora internacional de la iglesia Rey de Reyes en Buenos Aires, Argentina. Tiene la pasión por alcanzar a esta generación y verla vivir y experimentar la plenitud de Cristo a través de una vida empoderada por el Espíritu.
-
-Es co-presidenta del ministerio Empowered21 Women's Alliance y miembro de la Junta Directiva de la Alianza Evangélica Nacional Argentina (ACIERA). Actualmente, Daniela supervisa el ministerio para adolescentes, universitarios y profesionales con su esposo, Chad McCabe, mientras participa activamente en programas de ayuda social.`
-  }
-]
 
 const faqs = [
   {
