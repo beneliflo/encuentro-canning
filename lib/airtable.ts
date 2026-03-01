@@ -235,7 +235,8 @@ export async function upsertDespiertaRegistration(
 export async function upsertDespiertaGuest(
   guestPersonId: string,
   guestFullName: string,
-  hostRegId: string
+  hostRegId: string,
+  prayerRequest?: string
 ): Promise<void> {
   // Search by Nombre Completo (formula field) then filter client-side
   // because FIND doesn't work on linked record fields in Airtable
@@ -253,10 +254,14 @@ export async function upsertDespiertaGuest(
     return;
   }
 
-  await createRecord(DESPIERTA_GUESTS_TABLE, {
+  const guestFields: Record<string, unknown> = {
     'Persona Invitada': [guestPersonId],
     Anfitrion: [hostRegId],
-  });
+  };
+  if (prayerRequest) {
+    guestFields['Motivo de oracion'] = prayerRequest;
+  }
+  await createRecord(DESPIERTA_GUESTS_TABLE, guestFields);
 }
 
 // ---------------------------------------------------------------------------
