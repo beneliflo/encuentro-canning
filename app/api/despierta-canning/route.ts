@@ -22,7 +22,7 @@ export async function processSubmission(payload: {
   hostPhone: string;
   role: string;
   locationName?: string;
-  guests: { firstName: string; lastName: string }[];
+  guests: { firstName: string; lastName: string; prayerRequest: string }[];
 }): Promise<void> {
   const { hostFirstName, hostLastName, hostPhone, role, locationName, guests } = payload;
 
@@ -58,7 +58,7 @@ export async function processSubmission(payload: {
     });
 
     const guestFullName = `${guest.firstName} ${guest.lastName}`.trim();
-    await upsertDespiertaGuest(guestPersonId, guestFullName, hostRegId);
+    await upsertDespiertaGuest(guestPersonId, guestFullName, hostRegId, guest.prayerRequest);
   }
 }
 
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
       hostPhone?: string;
       role?: string;
       locationName?: string;
-      guests?: { firstName?: string; lastName?: string }[];
+      guests?: { firstName?: string; lastName?: string; prayerRequest?: string }[];
     };
 
     // Validate required fields
@@ -142,6 +142,7 @@ export async function POST(request: NextRequest) {
       guests: validGuests.map((g) => ({
         firstName: g.firstName!.trim(),
         lastName: g.lastName?.trim() ?? '',
+        prayerRequest: g.prayerRequest?.trim() ?? '',
       })),
     };
 

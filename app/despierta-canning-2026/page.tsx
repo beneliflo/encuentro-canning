@@ -18,8 +18,8 @@ export default function DespiertaCanning2026() {
   const [hostPhone, setHostPhone] = useState('');
   const [role, setRole] = useState('');
   const [locationName, setLocationName] = useState('');
-  const [guests, setGuests] = useState<{ firstName: string; lastName: string }[]>(
-    Array.from({ length: 10 }, () => ({ firstName: '', lastName: '' }))
+  const [guests, setGuests] = useState<{ firstName: string; lastName: string; prayerRequest: string }[]>(
+    Array.from({ length: 10 }, () => ({ firstName: '', lastName: '', prayerRequest: '' }))
   );
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -30,7 +30,7 @@ export default function DespiertaCanning2026() {
     setHostPhone('');
     setRole('');
     setLocationName('');
-    setGuests(Array.from({ length: 10 }, () => ({ firstName: '', lastName: '' })));
+    setGuests(Array.from({ length: 10 }, () => ({ firstName: '', lastName: '', prayerRequest: '' })));
     setStatus('idle');
     setErrorMsg('');
   }, []);
@@ -43,13 +43,13 @@ export default function DespiertaCanning2026() {
 
   const isCohost = role === 'Co-anfitrión';
 
-  const addGuest = () => setGuests((prev) => [...prev, { firstName: '', lastName: '' }]);
+  const addGuest = () => setGuests((prev) => [...prev, { firstName: '', lastName: '', prayerRequest: '' }]);
 
   const removeGuest = (index: number) => {
     setGuests((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const updateGuest = (index: number, field: 'firstName' | 'lastName', value: string) => {
+  const updateGuest = (index: number, field: 'firstName' | 'lastName' | 'prayerRequest', value: string) => {
     setGuests((prev) => prev.map((g, i) => (i === index ? { ...g, [field]: value } : g)));
   };
 
@@ -75,7 +75,7 @@ export default function DespiertaCanning2026() {
           hostPhone: hostPhone.trim(),
           role,
           locationName: role === 'Anfitrión - Otro lugar' ? locationName.trim() : undefined,
-          guests: validGuests.map((g) => ({ firstName: g.firstName.trim(), lastName: g.lastName.trim() })),
+          guests: validGuests.map((g) => ({ firstName: g.firstName.trim(), lastName: g.lastName.trim(), prayerRequest: g.prayerRequest.trim() })),
         }),
       });
 
@@ -271,46 +271,57 @@ export default function DespiertaCanning2026() {
             </p>
             <div className="space-y-3">
               {guests.map((guest, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <span className="shrink-0 w-6 text-xs text-dark/40 text-right tabular-nums">{index + 1}.</span>
-                  <div className="flex-1 grid grid-cols-2 gap-2">
+                <div key={index} className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="shrink-0 w-6 text-xs text-dark/40 text-right tabular-nums">{index + 1}.</span>
+                    <div className="flex-1 grid grid-cols-2 gap-2">
+                      <input
+                        type="text"
+                        value={guest.firstName}
+                        onChange={(e) => updateGuest(index, 'firstName', e.target.value)}
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
+                        placeholder="Nombre"
+                      />
+                      <input
+                        type="text"
+                        value={guest.lastName}
+                        onChange={(e) => updateGuest(index, 'lastName', e.target.value)}
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
+                        placeholder="Apellido"
+                      />
+                    </div>
+                    <button
+                        type="button"
+                        onClick={() => removeGuest(index)}
+                        className="shrink-0 w-9 h-9 flex items-center justify-center rounded-lg text-red-400 hover:text-red-600 hover:bg-red-50 transition cursor-pointer"
+                        aria-label="Eliminar invitado"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M3 6h18" />
+                          <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                          <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                        </svg>
+                      </button>
+                  </div>
+                  <div className="ml-8">
                     <input
                       type="text"
-                      value={guest.firstName}
-                      onChange={(e) => updateGuest(index, 'firstName', e.target.value)}
+                      value={guest.prayerRequest}
+                      onChange={(e) => updateGuest(index, 'prayerRequest', e.target.value)}
                       className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
-                      placeholder="Nombre"
-                    />
-                    <input
-                      type="text"
-                      value={guest.lastName}
-                      onChange={(e) => updateGuest(index, 'lastName', e.target.value)}
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
-                      placeholder="Apellido"
+                      placeholder="Motivo de oración"
                     />
                   </div>
-                  <button
-                      type="button"
-                      onClick={() => removeGuest(index)}
-                      className="shrink-0 w-9 h-9 flex items-center justify-center rounded-lg text-red-400 hover:text-red-600 hover:bg-red-50 transition"
-                      aria-label="Eliminar invitado"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M3 6h18" />
-                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                      </svg>
-                    </button>
                 </div>
               ))}
             </div>
@@ -318,7 +329,7 @@ export default function DespiertaCanning2026() {
             <button
               type="button"
               onClick={addGuest}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-cel hover:text-cel/80 transition"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-cel hover:text-cel/80 transition cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -350,7 +361,7 @@ export default function DespiertaCanning2026() {
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="w-full rounded-lg bg-[#015F60] py-3 text-sm font-semibold text-white hover:bg-[#015F60]/90 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            className="w-full rounded-lg bg-[#015F60] py-3 text-sm font-semibold text-white hover:bg-[#015F60]/90 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
           >
             {status === 'submitting' ? 'Enviando...' : 'Registrarse'}
           </button>
