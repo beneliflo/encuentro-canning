@@ -6,6 +6,7 @@ import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
 import PresaveBanner from '../components/tcp/PresaveBanner'
 import FloatingPresave from '../components/tcp/FloatingPresave'
+import ResumenVideo from '../components/tcp/ResumenVideo'
 
 export const metadata: Metadata = {
   title: 'Testigos Con Poder 2026 — Congreso de Evangelismo',
@@ -68,23 +69,7 @@ export default function TCPPage() {
       </section>
 
       {/* Resumen TCP 2025 */}
-      <section id="tcp2025" className="bg-white scroll-mt-20">
-        <div className="py-12 md:py-20 text-center">
-          <h2 className="text-4xl md:text-7xl font-bold uppercase leading-tight">
-            Esto vivimos en<br />Testigos Con Poder 2025
-          </h2>
-        </div>
-        <video
-          className="w-full"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        >
-          <source src="/videos/tcp/VF RESUMEN TCP 2025.mp4" type="video/mp4" />
-        </video>
-      </section>
+      <ResumenVideo />
 
       {/* Ubicación — Desktop */}
       <section id="ubicacion" className="scroll-mt-20 hidden md:block relative">
