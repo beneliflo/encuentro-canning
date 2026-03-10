@@ -4,14 +4,15 @@ import Link from 'next/link'
 import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
+import PresaveBanner from '../components/tcp/PresaveBanner'
 
 export const metadata: Metadata = {
-  title: 'Testigos Con Poder 2025 — Congreso de Evangelismo',
+  title: 'Testigos Con Poder 2026 — Congreso de Evangelismo',
   description:
-    'Testigos Con Poder 2025 — Congreso de evangelismo en Encuentro Canning. 3 días de plenarias con Chris Overstreet, Sebastián Sennewald, Peter DeArruda y Daniela Freidzon. ¡Comprá tu entrada!',
+    'Testigos Con Poder 2026 — Congreso de evangelismo en Encuentro Canning. 3 días de plenarias con Chris Overstreet, Sebastián Sennewald, Peter DeArruda y Daniela Freidzon. ¡Comprá tu entrada!',
   keywords: [
     'Testigos Con Poder',
-    'TCP 2025',
+    'TCP 2026',
     'congreso evangelismo',
     'Encuentro Canning',
     'Chris Overstreet',
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     'congreso cristiano Buenos Aires',
   ],
   openGraph: {
-    title: 'Testigos Con Poder 2025 — Congreso de Evangelismo',
+    title: 'Testigos Con Poder 2026 — Congreso de Evangelismo',
     description:
       '3 días de plenarias con oradores internacionales. Congreso de evangelismo en Encuentro Canning, Buenos Aires.',
   },
@@ -36,8 +37,6 @@ export default function TCPPage() {
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20 flex flex-col">
         {/* Hero container with video and image */}
         <div className="relative h-[40vh] sm:h-[50vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[300px] overflow-hidden flex flex-col">
-          {/* Video background */}
-          <div className="absolute inset-0 bg-black/65 z-10" />
           <video 
             className="absolute inset-0 w-full h-full object-cover"
             autoPlay 
@@ -48,148 +47,74 @@ export default function TCPPage() {
           >
             <source src="/videos/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
           </video>
-          
-          {/* PALABRA HERO image absolute at bottom */}
-          <div className="absolute inset-x-0 bottom-0 z-20 pointer-events-none">
-            <Image
-              src="/images/tcp/PALABRA HERO.png"
-              alt="Testigos Con Poder 2025"
-              width={1920}
-              height={1080}
-              className="w-full h-auto object-cover"
-              priority
-              quality={90}
-            />
-          </div>
-          
-          {/* Button in the middle */}
-          <div className="grow flex justify-center items-center z-30">
-            <Link 
-              href="https://go.eventik.app/tcp2025"
-              className="inline-block px-8 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-3 md:py-5 lg:py-6 text-white border border-white hover:bg-white hover:text-black transition-colors text-base sm:text-sm md:text-base lg:text-2xl uppercase tracking-wide font-semibold"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Comprar Entradas →
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Visión congreso imagen */}
-      <section id="vision" className="scroll-mt-20">
+      {/* Presave banner */}
+      <PresaveBanner />
+
+      {/* Conferencia imagen */}
+      <section>
         <Image
           width={1920}
           height={1080}
-          src="/images/tcp/vision.png"
-          alt="TCP Vision"
+          src="/images/tcp/section-conferencia.jpg"
+          alt="Conferencia de Evangelismo Sobrenatural"
           className="w-full h-auto"
           priority
         />
       </section>
 
-      {/* Info basica con fondo video */}
-      <section id="info" className="relative py-12 md:py-32 overflow-hidden scroll-mt-20">
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <video 
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay 
-          muted 
-          loop 
+      {/* Resumen TCP 2025 */}
+      <section id="tcp2025" className="bg-white scroll-mt-20">
+        <div className="py-12 md:py-20 text-center">
+          <h2 className="text-4xl md:text-7xl font-bold uppercase leading-tight">
+            Esto vivimos en<br />Testigos Con Poder 2025
+          </h2>
+        </div>
+        <video
+          className="w-full"
+          autoPlay
+          muted
+          loop
           playsInline
           preload="auto"
         >
-          <source src="/videos/tcp/VIDEO FECHA TCP.mp4" type="video/mp4" />
+          <source src="/videos/tcp/VF RESUMEN TCP 2025.mp4" type="video/mp4" />
         </video>
-        <div className="relative z-20 container mx-auto px-4 text-white">
-          <Image
-            src="/images/tcp/tcp-reserva.png"
-            alt="TCP Fechas"
-            width={1920}
-            height={600}
-            className="w-full h-auto"
-            priority
-            quality={90}
-          />
-          <p className="w-[45%] h-[18%] right-0 bottom-[35%] absolute">
-            <a 
-              href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8" 
+      </section>
+
+      {/* Ubicación */}
+      <section id="ubicacion" className="scroll-mt-20 relative">
+        <Image
+          width={1920}
+          height={480}
+          src="/images/tcp/section-map.jpg"
+          alt="Ubicación — Iglesia Encuentro Canning, Hipócrates 3320, Canning"
+          className="w-full h-auto"
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="container mx-auto px-4">
+            <div className="text-white max-w-md md:max-w-lg">
+            <h3 className="inline-block text-4xl md:text-6xl lg:text-8xl font-semibold uppercase mb-3 md:mb-4 border-b-2 border-white pb-1">Ubicación</h3>
+            <p className="text-xl md:text-3xl lg:text-4xl font-normal uppercase leading-tight mb-2 md:mb-3">
+              Iglesia Encuentro<br />Canning
+            </p>
+            <p className="text-base md:text-lg lg:text-xl opacity-90 mb-6 md:mb-8">
+              Hipócrates 3320, Canning
+            </p>
+            <a
+              href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8"
               target="_blank"
               rel="noopener noreferrer"
-              className="block h-full"
+              className="inline-block border-2 border-white px-8 py-2 md:px-16 md:py-3 text-xs sm:text-sm md:text-xl uppercase font-semibold hover:bg-white hover:text-black transition-colors cursor-pointer"
             >
+              Cómo llegar
             </a>
-          </p>
-        </div>
-      </section>
-
-      {/* Oradores imagen tipo poster */}
-      <section className="scroll-mt-20 bg-black">
-        <div className="relative bg-cover bg-center h-[40vh] md:h-auto" style={{ backgroundImage: 'url(/images/tcp/oradores.png)' }}>
-          {/* Desktop view - regular image */}
-          <div className="hidden md:block">
-            <Image
-              src="/images/tcp/oradores.png"
-              alt="TCP Oradores"
-              width={1920}
-              height={1080}
-              className="w-full h-auto"
-              priority
-              quality={90}
-            />
-          </div>
-          
-          {/* Button for both views */}
-          <div className="absolute inset-x-0 bottom-0 flex items-center justify-center pb-8 md:pb-12">
-            <a 
-              href="#speakers" 
-              className="inline-block px-6 sm:px-6 md:px-8 py-3 sm:py-3 md:py-4 text-white bg-black border border-black hover:bg-white hover:text-black transition-colors text-sm sm:text-sm md:text-base uppercase tracking-wide font-semibold"
-            >
-              Conoce a los oradores →
-            </a>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Biografias de oradores */}
-      <section id="speakers" className="py-12 md:py-32 scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-center mb-8 md:mb-24">ORADORES</h2>
-          <div className="max-w-4xl mx-auto space-y-8 md:space-y-24">
-            {speakers.map((speaker, index) => (
-              <div 
-                key={speaker.name} 
-                className={`grid md:grid-cols-2 gap-8 items-start ${
-                  index % 2 === 0 ? '' : 'md:[direction:rtl]'
-                }`}
-              >
-                <div className="md:w-[300px] aspect-3/4 relative rounded-lg overflow-hidden justify-self-center md:justify-self-auto">
-                  <Image
-                    src={`/images/tcp/speakers/${speaker.name}.png`}
-                    alt={speaker.name}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 300px, 100vw"
-                    loading="eager"
-                    quality={85}
-                  />
-                </div>
-                <div className={`space-y-4 md:[direction:ltr]`}>
-                  <h3 className="text-2xl md:text-3xl font-semibold uppercase">{speaker.name}</h3>
-                  <div className="prose prose-lg max-w-none space-y-4">
-                    {speaker.bio.split('\n\n').map((paragraph, i) => (
-                      <p key={i}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Video YT */}
-      <VideoSection />
 
       {/* Preguntas frecuentes */}
       <section id="faq" className="py-12 md:py-32 scroll-mt-20">
@@ -230,7 +155,7 @@ export default function TCPPage() {
           playsInline
           preload="auto"
         >
-          <source src="/videos/tcp/web tcp logo rojo.mp4" type="video/mp4" />
+          <source src="/videos/tcp/section-bottom.mp4" type="video/mp4" />
         </video>
       </section>
 
@@ -283,7 +208,7 @@ const faqs = [
   },
   {
     question: '¿Se puede transferir la entrada a otra persona?',
-    answer: 'Sí, para transferir la entrada a otra persona, por favor envíe un mensaje a Eventik Asistencia.'
+    answer: 'Sí, para transferir la entrada a otra persona, por favor envíe un mensaje a FINT Asistencia.'
   },
   {
     question: '¿Cuál es la política de reembolso?',
@@ -295,7 +220,7 @@ const faqs = [
   },
   {
     question: '¿Se ofrecerá comida y bebida en el lugar?',
-    answer: 'En la Iglesia El Encuentro Canning contarán con un buffet abierto durante todo el evento donde podrán adquirir comida y bebidas.'
+    answer: 'En la Iglesia Encuentro Canning contarán con un buffet abierto durante todo el evento donde podrán adquirir comida y bebidas.'
   },
   {
     question: '¿Habrá cuidado de niños?',
@@ -314,7 +239,7 @@ const faqs = [
     answer: 'Por favor consulte en este link: Booking',
     link: {
       text: 'Ver opciones en Booking.com',
-      url: 'https://www.booking.com/searchresults.es.html?label=es-ar-booking-desktop-MRRNwpxuLSY8eNXQ7griKwS652829001343%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9185727%3Ali%3Adec%3Adm&aid=2311236&ss=Ezeiza&ssne=Ezeiza&ssne_untouched=Ezeiza&efdco=1&lang=es&src=searchresults&dest_id=-989273&dest_type=city&checkin=2025-05-22&checkout=2025-05-25&group_adults=1&no_rooms=1&group_children=0'
+      url: 'https://www.booking.com/searchresults.es-ar.html?ss=Canning%2C+Provincia+de+Buenos+Aires%2C+Argentina&efdco=1&label=es-ar-booking-desktop-MRRNwpxuLSY8eNXQ7griKwS652829001343%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9185727%3Ali%3Adec%3Adm&aid=2311236&lang=es-ar&sb=1&src_elem=sb&src=searchresults&dest_id=-980356&dest_type=city&ac_position=0&ac_click_type=b&ac_langcode=es&ac_suggestion_list_length=5&search_selected=true&search_pageview_id=0d828cdce3201db0&ac_meta=GhAwZDgyOGNkY2UzMjAxZGIwIAAoATICZXM6B2Nhbm5pbmc%3D&checkin=2026-05-28&checkout=2026-05-30&group_adults=2&no_rooms=1&group_children=0&soz=1&lang_changed=1'
     }
   },
   {
@@ -325,10 +250,6 @@ Pack dúo para dos integrantes de una misma familia.
 
 Pack familiar para cuatro integrantes de una misma familia.
 
-Pack iglesias: cada once miembros de una misma iglesia, una entrada está 100% bonificada.`,
-    link: {
-      text: 'Ver packs en Eventik',
-      url: 'https://eventik.com.ar/encuentro-canning'
-    }
+Pack iglesias: cada once miembros de una misma iglesia, una entrada está 100% bonificada.`
   }
 ]
