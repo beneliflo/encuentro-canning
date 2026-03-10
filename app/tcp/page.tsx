@@ -4,6 +4,7 @@ import Link from 'next/link'
 import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
+import PresaveBanner from '../components/tcp/PresaveBanner'
 
 export const metadata: Metadata = {
   title: 'Testigos Con Poder 2025 — Congreso de Evangelismo',
@@ -50,23 +51,7 @@ export default function TCPPage() {
       </section>
 
       {/* Presave banner */}
-      <section className="bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 py-6 md:py-12 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
-          <div className="flex items-center gap-4 md:gap-10">
-            <span className="text-2xl sm:text-3xl md:text-7xl font-bold tracking-tight uppercase">Presave</span>
-            <Image src="/images/tcp/arrow-right.png" alt="→" width={48} height={48} className="w-5 h-5 sm:w-6 sm:h-6 md:w-12 md:h-12" />
-            <span className="text-[10px] sm:text-xs md:text-xl uppercase leading-tight font-medium">
-              Obtené acceso anticipado<br />a la venta de entradas
-            </span>
-          </div>
-          <a
-            href="#info"
-            className="border-2 border-black px-8 py-2 md:px-16 md:py-3 text-xs sm:text-sm md:text-xl uppercase tracking-widest font-semibold hover:bg-black hover:text-white transition-colors whitespace-nowrap"
-          >
-            Registrate
-          </a>
-        </div>
-      </section>
+      <PresaveBanner />
 
       {/* Visión congreso imagen */}
       <section id="vision" className="scroll-mt-20">
