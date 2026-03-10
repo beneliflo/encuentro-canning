@@ -5,6 +5,8 @@ import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
 import PresaveBanner from '../components/tcp/PresaveBanner'
+import FloatingPresave from '../components/tcp/FloatingPresave'
+import ResumenVideo from '../components/tcp/ResumenVideo'
 
 export const metadata: Metadata = {
   title: 'Testigos Con Poder 2026 — Congreso de Evangelismo',
@@ -32,6 +34,7 @@ export default function TCPPage() {
   return (
     <main className="min-h-screen bg-white font-neue-haas">
       <Navigation />
+      <FloatingPresave />
 
       {/* Hero section with video */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20 flex flex-col">
@@ -45,7 +48,7 @@ export default function TCPPage() {
             playsInline
             preload="auto"
           >
-            <source src="/videos/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
+            <source src="/videos/tcp/VIDEO NEW HOME TCP.mp4" type="video/mp4" />
           </video>
         </div>
       </section>
@@ -66,26 +69,10 @@ export default function TCPPage() {
       </section>
 
       {/* Resumen TCP 2025 */}
-      <section id="tcp2025" className="bg-white scroll-mt-20">
-        <div className="py-12 md:py-20 text-center">
-          <h2 className="text-4xl md:text-7xl font-bold uppercase leading-tight">
-            Esto vivimos en<br />Testigos Con Poder 2025
-          </h2>
-        </div>
-        <video
-          className="w-full"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        >
-          <source src="/videos/tcp/VF RESUMEN TCP 2025.mp4" type="video/mp4" />
-        </video>
-      </section>
+      <ResumenVideo />
 
-      {/* Ubicación */}
-      <section id="ubicacion" className="scroll-mt-20 relative">
+      {/* Ubicación — Desktop */}
+      <section id="ubicacion" className="scroll-mt-20 hidden md:block relative">
         <Image
           width={1920}
           height={480}
@@ -95,25 +82,66 @@ export default function TCPPage() {
         />
         <div className="absolute inset-0 flex items-center">
           <div className="container mx-auto px-4">
-            <div className="text-white max-w-md md:max-w-lg">
-            <h3 className="inline-block text-4xl md:text-6xl lg:text-8xl font-semibold uppercase mb-3 md:mb-4 border-b-2 border-white pb-1">Ubicación</h3>
-            <p className="text-xl md:text-3xl lg:text-4xl font-normal uppercase leading-tight mb-2 md:mb-3">
+            <div className="text-white max-w-lg">
+            <h3 className="inline-block text-6xl lg:text-8xl font-semibold uppercase mb-4 border-b-2 border-white pb-1">Ubicación</h3>
+            <p className="text-3xl lg:text-4xl font-normal uppercase leading-tight mb-3">
               Iglesia Encuentro<br />Canning
             </p>
-            <p className="text-base md:text-lg lg:text-xl opacity-90 mb-6 md:mb-8">
+            <p className="text-lg lg:text-xl opacity-90 mb-8">
               Hipócrates 3320, Canning
             </p>
             <a
               href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block border-2 border-white px-8 py-2 md:px-16 md:py-3 text-xs sm:text-sm md:text-xl uppercase font-semibold hover:bg-white hover:text-black transition-colors cursor-pointer"
+              className="inline-block border-2 border-white px-16 py-3 text-xl uppercase font-semibold hover:bg-white hover:text-black transition-colors cursor-pointer"
             >
               Cómo llegar
             </a>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Ubicación — Mobile */}
+      <section className="scroll-mt-20 md:hidden">
+        <div className="relative">
+          <Image
+            width={800}
+            height={600}
+            src="/images/tcp/section-map-1.png"
+            alt="Ubicación"
+            className="w-full h-auto"
+          />
+          <div className="absolute inset-0 flex items-center">
+            <div className="px-6">
+              <div className="text-white">
+                <h3 className="inline-block text-5xl font-semibold uppercase mb-2 border-b-2 border-white pb-1">Ubicación</h3>
+                <p className="text-2xl font-normal uppercase leading-tight mb-2">
+                  Iglesia Encuentro<br />Canning
+                </p>
+                <p className="text-base opacity-90 mb-5">
+                  Hipócrates 3320, Canning
+                </p>
+                <a
+                  href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block border-2 border-white px-8 py-2.5 text-sm uppercase font-semibold hover:bg-white hover:text-black transition-colors cursor-pointer"
+                >
+                  Cómo llegar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Image
+          width={800}
+          height={400}
+          src="/images/tcp/section-map-2.png"
+          alt="Mapa — Iglesia Encuentro Canning"
+          className="w-full h-auto"
+        />
       </section>
 
       {/* Preguntas frecuentes */}
