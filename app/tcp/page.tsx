@@ -53,120 +53,68 @@ export default function TCPPage() {
       {/* Presave banner */}
       <PresaveBanner />
 
-      {/* Visión congreso imagen */}
-      <section id="vision" className="scroll-mt-20">
+      {/* Conferencia imagen */}
+      <section>
         <Image
           width={1920}
           height={1080}
-          src="/images/tcp/vision.png"
-          alt="TCP Vision"
+          src="/images/tcp/section-conferencia.jpg"
+          alt="Conferencia de Evangelismo Sobrenatural"
           className="w-full h-auto"
           priority
         />
       </section>
 
-      {/* Info basica con fondo video */}
-      <section id="info" className="relative py-12 md:py-32 overflow-hidden scroll-mt-20">
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <video 
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay 
-          muted 
-          loop 
+      {/* Resumen TCP 2025 */}
+      <section className="bg-white">
+        <div className="py-12 md:py-20 text-center">
+          <h2 className="text-4xl md:text-7xl font-bold uppercase leading-tight">
+            Esto vivimos en<br />Testigos Con Poder 2025
+          </h2>
+        </div>
+        <video
+          className="w-full"
+          autoPlay
+          muted
+          loop
           playsInline
           preload="auto"
         >
-          <source src="/videos/tcp/VIDEO FECHA TCP.mp4" type="video/mp4" />
+          <source src="/videos/tcp/VF RESUMEN TCP 2025.mp4" type="video/mp4" />
         </video>
-        <div className="relative z-20 container mx-auto px-4 text-white">
-          <Image
-            src="/images/tcp/tcp-reserva.png"
-            alt="TCP Fechas"
-            width={1920}
-            height={600}
-            className="w-full h-auto"
-            priority
-            quality={90}
-          />
-          <p className="w-[45%] h-[18%] right-0 bottom-[35%] absolute">
-            <a 
-              href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8" 
+      </section>
+
+      {/* Ubicación */}
+      <section id="ubicacion" className="scroll-mt-20 relative">
+        <Image
+          width={1920}
+          height={480}
+          src="/images/tcp/section-map.jpg"
+          alt="Ubicación — Iglesia Encuentro Canning, Hipócrates 3320, Canning"
+          className="w-full h-auto"
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="container mx-auto px-4">
+            <div className="text-white max-w-md md:max-w-lg">
+            <h3 className="inline-block text-4xl md:text-6xl lg:text-8xl font-semibold uppercase mb-3 md:mb-4 border-b-2 border-white pb-1">Ubicación</h3>
+            <p className="text-xl md:text-3xl lg:text-4xl font-normal uppercase leading-tight mb-2 md:mb-3">
+              Iglesia Encuentro<br />Canning
+            </p>
+            <p className="text-base md:text-lg lg:text-xl opacity-90 mb-6 md:mb-8">
+              Hipócrates 3320, Canning
+            </p>
+            <a
+              href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8"
               target="_blank"
               rel="noopener noreferrer"
-              className="block h-full"
+              className="inline-block border-2 border-white px-8 py-2 md:px-16 md:py-3 text-xs sm:text-sm md:text-xl uppercase font-semibold hover:bg-white hover:text-black transition-colors cursor-pointer"
             >
+              Cómo llegar
             </a>
-          </p>
-        </div>
-      </section>
-
-      {/* Oradores imagen tipo poster */}
-      <section className="scroll-mt-20 bg-black">
-        <div className="relative bg-cover bg-center h-[40vh] md:h-auto" style={{ backgroundImage: 'url(/images/tcp/oradores.png)' }}>
-          {/* Desktop view - regular image */}
-          <div className="hidden md:block">
-            <Image
-              src="/images/tcp/oradores.png"
-              alt="TCP Oradores"
-              width={1920}
-              height={1080}
-              className="w-full h-auto"
-              priority
-              quality={90}
-            />
-          </div>
-          
-          {/* Button for both views */}
-          <div className="absolute inset-x-0 bottom-0 flex items-center justify-center pb-8 md:pb-12">
-            <a 
-              href="#speakers" 
-              className="inline-block px-6 sm:px-6 md:px-8 py-3 sm:py-3 md:py-4 text-white bg-black border border-black hover:bg-white hover:text-black transition-colors text-sm sm:text-sm md:text-base uppercase tracking-wide font-semibold"
-            >
-              Conoce a los oradores →
-            </a>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Biografias de oradores */}
-      <section id="speakers" className="py-12 md:py-32 scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-center mb-8 md:mb-24">ORADORES</h2>
-          <div className="max-w-4xl mx-auto space-y-8 md:space-y-24">
-            {speakers.map((speaker, index) => (
-              <div 
-                key={speaker.name} 
-                className={`grid md:grid-cols-2 gap-8 items-start ${
-                  index % 2 === 0 ? '' : 'md:[direction:rtl]'
-                }`}
-              >
-                <div className="md:w-[300px] aspect-3/4 relative rounded-lg overflow-hidden justify-self-center md:justify-self-auto">
-                  <Image
-                    src={`/images/tcp/speakers/${speaker.name}.png`}
-                    alt={speaker.name}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 300px, 100vw"
-                    loading="eager"
-                    quality={85}
-                  />
-                </div>
-                <div className={`space-y-4 md:[direction:ltr]`}>
-                  <h3 className="text-2xl md:text-3xl font-semibold uppercase">{speaker.name}</h3>
-                  <div className="prose prose-lg max-w-none space-y-4">
-                    {speaker.bio.split('\n\n').map((paragraph, i) => (
-                      <p key={i}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Video YT */}
-      <VideoSection />
 
       {/* Preguntas frecuentes */}
       <section id="faq" className="py-12 md:py-32 scroll-mt-20">

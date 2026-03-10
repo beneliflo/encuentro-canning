@@ -15,7 +15,7 @@ export default function RegistrationButton({ className, children }: Registration
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className={className ?? 'cursor-pointer border-2 border-black px-8 py-2 md:px-16 md:py-3 text-xs sm:text-sm md:text-xl uppercase tracking-widest font-semibold hover:bg-black hover:text-white transition-colors whitespace-nowrap'}
+        className={className ?? 'cursor-pointer border-2 border-black px-8 py-2 md:px-16 md:py-3 text-xs sm:text-sm md:text-xl uppercase font-semibold hover:bg-black hover:text-white transition-colors whitespace-nowrap'}
       >
         {children ?? 'Registrate'}
       </button>
