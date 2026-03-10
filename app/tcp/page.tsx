@@ -5,6 +5,7 @@ import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
 import PresaveBanner from '../components/tcp/PresaveBanner'
+import FloatingPresave from '../components/tcp/FloatingPresave'
 
 export const metadata: Metadata = {
   title: 'Testigos Con Poder 2026 — Congreso de Evangelismo',
@@ -32,6 +33,7 @@ export default function TCPPage() {
   return (
     <main className="min-h-screen bg-white font-neue-haas">
       <Navigation />
+      <FloatingPresave />
 
       {/* Hero section with video */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20 flex flex-col">
