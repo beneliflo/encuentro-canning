@@ -155,7 +155,7 @@ export default function TCPPage() {
           playsInline
           preload="auto"
         >
-          <source src="/videos/tcp/web tcp logo rojo.mp4" type="video/mp4" />
+          <source src="/videos/tcp/section-bottom.mp4" type="video/mp4" />
         </video>
       </section>
 
@@ -208,7 +208,7 @@ const faqs = [
   },
   {
     question: '¿Se puede transferir la entrada a otra persona?',
-    answer: 'Sí, para transferir la entrada a otra persona, por favor envíe un mensaje a Eventik Asistencia.'
+    answer: 'Sí, para transferir la entrada a otra persona, por favor envíe un mensaje a FINT Asistencia.'
   },
   {
     question: '¿Cuál es la política de reembolso?',
@@ -220,7 +220,7 @@ const faqs = [
   },
   {
     question: '¿Se ofrecerá comida y bebida en el lugar?',
-    answer: 'En la Iglesia El Encuentro Canning contarán con un buffet abierto durante todo el evento donde podrán adquirir comida y bebidas.'
+    answer: 'En la Iglesia Encuentro Canning contarán con un buffet abierto durante todo el evento donde podrán adquirir comida y bebidas.'
   },
   {
     question: '¿Habrá cuidado de niños?',
@@ -250,10 +250,6 @@ Pack dúo para dos integrantes de una misma familia.
 
 Pack familiar para cuatro integrantes de una misma familia.
 
-Pack iglesias: cada once miembros de una misma iglesia, una entrada está 100% bonificada.`,
-    link: {
-      text: 'Ver packs en Eventik',
-      url: 'https://eventik.com.ar/encuentro-canning'
-    }
+Pack iglesias: cada once miembros de una misma iglesia, una entrada está 100% bonificada.`
   }
 ]
