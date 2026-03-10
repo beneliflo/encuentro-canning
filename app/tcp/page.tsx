@@ -36,8 +36,6 @@ export default function TCPPage() {
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20 flex flex-col">
         {/* Hero container with video and image */}
         <div className="relative h-[40vh] sm:h-[50vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[300px] overflow-hidden flex flex-col">
-          {/* Video background */}
-          <div className="absolute inset-0 bg-black/65 z-10" />
           <video 
             className="absolute inset-0 w-full h-full object-cover"
             autoPlay 
@@ -48,31 +46,6 @@ export default function TCPPage() {
           >
             <source src="/videos/tcp/VIDEO HOME TCP.mp4" type="video/mp4" />
           </video>
-          
-          {/* PALABRA HERO image absolute at bottom */}
-          <div className="absolute inset-x-0 bottom-0 z-20 pointer-events-none">
-            <Image
-              src="/images/tcp/PALABRA HERO.png"
-              alt="Testigos Con Poder 2025"
-              width={1920}
-              height={1080}
-              className="w-full h-auto object-cover"
-              priority
-              quality={90}
-            />
-          </div>
-          
-          {/* Button in the middle */}
-          <div className="grow flex justify-center items-center z-30">
-            <Link 
-              href="https://go.eventik.app/tcp2025"
-              className="inline-block px-8 sm:px-6 md:px-10 lg:px-12 py-4 sm:py-3 md:py-5 lg:py-6 text-white border border-white hover:bg-white hover:text-black transition-colors text-base sm:text-sm md:text-base lg:text-2xl uppercase tracking-wide font-semibold"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Comprar Entradas →
-            </Link>
-          </div>
         </div>
       </section>
 
