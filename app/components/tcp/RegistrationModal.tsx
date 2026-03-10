@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 interface RegistrationModalProps {
   isOpen: boolean
@@ -49,7 +50,7 @@ export default function RegistrationModal({ isOpen, onClose }: RegistrationModal
 
   if (!isOpen) return null
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/60" onClick={handleClose} />
@@ -168,6 +169,7 @@ export default function RegistrationModal({ isOpen, onClose }: RegistrationModal
           </>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

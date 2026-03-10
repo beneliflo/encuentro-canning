@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useCallback } from 'react'
+import RegistrationButton from './RegistrationButton'
 
 type NavLinksProps = {
   isMobile?: boolean
@@ -10,9 +10,8 @@ type NavLinksProps = {
 }
 
 const navLinks = [
-  { href: '#vision', label: 'Visión' },
-  { href: '#info', label: 'Info' },
-  { href: '#speakers', label: 'Oradores' },
+  { href: '#tcp2025', label: 'TCP 2025' },
+  { href: '#ubicacion', label: 'Ubicación' },
   { href: '#faq', label: 'FAQ' },
 ]
 
@@ -33,15 +32,11 @@ const NavLinks = ({ isMobile, onLinkClick }: NavLinksProps) => {
           {link.label}
         </a>
       ))}
-      <Link 
-        href="https://go.eventik.app/tcp2025"
-        className={`${isMobile ? 'inline-block' : ''} px-4 py-2 border border-white hover:bg-white hover:text-black transition-colors duration-200`}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={onLinkClick}
+      <RegistrationButton
+        className={`${isMobile ? 'inline-block' : ''} cursor-pointer px-4 py-2 border border-white hover:bg-white hover:text-black transition-colors duration-200 uppercase`}
       >
-        Comprar Entradas
-      </Link>
+        Registrate
+      </RegistrationButton>
     </>
   )
 }

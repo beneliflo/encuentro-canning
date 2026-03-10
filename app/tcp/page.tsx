@@ -66,7 +66,7 @@ export default function TCPPage() {
       </section>
 
       {/* Resumen TCP 2025 */}
-      <section className="bg-white">
+      <section id="tcp2025" className="bg-white scroll-mt-20">
         <div className="py-12 md:py-20 text-center">
           <h2 className="text-4xl md:text-7xl font-bold uppercase leading-tight">
             Esto vivimos en<br />Testigos Con Poder 2025
