@@ -269,15 +269,5 @@ const faqs = [
       text: 'Ver opciones en Booking.com',
       url: 'https://www.booking.com/searchresults.es-ar.html?ss=Canning%2C+Provincia+de+Buenos+Aires%2C+Argentina&efdco=1&label=es-ar-booking-desktop-MRRNwpxuLSY8eNXQ7griKwS652829001343%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9185727%3Ali%3Adec%3Adm&aid=2311236&lang=es-ar&sb=1&src_elem=sb&src=searchresults&dest_id=-980356&dest_type=city&ac_position=0&ac_click_type=b&ac_langcode=es&ac_suggestion_list_length=5&search_selected=true&search_pageview_id=0d828cdce3201db0&ac_meta=GhAwZDgyOGNkY2UzMjAxZGIwIAAoATICZXM6B2Nhbm5pbmc%3D&checkin=2026-05-28&checkout=2026-05-30&group_adults=2&no_rooms=1&group_children=0&soz=1&lang_changed=1'
     }
-  },
-  {
-    question: '¿Ofrecen packs promocionales?',
-    answer: `Sí, se encuentran disponibles en Eventik:
-
-Pack dúo para dos integrantes de una misma familia.
-
-Pack familiar para cuatro integrantes de una misma familia.
-
-Pack iglesias: cada once miembros de una misma iglesia, una entrada está 100% bonificada.`
   }
 ]
