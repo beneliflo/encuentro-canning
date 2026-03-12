@@ -236,7 +236,9 @@ export async function upsertDespiertaGuest(
   guestPersonId: string,
   guestFullName: string,
   hostRegId: string,
-  prayerRequest?: string
+  prayerRequest?: string,
+  invited?: string,
+  confirmed?: string
 ): Promise<void> {
   // Search by Nombre Completo (formula field) then filter client-side
   // because FIND doesn't work on linked record fields in Airtable
@@ -245,23 +247,30 @@ export async function upsertDespiertaGuest(
   const candidates = await searchRecords(DESPIERTA_GUESTS_TABLE, formula, 100);
 
   // Check if any candidate is already linked to this host registration
-  const alreadyLinked = candidates.some((rec) => {
+  const existingRec = candidates.find((rec) => {
     const anfitrion = rec.fields['Anfitrion'] as string[] | undefined;
     return anfitrion?.includes(hostRegId);
   });
-
-  if (alreadyLinked) {
-    return;
-  }
 
   const guestFields: Record<string, unknown> = {
     'Persona Invitada': [guestPersonId],
     Anfitrion: [hostRegId],
   };
-  if (prayerRequest) {
-    guestFields['Motivo de oracion'] = prayerRequest;
+  if (prayerRequest !== undefined) {
+    guestFields['Motivo de oracion'] = prayerRequest || '';
   }
-  await createRecord(DESPIERTA_GUESTS_TABLE, guestFields);
+  if (invited !== undefined) {
+    guestFields['¿invitado?'] = invited || '';
+  }
+  if (confirmed !== undefined) {
+    guestFields['¿confirmado?'] = confirmed || '';
+  }
+
+  if (existingRec) {
+    await updateRecord(DESPIERTA_GUESTS_TABLE, existingRec.id, guestFields);
+  } else {
+    await createRecord(DESPIERTA_GUESTS_TABLE, guestFields);
+  }
 }
 
 // ---------------------------------------------------------------------------

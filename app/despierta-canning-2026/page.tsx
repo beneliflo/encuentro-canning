@@ -18,8 +18,8 @@ export default function DespiertaCanning2026() {
   const [hostPhone, setHostPhone] = useState('');
   const [role, setRole] = useState('');
   const [locationName, setLocationName] = useState('');
-  const [guests, setGuests] = useState<{ firstName: string; lastName: string; prayerRequest: string }[]>(
-    Array.from({ length: 10 }, () => ({ firstName: '', lastName: '', prayerRequest: '' }))
+  const [guests, setGuests] = useState<{ firstName: string; lastName: string; prayerRequest: string; invited: string; confirmed: string }[]>(
+    Array.from({ length: 10 }, () => ({ firstName: '', lastName: '', prayerRequest: '', invited: '', confirmed: '' }))
   );
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -30,7 +30,7 @@ export default function DespiertaCanning2026() {
     setHostPhone('');
     setRole('');
     setLocationName('');
-    setGuests(Array.from({ length: 10 }, () => ({ firstName: '', lastName: '', prayerRequest: '' })));
+    setGuests(Array.from({ length: 10 }, () => ({ firstName: '', lastName: '', prayerRequest: '', invited: '', confirmed: '' })));
     setStatus('idle');
     setErrorMsg('');
   }, []);
@@ -43,13 +43,13 @@ export default function DespiertaCanning2026() {
 
   const isCohost = role === 'Co-anfitrión';
 
-  const addGuest = () => setGuests((prev) => [...prev, { firstName: '', lastName: '', prayerRequest: '' }]);
+  const addGuest = () => setGuests((prev) => [...prev, { firstName: '', lastName: '', prayerRequest: '', invited: '', confirmed: '' }]);
 
   const removeGuest = (index: number) => {
     setGuests((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const updateGuest = (index: number, field: 'firstName' | 'lastName' | 'prayerRequest', value: string) => {
+  const updateGuest = (index: number, field: 'firstName' | 'lastName' | 'prayerRequest' | 'invited' | 'confirmed', value: string) => {
     setGuests((prev) => prev.map((g, i) => (i === index ? { ...g, [field]: value } : g)));
   };
 
@@ -75,7 +75,7 @@ export default function DespiertaCanning2026() {
           hostPhone: hostPhone.trim(),
           role,
           locationName: role === 'Anfitrión - Otro lugar' ? locationName.trim() : undefined,
-          guests: validGuests.map((g) => ({ firstName: g.firstName.trim(), lastName: g.lastName.trim(), prayerRequest: g.prayerRequest.trim() })),
+          guests: validGuests.map((g) => ({ firstName: g.firstName.trim(), lastName: g.lastName.trim(), prayerRequest: g.prayerRequest.trim(), invited: g.invited, confirmed: g.confirmed })),
         }),
       });
 
@@ -313,7 +313,7 @@ export default function DespiertaCanning2026() {
                         </svg>
                       </button>
                   </div>
-                  <div className="ml-8">
+                  <div className="ml-8 space-y-2">
                     <input
                       type="text"
                       value={guest.prayerRequest}
@@ -321,6 +321,26 @@ export default function DespiertaCanning2026() {
                       className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
                       placeholder="Motivo de oración"
                     />
+                    <div className="grid grid-cols-2 gap-2">
+                      <select
+                        value={guest.invited}
+                        onChange={(e) => updateGuest(index, 'invited', e.target.value)}
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition bg-white"
+                      >
+                        <option value="" disabled>¿Invitado?</option>
+                        <option value="Sí">Sí</option>
+                        <option value="No">No</option>
+                      </select>
+                      <select
+                        value={guest.confirmed}
+                        onChange={(e) => updateGuest(index, 'confirmed', e.target.value)}
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition bg-white"
+                      >
+                        <option value="" disabled>¿Confirmado?</option>
+                        <option value="Sí">Sí</option>
+                        <option value="No">No</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               ))}
