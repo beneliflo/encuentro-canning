@@ -10,7 +10,7 @@ export interface QueuedSubmission {
     hostPhone: string;
     role: string;
     locationName?: string;
-    guests: { firstName: string; lastName: string; prayerRequest: string }[];
+    guests: { firstName: string; lastName: string; prayerRequest: string; invited: string; confirmed: string }[];
   };
   attempts: number;
   lastError?: string;
