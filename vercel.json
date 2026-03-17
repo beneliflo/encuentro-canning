@@ -1,14 +1,14 @@
 {
   "rewrites": [
     {
-      "source": "/",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "tcp.emubaescuela.com"
         }
       ],
-      "destination": "/tcp"
+      "destination": "/tcp/:path*"
     }
   ]
 }
