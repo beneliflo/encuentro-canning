@@ -47,6 +47,13 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/duw6mjz.css" />
       </head>
+      <Script id="google-tag-manager" strategy="afterInteractive">
+        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KCQ3C2N7');`}
+      </Script>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-09SLGMTFY9" />
       <Script id="google-analytics">
         {`
@@ -58,6 +65,14 @@ export default function RootLayout({
         `}
       </Script>
       <body>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KCQ3C2N7"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
