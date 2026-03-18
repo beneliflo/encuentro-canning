@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { enqueue, readQueue, removeFromQueue, updateAttempt } from '@/lib/submission-queue';
 import {
   upsertDespiertaRegistration,
-  upsertDespiertaGuest,
+  batchUpsertDespiertaGuests,
 } from '@/lib/airtable';
 
 const AIRTABLE_TOKEN = process.env.AIRTABLE_TOKEN!;
@@ -40,17 +40,8 @@ export async function processSubmission(payload: {
     resolvedLocation
   );
 
-  // 2. Upsert each guest (no duplicates)
-  for (const guest of guests) {
-    await upsertDespiertaGuest(
-      guest.firstName,
-      guest.lastName,
-      hostRegId,
-      guest.prayerRequest,
-      guest.invited,
-      guest.confirmed
-    );
-  }
+  // 2. Batch upsert all guests in optimized operation
+  await batchUpsertDespiertaGuests(guests, hostRegId);
 }
 
 function drainQueue(): void {

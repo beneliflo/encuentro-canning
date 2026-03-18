@@ -104,6 +104,32 @@ async function updateRecord(
   return data as unknown as AirtableRecord;
 }
 
+async function batchCreateRecords(
+  table: string,
+  records: Array<{ fields: Record<string, unknown> }>
+): Promise<AirtableRecord[]> {
+  // Airtable allows max 10 records per batch
+  const batches: Array<{ fields: Record<string, unknown> }[]> = [];
+  for (let i = 0; i < records.length; i += 10) {
+    batches.push(records.slice(i, i + 10));
+  }
+
+  const allCreated: AirtableRecord[] = [];
+  for (const batch of batches) {
+    const { ok, status, data } = await airtableFetch(table, 'POST', undefined, {
+      records: batch,
+    });
+    if (!ok) {
+      throw new Error(
+        `Airtable batch create ${table} failed: ${status} – ${JSON.stringify(data)}`
+      );
+    }
+    const created = (data as { records?: AirtableRecord[] }).records ?? [];
+    allCreated.push(...created);
+  }
+  return allCreated;
+}
+
 // ---------------------------------------------------------------------------
 // People — UPSERT
 // Match priority: email → phone normalized
@@ -260,6 +286,92 @@ export async function upsertDespiertaGuest(
     await updateRecord(DESPIERTA_GUESTS_TABLE, existingRec.id, guestFields);
   } else {
     await createRecord(DESPIERTA_GUESTS_TABLE, guestFields);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Despierta Canning Guests — BATCH UPSERT (optimized)
+// Process multiple guests in a single batch operation
+// ---------------------------------------------------------------------------
+
+export async function batchUpsertDespiertaGuests(
+  guests: Array<{
+    firstName: string;
+    lastName: string;
+    prayerRequest?: string;
+    invited?: string;
+    confirmed?: string;
+  }>,
+  hostRegId: string
+): Promise<void> {
+  if (guests.length === 0) return;
+
+  // Build all guest names for a single search query
+  const guestNames = guests.map(g => `${g.firstName} ${g.lastName}`.trim());
+  const uniqueNames = [...new Set(guestNames)];
+  
+  // Search for existing guests with any of these names
+  const nameConditions = uniqueNames.map(name => 
+    `{Nombre Completo} = '${escapeFormulaValue(name)}'`
+  );
+  const formula = nameConditions.length === 1 
+    ? nameConditions[0] 
+    : `OR(${nameConditions.join(', ')})`;
+  
+  const existingGuests = await searchRecords(DESPIERTA_GUESTS_TABLE, formula, 100);
+  
+  // Filter existing guests that are already linked to this host
+  const existingForHost = existingGuests.filter((rec) => {
+    const anfitrion = rec.fields['Anfitrion'] as string[] | undefined;
+    return anfitrion?.includes(hostRegId);
+  });
+
+  // Create a map of existing guests by name for quick lookup
+  const existingMap = new Map<string, AirtableRecord>();
+  existingForHost.forEach(rec => {
+    const nombreCompleto = rec.fields['Nombre Completo'] as string;
+    if (nombreCompleto) {
+      existingMap.set(nombreCompleto, rec);
+    }
+  });
+
+  // Separate guests into updates and creates
+  const toUpdate: Array<{ id: string; fields: Record<string, unknown> }> = [];
+  const toCreate: Array<{ fields: Record<string, unknown> }> = [];
+
+  guests.forEach(guest => {
+    const guestFullName = `${guest.firstName} ${guest.lastName}`.trim();
+    const guestFields: Record<string, unknown> = {
+      Nombre: guest.firstName,
+      Apellido: guest.lastName,
+      Anfitrion: [hostRegId],
+    };
+    if (guest.prayerRequest !== undefined) {
+      guestFields['Motivo de oracion'] = guest.prayerRequest || '';
+    }
+    if (guest.invited !== undefined) {
+      guestFields['¿invitado?'] = guest.invited || '';
+    }
+    if (guest.confirmed !== undefined) {
+      guestFields['¿confirmado?'] = guest.confirmed || '';
+    }
+
+    const existing = existingMap.get(guestFullName);
+    if (existing) {
+      toUpdate.push({ id: existing.id, fields: guestFields });
+    } else {
+      toCreate.push({ fields: guestFields });
+    }
+  });
+
+  // Execute batch operations
+  if (toCreate.length > 0) {
+    await batchCreateRecords(DESPIERTA_GUESTS_TABLE, toCreate);
+  }
+
+  // Updates must be done individually (Airtable doesn't support batch PATCH)
+  for (const { id, fields } of toUpdate) {
+    await updateRecord(DESPIERTA_GUESTS_TABLE, id, fields);
   }
 }
 
