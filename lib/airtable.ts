@@ -5,7 +5,7 @@ const DESPIERTA_TABLE = process.env.AIRTABLE_DESPIERTA_TABLE ?? 'Despierta Canni
 const DESPIERTA_GUESTS_TABLE =
   process.env.AIRTABLE_DESPIERTA_GUESTS_TABLE ?? 'Despierta Canning Guests';
 const CONTACT_MESSAGES_TABLE =
-  process.env.AIRTABLE_CONTACT_MESSAGES_TABLE ?? 'Contact Messages';
+  process.env.AIRTABLE_CONTACT_MESSAGES_TABLE ?? 'Mensaje de Contacto WEB';
 
 const BASE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}`;
 
@@ -119,32 +119,19 @@ export async function upsertPerson(opts: {
 }): Promise<string> {
   const { firstName, lastName, phone, email, invitedByDespierta } = opts;
 
-  // Build search formula: email first, then phone
-  const clauses: string[] = [];
+  // Single search: prioritize email, fallback to phone
+  let formula = '';
   if (email) {
-    clauses.push(`{Email} = '${escapeFormulaValue(email)}'`);
-  }
-  if (phone) {
+    formula = `{Email} = '${escapeFormulaValue(email)}'`;
+  } else if (phone) {
     const normalized = normalizePhone(phone);
-    clauses.push(`{Phone normalized} = '${escapeFormulaValue(normalized)}'`);
-    clauses.push(`{Telefono} = '${escapeFormulaValue(normalized)}'`);
+    formula = `{Phone normalized} = '${escapeFormulaValue(normalized)}'`;
   }
 
   let existing: AirtableRecord | null = null;
-  if (clauses.length > 0) {
-    const formula =
-      clauses.length === 1 ? clauses[0] : `OR(${clauses.join(', ')})`;
+  if (formula) {
     const results = await searchRecords(PEOPLE_TABLE, formula, 1);
     existing = results.length > 0 ? results[0] : null;
-  }
-
-  // Fallback: if email/phone didn't match, try by name
-  if (!existing && firstName && lastName) {
-    const safeFN = escapeFormulaValue(firstName);
-    const safeLN = escapeFormulaValue(lastName);
-    const nameFormula = `AND({Nombre} = '${safeFN}', {Apellido} = '${safeLN}')`;
-    const nameResults = await searchRecords(PEOPLE_TABLE, nameFormula, 1);
-    existing = nameResults.length > 0 ? nameResults[0] : null;
   }
 
   if (existing) {
@@ -156,10 +143,6 @@ export async function upsertPerson(opts: {
     if (!f['Apellido'] && lastName) updates['Apellido'] = lastName;
     if (!f['Email'] && email) updates['Email'] = email;
     if (!f['Telefono'] && phone) updates['Telefono'] = phone;
-    // If phone changed (existing has a different phone), update it
-    if (phone && f['Telefono'] && normalizePhone(String(f['Telefono'])) !== normalizePhone(phone)) {
-      updates['Telefono'] = phone;
-    }
     if (invitedByDespierta && invitedByDespierta.length > 0) {
       const current = (f['Invitado de Despierta Canning por'] as string[]) ?? [];
       const merged = [...new Set([...current, ...invitedByDespierta])];
@@ -191,23 +174,27 @@ export async function upsertPerson(opts: {
 
 // ---------------------------------------------------------------------------
 // Despierta Canning — UPSERT
-// One registration per host. Search by Persona Anfitriona link.
+// One registration per host. Search by phone + name.
 // If exists → update. If not → create.
 // ---------------------------------------------------------------------------
 
 export async function upsertDespiertaRegistration(
-  personId: string,
-  personFullName: string,
+  firstName: string,
+  lastName: string,
+  phone: string,
   role: string,
   locationName?: string
 ): Promise<string> {
-  // Search by Anfitrion formula field (contains the person's full name)
-  // FIND on linked record fields doesn't work in Airtable formulas
-  const safeName = escapeFormulaValue(personFullName);
-  const formula = `{Anfitrion} = '${safeName}'`;
+  // Single search by phone normalized (formula field in Airtable)
+  const normalized = normalizePhone(phone);
+  const safePhone = escapeFormulaValue(normalized);
+  const formula = `{Telefono Normalizado} = '${safePhone}'`;
   const existing = await searchRecords(DESPIERTA_TABLE, formula, 1);
 
   const fields: Record<string, unknown> = {
+    Nombre: firstName,
+    Apellido: lastName,
+    Telefono: phone,
     Rol: role,
   };
   if (locationName) fields['Lugar de Encuentro'] = locationName;
@@ -219,7 +206,6 @@ export async function upsertDespiertaRegistration(
   }
 
   // Create new registration
-  fields['Persona Anfitriona'] = [personId];
   fields['Fecha de Registro'] = new Date().toISOString();
 
   const rec = await createRecord(DESPIERTA_TABLE, fields);
@@ -229,22 +215,25 @@ export async function upsertDespiertaRegistration(
 // ---------------------------------------------------------------------------
 // Despierta Canning Guests — UPSERT
 // No duplicate guest rows for the same host registration.
-// Match by Persona Invitada + Anfitrion link.
+// Match by name + Anfitrion link.
 // ---------------------------------------------------------------------------
 
 export async function upsertDespiertaGuest(
-  guestPersonId: string,
-  guestFullName: string,
+  firstName: string,
+  lastName: string,
   hostRegId: string,
   prayerRequest?: string,
   invited?: string,
   confirmed?: string
 ): Promise<void> {
-  // Search by Nombre Completo (formula field) then filter client-side
-  // because FIND doesn't work on linked record fields in Airtable
+  // Search by name AND host registration to avoid duplicates
+  const guestFullName = `${firstName} ${lastName}`.trim();
   const safeName = escapeFormulaValue(guestFullName);
+  // Note: This formula assumes Airtable can search linked records
+  // If this doesn't work, we'll need to search all guests with this name
+  // and filter client-side (which is what we do below)
   const formula = `{Nombre Completo} = '${safeName}'`;
-  const candidates = await searchRecords(DESPIERTA_GUESTS_TABLE, formula, 100);
+  const candidates = await searchRecords(DESPIERTA_GUESTS_TABLE, formula, 10);
 
   // Check if any candidate is already linked to this host registration
   const existingRec = candidates.find((rec) => {
@@ -253,7 +242,8 @@ export async function upsertDespiertaGuest(
   });
 
   const guestFields: Record<string, unknown> = {
-    'Persona Invitada': [guestPersonId],
+    Nombre: firstName,
+    Apellido: lastName,
     Anfitrion: [hostRegId],
   };
   if (prayerRequest !== undefined) {

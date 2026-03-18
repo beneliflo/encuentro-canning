@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { enqueue, readQueue, removeFromQueue, updateAttempt } from '@/lib/submission-queue';
 import {
-  upsertPerson,
   upsertDespiertaRegistration,
   upsertDespiertaGuest,
 } from '@/lib/airtable';
@@ -26,39 +25,31 @@ export async function processSubmission(payload: {
 }): Promise<void> {
   const { hostFirstName, hostLastName, hostPhone, role, locationName, guests } = payload;
 
-  // 1. Upsert host in People (match by phone, update missing fields)
-  const hostPersonId = await upsertPerson({
-    firstName: hostFirstName,
-    lastName: hostLastName,
-    phone: hostPhone,
-  });
-
-  // 2. Upsert Despierta Canning registration (one per host)
+  // 1. Upsert Despierta Canning registration (one per host)
   const resolvedLocation =
     role === 'Anfitrión - Casa' ? 'Casa' :
     role === 'Anfitrión - Iglesia' ? 'Iglesia' :
     role === 'Anfitrión - Otro lugar' ? locationName :
     undefined;
 
-  const hostFullName = `${hostFirstName} ${hostLastName}`.trim();
   const hostRegId = await upsertDespiertaRegistration(
-    hostPersonId,
-    hostFullName,
+    hostFirstName,
+    hostLastName,
+    hostPhone,
     role,
     resolvedLocation
   );
 
-  // 3. Upsert each guest (no duplicates)
+  // 2. Upsert each guest (no duplicates)
   for (const guest of guests) {
-    // Guests have no phone/email — upsert by name, with invitedBy link
-    const guestPersonId = await upsertPerson({
-      firstName: guest.firstName,
-      lastName: guest.lastName,
-      invitedByDespierta: [hostPersonId],
-    });
-
-    const guestFullName = `${guest.firstName} ${guest.lastName}`.trim();
-    await upsertDespiertaGuest(guestPersonId, guestFullName, hostRegId, guest.prayerRequest, guest.invited, guest.confirmed);
+    await upsertDespiertaGuest(
+      guest.firstName,
+      guest.lastName,
+      hostRegId,
+      guest.prayerRequest,
+      guest.invited,
+      guest.confirmed
+    );
   }
 }
 
