@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { VIDEO_URLS } from '@/lib/video-urls';
 
 export default function AulaSensorial() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -15,7 +16,7 @@ export default function AulaSensorial() {
         <div className="relative w-full lg:w-2/5 rounded-lg overflow-hidden shadow-2xl text-shadow-none aspect-video shrink-0 order-last lg:order-first" onContextMenu={(e) => e.preventDefault()}>
           <video
             ref={videoRef}
-            src="/videos/Aula%20Sensorial%20VF%20F.mp4"
+            src={VIDEO_URLS.aulaSensorial}
             controls={isPlaying}
             playsInline
             controlsList="nodownload noplaybackrate"

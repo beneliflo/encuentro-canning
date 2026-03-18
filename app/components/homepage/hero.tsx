@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import cn from 'classnames';
+import { VIDEO_URLS } from '@/lib/video-urls';
 
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
@@ -71,7 +72,7 @@ export default function Hero() {
         <ReactPlayer
           ref={playerRef}
           className="hero-player"
-          src="/videos/hero-video.mp4"
+          src={VIDEO_URLS.hero}
           playing
           muted
           loop

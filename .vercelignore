@@ -1,0 +1,7 @@
+# Videos migrados a Vercel Blob - ya no están en public/videos/
+# Los videos ahora se sirven desde CDN (São Paulo, Brazil)
+# Para actualizar videos, usa el script: npx tsx scripts/upload-videos-to-blob.ts
+
+# Excluir videos locales si aún existen (backup)
+public/videos/**/*.mp4
+public/videos/**/*.webm

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import Link from 'next/link';
+import { VIDEO_URLS } from '@/lib/video-urls';
 
 export default function ColegioEncuentro() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -29,8 +30,8 @@ export default function ColegioEncuentro() {
         <div className="relative w-full lg:w-3/5 rounded-lg overflow-hidden shadow-2xl aspect-video shrink-0" onContextMenu={(e) => e.preventDefault()}>
           <video
             ref={videoRef}
-            src="/videos/VF%20F%20PROYECTO%20COLEGIO%20EC.mp4"
-            poster="/images/thumb-VF%20F%20PROYECTO%20COLEGIO%20EC.png"
+            src={VIDEO_URLS.proyectoColegio}
+            poster={VIDEO_URLS.thumbnails.vfProyecto}
             controls={isPlaying}
             playsInline
             controlsList="nodownload noplaybackrate"
@@ -41,7 +42,7 @@ export default function ColegioEncuentro() {
               if (videoRef.current) {
                 videoRef.current.removeAttribute('src');
                 videoRef.current.load();
-                videoRef.current.src = '/videos/VF%20F%20PROYECTO%20COLEGIO%20EC.mp4';
+                videoRef.current.src = VIDEO_URLS.proyectoColegio;
               }
             }}
           />

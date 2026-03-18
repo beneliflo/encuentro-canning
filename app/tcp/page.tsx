@@ -7,6 +7,7 @@ import VideoSection from '../components/tcp/VideoSection'
 import PresaveBanner from '../components/tcp/PresaveBanner'
 import FloatingPresave from '../components/tcp/FloatingPresave'
 import ResumenVideo from '../components/tcp/ResumenVideo'
+import { VIDEO_URLS } from '@/lib/video-urls'
 
 export const metadata: Metadata = {
   title: 'Testigos Con Poder 2026 — Congreso de Evangelismo',
@@ -48,7 +49,7 @@ export default function TCPPage() {
             playsInline
             preload="auto"
           >
-            <source src="/videos/tcp/VIDEO NEW HOME TCP.mp4" type="video/mp4" />
+            <source src={VIDEO_URLS.tcp.videoNewHome} type="video/mp4" />
           </video>
         </div>
       </section>
@@ -176,14 +177,14 @@ export default function TCPPage() {
       {/* Logo animado */}
       <section className="bg-black">
         <video
-          className="w-full"
+          className="w-full h-full object-cover"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
         >
-          <source src="/videos/tcp/section-bottom.mp4" type="video/mp4" />
+          <source src={VIDEO_URLS.tcp.sectionBottom} type="video/mp4" />
         </video>
       </section>
 

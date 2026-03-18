@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { VIDEO_URLS } from '@/lib/video-urls'
 
 export default function VideoSection() {
   const [isClient, setIsClient] = useState(false)
@@ -25,7 +26,7 @@ export default function VideoSection() {
             controls
             preload="auto"
           >
-            <source src="/videos/tcp/FINAL PROMO TCP 1080.mp4" type="video/mp4" />
+            <source src={VIDEO_URLS.tcp.finalPromo} type="video/mp4" />
           </video>
         )}
       </div>

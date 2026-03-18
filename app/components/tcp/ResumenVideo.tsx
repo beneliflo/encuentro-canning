@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import Image from 'next/image'
+import { VIDEO_URLS } from '@/lib/video-urls'
 
 export default function ResumenVideo() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -36,7 +37,7 @@ export default function ResumenVideo() {
           controlsList="nodownload noplaybackrate nofullscreen"
           onEnded={handleEnded}
         >
-          <source src="/videos/tcp/VF RESUMEN TCP 2025.mp4" type="video/mp4" />
+          <source src={VIDEO_URLS.tcp.resumen} type="video/mp4" />
         </video>
 
         {/* Poster image + play button overlay */}
