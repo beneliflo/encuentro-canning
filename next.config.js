@@ -6,6 +6,11 @@ const nextConfig = {
     unoptimized: false
   },
   assetPrefix: isProd ? '' : undefined,
+  
+  // Optimizaciones de build
+  compiler: {
+    removeConsole: isProd ? { exclude: ['error', 'warn'] } : false,
+  },
 }
  
 module.exports = nextConfig
