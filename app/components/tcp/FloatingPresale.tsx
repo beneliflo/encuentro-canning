@@ -3,13 +3,13 @@
 import { useState, useEffect, useRef } from 'react'
 import RegistrationButton from './RegistrationButton'
 
-export default function FloatingPresave() {
+export default function FloatingPresale() {
   const [isVisible, setIsVisible] = useState(false)
   const [dismissed, setDismissed] = useState(false)
   const wasInView = useRef(false)
 
   useEffect(() => {
-    const banner = document.getElementById('presave-banner')
+    const banner = document.getElementById('presale-banner')
     if (!banner) return
 
     const observer = new IntersectionObserver(
@@ -45,7 +45,7 @@ export default function FloatingPresave() {
       </button>
       <RegistrationButton className="group cursor-pointer bg-white rounded-xl shadow-lg px-4 py-3 md:px-8 md:py-6 flex flex-col items-center gap-1.5 md:gap-3 hover:shadow-xl transition-shadow">
         <span className="border-2 border-black px-6 py-1.5 md:px-12 md:py-3 text-base md:text-2xl uppercase font-bold group-hover:bg-black group-hover:text-white transition-colors">
-          Presave
+          Presale
         </span>
         <span className="text-[10px] md:text-base uppercase text-center leading-tight font-medium text-gray-600">
           Obtené acceso anticipado<br />a la venta de entradas

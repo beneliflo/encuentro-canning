@@ -4,8 +4,7 @@ import Link from 'next/link'
 import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
-import PresaveBanner from '../components/tcp/PresaveBanner'
-import FloatingPresave from '../components/tcp/FloatingPresave'
+import PresaleBanner from '../components/tcp/PresaleBanner'
 import ResumenVideo from '../components/tcp/ResumenVideo'
 import { VIDEO_URLS } from '@/lib/video-urls'
 
@@ -28,6 +27,14 @@ export const metadata: Metadata = {
     title: 'Testigos Con Poder 2026 — Congreso de Evangelismo',
     description:
       '3 días de plenarias con oradores internacionales. Congreso de evangelismo en Encuentro Canning, Buenos Aires.',
+    images: [
+      {
+        url: '/images/tcp/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Testigos Con Poder 2026',
+      },
+    ],
   },
 }
 
@@ -35,7 +42,6 @@ export default function TCPPage() {
   return (
     <main className="min-h-screen bg-white font-neue-haas">
       <Navigation />
-      <FloatingPresave />
 
       {/* Hero section with video */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20 flex flex-col">
@@ -54,8 +60,8 @@ export default function TCPPage() {
         </div>
       </section>
 
-      {/* Presave banner */}
-      <PresaveBanner />
+      {/* Presale banner */}
+      <PresaleBanner />
 
       {/* Conferencia imagen */}
       <section>
