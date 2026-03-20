@@ -11,13 +11,16 @@ export const VIDEO_URLS = {
   
   // TCP videos
   tcp: {
-    videoNewHome: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/tcp/VIDEO%20NEW%20HOME%20TCP.mp4',
-    sectionBottom: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/tcp/section-bottom.mp4',
-    finalPromo: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/tcp/FINAL%20PROMO%20TCP%201080.mp4',
-    resumen: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/tcp/VF%20RESUMEN%20TCP%202025.mp4',
-    videoFecha: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/tcp/VIDEO%20FECHA%20TCP.mp4',
-    webLogoRojo: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/tcp/web%20tcp%20logo%20rojo.mp4',
-    webOradores: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/tcp/web%20tcp%20oradores.mp4',
+    videoNewHome: '/videos/tcp/VIDEO NEW HOME TCP.mp4',
+    videoNewHomeWebm: '/videos/tcp/VIDEO NEW HOME TCP.webm',
+    sectionBottom: '/videos/tcp/section-bottom.mp4',
+    sectionBottomWebm: '/videos/tcp/section-bottom.webm',
+    finalPromo: '/videos/tcp/FINAL PROMO TCP 1080.mp4',
+    resumen: '/videos/tcp/VF RESUMEN TCP 2025.mp4',
+    resumenWebm: '/videos/tcp/VF RESUMEN TCP 2025.webm',
+    videoFecha: '/videos/tcp/VIDEO FECHA TCP.mp4',
+    webLogoRojo: '/videos/tcp/web tcp logo rojo.mp4',
+    webOradores: '/videos/tcp/web tcp oradores.mp4',
   },
   
   // Thumbnails (siguen en public/images)

@@ -74,47 +74,47 @@ export default function PresaleBanner() {
     <div 
       ref={bannerRef} 
       id="presale-banner" 
-      className={`${getPositionClasses()} z-50 px-3 md:px-6 lg:px-8 py-2 md:py-4 transition-all duration-300`}
+      className={`${getPositionClasses()} z-50 px-3 md:px-6 lg:px-8 py-2 md:py-4 transition-all duration-300 pointer-events-none`}
     >
-      <div className="max-w-6xl mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-3 py-2 md:px-4 md:py-3 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-6">
+      <div className="max-w-7xl mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-3 py-2 md:px-36 md:py-3 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0 pointer-events-auto">
         {/* Left: PRESALE with arrow */}
-        <div className="flex items-center gap-1.5 md:gap-3 shrink-0">
-          <span className="text-base sm:text-xl md:text-4xl lg:text-5xl font-bold tracking-tight uppercase">Presale</span>
-          <Image src="/images/tcp/arrow-right.png" alt="→" width={48} height={48} className="w-4 h-4 sm:w-6 sm:h-6 md:w-10 md:h-10 lg:w-12 lg:h-12" />
+        <div className="flex items-center gap-1.5 md:gap-5 shrink-0">
+          <span className="text-base sm:text-xl md:text-4xl lg:text-5xl font-semibold uppercase">Presale</span>
+          <Image src="/images/tcp/arrow-right.png" alt="→" width={40} height={40} className="w-3 h-3 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-8 lg:h-8" />
+          {/* Center: Clickable button */}
+          <RegistrationButton className="cursor-pointer border border-black px-2 py-1 md:px-8 md:py-3 text-[10px] sm:text-xs md:text-base uppercase hover:bg-black hover:text-white transition-colors text-center leading-tight">
+            <span className="font-normal">Registrate y llevate un</span>
+            <br />
+            <span className="font-semibold">Descuento exclusivo</span>
+          </RegistrationButton>
         </div>
 
-        {/* Center: Clickable button */}
-        <RegistrationButton className="cursor-pointer border border-black px-2 py-1 md:px-8 md:py-3 text-[10px] sm:text-xs md:text-base uppercase hover:bg-black hover:text-white transition-colors text-center leading-tight">
-          <span className="font-normal">Registrate y llevate un</span>
-          <br />
-          <span className="font-bold">Descuento exclusivo</span>
-        </RegistrationButton>
+        
 
         {/* Right: Countdown */}
-        <div className="flex items-center gap-1 md:gap-3 shrink-0">
-          <div className="flex flex-col items-center">
-            <div className="bg-black text-white text-sm sm:text-xl md:text-3xl lg:text-4xl font-bold px-2 py-1 md:px-4 md:py-3 rounded min-w-[35px] sm:min-w-[50px] md:min-w-[70px] text-center">
+        <div className="flex items-center gap-1 md:gap-3 shrink-0 md:mt-5">
+          <div className="flex flex-col items-center mr-6">
+            <div className="bg-black text-white text-sm sm:text-xl md:text-3xl lg:text-4xl font-semibold font-mono px-2 py-1 md:px-4 md:py-3 rounded min-w-[35px] sm:min-w-[50px] md:min-w-[70px] text-center tabular-nums">
               {timeLeft.days}
             </div>
             <span className="text-[8px] sm:text-[10px] md:text-xs uppercase font-semibold mt-1">Días</span>
           </div>
-          <span className="text-sm sm:text-xl md:text-3xl font-bold">:</span>
           <div className="flex flex-col items-center">
-            <div className="bg-black text-white text-sm sm:text-xl md:text-3xl lg:text-4xl font-bold px-2 py-1 md:px-4 md:py-3 rounded min-w-[35px] sm:min-w-[50px] md:min-w-[70px] text-center">
+            <div className="bg-black text-white text-sm sm:text-xl md:text-3xl lg:text-4xl font-semibold font-mono px-2 py-1 md:px-4 md:py-3 rounded min-w-[35px] sm:min-w-[50px] md:min-w-[70px] text-center tabular-nums">
               {formatNumber(timeLeft.hours)}
             </div>
             <span className="text-[8px] sm:text-[10px] md:text-xs uppercase font-semibold mt-0.5 md:mt-1">Horas</span>
           </div>
-          <span className="text-sm sm:text-xl md:text-3xl font-bold">:</span>
+          <span className="text-sm sm:text-xl md:text-3xl font-semibold self-center -mt-3 md:-mt-4">:</span>
           <div className="flex flex-col items-center">
-            <div className="bg-black text-white text-sm sm:text-xl md:text-3xl lg:text-4xl font-bold px-2 py-1 md:px-4 md:py-3 rounded min-w-[35px] sm:min-w-[50px] md:min-w-[70px] text-center">
+            <div className="bg-black text-white text-sm sm:text-xl md:text-3xl lg:text-4xl font-semibold font-mono px-2 py-1 md:px-4 md:py-3 rounded min-w-[35px] sm:min-w-[50px] md:min-w-[70px] text-center tabular-nums">
               {formatNumber(timeLeft.minutes)}
             </div>
             <span className="text-[8px] sm:text-[10px] md:text-xs uppercase font-semibold mt-0.5 md:mt-1">Minutos</span>
           </div>
-          <span className="text-sm sm:text-xl md:text-3xl font-bold">:</span>
+          <span className="text-sm sm:text-xl md:text-3xl font-semibold self-center -mt-3 md:-mt-4">:</span>
           <div className="flex flex-col items-center">
-            <div className="bg-black text-white text-sm sm:text-xl md:text-3xl lg:text-4xl font-bold px-2 py-1 md:px-4 md:py-3 rounded min-w-[35px] sm:min-w-[50px] md:min-w-[70px] text-center">
+            <div className="bg-black text-white text-sm sm:text-xl md:text-3xl lg:text-4xl font-semibold font-mono px-2 py-1 md:px-4 md:py-3 rounded min-w-[35px] sm:min-w-[50px] md:min-w-[70px] text-center tabular-nums">
               {formatNumber(timeLeft.seconds)}
             </div>
             <span className="text-[8px] sm:text-[10px] md:text-xs uppercase font-semibold mt-0.5 md:mt-1">Segundos</span>
