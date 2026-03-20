@@ -28,6 +28,14 @@ export const metadata: Metadata = {
     title: 'Testigos Con Poder 2026 — Congreso de Evangelismo',
     description:
       '3 días de plenarias con oradores internacionales. Congreso de evangelismo en Encuentro Canning, Buenos Aires.',
+    images: [
+      {
+        url: '/images/tcp/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Testigos Con Poder 2026',
+      },
+    ],
   },
 }
 
