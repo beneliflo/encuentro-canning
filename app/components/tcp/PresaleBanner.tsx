@@ -1,11 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import RegistrationButton from './RegistrationButton'
 
 export default function PresaleBanner() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+  const [scrollState, setScrollState] = useState<'bottom' | 'scrolling' | 'top'>('bottom')
+  const bannerRef = useRef<HTMLDivElement>(null)
+  const triggerPointRef = useRef<number>(0)
 
   useEffect(() => {
     // Target date: Monday March 23, 2026 at 11:59 PM GMT-3 (Buenos Aires time)
@@ -33,11 +36,46 @@ export default function PresaleBanner() {
     return () => clearInterval(interval)
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (bannerRef.current) {
+        const rect = bannerRef.current.getBoundingClientRect()
+        // Si el banner llega al top del viewport, hacerlo sticky
+        if (rect.top <= 0 && scrollState !== 'top') {
+          setScrollState('top')
+          // Guardar la posición donde se hizo sticky
+          triggerPointRef.current = window.scrollY
+        } else if (window.scrollY < triggerPointRef.current && scrollState === 'top') {
+          // Si scrolleamos hacia arriba, volver a bottom
+          setScrollState('bottom')
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [scrollState])
+
   const formatNumber = (num: number) => String(num).padStart(2, '0')
 
+  const getPositionClasses = () => {
+    if (scrollState === 'top') {
+      return 'fixed top-0 left-0 right-0'
+    }
+    return 'absolute -bottom-2 left-0 right-0'
+  }
+
   return (
-    <section id="presale-banner" className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-5xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
+    <div 
+      ref={bannerRef} 
+      id="presale-banner" 
+      className={`${getPositionClasses()} z-50 px-4 md:px-6 lg:px-8 py-4 transition-all duration-300`}
+    >
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg px-4 py-3 md:py-4 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
         {/* Left: PRESALE with arrow */}
         <div className="flex items-center gap-2 md:gap-3 shrink-0">
           <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight uppercase">Presale</span>
@@ -82,6 +120,6 @@ export default function PresaleBanner() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

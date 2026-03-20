@@ -35,7 +35,7 @@ const NavLinks = ({ isMobile, onLinkClick }: NavLinksProps) => {
       <RegistrationButton
         className={`${isMobile ? 'inline-block' : ''} cursor-pointer px-4 py-2 border border-white hover:bg-white hover:text-black transition-colors duration-200 uppercase`}
       >
-        Presale
+        Registrate
       </RegistrationButton>
     </>
   )

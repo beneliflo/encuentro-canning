@@ -54,13 +54,12 @@ export const metadata: Metadata = {
 
 export default function TCPPage() {
   return (
-    <main className="min-h-screen bg-white font-neue-haas">
+    <main className="min-h-screen bg-white font-neue-haas pt-0">
       <Navigation />
 
       {/* Hero section with video */}
-      <section className="relative bg-black pt-14 md:pt-16 lg:pt-20 flex flex-col">
-        {/* Hero container with video and image */}
-        <div className="relative h-[40vh] sm:h-[50vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[300px] overflow-hidden flex flex-col">
+      <section className="relative bg-black pt-14 md:pt-16 lg:pt-20 h-screen">
+        <div className="relative h-full overflow-hidden">
           <video 
             className="absolute inset-0 w-full h-full object-cover"
             autoPlay 
@@ -72,10 +71,10 @@ export default function TCPPage() {
             <source src={VIDEO_URLS.tcp.videoNewHome} type="video/mp4" />
           </video>
         </div>
+        
+        {/* Presale banner - flotante y sticky */}
+        <PresaleBanner />
       </section>
-
-      {/* Presale banner */}
-      <PresaleBanner />
 
       {/* Conferencia imagen */}
       <section>
@@ -277,7 +276,7 @@ const faqs = [
   },
   {
     question: '¿Los menores pagan el mismo precio?',
-    answer: 'Sí, los menores pagan el mismo precio de entrada.'
+    answer: 'Los menores pagan a partir de los 12 años. Sí, pagan el mismo precio de entrada. Tendremos TCP KIDS (más información próximamente).'
   },
   {
     question: '¿Los asientos están asignados?',
