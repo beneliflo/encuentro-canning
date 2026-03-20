@@ -36,8 +36,8 @@ export default function PresaleBanner() {
   const formatNumber = (num: number) => String(num).padStart(2, '0')
 
   return (
-    <section id="presale-banner" className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-5xl mx-auto px-4 py-3 md:py-4 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
+    <section id="presale-banner" className="sticky top-4 z-40 px-4">
+      <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl border border-gray-200 px-4 py-3 md:py-4 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
         {/* Left: PRESALE with arrow */}
         <div className="flex items-center gap-2 md:gap-3 shrink-0">
           <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight uppercase">Presale</span>
