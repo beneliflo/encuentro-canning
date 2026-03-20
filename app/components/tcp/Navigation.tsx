@@ -53,7 +53,7 @@ export default function Navigation() {
   }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-black/80 backdrop-blur-xs border-b border-white/10">
+    <header className="absolute inset-x-0 top-0 z-50 bg-black/80 backdrop-blur-xs border-b border-white/10">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="h-6 md:h-8 lg:h-12">
           <Image
