@@ -4,8 +4,8 @@ import Link from 'next/link'
 import SocialIcons from '../components/SocialIcons'
 import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
-import PresaveBanner from '../components/tcp/PresaveBanner'
-import FloatingPresave from '../components/tcp/FloatingPresave'
+import PresaleBanner from '../components/tcp/PresaleBanner'
+import FloatingPresale from '../components/tcp/FloatingPresale'
 import ResumenVideo from '../components/tcp/ResumenVideo'
 import { VIDEO_URLS } from '@/lib/video-urls'
 
@@ -43,7 +43,7 @@ export default function TCPPage() {
   return (
     <main className="min-h-screen bg-white font-neue-haas">
       <Navigation />
-      <FloatingPresave />
+      <FloatingPresale />
 
       {/* Hero section with video */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20 flex flex-col">
@@ -62,8 +62,8 @@ export default function TCPPage() {
         </div>
       </section>
 
-      {/* Presave banner */}
-      <PresaveBanner />
+      {/* Presale banner */}
+      <PresaleBanner />
 
       {/* Conferencia imagen */}
       <section>
