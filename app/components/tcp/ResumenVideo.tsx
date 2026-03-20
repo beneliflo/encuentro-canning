@@ -27,23 +27,24 @@ export default function ResumenVideo() {
           Esto vivimos en<br />Testigos Con Poder 2025
         </h2>
       </div>
-      <div ref={sectionRef} className="relative">
+      <div ref={sectionRef} className="relative aspect-video">
         <video
           ref={videoRef}
-          className="w-full"
+          className="w-full h-full"
           playsInline
           preload="auto"
           controls={hasStarted}
           controlsList="nodownload noplaybackrate nofullscreen"
           onEnded={handleEnded}
         >
+          <source src={VIDEO_URLS.tcp.resumenWebm} type="video/webm" />
           <source src={VIDEO_URLS.tcp.resumen} type="video/mp4" />
         </video>
 
         {/* Poster image + play button overlay */}
         {!hasStarted && (
           <div
-            className="absolute inset-0 cursor-pointer group"
+            className="absolute inset-0 cursor-pointer group pointer-events-auto"
             onClick={handlePlay}
           >
             <Image
