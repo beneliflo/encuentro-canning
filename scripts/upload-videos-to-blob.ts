@@ -1,6 +1,10 @@
 import { put } from '@vercel/blob';
 import { readdir, readFile } from 'fs/promises';
 import { join } from 'path';
+import { config } from 'dotenv';
+
+// Cargar variables de entorno desde .env.local
+config({ path: '.env.local' });
 
 const BLOB_READ_WRITE_TOKEN = process.env.BLOB_READ_WRITE_TOKEN;
 

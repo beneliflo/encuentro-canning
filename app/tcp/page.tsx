@@ -59,7 +59,7 @@ export default function TCPPage() {
 
       {/* Hero section with video */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20">
-        <div className="relative h-[40vh] sm:h-[50vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[300px] overflow-hidden">
+        <div className="relative h-[40vh] sm:h-[50vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[300px] overflow-hidden bg-black">
           <video 
             className="absolute inset-0 w-full h-full object-cover"
             autoPlay 
@@ -68,12 +68,25 @@ export default function TCPPage() {
             playsInline
             preload="auto"
           >
+            <source src={VIDEO_URLS.tcp.videoNewHomeWebm} type="video/webm" />
             <source src={VIDEO_URLS.tcp.videoNewHome} type="video/mp4" />
           </video>
         </div>
         
         {/* Presale banner - flotante y sticky */}
         <PresaleBanner />
+      </section>
+
+      {/* Oradores */}
+      <section>
+        <Image
+          width={1920}
+          height={1080}
+          src="/images/tcp/TCP2026_ORADORES.jpg"
+          alt="Oradores TCP 2026"
+          className="w-full h-auto"
+          priority
+        />
       </section>
 
       {/* Conferencia imagen */}
@@ -84,7 +97,6 @@ export default function TCPPage() {
           src="/images/tcp/section-conferencia.jpg"
           alt="Conferencia de Evangelismo Sobrenatural"
           className="w-full h-auto"
-          priority
         />
       </section>
 
@@ -203,6 +215,7 @@ export default function TCPPage() {
           playsInline
           preload="auto"
         >
+          <source src={VIDEO_URLS.tcp.sectionBottomWebm} type="video/webm" />
           <source src={VIDEO_URLS.tcp.sectionBottom} type="video/mp4" />
         </video>
       </section>
