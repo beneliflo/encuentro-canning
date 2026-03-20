@@ -3,5 +3,6 @@
 # Para actualizar videos, usa el script: npx tsx scripts/upload-videos-to-blob.ts
 
 # Excluir videos locales si aún existen (backup)
-public/videos/**/*.mp4
-public/videos/**/*.webm
+# TEMPORALMENTE DESHABILITADO - Blob storage suspendido
+# public/videos/**/*.mp4
+# public/videos/**/*.webm
