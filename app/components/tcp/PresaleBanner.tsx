@@ -8,8 +8,8 @@ export default function PresaleBanner() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
-    // Target date: March 24, 2026 at 11:59 PM GMT-3
-    const targetDate = new Date('2026-03-24T23:59:59-03:00')
+    // Target date: Monday March 23, 2026 at 11:59 PM GMT-3 (Buenos Aires time)
+    const targetDate = new Date('2026-03-23T23:59:59-03:00')
 
     const updateCountdown = () => {
       const now = new Date()
