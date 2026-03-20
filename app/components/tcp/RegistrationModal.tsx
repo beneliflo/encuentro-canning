@@ -72,17 +72,20 @@ export default function RegistrationModal({ isOpen, onClose }: RegistrationModal
         {isSuccess ? (
           <div className="text-center py-8">
             <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-tight mb-6">
-              ¡Gracias por registrarte!
+              ¡Gracias por registrarte a Testigos Con Poder 2026!
             </h2>
-            <p className="text-base md:text-lg leading-relaxed">
-              ¡Gracias por registrarte a Testigos Con Poder 2026! Pronto te enviaremos más información.
+            <p className="text-base md:text-lg leading-relaxed mb-8">
+              Hemos recibido tus datos, te enviaremos más información por email. ¡Dios te bendiga!
             </p>
-            <button
+            <a
+              href="https://www.instagram.com/emuba_escuela/"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={handleClose}
-              className="mt-8 border-2 border-black px-10 py-3 text-sm uppercase tracking-widest font-semibold hover:bg-black hover:text-white transition-colors cursor-pointer"
+              className="inline-block border-2 border-black px-10 py-3 text-sm uppercase tracking-widest font-semibold hover:bg-black hover:text-white transition-colors cursor-pointer"
             >
-              Cerrar
-            </button>
+              Seguinos en Instagram
+            </a>
           </div>
         ) : (
           <>
@@ -90,7 +93,7 @@ export default function RegistrationModal({ isOpen, onClose }: RegistrationModal
               Registrate
             </h2>
             <p className="text-sm md:text-base text-gray-600 mb-8">
-              Obtené acceso anticipado a la venta de entradas
+              Registrate y llevate un descuento exclusivo
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
