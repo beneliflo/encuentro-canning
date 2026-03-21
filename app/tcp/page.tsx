@@ -6,6 +6,7 @@ import Navigation from '../components/tcp/Navigation'
 import VideoSection from '../components/tcp/VideoSection'
 import PresaleBanner from '../components/tcp/PresaleBanner'
 import ResumenVideo from '../components/tcp/ResumenVideo'
+import SpeakersSection from '../components/tcp/SpeakersSection'
 import { VIDEO_URLS } from '@/lib/video-urls'
 
 export const metadata: Metadata = {
@@ -59,7 +60,7 @@ export default function TCPPage() {
 
       {/* Hero section with video */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20">
-        <div className="relative h-[40vh] sm:h-[50vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[300px] overflow-hidden bg-black">
+        <div className="relative h-[60vh] sm:h-[65vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[400px] overflow-hidden bg-black">
           <video 
             className="absolute inset-0 w-full h-full object-cover"
             autoPlay 
@@ -78,16 +79,19 @@ export default function TCPPage() {
       </section>
 
       {/* Oradores */}
-      <section>
+      <section className="relative h-[45vh] md:h-auto overflow-hidden">
         <Image
           width={1920}
           height={1080}
           src="/images/tcp/TCP2026_ORADORES.jpg"
           alt="Oradores TCP 2026"
-          className="w-full h-auto"
+          className="w-full h-full md:h-auto object-cover md:object-contain"
           priority
         />
       </section>
+
+      {/* Speakers Bios */}
+      <SpeakersSection />
 
       {/* Conferencia imagen */}
       <section>
@@ -137,22 +141,22 @@ export default function TCPPage() {
 
       {/* Ubicación — Mobile */}
       <section className="scroll-mt-20 md:hidden">
-        <div className="relative">
+        <div className="relative h-[35vh] overflow-hidden">
           <Image
             width={800}
             height={600}
             src="/images/tcp/section-map-1.png"
             alt="Ubicación"
-            className="w-full h-auto"
+            className="w-full h-full object-cover object-left"
           />
           <div className="absolute inset-0 flex items-center">
-            <div className="px-6">
+            <div className="px-8 py-10">
               <div className="text-white">
-                <h3 className="inline-block text-5xl font-semibold uppercase mb-2 border-b-2 border-white pb-1">Ubicación</h3>
-                <p className="text-2xl font-normal uppercase leading-tight mb-2">
+                <h3 className="inline-block text-4xl font-semibold uppercase mb-3 border-b-2 border-white pb-1">Ubicación</h3>
+                <p className="text-2xl font-normal uppercase leading-tight mb-3">
                   Iglesia Encuentro<br />Canning
                 </p>
-                <p className="text-base opacity-90 mb-5">
+                <p className="text-base opacity-90 mb-6">
                   Hipócrates 3320, Canning
                 </p>
                 <a
@@ -206,7 +210,7 @@ export default function TCPPage() {
       </section>
 
       {/* Logo animado */}
-      <section className="bg-black">
+      <section className="bg-black h-[40vh] md:h-auto overflow-hidden">
         <video
           className="w-full h-full object-cover"
           autoPlay
@@ -289,7 +293,7 @@ const faqs = [
   },
   {
     question: '¿Los menores pagan el mismo precio?',
-    answer: 'Los menores pagan a partir de los 12 años. Sí, pagan el mismo precio de entrada. Tendremos TCP KIDS (más información próximamente).'
+    answer: 'Los menores pagan a partir de los 12 años. Tendremos TCP KIDS (más información próximamente).'
   },
   {
     question: '¿Los asientos están asignados?',
