@@ -1,13 +1,12 @@
-// Video URLs - Migrados a Vercel Blob (São Paulo, Brazil)
-// Todos los videos están en CDN global para mejor performance
+// Video URLs - Servidos desde public/videos/
 
 export const VIDEO_URLS = {
   // Homepage videos
-  hero: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/hero-video.mp4',
-  aulaSensorial: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/Aula%20Sensorial%20VF%20F.mp4',
-  aulaSensorialWebm: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/Aula%20Sensorial%20VF%20F.webm',
-  proyectoColegio: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/VF%20F%20PROYECTO%20COLEGIO%20EC.mp4',
-  proyectoColegioWebm: 'https://vagzbxgwa0l1xgj2.public.blob.vercel-storage.com/VF%20F%20PROYECTO%20COLEGIO%20EC.webm',
+  hero: '/hero-video.mp4',
+  aulaSensorial: '/videos/Aula Sensorial VF F.mp4',
+  aulaSensorialWebm: '/videos/Aula Sensorial VF F.webm',
+  proyectoColegio: '/videos/VF F PROYECTO COLEGIO EC.mp4',
+  proyectoColegioWebm: '/videos/VF F PROYECTO COLEGIO EC.webm',
   
   // TCP videos
   tcp: {
