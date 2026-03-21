@@ -60,7 +60,7 @@ export default function TCPPage() {
 
       {/* Hero section with video */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20">
-        <div className="relative h-[40vh] sm:h-[50vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[300px] overflow-hidden bg-black">
+        <div className="relative h-[60vh] sm:h-[65vh] md:h-[70vh] lg:h-[calc(100vh-5rem)] min-h-[400px] overflow-hidden bg-black">
           <video 
             className="absolute inset-0 w-full h-full object-cover"
             autoPlay 
@@ -79,13 +79,13 @@ export default function TCPPage() {
       </section>
 
       {/* Oradores */}
-      <section>
+      <section className="relative h-[45vh] md:h-auto overflow-hidden">
         <Image
           width={1920}
           height={1080}
           src="/images/tcp/TCP2026_ORADORES.jpg"
           alt="Oradores TCP 2026"
-          className="w-full h-auto"
+          className="w-full h-full md:h-auto object-cover md:object-contain"
           priority
         />
       </section>
@@ -141,29 +141,29 @@ export default function TCPPage() {
 
       {/* Ubicación — Mobile */}
       <section className="scroll-mt-20 md:hidden">
-        <div className="relative">
+        <div className="relative h-[35vh] overflow-hidden">
           <Image
             width={800}
             height={600}
             src="/images/tcp/section-map-1.png"
             alt="Ubicación"
-            className="w-full h-auto"
+            className="w-full h-full object-cover object-left"
           />
           <div className="absolute inset-0 flex items-center">
-            <div className="px-6 py-8">
+            <div className="px-8 py-10">
               <div className="text-white">
-                <h3 className="inline-block text-3xl font-semibold uppercase mb-2 border-b-2 border-white pb-1">Ubicación</h3>
-                <p className="text-xl font-normal uppercase leading-tight mb-2">
+                <h3 className="inline-block text-4xl font-semibold uppercase mb-3 border-b-2 border-white pb-1">Ubicación</h3>
+                <p className="text-2xl font-normal uppercase leading-tight mb-3">
                   Iglesia Encuentro<br />Canning
                 </p>
-                <p className="text-sm opacity-90 mb-4">
+                <p className="text-base opacity-90 mb-6">
                   Hipócrates 3320, Canning
                 </p>
                 <a
                   href="https://maps.app.goo.gl/mX1XBLuHT1jcX4nn8"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block border-2 border-white px-6 py-2 text-xs uppercase font-semibold hover:bg-white hover:text-black transition-colors cursor-pointer"
+                  className="inline-block border-2 border-white px-8 py-2.5 text-sm uppercase font-semibold hover:bg-white hover:text-black transition-colors cursor-pointer"
                 >
                   Cómo llegar
                 </a>
@@ -210,7 +210,7 @@ export default function TCPPage() {
       </section>
 
       {/* Logo animado */}
-      <section className="bg-black">
+      <section className="bg-black h-[40vh] md:h-auto overflow-hidden">
         <video
           className="w-full h-full object-cover"
           autoPlay
