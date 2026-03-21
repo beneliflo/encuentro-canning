@@ -80,7 +80,7 @@ export default function PresaleBanner() {
         {/* Left: PRESALE with arrow */}
         <div className="flex items-center gap-1.5 md:gap-5 shrink-0">
           <span className="text-base sm:text-xl md:text-4xl lg:text-5xl font-semibold uppercase">Presale</span>
-          <Image src="/images/tcp/arrow-right.png" alt="→" width={40} height={40} className="w-3 h-3 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-8 lg:h-8" />
+          <Image src="/images/tcp/arrow-right.png" alt="→" width={88} height={66} className="w-4 h-3 sm:w-8 sm:h-6 md:w-11 md:h-8 lg:w-11 lg:h-8" />
           {/* Center: Clickable button */}
           <RegistrationButton className="cursor-pointer border border-black px-2 py-1 md:px-8 md:py-3 text-[10px] sm:text-xs md:text-base uppercase hover:bg-black hover:text-white transition-colors text-center leading-tight">
             <span className="font-normal">Registrate y llevate un</span>
