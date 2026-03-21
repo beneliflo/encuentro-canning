@@ -22,8 +22,8 @@ export default function ResumenVideo() {
 
   return (
     <section id="tcp2025" className="bg-white scroll-mt-20">
-      <div className="py-12 md:py-20 text-center">
-        <h2 className="text-4xl md:text-7xl font-bold uppercase leading-tight">
+      <div className="py-8 md:py-20 text-center">
+        <h2 className="text-2xl md:text-7xl font-bold uppercase leading-tight">
           Esto vivimos en<br />Testigos Con Poder 2025
         </h2>
       </div>
