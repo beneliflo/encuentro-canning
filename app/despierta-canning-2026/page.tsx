@@ -351,7 +351,7 @@ export default function DespiertaCanning2026() {
                 value={hostPhone}
                 onChange={(e) => setHostPhone(e.target.value)}
                 className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
-                placeholder="Ej: 11 2345-6789"
+                placeholder="Ej: 1123456789"
               />
             </div>
 
@@ -557,7 +557,7 @@ export default function DespiertaCanning2026() {
                 }}
                 disabled={lookupStatus === 'loading'}
                 className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition disabled:opacity-50"
-                placeholder="Ej: Benjamin"
+                placeholder="Tu nombre"
               />
             </div>
             <div>
@@ -579,7 +579,7 @@ export default function DespiertaCanning2026() {
                   }}
                   disabled={lookupStatus === 'loading'}
                   className="flex-1 rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition disabled:opacity-50"
-                  placeholder="Ej: 11 2345-6789"
+                  placeholder="Ej: 1123456789"
                 />
                 <button
                   type="button"
