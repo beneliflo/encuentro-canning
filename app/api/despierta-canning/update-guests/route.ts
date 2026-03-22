@@ -41,6 +41,41 @@ async function updateRecord(
   return data as AirtableRecord;
 }
 
+async function batchUpdateRecords(
+  table: string,
+  records: Array<{ id: string; fields: Record<string, unknown> }>
+): Promise<AirtableRecord[]> {
+  // Airtable allows max 10 records per batch
+  const batches: Array<{ id: string; fields: Record<string, unknown> }[]> = [];
+  for (let i = 0; i < records.length; i += 10) {
+    batches.push(records.slice(i, i + 10));
+  }
+
+  const allUpdated: AirtableRecord[] = [];
+  for (const batch of batches) {
+    const url = `${BASE_URL}/${encodeURIComponent(table)}`;
+    
+    const res = await fetch(url, {
+      method: 'PATCH',
+      headers,
+      body: JSON.stringify({ records: batch }),
+    });
+
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(
+        `Airtable batch update ${table} failed: ${res.status} – ${body}`
+      );
+    }
+    
+    const data = await res.json();
+    const updated = (data as { records?: AirtableRecord[] }).records ?? [];
+    allUpdated.push(...updated);
+  }
+  
+  return allUpdated;
+}
+
 export async function POST(request: NextRequest) {
   try {
     if (!AIRTABLE_TOKEN || !AIRTABLE_BASE_ID) {
@@ -69,8 +104,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Update each guest record
-    const updatePromises = guests.map(guest => {
+    // Prepare batch update records
+    const recordsToUpdate = guests.map(guest => {
       const fields: Record<string, unknown> = {
         Nombre: guest.firstName.trim(),
         Apellido: guest.lastName.trim(),
@@ -90,10 +125,11 @@ export async function POST(request: NextRequest) {
         fields['¿confirmado?'] = guest.confirmed;
       }
       
-      return updateRecord(DESPIERTA_GUESTS_TABLE, guest.id, fields);
+      return { id: guest.id, fields };
     });
 
-    await Promise.all(updatePromises);
+    // Batch update all guests in optimized operation
+    await batchUpdateRecords(DESPIERTA_GUESTS_TABLE, recordsToUpdate);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
