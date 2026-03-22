@@ -74,10 +74,21 @@ export async function POST(request: NextRequest) {
       const fields: Record<string, unknown> = {
         Nombre: guest.firstName.trim(),
         Apellido: guest.lastName.trim(),
-        'Motivo de oracion': guest.prayerRequest.trim(),
-        '¿invitado?': guest.invited,
-        '¿confirmado?': guest.confirmed,
       };
+      
+      // Only include optional fields if they have valid values
+      if (guest.prayerRequest && guest.prayerRequest.trim()) {
+        fields['Motivo de oracion'] = guest.prayerRequest.trim();
+      }
+      
+      // Only update invited/confirmed if they have valid values (not empty or "Seleccionar")
+      if (guest.invited && guest.invited !== '' && guest.invited !== 'Seleccionar') {
+        fields['¿invitado?'] = guest.invited;
+      }
+      
+      if (guest.confirmed && guest.confirmed !== '' && guest.confirmed !== 'Seleccionar') {
+        fields['¿confirmado?'] = guest.confirmed;
+      }
       
       return updateRecord(DESPIERTA_GUESTS_TABLE, guest.id, fields);
     });
