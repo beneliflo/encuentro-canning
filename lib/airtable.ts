@@ -220,10 +220,10 @@ export async function upsertDespiertaRegistration(
   role: string,
   locationName?: string
 ): Promise<string> {
-  // Search by phone normalized (formula field in Airtable)
+  // Search by last 4 digits of phone to avoid duplicates from different prefixes (011 vs 11)
   const normalized = normalizePhone(phone);
-  const safePhone = escapeFormulaValue(normalized);
-  const formula = `{Telefono Normalizado} = '${safePhone}'`;
+  const last4 = normalized.slice(-4);
+  const formula = `RIGHT({Telefono Normalizado}, 4) = '${last4}'`;
   const existing = await searchRecords(DESPIERTA_TABLE, formula, 10);
 
   // Normalize input name for comparison
