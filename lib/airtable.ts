@@ -31,6 +31,15 @@ export function normalizePhone(phone: string): string {
   return phone.replace(/\D/g, '');
 }
 
+export function normalizeName(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize('NFD') // Decompose accented characters
+    .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+    .replace(/\s+/g, ' ') // Normalize whitespace
+    .trim();
+}
+
 async function airtableFetch(
   table: string,
   method: string,
@@ -211,11 +220,28 @@ export async function upsertDespiertaRegistration(
   role: string,
   locationName?: string
 ): Promise<string> {
-  // Single search by phone normalized (formula field in Airtable)
+  // Search by last 4 digits of phone to avoid duplicates from different prefixes (011 vs 11)
   const normalized = normalizePhone(phone);
-  const safePhone = escapeFormulaValue(normalized);
-  const formula = `{Telefono Normalizado} = '${safePhone}'`;
-  const existing = await searchRecords(DESPIERTA_TABLE, formula, 1);
+  const last4 = normalized.slice(-4);
+  const formula = `RIGHT({Telefono Normalizado}, 4) = '${last4}'`;
+  const existing = await searchRecords(DESPIERTA_TABLE, formula, 10);
+
+  // Normalize input name for comparison
+  const normalizedInputName = normalizeName(`${firstName} ${lastName}`);
+
+  // Check if any existing record has the same normalized name
+  const matchingRecord = existing.find(rec => {
+    const existingFirstName = (rec.fields['Nombre'] as string) || '';
+    const existingLastName = (rec.fields['Apellido'] as string) || '';
+    const existingFullName = (rec.fields['Anfitrion'] as string) || '';
+    
+    // Try both Nombre/Apellido and Anfitrion field
+    const normalizedExisting1 = normalizeName(`${existingFirstName} ${existingLastName}`);
+    const normalizedExisting2 = normalizeName(existingFullName);
+    
+    return normalizedExisting1 === normalizedInputName || 
+           normalizedExisting2 === normalizedInputName;
+  });
 
   const fields: Record<string, unknown> = {
     Nombre: firstName,
@@ -225,8 +251,15 @@ export async function upsertDespiertaRegistration(
   };
   if (locationName) fields['Lugar de Encuentro'] = locationName;
 
+  if (matchingRecord) {
+    // Update existing registration with matching name
+    await updateRecord(DESPIERTA_TABLE, matchingRecord.id, fields);
+    return matchingRecord.id;
+  }
+
+  // If phone exists but name doesn't match, still update the first one
+  // (same person, just fixing typo in name)
   if (existing.length > 0) {
-    // Update existing registration
     await updateRecord(DESPIERTA_TABLE, existing[0].id, fields);
     return existing[0].id;
   }
@@ -252,19 +285,19 @@ export async function upsertDespiertaGuest(
   invited?: string,
   confirmed?: string
 ): Promise<void> {
-  // Search by name AND host registration to avoid duplicates
-  const guestFullName = `${firstName} ${lastName}`.trim();
-  const safeName = escapeFormulaValue(guestFullName);
-  // Note: This formula assumes Airtable can search linked records
-  // If this doesn't work, we'll need to search all guests with this name
-  // and filter client-side (which is what we do below)
-  const formula = `{Nombre Completo} = '${safeName}'`;
-  const candidates = await searchRecords(DESPIERTA_GUESTS_TABLE, formula, 10);
+  // Normalize name for comparison to avoid duplicates from typos/accents
+  const normalizedInput = normalizeName(`${firstName} ${lastName}`);
+  
+  // Get all guests for this host to check for duplicates
+  const hostGuestsFormula = `FIND('${hostRegId}', ARRAYJOIN({Anfitrion}, ','))`;
+  const candidates = await searchRecords(DESPIERTA_GUESTS_TABLE, hostGuestsFormula, 100);
 
-  // Check if any candidate is already linked to this host registration
+  // Check if any candidate has the same normalized name
   const existingRec = candidates.find((rec) => {
-    const anfitrion = rec.fields['Anfitrion'] as string[] | undefined;
-    return anfitrion?.includes(hostRegId);
+    const recFirstName = (rec.fields['Nombre'] as string) || '';
+    const recLastName = (rec.fields['Apellido'] as string) || '';
+    const normalizedExisting = normalizeName(`${recFirstName} ${recLastName}`);
+    return normalizedExisting === normalizedInput;
   });
 
   const guestFields: Record<string, unknown> = {
@@ -306,32 +339,18 @@ export async function batchUpsertDespiertaGuests(
 ): Promise<void> {
   if (guests.length === 0) return;
 
-  // Build all guest names for a single search query
-  const guestNames = guests.map(g => `${g.firstName} ${g.lastName}`.trim());
-  const uniqueNames = [...new Set(guestNames)];
-  
-  // Search for existing guests with any of these names
-  const nameConditions = uniqueNames.map(name => 
-    `{Nombre Completo} = '${escapeFormulaValue(name)}'`
-  );
-  const formula = nameConditions.length === 1 
-    ? nameConditions[0] 
-    : `OR(${nameConditions.join(', ')})`;
-  
-  const existingGuests = await searchRecords(DESPIERTA_GUESTS_TABLE, formula, 100);
-  
-  // Filter existing guests that are already linked to this host
-  const existingForHost = existingGuests.filter((rec) => {
-    const anfitrion = rec.fields['Anfitrion'] as string[] | undefined;
-    return anfitrion?.includes(hostRegId);
-  });
+  // Get all existing guests for this host
+  const hostGuestsFormula = `FIND('${hostRegId}', ARRAYJOIN({Anfitrion}, ','))`;
+  const existingForHost = await searchRecords(DESPIERTA_GUESTS_TABLE, hostGuestsFormula, 100);
 
-  // Create a map of existing guests by name for quick lookup
+  // Create a map of existing guests by normalized name for quick lookup
   const existingMap = new Map<string, AirtableRecord>();
   existingForHost.forEach(rec => {
-    const nombreCompleto = rec.fields['Nombre Completo'] as string;
-    if (nombreCompleto) {
-      existingMap.set(nombreCompleto, rec);
+    const recFirstName = (rec.fields['Nombre'] as string) || '';
+    const recLastName = (rec.fields['Apellido'] as string) || '';
+    const normalizedName = normalizeName(`${recFirstName} ${recLastName}`);
+    if (normalizedName) {
+      existingMap.set(normalizedName, rec);
     }
   });
 
@@ -340,7 +359,7 @@ export async function batchUpsertDespiertaGuests(
   const toCreate: Array<{ fields: Record<string, unknown> }> = [];
 
   guests.forEach(guest => {
-    const guestFullName = `${guest.firstName} ${guest.lastName}`.trim();
+    const normalizedInput = normalizeName(`${guest.firstName} ${guest.lastName}`);
     const guestFields: Record<string, unknown> = {
       Nombre: guest.firstName,
       Apellido: guest.lastName,
@@ -356,7 +375,7 @@ export async function batchUpsertDespiertaGuests(
       guestFields['¿confirmado?'] = guest.confirmed || '';
     }
 
-    const existing = existingMap.get(guestFullName);
+    const existing = existingMap.get(normalizedInput);
     if (existing) {
       toUpdate.push({ id: existing.id, fields: guestFields });
     } else {

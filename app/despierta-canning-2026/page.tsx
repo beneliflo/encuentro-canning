@@ -11,8 +11,19 @@ const ROLES = [
 ];
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
+type FormMode = 'register' | 'update';
+
+interface LoadedGuest {
+  id: string;
+  firstName: string;
+  lastName: string;
+  prayerRequest: string;
+  invited: string;
+  confirmed: string;
+}
 
 export default function DespiertaCanning2026() {
+  const [formMode, setFormMode] = useState<FormMode>('register');
   const [hostFirstName, setHostFirstName] = useState('');
   const [hostLastName, setHostLastName] = useState('');
   const [hostPhone, setHostPhone] = useState('');
@@ -23,6 +34,14 @@ export default function DespiertaCanning2026() {
   );
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  
+  // Update mode specific states
+  const [updatePhone, setUpdatePhone] = useState('');
+  const [updateHostName, setUpdateHostName] = useState('');
+  const [loadedGuests, setLoadedGuests] = useState<LoadedGuest[]>([]);
+  const [hostInfo, setHostInfo] = useState<{ firstName: string; lastName: string } | null>(null);
+  const [lookupStatus, setLookupStatus] = useState<'idle' | 'loading' | 'found' | 'not-found'>('idle');
+  const [lookupMsg, setLookupMsg] = useState('');
 
   const resetForm = useCallback(() => {
     setHostFirstName('');
@@ -33,7 +52,65 @@ export default function DespiertaCanning2026() {
     setGuests(Array.from({ length: 10 }, () => ({ firstName: '', lastName: '', prayerRequest: '', invited: '', confirmed: '' })));
     setStatus('idle');
     setErrorMsg('');
+    setUpdatePhone('');
+    setUpdateHostName('');
+    setLoadedGuests([]);
+    setHostInfo(null);
+    setLookupStatus('idle');
+    setLookupMsg('');
   }, []);
+
+  const handleModeChange = (mode: FormMode) => {
+    setFormMode(mode);
+    resetForm();
+  };
+
+  const handlePhoneLookup = async () => {
+    if (!updatePhone.trim() || !updateHostName.trim()) return;
+
+    setLookupStatus('loading');
+    setLookupMsg('');
+    setLoadedGuests([]);
+    setHostInfo(null);
+
+    try {
+      const res = await fetch(`/api/despierta-canning/lookup?phone=${encodeURIComponent(updatePhone)}`);
+      const data = await res.json();
+
+      if (!res.ok) {
+        setLookupMsg(data.error || 'Error al buscar los datos.');
+        setLookupStatus('not-found');
+        return;
+      }
+
+      if (!data.found) {
+        setLookupMsg(data.message || 'No se encontraron invitados registrados.');
+        setLookupStatus('not-found');
+        return;
+      }
+
+      // Validate host name matches (case insensitive, partial match)
+      const hostFullName = `${data.host.firstName} ${data.host.lastName}`.toLowerCase();
+      const inputName = updateHostName.toLowerCase().trim();
+      
+      if (!hostFullName.includes(inputName) && !inputName.includes(hostFullName.split(' ')[0])) {
+        setLookupMsg('El nombre no coincide con el anfitrión registrado con este teléfono.');
+        setLookupStatus('not-found');
+        return;
+      }
+
+      setHostInfo(data.host);
+      setLoadedGuests(data.guests);
+      setLookupStatus('found');
+    } catch {
+      setLookupMsg('Error de conexión. Intentá de nuevo más tarde.');
+      setLookupStatus('not-found');
+    }
+  };
+
+  const updateLoadedGuest = (index: number, field: keyof LoadedGuest, value: string) => {
+    setLoadedGuests((prev) => prev.map((g, i) => (i === index ? { ...g, [field]: value } : g)));
+  };
 
   useEffect(() => {
     if (status !== 'success') return;
@@ -83,6 +160,41 @@ export default function DespiertaCanning2026() {
 
       if (!res.ok) {
         setErrorMsg(data.error || 'Error al enviar el formulario.');
+        setStatus('error');
+        return;
+      }
+
+      setStatus('success');
+    } catch {
+      setErrorMsg('Error de conexión. Intentá de nuevo más tarde.');
+      setStatus('error');
+    }
+  };
+
+  const handleUpdateSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    setErrorMsg('');
+
+    if (loadedGuests.length === 0) {
+      setErrorMsg('No hay invitados para actualizar.');
+      setStatus('error');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/despierta-canning/update-guests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          guests: loadedGuests,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error || 'Error al actualizar los invitados.');
         setStatus('error');
         return;
       }
@@ -147,18 +259,46 @@ export default function DespiertaCanning2026() {
 
         {/* Right column: form */}
         <div>
+          {/* Mode selector */}
+          <div className="mb-6">
+            <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
+              <button
+                type="button"
+                onClick={() => handleModeChange('register')}
+                className={`flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition cursor-pointer ${
+                  formMode === 'register'
+                    ? 'bg-white text-dark shadow-sm'
+                    : 'text-dark/60 hover:text-dark'
+                }`}
+              >
+                Registrar nuevos invitados
+              </button>
+              <button
+                type="button"
+                onClick={() => handleModeChange('update')}
+                className={`flex-1 px-4 py-2.5 text-sm font-medium rounded-md transition cursor-pointer ${
+                  formMode === 'update'
+                    ? 'bg-white text-dark shadow-sm'
+                    : 'text-dark/60 hover:text-dark'
+                }`}
+              >
+                Actualizar estado de invitación
+              </button>
+            </div>
+          </div>
+
           <h2 className="text-xl font-semibold text-dark font-neue-haas mb-6">
-            Registro de anfitrión
+            {formMode === 'register' ? 'Registro de anfitrión' : 'Actualizar invitados'}
           </h2>
 
         {status === 'success' ? (
           <div className="bg-white rounded-2xl shadow-lg p-10 text-center">
             <div className="text-5xl mb-4">👍</div>
             <h3 className="text-2xl font-bold text-dark mb-3 font-neue-haas">
-              ¡Registro exitoso!
+              {formMode === 'register' ? '¡Registro exitoso!' : '¡Actualización exitosa!'}
             </h3>
           </div>
-        ) : (
+        ) : formMode === 'register' ? (
         <form
           onSubmit={handleSubmit}
           className="bg-white rounded-2xl shadow-lg p-6 md:p-8 space-y-6"
@@ -211,7 +351,7 @@ export default function DespiertaCanning2026() {
                 value={hostPhone}
                 onChange={(e) => setHostPhone(e.target.value)}
                 className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
-                placeholder="Ej: 11 2345-6789"
+                placeholder="Ej: 1123456789"
               />
             </div>
 
@@ -385,6 +525,195 @@ export default function DespiertaCanning2026() {
           >
             {status === 'submitting' ? 'Enviando...' : 'Registrarse'}
           </button>
+        </form>
+        ) : (
+        <form
+          onSubmit={handleUpdateSubmit}
+          className="bg-white rounded-2xl shadow-lg p-6 md:p-8 space-y-6"
+        >
+          {/* Phone lookup */}
+          <fieldset className="space-y-4">
+            <legend className="text-lg font-semibold text-dark font-neue-haas">
+              Buscar mis invitados
+            </legend>
+            <p className="text-xs text-dark/50 leading-relaxed">
+              Ingresá tu nombre y número de teléfono para cargar tus invitados registrados.
+            </p>
+            <div>
+              <label htmlFor="updateHostName" className="block text-sm font-medium text-dark/80 mb-1">
+                Tu nombre <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="updateHostName"
+                type="text"
+                required
+                value={updateHostName}
+                onChange={(e) => setUpdateHostName(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handlePhoneLookup();
+                  }
+                }}
+                disabled={lookupStatus === 'loading'}
+                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition disabled:opacity-50"
+                placeholder="Tu nombre"
+              />
+            </div>
+            <div>
+              <label htmlFor="updatePhone" className="block text-sm font-medium text-dark/80 mb-1">
+                Teléfono <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-2">
+                <input
+                  id="updatePhone"
+                  type="tel"
+                  required
+                  value={updatePhone}
+                  onChange={(e) => setUpdatePhone(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      handlePhoneLookup();
+                    }
+                  }}
+                  disabled={lookupStatus === 'loading'}
+                  className="flex-1 rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition disabled:opacity-50"
+                  placeholder="Ej: 1123456789"
+                />
+                <button
+                  type="button"
+                  onClick={handlePhoneLookup}
+                  disabled={lookupStatus === 'loading' || !updatePhone.trim() || !updateHostName.trim()}
+                  className="px-6 py-2.5 rounded-lg bg-[#015F60] text-white text-sm font-medium hover:bg-[#015F60]/90 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
+                >
+                  {lookupStatus === 'loading' ? 'Buscando...' : 'Buscar'}
+                </button>
+              </div>
+            </div>
+
+            {lookupStatus === 'loading' && (
+              <div className="text-sm text-dark/60">
+                Buscando invitados...
+              </div>
+            )}
+
+            {lookupStatus === 'not-found' && lookupMsg && (
+              <div className="rounded-lg bg-yellow-50 border border-yellow-200 px-4 py-3 text-sm text-yellow-800">
+                {lookupMsg}
+                <p className="mt-2 text-xs">
+                  Si no tenés invitados registrados, usá la opción <strong>"Registrar nuevos invitados"</strong> arriba.
+                </p>
+              </div>
+            )}
+
+            {lookupStatus === 'found' && hostInfo && (
+              <div className="rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800">
+                <strong>Anfitrión:</strong> {hostInfo.firstName} {hostInfo.lastName}
+              </div>
+            )}
+          </fieldset>
+
+          {loadedGuests.length > 0 && (
+            <>
+              <hr className="border-gray-200" />
+
+              {/* Loaded guests */}
+              <fieldset className="space-y-4">
+                <legend className="text-lg font-semibold text-dark font-neue-haas">
+                  Tus invitados ({loadedGuests.length})
+                </legend>
+                <p className="text-xs text-dark/50 leading-relaxed">
+                  Actualizá la información de tus invitados a continuación.
+                </p>
+                <div className="space-y-4">
+                  {loadedGuests.map((guest, index) => (
+                    <div key={guest.id} className="p-4 bg-gray-50 rounded-lg space-y-3">
+                      <div className="flex items-start gap-2">
+                        <span className="shrink-0 w-6 text-xs font-semibold text-dark/60 text-right tabular-nums mt-7">{index + 1}.</span>
+                        <div className="flex-1 space-y-3">
+                          <div className="grid grid-cols-2 gap-2">
+                            <div>
+                              <label className="block text-xs font-medium text-dark/70 mb-1">Nombre</label>
+                              <input
+                                type="text"
+                                value={guest.firstName}
+                                onChange={(e) => updateLoadedGuest(index, 'firstName', e.target.value)}
+                                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
+                                placeholder="Nombre"
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-medium text-dark/70 mb-1">Apellido</label>
+                              <input
+                                type="text"
+                                value={guest.lastName}
+                                onChange={(e) => updateLoadedGuest(index, 'lastName', e.target.value)}
+                                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
+                                placeholder="Apellido"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <label className="block text-xs font-medium text-dark/70 mb-1">Motivo de oración</label>
+                            <input
+                              type="text"
+                              value={guest.prayerRequest}
+                              onChange={(e) => updateLoadedGuest(index, 'prayerRequest', e.target.value)}
+                              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition"
+                              placeholder="Motivo de oración"
+                            />
+                          </div>
+                          <div className="grid grid-cols-2 gap-2">
+                            <div>
+                              <label className="block text-xs font-medium text-dark/70 mb-1">¿Invitado?</label>
+                              <select
+                                value={guest.invited}
+                                onChange={(e) => updateLoadedGuest(index, 'invited', e.target.value)}
+                                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition bg-white"
+                              >
+                                <option value="" disabled>Seleccionar</option>
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                              </select>
+                            </div>
+                            <div>
+                              <label className="block text-xs font-medium text-dark/70 mb-1">¿Confirmado?</label>
+                              <select
+                                value={guest.confirmed}
+                                onChange={(e) => updateLoadedGuest(index, 'confirmed', e.target.value)}
+                                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-dark outline-none focus:border-cel focus:ring-1 focus:ring-cel transition bg-white"
+                              >
+                                <option value="" disabled>Seleccionar</option>
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </fieldset>
+
+              {/* Error message */}
+              {status === 'error' && errorMsg && (
+                <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                  {errorMsg}
+                </div>
+              )}
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={status === 'submitting'}
+                className="w-full rounded-lg bg-[#015F60] py-3 text-sm font-semibold text-white hover:bg-[#015F60]/90 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
+              >
+                {status === 'submitting' ? 'Actualizando...' : 'Actualizar invitados'}
+              </button>
+            </>
+          )}
         </form>
         )}
         </div>
