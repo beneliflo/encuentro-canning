@@ -76,7 +76,7 @@ export default function PresaleBanner() {
       id="presale-banner" 
       className={`${getPositionClasses()} z-50 px-3 md:px-6 lg:px-8 py-2 md:py-4 transition-all duration-300 pointer-events-none`}
     >
-      <div className="max-w-7xl mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-3 py-3 md:px-6 lg:px-36 md:py-4 lg:py-3 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-3 md:gap-4 pointer-events-auto">
+      <div className="max-w-7xl mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-3 py-3 md:px-6 lg:px-36 md:py-4 lg:py-6 pb-6 md:pb-7 lg:pb-9 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-3 md:gap-4 pointer-events-auto">
         {/* Left: PRESALE with arrow and message */}
         <div className="flex flex-col sm:flex-row items-center gap-2 md:gap-3 lg:gap-5 w-full lg:w-auto justify-center lg:justify-start">
           <div className="flex items-center gap-2 md:gap-3 lg:gap-5 shrink-0">
@@ -94,28 +94,28 @@ export default function PresaleBanner() {
         {/* Right: Countdown */}
         <div className="flex items-center gap-1.5 sm:gap-2 md:gap-2 lg:gap-3 shrink-0">
           {timeLeft.days > 0 && (
-            <div className="flex flex-col items-center mr-6">
+            <div className="flex flex-col items-center mr-6 -mb-4 md:-mb-5">
               <div className="bg-black text-white text-base sm:text-xl md:text-3xl lg:text-4xl font-semibold font-mono px-2 py-1 md:px-4 md:py-3 rounded min-w-[40px] sm:min-w-[50px] md:min-w-[70px] text-center tabular-nums">
                 {timeLeft.days}
               </div>
               <span className="text-[9px] sm:text-[10px] md:text-xs uppercase font-semibold mt-1">Días</span>
             </div>
           )}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center -mb-4 md:-mb-5">
             <div className="bg-black text-white text-base sm:text-xl md:text-3xl lg:text-4xl font-semibold font-mono px-2 py-1 md:px-4 md:py-3 rounded min-w-[40px] sm:min-w-[50px] md:min-w-[70px] text-center tabular-nums">
               {formatNumber(timeLeft.hours)}
             </div>
             <span className="text-[9px] sm:text-[10px] md:text-xs uppercase font-semibold mt-0.5 md:mt-1">Horas</span>
           </div>
-          <span className="text-base sm:text-xl md:text-3xl font-semibold self-center -mt-3 md:-mt-4">:</span>
-          <div className="flex flex-col items-center">
+          <span className="text-base sm:text-xl md:text-3xl font-semibold self-center">:</span>
+          <div className="flex flex-col items-center -mb-4 md:-mb-5">
             <div className="bg-black text-white text-base sm:text-xl md:text-3xl lg:text-4xl font-semibold font-mono px-2 py-1 md:px-4 md:py-3 rounded min-w-[40px] sm:min-w-[50px] md:min-w-[70px] text-center tabular-nums">
               {formatNumber(timeLeft.minutes)}
             </div>
             <span className="text-[9px] sm:text-[10px] md:text-xs uppercase font-semibold mt-0.5 md:mt-1">Minutos</span>
           </div>
-          <span className="text-base sm:text-xl md:text-3xl font-semibold self-center -mt-3 md:-mt-4">:</span>
-          <div className="flex flex-col items-center">
+          <span className="text-base sm:text-xl md:text-3xl font-semibold self-center">:</span>
+          <div className="flex flex-col items-center -mb-4 md:-mb-5">
             <div className="bg-black text-white text-base sm:text-xl md:text-3xl lg:text-4xl font-semibold font-mono px-2 py-1 md:px-4 md:py-3 rounded min-w-[40px] sm:min-w-[50px] md:min-w-[70px] text-center tabular-nums">
               {formatNumber(timeLeft.seconds)}
             </div>
