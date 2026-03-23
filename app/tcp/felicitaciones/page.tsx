@@ -24,13 +24,18 @@ function FelicitacionesContent() {
       setIsAuthorized(true)
       sessionStorage.setItem('tcp_felicitaciones_auth', 'true')
       // Eliminar el token de la URL para evitar que se comparta
-      router.replace('/tcp/felicitaciones')
+      // Use window.location to get current path and remove query params
+      const currentPath = window.location.pathname
+      router.replace(currentPath)
     } else {
       const sessionAuth = sessionStorage.getItem('tcp_felicitaciones_auth')
       if (sessionAuth === 'true') {
         setIsAuthorized(true)
       } else {
-        router.push('/tcp')
+        // Redirect to parent path (remove /felicitaciones)
+        const currentPath = window.location.pathname
+        const parentPath = currentPath.replace('/felicitaciones', '')
+        router.push(parentPath)
         return
       }
     }
