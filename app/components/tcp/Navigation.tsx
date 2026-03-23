@@ -3,19 +3,22 @@
 import Image from 'next/image'
 import { useState, useCallback } from 'react'
 import RegistrationButton from './RegistrationButton'
+import { useCountdown } from '../../tcp/CountdownContext'
 
 type NavLinksProps = {
   isMobile?: boolean
   onLinkClick?: () => void
+  isSecondPhase: boolean
 }
 
 const navLinks = [
+  { href: '#oradores', label: 'Oradores' },
   { href: '#tcp2025', label: 'TCP 2025' },
   { href: '#ubicacion', label: 'Ubicación' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '#faq', label: 'Preguntas Frecuentes' },
 ]
 
-const NavLinks = ({ isMobile, onLinkClick }: NavLinksProps) => {
+const NavLinks = ({ isMobile, onLinkClick, isSecondPhase }: NavLinksProps) => {
   const linkClass = isMobile
     ? 'block hover:text-gray-300 transition-colors duration-200'
     : 'hover:text-gray-300 transition-colors duration-200'
@@ -32,17 +35,20 @@ const NavLinks = ({ isMobile, onLinkClick }: NavLinksProps) => {
           {link.label}
         </a>
       ))}
-      <RegistrationButton
-        className={`${isMobile ? 'inline-block' : ''} cursor-pointer px-4 py-2 border border-white hover:bg-white hover:text-black transition-colors duration-200 uppercase`}
-      >
-        Registrate
-      </RegistrationButton>
+      {!isSecondPhase && (
+        <RegistrationButton
+          className={`${isMobile ? 'inline-block' : ''} cursor-pointer px-4 py-2 border border-white hover:bg-white hover:text-black transition-colors duration-200 uppercase`}
+        >
+          Registrate
+        </RegistrationButton>
+      )}
     </>
   )
 }
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { isSecondPhase } = useCountdown()
 
   const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(prev => !prev)
@@ -77,7 +83,7 @@ export default function Navigation() {
         </button>
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8 text-sm text-white font-medium uppercase tracking-wide">
-          <NavLinks />
+          <NavLinks isSecondPhase={isSecondPhase} />
         </div>
       </nav>
 
@@ -86,7 +92,7 @@ export default function Navigation() {
         className={`${isMobileMenuOpen ? 'block' : 'hidden'} lg:hidden fixed inset-x-0 top-14 md:top-16 lg:top-20 bg-black/95 backdrop-blur-xs border-t border-white/10`}
       >
         <div className="container mx-auto px-4 py-6 space-y-6 text-sm text-white font-medium uppercase tracking-wide">
-          <NavLinks isMobile onLinkClick={closeMobileMenu} />
+          <NavLinks isMobile onLinkClick={closeMobileMenu} isSecondPhase={isSecondPhase} />
         </div>
       </div>
     </header>
