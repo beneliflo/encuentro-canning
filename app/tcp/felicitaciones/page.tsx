@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import SocialIcons from '../../components/SocialIcons'
@@ -11,7 +11,7 @@ import { VIDEO_URLS } from '../../../lib/video-urls'
 
 const VALID_TOKEN = process.env.NEXT_PUBLIC_FELICITACIONES_TOKEN || 'tcp2026'
 
-export default function FelicitacionesPage() {
+function FelicitacionesContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [isAuthorized, setIsAuthorized] = useState(false)
@@ -261,6 +261,18 @@ export default function FelicitacionesPage() {
         </div>
       </section>
     </main>
+  )
+}
+
+export default function FelicitacionesPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white text-2xl">Cargando...</div>
+      </div>
+    }>
+      <FelicitacionesContent />
+    </Suspense>
   )
 }
 
