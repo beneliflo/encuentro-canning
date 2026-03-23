@@ -8,6 +8,7 @@ import PresaleBanner from '../components/tcp/PresaleBanner'
 import ResumenVideo from '../components/tcp/ResumenVideo'
 import SpeakersSection from '../components/tcp/SpeakersSection'
 import { VIDEO_URLS } from '@/lib/video-urls'
+import { CountdownProvider } from './CountdownContext'
 
 export const metadata: Metadata = {
   title: 'Testigos Con Poder 2026 — Congreso de Evangelismo',
@@ -55,8 +56,9 @@ export const metadata: Metadata = {
 
 export default function TCPPage() {
   return (
-    <main className="min-h-screen bg-white font-neue-haas pt-0">
-      <Navigation />
+    <CountdownProvider>
+      <main className="min-h-screen bg-white font-neue-haas pt-0">
+        <Navigation />
 
       {/* Hero section with video */}
       <section className="relative bg-black pt-14 md:pt-16 lg:pt-20">
@@ -79,7 +81,7 @@ export default function TCPPage() {
       </section>
 
       {/* Oradores */}
-      <section className="relative h-[45vh] md:h-auto overflow-hidden">
+      <section id='oradores' className="scroll-mt-20 relative h-[45vh] md:h-auto overflow-hidden">
         <Image
           width={1920}
           height={1080}
@@ -232,6 +234,7 @@ export default function TCPPage() {
         </div>
       </section>
     </main>
+    </CountdownProvider>
   )
 }
 
