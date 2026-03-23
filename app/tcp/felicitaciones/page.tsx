@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import SocialIcons from '../../components/SocialIcons'
+import PresaleBannerFelicitaciones from '../../components/tcp/PresaleBannerFelicitaciones'
 import ResumenVideo from '../../components/tcp/ResumenVideo'
 import SpeakersSection from '../../components/tcp/SpeakersSection'
 import { VIDEO_URLS } from '../../../lib/video-urls'
@@ -48,21 +49,12 @@ export default function FelicitacionesPage() {
   return (
     <main className="min-h-screen bg-white font-neue-haas pt-0">
       {/* Hero section - Felicitaciones */}
-      <section className="relative">
-        <div className="relative h-auto min-h-[400px] md:min-h-[500px] py-12 md:py-16 lg:py-20 overflow-hidden">
-          {/* Background image */}
-          <Image
-            src="/images/tcp/hero-congrats.jpg"
-            alt="Felicitaciones"
-            fill
-            className="object-cover"
-            priority
-          />
-          
-          {/* Content overlay */}
-          <div className="absolute inset-0 flex items-center">
-            <div className="container mx-auto px-4 md:px-8 lg:px-12">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 max-w-7xl mx-auto">
+      <section className="relative bg-cover bg-center pt-12 md:pt-20 lg:pt-24 xl:pt-28 pb-24 md:pb-32 lg:pb-36 xl:pb-40" style={{
+        backgroundImage: 'url(/images/tcp/hero-congrats.jpg)'
+      }}>
+          {/* Content */}
+          <div className="container mx-auto px-4 md:px-8 lg:px-12">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:justify-between max-w-7xl mx-auto">
                 {/* Logo TCP */}
                 <div className="shrink-0">
                   <Image
@@ -70,13 +62,13 @@ export default function FelicitacionesPage() {
                     alt="Testigos Con Poder"
                     width={400}
                     height={400}
-                    className="w-48 md:w-64 lg:w-80 h-auto"
+                    className="w-48 md:w-80 lg:w-96 xl:w-md h-auto"
                     priority
                   />
                 </div>
                 
                 {/* Text content */}
-                <div className="flex-1 text-center md:text-left">
+                <div className="text-left md:max-w-xl lg:max-w-2xl">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase mb-4 md:mb-6 inline-block" style={{
                     background: 'linear-gradient(to right, #AE0000 0%, #F2250F 50%, #FAAD3D 100%)',
                     WebkitBackgroundClip: 'text',
@@ -85,33 +77,34 @@ export default function FelicitacionesPage() {
                   }}>
                     ¡FELICIDADES!
                   </h1>
-                  <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold mb-2 uppercase">
+                  <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium uppercase">
                     Por ser de los primeros
                   </p>
-                  <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold mb-2 uppercase">
+                  <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium uppercase">
                     en <span className="font-bold">responder al llamado</span>
                   </p>
-                  <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold mb-6 md:mb-8 uppercase">
+                  <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium uppercase">
                     aquí tienes un descuento
                   </p>
-                  <p className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-8 md:mb-10 uppercase">
-                    del <span className="font-black">60% OFF</span> en tu entrada
+                  <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 md:mb-8 font-medium uppercase">
+                    del <span className="font-bold">60% OFF</span> en tu entrada
                   </p>
                   
                   {/* CTA Button */}
                   <a
-                    href="https://fint.ar/tcp2026"
+                    href="https://emuba.fint.app/eventos/testigos-con-poder"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block border-2 border-black bg-transparent px-8 md:px-12 lg:px-16 py-3 md:py-4 text-base md:text-lg lg:text-xl uppercase font-bold hover:bg-black hover:text-white transition-colors"
                   >
                     Click aquí
                   </a>
-                </div>
               </div>
             </div>
           </div>
-        </div>
+          
+          {/* Presale banner - flotante y sticky */}
+          <PresaleBannerFelicitaciones />
       </section>
 
       {/* Oradores */}

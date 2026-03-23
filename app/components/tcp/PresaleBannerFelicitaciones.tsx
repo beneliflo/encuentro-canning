@@ -2,17 +2,16 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import RegistrationButton from './RegistrationButton'
 
-export default function PresaleBanner() {
+export default function PresaleBannerFelicitaciones() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [scrollState, setScrollState] = useState<'bottom' | 'scrolling' | 'top'>('bottom')
   const bannerRef = useRef<HTMLDivElement>(null)
   const triggerPointRef = useRef<number>(0)
 
   useEffect(() => {
-    // Target date: Monday March 23, 2026 at 11:59 PM GMT-3 (Buenos Aires time)
-    const targetDate = new Date('2026-03-23T23:59:59-03:00')
+    // Target date: Tuesday March 24, 2026 at 11:59 PM GMT-3 (Buenos Aires time)
+    const targetDate = new Date('2026-03-24T23:59:59-03:00')
 
     const updateCountdown = () => {
       const now = new Date()
@@ -81,12 +80,17 @@ export default function PresaleBanner() {
         <div className="flex items-center gap-1.5 md:gap-5 shrink-0">
           <span className="text-lg sm:text-xl md:text-4xl lg:text-5xl font-semibold uppercase">Presale</span>
           <Image src="/images/tcp/arrow-right.png" alt="→" width={88} height={66} className="w-5 h-4 sm:w-8 sm:h-6 md:w-11 md:h-8 lg:w-11 lg:h-8" />
-          {/* Center: Clickable button */}
-          <RegistrationButton className="cursor-pointer border border-black px-2.5 py-1.5 md:px-8 md:py-3 text-xs sm:text-xs md:text-base uppercase hover:bg-black hover:text-white transition-colors text-center leading-tight">
-            <span className="font-normal">Registrate y llevate un</span>
+          {/* Center: Message box */}
+          <a
+            href="https://emuba.fint.app/eventos/testigos-con-poder"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer border border-black px-2.5 py-1.5 md:px-8 md:py-3 text-xs sm:text-xs md:text-base uppercase hover:bg-black hover:text-white transition-colors text-center leading-tight"
+          >
+            <span className="font-medium">¡Solo por hoy! Accede a</span>
             <br />
-            <span className="font-semibold">Descuento exclusivo</span>
-          </RegistrationButton>
+            <span className="font-medium">tu entrada con</span> <span className="font-semibold">60% OFF</span>
+          </a>
         </div>
 
         
