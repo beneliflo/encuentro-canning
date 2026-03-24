@@ -7,6 +7,7 @@ import VideoSection from '../components/tcp/VideoSection'
 import PresaleBanner from '../components/tcp/PresaleBanner'
 import ResumenVideo from '../components/tcp/ResumenVideo'
 import SpeakersSection from '../components/tcp/SpeakersSection'
+import RegistrationButton from '../components/tcp/RegistrationButton'
 import { VIDEO_URLS } from '@/lib/video-urls'
 import { CountdownProvider } from './CountdownContext'
 
@@ -74,6 +75,15 @@ export default function TCPPage() {
             <source src={VIDEO_URLS.tcp.videoNewHomeWebm} type="video/webm" />
             <source src={VIDEO_URLS.tcp.videoNewHome} type="video/mp4" />
           </video>
+          
+          {/* Mobile Registrate button overlay */}
+          <div className="absolute inset-x-0 bottom-8 flex justify-center md:hidden pointer-events-none">
+            <div className="pointer-events-auto">
+              <RegistrationButton className="cursor-pointer bg-white text-black border-2 border-white rounded-lg px-6 py-3 text-sm uppercase font-semibold hover:bg-transparent hover:text-white transition-colors duration-200 shadow-lg">
+                Registrate
+              </RegistrationButton>
+            </div>
+          </div>
         </div>
         
         {/* Presale banner - flotante y sticky */}
@@ -227,7 +237,7 @@ export default function TCPPage() {
       </section>
 
       {/* Contacto */}
-      <section className="py-12 md:py-20 pb-40 md:pb-20 text-center bg-black text-white">
+      <section className="py-12 md:py-20 pb-48 md:pb-20 text-center bg-black text-white">
         <div className="container mx-auto px-4">
           <p className="text-xl mb-12">Para más información, escribinos a <a href="mailto:info@emuba.org" className="underline hover:no-underline">info@emuba.org</a></p>
           <SocialIcons className="text-white" />
