@@ -37,7 +37,7 @@ const NavLinks = ({ isMobile, onLinkClick, isSecondPhase }: NavLinksProps) => {
       ))}
       {!isSecondPhase && (
         <RegistrationButton
-          className={`${isMobile ? 'inline-block' : ''} cursor-pointer px-4 py-2 border border-white hover:bg-white hover:text-black transition-colors duration-200 uppercase`}
+          className={`${isMobile ? 'inline-block' : ''} cursor-pointer bg-white text-black px-4 py-2 border-2 border-white rounded-lg hover:bg-transparent hover:text-white transition-colors duration-200 uppercase`}
         >
           Registrate
         </RegistrationButton>

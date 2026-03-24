@@ -110,7 +110,7 @@ export default function PresaleBanner() {
           </div>
           {/* Center: Clickable button - only show in first phase */}
           {!isSecondPhase && (
-            <RegistrationButton className="cursor-pointer border border-black px-3 py-2 md:px-5 lg:px-8 md:py-2.5 lg:py-3 text-xs sm:text-sm md:text-sm lg:text-base uppercase hover:bg-black hover:text-white transition-colors text-center leading-tight">
+            <RegistrationButton className="cursor-pointer bg-black text-white border-2 border-black rounded-lg px-3 py-2 md:px-5 lg:px-8 md:py-2.5 lg:py-3 text-xs sm:text-sm md:text-sm lg:text-base uppercase hover:bg-white hover:text-black hover:scale-105 transition-all duration-200 text-center leading-tight shadow-lg hover:shadow-xl">
               <span className="font-normal">Registrate y llevate un</span>
               <br />
               <span className="font-semibold">Descuento exclusivo</span>

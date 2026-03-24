@@ -100,7 +100,7 @@ function FelicitacionesContent() {
                     href="https://emuba.fint.app/eventos/testigos-con-poder"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block border-2 border-black bg-transparent px-8 md:px-12 lg:px-16 py-3 md:py-4 text-base md:text-lg lg:text-xl uppercase font-bold hover:bg-black hover:text-white transition-colors"
+                    className="inline-block border-2 border-black bg-transparent rounded-lg px-8 md:px-12 lg:px-16 py-3 md:py-4 text-base md:text-lg lg:text-xl uppercase font-bold hover:bg-black hover:text-white transition-colors"
                   >
                     Click aquí
                   </a>
