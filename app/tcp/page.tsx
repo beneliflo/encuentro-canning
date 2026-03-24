@@ -75,15 +75,6 @@ export default function TCPPage() {
             <source src={VIDEO_URLS.tcp.videoNewHomeWebm} type="video/webm" />
             <source src={VIDEO_URLS.tcp.videoNewHome} type="video/mp4" />
           </video>
-          
-          {/* Mobile Registrate button overlay */}
-          <div className="absolute inset-x-0 bottom-8 flex justify-center md:hidden pointer-events-none">
-            <div className="pointer-events-auto">
-              <RegistrationButton className="cursor-pointer bg-white text-black border-2 border-white rounded-lg px-6 py-3 text-sm uppercase font-semibold hover:bg-transparent hover:text-white transition-colors duration-200 shadow-lg">
-                Registrate
-              </RegistrationButton>
-            </div>
-          </div>
         </div>
         
         {/* Presale banner - flotante y sticky */}
