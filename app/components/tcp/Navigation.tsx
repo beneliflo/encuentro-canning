@@ -35,6 +35,14 @@ const NavLinks = ({ isMobile, onLinkClick, isSecondPhase }: NavLinksProps) => {
           {link.label}
         </a>
       ))}
+      <a
+        href="https://emuba.fint.app/eventos/testigos-con-poder"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${isMobile ? 'inline-block' : ''} cursor-pointer bg-white text-black px-4 py-2 border-2 border-white rounded-lg hover:bg-black hover:text-white transition-colors duration-200 uppercase`}
+      >
+        Adquirí tu entrada
+      </a>
       {!isSecondPhase && (
         <RegistrationButton
           className={`${isMobile ? 'inline-block' : ''} cursor-pointer bg-white text-black px-4 py-2 border-2 border-white rounded-lg hover:bg-transparent hover:text-white transition-colors duration-200 uppercase`}
