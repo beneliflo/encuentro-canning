@@ -2,54 +2,30 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import RegistrationButton from './RegistrationButton'
-import { useCountdown } from '../../tcp/CountdownContext'
 
 export default function PresaleBanner() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [scrollState, setScrollState] = useState<'bottom' | 'scrolling' | 'top'>('bottom')
-  const { isSecondPhase } = useCountdown()
   const bannerRef = useRef<HTMLDivElement>(null)
   const triggerPointRef = useRef<number>(0)
 
   useEffect(() => {
-    // First target: Monday March 23, 2026 at 11:59 PM GMT-3
-    const firstTargetDate = new Date('2026-03-23T23:59:59-03:00')
-    // Second target: Tuesday March 24, 2026 at 11:59 PM GMT-3
-    const secondTargetDate = new Date('2026-03-24T23:59:59-03:00')
+    // Target date: Wednesday April 16, 2026 at 11:59 PM GMT-3 (Buenos Aires time)
+    const targetDate = new Date('2026-04-16T23:59:59-03:00')
 
     const updateCountdown = () => {
       const now = new Date()
-      
-      // Check if first countdown has ended
-      if (now.getTime() >= firstTargetDate.getTime()) {
-        // Use second target date
-        const difference = secondTargetDate.getTime() - now.getTime()
-        
-        if (difference > 0) {
-          setTimeLeft({
-            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-            minutes: Math.floor((difference / 1000 / 60) % 60),
-            seconds: Math.floor((difference / 1000) % 60),
-          })
-        } else {
-          setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        }
+      const difference = targetDate.getTime() - now.getTime()
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        })
       } else {
-        // Use first target date
-        const difference = firstTargetDate.getTime() - now.getTime()
-        
-        if (difference > 0) {
-          setTimeLeft({
-            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-            minutes: Math.floor((difference / 1000 / 60) % 60),
-            seconds: Math.floor((difference / 1000) % 60),
-          })
-        } else {
-          setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        }
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
       }
     }
 
@@ -99,23 +75,24 @@ export default function PresaleBanner() {
       id="presale-banner" 
       className={`${getPositionClasses()} z-50 px-3 md:px-6 lg:px-8 py-2 md:py-4 transition-all duration-300 pointer-events-none`}
     >
-      <div className="max-w-7xl mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-3 py-3 md:px-6 lg:px-36 md:py-4 lg:py-6 pb-6 md:pb-7 lg:pb-9 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-3 md:gap-4 pointer-events-auto">
-        {/* Left: PRESALE/ENTRADAS with arrow and message */}
+      <div className="max-w-7xl mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-3 py-3 md:px-6 lg:px-36 xl:px-20 md:py-4 lg:py-6 pb-6 md:pb-7 lg:pb-9 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-3 md:gap-4 pointer-events-auto">
+        {/* Left: PRESALE with arrow and message */}
         <div className="flex flex-col sm:flex-row items-center gap-2 md:gap-3 lg:gap-5 w-full lg:w-auto justify-center lg:justify-start">
           <div className="flex items-center gap-2 md:gap-3 lg:gap-5 shrink-0">
-            <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold uppercase">
-              {isSecondPhase ? 'Entradas disponibles en' : 'Presale'}
-            </span>
+            <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold uppercase">Presale</span>
             <Image src="/images/tcp/arrow-right.png" alt="→" width={88} height={66} className="w-6 h-5 sm:w-8 sm:h-6 md:w-10 md:h-7 lg:w-11 lg:h-8" />
           </div>
-          {/* Center: Clickable button - only show in first phase */}
-          {!isSecondPhase && (
-            <RegistrationButton className="cursor-pointer bg-black text-white border-2 border-black rounded-lg px-3 py-2 md:px-5 lg:px-8 md:py-2.5 lg:py-3 text-xs sm:text-sm md:text-sm lg:text-base uppercase hover:bg-white hover:text-black hover:scale-105 transition-all duration-200 text-center leading-tight shadow-lg hover:shadow-xl">
-              <span className="font-normal">Registrate y llevate un</span>
-              <br />
-              <span className="font-semibold">Descuento exclusivo</span>
-            </RegistrationButton>
-          )}
+          {/* Center: Message box */}
+          <a
+            href="https://emuba.fint.app/eventos/testigos-con-poder"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer bg-black text-white border-2 border-black rounded-lg px-3 py-2 md:px-5 lg:px-8 md:py-2.5 lg:py-3 text-xs sm:text-sm md:text-sm lg:text-base uppercase hover:bg-white hover:text-black hover:scale-105 transition-all duration-200 text-center leading-tight shadow-lg hover:shadow-xl"
+          >
+            <span className="font-medium">¡Adquirí tus entradas al</span>
+            <br />
+            <span className="font-semibold">45% OFF</span> <span className="font-medium">por tiempo limitado!</span>
+          </a>
         </div>
 
         {/* Right: Countdown */}
