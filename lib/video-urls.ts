@@ -2,7 +2,7 @@
 
 export const VIDEO_URLS = {
   // Homepage videos
-  hero: '/hero-video.mp4',
+  hero: '/videos/hero-video.mp4',
   aulaSensorial: '/videos/Aula Sensorial VF F.mp4',
   aulaSensorialWebm: '/videos/Aula Sensorial VF F.webm',
   proyectoColegio: '/videos/VF F PROYECTO COLEGIO EC.mp4',
@@ -17,9 +17,6 @@ export const VIDEO_URLS = {
     finalPromo: '/videos/tcp/FINAL PROMO TCP 1080.mp4',
     resumen: '/videos/tcp/Spot TCP 26 Lanzamiento.mp4',
     resumenWebm: '/videos/tcp/Spot TCP 26 Lanzamiento.webm',
-    videoFecha: '/videos/tcp/VIDEO FECHA TCP.mp4',
-    webLogoRojo: '/videos/tcp/web tcp logo rojo.mp4',
-    webOradores: '/videos/tcp/web tcp oradores.mp4',
   },
   
   // Thumbnails (siguen en public/images)

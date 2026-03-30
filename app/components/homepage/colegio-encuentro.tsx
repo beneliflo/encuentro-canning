@@ -30,7 +30,6 @@ export default function ColegioEncuentro() {
         <div className="relative w-full lg:w-3/5 rounded-lg overflow-hidden shadow-2xl aspect-video shrink-0" onContextMenu={(e) => e.preventDefault()}>
           <video
             ref={videoRef}
-            src={VIDEO_URLS.proyectoColegio}
             poster={VIDEO_URLS.thumbnails.vfProyecto}
             controls={isPlaying}
             playsInline
@@ -42,10 +41,12 @@ export default function ColegioEncuentro() {
               if (videoRef.current) {
                 videoRef.current.removeAttribute('src');
                 videoRef.current.load();
-                videoRef.current.src = VIDEO_URLS.proyectoColegio;
               }
             }}
-          />
+          >
+            <source src={VIDEO_URLS.proyectoColegioWebm} type="video/webm" />
+            <source src={VIDEO_URLS.proyectoColegio} type="video/mp4" />
+          </video>
           {!isPlaying && (
             <button
               onClick={() => {

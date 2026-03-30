@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check:videos": "node scripts/check-video-links.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
