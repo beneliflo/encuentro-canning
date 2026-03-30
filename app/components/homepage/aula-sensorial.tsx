@@ -16,7 +16,6 @@ export default function AulaSensorial() {
         <div className="relative w-full lg:w-2/5 rounded-lg overflow-hidden shadow-2xl text-shadow-none aspect-video shrink-0 order-last lg:order-first" onContextMenu={(e) => e.preventDefault()}>
           <video
             ref={videoRef}
-            src={VIDEO_URLS.aulaSensorial}
             controls={isPlaying}
             playsInline
             controlsList="nodownload noplaybackrate"
@@ -26,7 +25,10 @@ export default function AulaSensorial() {
               setIsPlaying(false);
               if (videoRef.current) videoRef.current.currentTime = 0;
             }}
-          />
+          >
+            <source src={VIDEO_URLS.aulaSensorialWebm} type="video/webm" />
+            <source src={VIDEO_URLS.aulaSensorial} type="video/mp4" />
+          </video>
           {!isPlaying && (
             <button
               onClick={() => {
