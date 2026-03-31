@@ -13,7 +13,7 @@ type NavLinksProps = {
 
 const navLinks = [
   { href: '#oradores', label: 'Oradores' },
-  { href: '#tcp2025', label: 'TCP 2025' },
+  { href: 'https://www.youtube.com/watch?v=IFbhZ1bmzXE', label: 'TCP 2025', external: true },
   { href: '#ubicacion', label: 'Ubicación' },
   { href: '#faq', label: 'Preguntas Frecuentes' },
 ]
@@ -31,6 +31,8 @@ const NavLinks = ({ isMobile, onLinkClick, isSecondPhase }: NavLinksProps) => {
           href={link.href} 
           className={linkClass}
           onClick={onLinkClick}
+          target={link.external ? '_blank' : undefined}
+          rel={link.external ? 'noopener noreferrer' : undefined}
         >
           {link.label}
         </a>
