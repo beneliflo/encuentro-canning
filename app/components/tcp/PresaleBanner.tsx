@@ -79,8 +79,8 @@ export default function PresaleBanner() {
         {/* Left: PRESALE with arrow and message */}
         <div className="flex flex-col sm:flex-row items-center gap-2 md:gap-3 lg:gap-5 w-full lg:w-auto justify-center lg:justify-start">
           <div className="flex items-center gap-2 md:gap-3 lg:gap-5 shrink-0">
-            <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold uppercase">Presale</span>
-            <Image src="/images/tcp/arrow-right.png" alt="→" width={88} height={66} className="w-6 h-5 sm:w-8 sm:h-6 md:w-10 md:h-7 lg:w-11 lg:h-8" />
+            <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold uppercase">Click aquí</span>
+            <Image src="/images/tcp/arrow-right.png" alt="→" width={88} height={66} className="w-6 h-5 rotate-90 sm:rotate-0 sm:w-8 sm:h-6 md:w-10 md:h-7 lg:w-11 lg:h-8" />
           </div>
           {/* Center: Message box */}
           <a
