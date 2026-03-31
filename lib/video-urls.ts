@@ -10,8 +10,8 @@ export const VIDEO_URLS = {
   
   // TCP videos
   tcp: {
-    videoNewHome: '/videos/tcp/VIDEO NEW HOME TCP.mp4',
-    videoNewHomeWebm: '/videos/tcp/VIDEO NEW HOME TCP.webm',
+    videoNewHome: '/videos/tcp/VIDEO HOME TCP_2 (1).mp4',
+    videoNewHomeWebm: '/videos/tcp/VIDEO HOME TCP_2 (1).webm',
     sectionBottom: '/videos/tcp/section-bottom.mp4',
     sectionBottomWebm: '/videos/tcp/section-bottom.webm',
     finalPromo: '/videos/tcp/FINAL PROMO TCP 1080.mp4',

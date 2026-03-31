@@ -75,6 +75,17 @@ export default function TCPPage() {
             <source src={VIDEO_URLS.tcp.videoNewHomeWebm} type="video/webm" />
             <source src={VIDEO_URLS.tcp.videoNewHome} type="video/mp4" />
           </video>
+
+          <div className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none scale-[1.8] -translate-y-14 md:scale-100 md:-translate-y-16 lg:-translate-y-20">
+            <Image
+              src="/images/tcp/tcp-hero-image.png"
+              alt="Testigos Con Poder"
+              width={1400}
+              height={700}
+              priority
+              className="w-full h-full object-contain"
+            />
+          </div>
           
           {/* Mobile-only CTA button at bottom of video */}
           <div className="md:hidden absolute bottom-6 left-0 right-0 px-4 z-10 flex justify-center">
