@@ -24,7 +24,7 @@ export default function VideoSection() {
             loop
             playsInline
             controls
-            preload="auto"
+            preload="metadata"
           >
             <source src={VIDEO_URLS.tcp.finalPromo} type="video/mp4" />
           </video>

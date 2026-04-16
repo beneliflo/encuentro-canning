@@ -41,7 +41,7 @@ export default function ResumenVideo() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           controls
           controlsList="nodownload"
         >

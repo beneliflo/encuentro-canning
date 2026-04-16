@@ -70,13 +70,13 @@ export default function TCPPage() {
             muted 
             loop 
             playsInline
-            preload="auto"
+            preload="metadata"
           >
             <source src={VIDEO_URLS.tcp.videoNewHomeWebm} type="video/webm" />
             <source src={VIDEO_URLS.tcp.videoNewHome} type="video/mp4" />
           </video>
 
-          <div className="absolute inset-0 z-[5] flex items-center justify-center pointer-events-none scale-[1.8] -translate-y-14 md:scale-100 md:-translate-y-16 lg:-translate-y-20">
+          <div className="absolute inset-0 z-5 flex items-center justify-center pointer-events-none scale-[1.8] -translate-y-14 md:scale-100 md:-translate-y-16 lg:-translate-y-20">
             <Image
               src="/images/tcp/tcp-hero-image.png"
               alt="Testigos Con Poder"
@@ -245,7 +245,7 @@ export default function TCPPage() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
         >
           <source src={VIDEO_URLS.tcp.sectionBottomWebm} type="video/webm" />
           <source src={VIDEO_URLS.tcp.sectionBottom} type="video/mp4" />

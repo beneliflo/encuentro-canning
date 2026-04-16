@@ -33,6 +33,7 @@ export default function ColegioEncuentro() {
             poster={VIDEO_URLS.thumbnails.vfProyecto}
             controls={isPlaying}
             playsInline
+            preload="none"
             controlsList="nodownload noplaybackrate"
             disablePictureInPicture
             className="w-full h-full object-cover"
