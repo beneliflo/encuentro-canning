@@ -75,24 +75,38 @@ export default function PresaleBanner() {
       id="presale-banner" 
       className={`${getPositionClasses()} z-50 px-3 md:px-6 lg:px-8 py-2 md:py-4 transition-all duration-300 pointer-events-none`}
     >
-      <div className="max-w-7xl mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-3 py-3 md:px-6 lg:px-36 xl:px-20 md:py-4 lg:py-6 pb-6 md:pb-7 lg:pb-9 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-3 md:gap-4 pointer-events-auto">
+        <div className="max-w-7xl mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-3 py-3 md:px-6 lg:px-36 xl:px-20 md:py-4 lg:py-6 pb-6 md:pb-7 lg:pb-9 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-3 md:gap-4 pointer-events-auto">
         {/* Left: PRESALE with arrow and message */}
-        <div className="flex flex-col sm:flex-row items-center gap-2 md:gap-3 lg:gap-5 w-full lg:w-auto justify-center lg:justify-start">
-          <div className="flex items-center gap-2 md:gap-3 lg:gap-5 shrink-0">
-            <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold uppercase">Click aquí</span>
-            <Image src="/images/tcp/arrow-right.png" alt="→" width={88} height={66} className="w-6 h-5 rotate-90 sm:rotate-0 sm:w-8 sm:h-6 md:w-10 md:h-7 lg:w-11 lg:h-8" />
+        <div className="flex flex-col lg:flex-row items-center gap-2 md:gap-3 lg:gap-4 w-full lg:w-auto justify-center lg:justify-start">
+          <div className="flex items-center gap-2 md:gap-3 shrink-0">
+            <span className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold uppercase">Click aquí</span>
+            <Image src="/images/tcp/arrow-right.png" alt="→" width={88} height={66} className="w-6 h-5 rotate-90 lg:rotate-0 sm:w-8 sm:h-6 md:w-8 md:h-6 lg:w-9 lg:h-7" />
           </div>
-          {/* Center: Message box */}
-          <a
-            href="https://emuba.fint.app/eventos/testigos-con-poder"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cursor-pointer bg-black text-white border-2 border-black rounded-lg px-3 py-2 md:px-5 lg:px-8 md:py-2.5 lg:py-3 text-xs sm:text-sm md:text-sm lg:text-base uppercase hover:bg-white hover:text-black hover:scale-105 transition-all duration-200 text-center leading-tight shadow-lg hover:shadow-xl"
-          >
-            <span className="font-medium">¡Adquirí tus entradas al</span>
-            <br />
-            <span className="font-semibold">45% OFF</span> <span className="font-medium">por tiempo limitado!</span>
-          </a>
+          {/* Botones de compra */}
+          <div className="flex flex-col sm:flex-row items-center gap-2 md:gap-2 lg:gap-3">
+            {/* Botón nacional */}
+            <a
+              href="https://emuba.fint.app/eventos/testigos-con-poder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer bg-black text-white border-2 border-black rounded-lg px-3 py-2 md:px-4 lg:px-5 md:py-2 lg:py-2.5 text-xs sm:text-sm md:text-xs lg:text-sm uppercase hover:bg-white hover:text-black hover:scale-105 transition-all duration-200 text-center leading-tight shadow-lg hover:shadow-xl whitespace-nowrap"
+            >
+              <span className="font-medium">¡Adquirí tus entradas al</span>
+              <br />
+              <span className="font-semibold">45% OFF</span> <span className="font-medium">por tiempo limitado!</span>
+            </a>
+            {/* Botón extranjeros */}
+            <a
+              href="https://emubaonline.com/p/testigos-con-poder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer bg-blue-600 text-white border-2 border-blue-600 rounded-lg px-3 py-2 md:px-4 lg:px-5 md:py-2 lg:py-2.5 text-xs sm:text-sm md:text-xs lg:text-sm hover:bg-white hover:text-blue-600 hover:scale-105 transition-all duration-200 text-center leading-tight shadow-lg hover:shadow-xl whitespace-nowrap"
+            >
+              <span className="font-semibold">¿SOS EXTRANJERO/A?</span>
+              <br />
+              <span className="font-medium">¡Comprá aquí tu entrada!</span>
+            </a>
+          </div>
         </div>
 
         {/* Right: Countdown */}
