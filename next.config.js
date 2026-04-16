@@ -12,6 +12,29 @@ const nextConfig = {
     removeConsole: isProd ? { exclude: ['error', 'warn'] } : false,
   },
 
+  async headers() {
+    return [
+      {
+        source: '/videos/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ]
+  },
+
   async redirects() {
     return [
       // Redirect /felicitaciones to /tcp for encuentrocanning.org

@@ -16,8 +16,10 @@ export default function AulaSensorial() {
         <div className="relative w-full lg:w-2/5 rounded-lg overflow-hidden shadow-2xl text-shadow-none aspect-video shrink-0 order-last lg:order-first" onContextMenu={(e) => e.preventDefault()}>
           <video
             ref={videoRef}
+            poster="/images/aula-sensorial-bg.jpg"
             controls={isPlaying}
             playsInline
+            preload="none"
             controlsList="nodownload noplaybackrate"
             disablePictureInPicture
             className="w-full h-full object-cover"
