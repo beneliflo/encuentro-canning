@@ -25,6 +25,11 @@ export const metadata: Metadata = {
     'comunidad cristiana Canning',
     'Ezeiza',
   ],
+  verification: {
+    other: {
+      'facebook-domain-verification': 'n5l48n53sqikij26w4przz1kyr5pl8',
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'es_AR',
