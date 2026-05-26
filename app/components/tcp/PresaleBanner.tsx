@@ -10,8 +10,8 @@ export default function PresaleBanner() {
   const triggerPointRef = useRef<number>(0)
 
   useEffect(() => {
-    // Target date: Wednesday May 27, 2026 at 12:00 AM GMT-3 (Buenos Aires time)
-    const targetDate = new Date('2026-05-27T00:00:00-03:00')
+    // Target date: Wednesday May 27, 2026 at 11:59 PM GMT-3 (Buenos Aires time)
+    const targetDate = new Date('2026-05-27T23:59:59-03:00')
 
     const updateCountdown = () => {
       const now = new Date()
