@@ -10,8 +10,8 @@ export default function PresaleBanner() {
   const triggerPointRef = useRef<number>(0)
 
   useEffect(() => {
-    // Target date: Wednesday May 21, 2026 at 11:59 PM GMT-3 (Buenos Aires time)
-    const targetDate = new Date('2026-05-21T23:59:59-03:00')
+    // Target date: Wednesday May 27, 2026 at 12:00 AM GMT-3 (Buenos Aires time)
+    const targetDate = new Date('2026-05-27T00:00:00-03:00')
 
     const updateCountdown = () => {
       const now = new Date()
@@ -93,7 +93,7 @@ export default function PresaleBanner() {
             >
               <span className="font-medium">¡Adquirí tus entradas al</span>
               <br />
-              <span className="font-semibold">35% OFF</span> <span className="font-medium">por tiempo limitado!</span>
+              <span className="font-semibold">25% OFF</span> <span className="font-medium">por tiempo limitado!</span>
             </a>
             {/* Botón extranjeros */}
             <a
@@ -111,7 +111,7 @@ export default function PresaleBanner() {
 
         {/* Right: Countdown */}
         <div className="flex flex-col items-center gap-0.5 shrink-0">
-          <span className="text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-wide">35% Off Finaliza en:</span>
+          <span className="text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-wide">25% Off Finaliza en:</span>
           <div className="flex items-center gap-1 sm:gap-1.5 md:gap-2 lg:gap-2.5">
           {timeLeft.days > 0 && (
             <div className="flex flex-col items-center">
