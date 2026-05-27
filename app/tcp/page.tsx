@@ -97,7 +97,7 @@ export default function TCPPage() {
             >
               <span className="font-medium">¡Adquirí tus entradas al</span>
               <br />
-              <span className="font-semibold">35% OFF</span> <span className="font-medium">por tiempo limitado!</span>
+              <span className="font-semibold">25% OFF</span> <span className="font-medium">por tiempo limitado!</span>
             </a>
           </div>
         </div>
