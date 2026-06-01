@@ -78,54 +78,23 @@ export default function PresaleBanner() {
       id="presale-banner" 
       className={`${getPositionClasses()} z-50 px-3 md:px-6 lg:px-8 py-2 md:py-4 transition-all duration-300 pointer-events-none`}
     >
-        <div className="max-w-7xl mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-3 pt-1 pb-0 md:px-6 lg:px-36 xl:px-20 md:pt-1 md:pb-1 lg:pt-2 lg:pb-2 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-3 md:gap-4 pointer-events-auto">
-        {/* Left: PRESALE with arrow and message */}
-        <div className="flex flex-col lg:flex-row items-center gap-2 md:gap-3 lg:gap-4 w-full lg:w-auto justify-center lg:justify-start">
-          <div className="flex items-center gap-2 md:gap-3 shrink-0">
-            <span className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold uppercase">Click aquí</span>
-            <Image src="/images/tcp/arrow-right.png" alt="→" width={88} height={66} className="w-6 h-5 rotate-90 lg:rotate-0 sm:w-8 sm:h-6 md:w-8 md:h-6 lg:w-9 lg:h-7" />
-          </div>
-          {/* Botones de compra */}
-          <div className="flex flex-col sm:flex-row items-center gap-2 md:gap-2 lg:gap-3">
-            {/* Botón nacional */}
-            <a
-              href="https://emuba.fint.app/eventos/testigos-con-poder"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cursor-pointer bg-black text-white border-2 border-black rounded-lg px-3 py-2 md:px-4 lg:px-5 md:py-2 lg:py-2.5 text-xs sm:text-sm md:text-xs lg:text-sm uppercase hover:bg-white hover:text-black hover:scale-105 transition-all duration-200 text-center leading-tight shadow-lg hover:shadow-xl whitespace-nowrap"
-            >
-              {promoEnded ? (
-                <>
-                  <span className="font-semibold">¡COMPRÁ TUS ENTRADAS</span>
-                  <br />
-                  <span className="font-medium">ONLINE AQUÍ!</span>
-                </>
-              ) : (
-                <>
-                  <span className="font-medium">¡Adquirí tus entradas al</span>
-                  <br />
-                  <span className="font-semibold">25% OFF</span> <span className="font-medium">por tiempo limitado!</span>
-                </>
-              )}
-            </a>
-            {/* Botón extranjeros */}
-            <a
-              href="https://emubaonline.com/p/testigos-con-poder"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cursor-pointer bg-blue-600 text-white border-2 border-blue-600 rounded-lg px-3 py-2 md:px-4 lg:px-5 md:py-2 lg:py-2.5 text-xs sm:text-sm md:text-xs lg:text-sm hover:bg-white hover:text-blue-600 hover:scale-105 transition-all duration-200 text-center leading-tight shadow-lg hover:shadow-xl whitespace-nowrap"
-            >
-              <span className="font-semibold">¿SOS EXTRANJERO/A?</span>
-              <br />
-              <span className="font-medium">¡Comprá aquí tu entrada!</span>
-            </a>
-          </div>
-        </div>
+        <div className="w-fit mx-auto bg-white rounded-xl md:rounded-2xl shadow-lg px-4 pt-2 pb-2 md:px-6 md:py-3 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-3 pointer-events-auto">
+        {/* Botón Instagram */}
+        <a
+          href="https://www.instagram.com/emuba_escuela/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cursor-pointer bg-linear-to-r from-purple-600 via-pink-500 to-orange-400 text-white border-2 border-transparent rounded-lg px-5 py-3 md:px-6 md:py-3 text-sm md:text-sm uppercase hover:opacity-90 hover:scale-105 transition-all duration-200 text-center leading-tight shadow-lg hover:shadow-xl whitespace-nowrap"
+        >
+          <span className="font-semibold">Mirá lo que pasó en TCP 2026</span>
+          <br />
+          <span className="font-medium">@emuba_escuela</span>
+        </a>
 
-        {/* Right: Countdown */}
+        {/* Mensaje post-evento */}
         <div className="flex flex-col items-center gap-0.5 shrink-0">
           {promoEnded ? (
-            <span className="text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-wide text-gray-500">Promoción finalizada</span>
+            <span className="text-xs md:text-sm font-bold uppercase tracking-wide text-gray-500">¡Gracias por ser parte!</span>
           ) : (
             <>
               <span className="text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-wide">25% Off Finaliza en:</span>

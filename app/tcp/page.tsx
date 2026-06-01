@@ -87,19 +87,6 @@ export default function TCPPage() {
             />
           </div>
           
-          {/* Mobile-only CTA button at bottom of video */}
-          <div className="md:hidden absolute bottom-6 left-0 right-0 px-4 z-10 flex justify-center">
-            <a
-              href="https://emuba.fint.app/eventos/testigos-con-poder"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cursor-pointer bg-white text-black border-2 border-white rounded-lg px-6 py-3 text-base uppercase hover:bg-black hover:text-white transition-all duration-200 text-center leading-tight shadow-lg"
-            >
-              <span className="font-medium">¡Adquirí tus entradas al</span>
-              <br />
-              <span className="font-semibold">25% OFF</span> <span className="font-medium">por tiempo limitado!</span>
-            </a>
-          </div>
         </div>
         
         {/* Presale banner - flotante y sticky */}
