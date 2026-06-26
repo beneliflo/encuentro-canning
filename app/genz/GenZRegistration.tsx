@@ -11,7 +11,47 @@ type TimeLeft = {
   seconds: number
 }
 
-const DEFAULT_PRESALE_END = '2026-07-31T23:59:59-03:00'
+type DiscountPhase = {
+  label: string
+  startsAt: Date
+  endsAt: Date
+}
+
+const DISCOUNT_PHASES: DiscountPhase[] = [
+  {
+    label: 'PRE SALE TERMINA EN',
+    startsAt: new Date('2026-01-01T00:00:00-03:00'),
+    endsAt: new Date('2026-07-02T23:59:59-03:00'),
+  },
+  {
+    label: '45% OFF SOLO POR 24HS',
+    startsAt: new Date('2026-07-03T00:00:00-03:00'),
+    endsAt: new Date('2026-07-03T23:59:59-03:00'),
+  },
+  {
+    label: '30% OFF JULIO',
+    startsAt: new Date('2026-07-04T00:00:00-03:00'),
+    endsAt: new Date('2026-07-31T23:59:59-03:00'),
+  },
+  {
+    label: '15% OFF AGOSTO',
+    startsAt: new Date('2026-08-01T00:00:00-03:00'),
+    endsAt: new Date('2026-08-28T23:59:59-03:00'),
+  },
+  {
+    label: '29/08 EN PUERTA',
+    startsAt: new Date('2026-08-29T00:00:00-03:00'),
+    endsAt: new Date('2026-08-29T23:59:59-03:00'),
+  },
+]
+
+function getDiscountPhase(now: Date) {
+  return (
+    DISCOUNT_PHASES.find(
+      (phase) => now >= phase.startsAt && now <= phase.endsAt
+    ) ?? DISCOUNT_PHASES[DISCOUNT_PHASES.length - 1]
+  )
+}
 
 export default function GenZRegistration({
   pixelFontClassName,
@@ -19,10 +59,7 @@ export default function GenZRegistration({
   pixelFontClassName: string
 }) {
   const router = useRouter()
-  const targetDate = useMemo(
-    () => new Date(process.env.NEXT_PUBLIC_GENZ_PRESALE_END || DEFAULT_PRESALE_END),
-    []
-  )
+  const initialPhase = useMemo(() => getDiscountPhase(new Date()), [])
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
@@ -30,6 +67,7 @@ export default function GenZRegistration({
     minutes: 0,
     seconds: 0,
   })
+  const [countdownLabel, setCountdownLabel] = useState(initialPhase.label)
   const [promoEnded, setPromoEnded] = useState(false)
   const [formData, setFormData] = useState({
     nombreApellido: '',
@@ -43,7 +81,11 @@ export default function GenZRegistration({
 
   useEffect(() => {
     const updateCountdown = () => {
-      const difference = targetDate.getTime() - Date.now()
+      const now = new Date()
+      const currentPhase = getDiscountPhase(now)
+      const difference = currentPhase.endsAt.getTime() - now.getTime()
+
+      setCountdownLabel(currentPhase.label)
 
       if (difference > 0) {
         setTimeLeft({
@@ -63,7 +105,7 @@ export default function GenZRegistration({
     const interval = window.setInterval(updateCountdown, 1000)
 
     return () => window.clearInterval(interval)
-  }, [targetDate])
+  }, [])
 
   const formatNumber = (num: number) => String(num).padStart(2, '0')
 
@@ -221,6 +263,7 @@ export default function GenZRegistration({
             <CountdownButton
               promoEnded={promoEnded}
               timeLeft={timeLeft}
+              label={countdownLabel}
               formatNumber={formatNumber}
               onClick={scrollToForm}
               pixelFontClassName={pixelFontClassName}
@@ -230,6 +273,7 @@ export default function GenZRegistration({
           <CountdownButton
             promoEnded={promoEnded}
             timeLeft={timeLeft}
+            label={countdownLabel}
             formatNumber={formatNumber}
             onClick={scrollToForm}
             pixelFontClassName={pixelFontClassName}
@@ -244,6 +288,7 @@ export default function GenZRegistration({
 function CountdownButton({
   promoEnded,
   timeLeft,
+  label,
   formatNumber,
   onClick,
   pixelFontClassName,
@@ -251,6 +296,7 @@ function CountdownButton({
 }: {
   promoEnded: boolean
   timeLeft: TimeLeft
+  label: string
   formatNumber: (num: number) => string
   onClick: () => void
   pixelFontClassName: string
@@ -262,8 +308,8 @@ function CountdownButton({
       onClick={onClick}
       className={`z-30 max-w-[320px] cursor-pointer border-2 border-red-500/80 bg-black/85 px-2 py-2 text-white shadow-[0_0_28px_rgba(239,68,68,0.5)] backdrop-blur-md transition hover:border-yellow-300 md:max-w-[360px] md:px-[0.8cqw] md:py-[0.75cqh] ${className}`}
     >
-      <span className="mb-1 block text-center text-[8px] font-black uppercase tracking-[0.16em] text-yellow-300 md:mb-2 md:text-[0.7cqw]">
-        {promoEnded ? 'Pre sale finalizada' : 'Pre sale termina en'}
+      <span className="mb-1 block text-center text-[8px] font-black uppercase tracking-[0.16em] text-yellow-300 md:mb-2 md:text-[0.62cqw]">
+        {promoEnded ? 'Pre sale finalizada' : label}
       </span>
       <span className="grid grid-cols-4 gap-1 text-center md:gap-2">
         {[
