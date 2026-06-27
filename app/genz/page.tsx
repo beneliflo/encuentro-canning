@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Gen Z Game Over — Pre Sale',
   description:
     'Pre sale Gen Z Game Over en Encuentro Canning. Registrate para recibir acceso anticipado.',
+  icons: {
+    icon: '/genz/favicon.svg',
+  },
   openGraph: {
     title: 'Gen Z Game Over — Pre Sale',
     description: 'Registrate para recibir acceso anticipado a Gen Z Game Over.',
