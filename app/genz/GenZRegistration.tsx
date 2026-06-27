@@ -19,7 +19,7 @@ type DiscountPhase = {
 
 const DISCOUNT_PHASES: DiscountPhase[] = [
   {
-    label: 'PRE SALE TERMINA EN',
+    label: 'PRE SALE COMIENZA EN',
     startsAt: new Date('2026-01-01T00:00:00-03:00'),
     endsAt: new Date('2026-07-02T23:59:59-03:00'),
   },
@@ -143,8 +143,8 @@ export default function GenZRegistration({
 
   return (
     <main className={`min-h-screen bg-black text-white ${pixelFontClassName}`}>
-      <section className="relative flex min-h-[100svh] items-center justify-center overflow-x-hidden overflow-y-auto">
-        <div className="relative h-[100svh] w-[calc(100svh*1081/1921)] min-w-full overflow-visible [container-type:size] md:aspect-[1920/1081] md:h-auto md:min-w-0 md:w-screen md:max-w-[calc(100svh*1920/1081)]">
+      <section className="relative flex min-h-[100svh] items-start justify-center overflow-x-hidden overflow-y-auto md:items-center">
+        <div className="relative aspect-[2160/4840] w-[max(100vw,44.6281svh)] max-w-none overflow-visible [container-type:size] md:aspect-[1920/1081] md:w-screen md:max-w-[calc(100svh*1920/1081)]">
           <Image
             src="/genz/Pre sale Gen z Flyer.jpeg"
             alt="Gen Z Game Over Pre Sale"
@@ -154,15 +154,24 @@ export default function GenZRegistration({
             className="hidden object-contain md:block"
           />
           <Image
-            src="/genz/Pre Sale Gen Z Mobile.jpeg"
+            src="/genz/Pre Sale Gen Z Mobile.png"
             alt="Gen Z Game Over Pre Sale"
             fill
             priority
             sizes="100vw"
-            className="object-cover md:hidden"
+            className="object-contain md:hidden"
           />
 
           <div className="absolute left-1/2 top-[29.5cqh] z-10 flex w-[68cqw] max-w-[300px] -translate-x-1/2 flex-col gap-1.5 md:static md:mt-0 md:contents md:w-auto md:max-w-none md:translate-x-0 md:pb-0">
+            <CountdownButton
+              promoEnded={promoEnded}
+              timeLeft={timeLeft}
+              label={countdownLabel}
+              formatNumber={formatNumber}
+              onClick={scrollToForm}
+              pixelFontClassName={pixelFontClassName}
+              className="w-full md:hidden"
+            />
             <form
               id="genz-form"
               onSubmit={handleSubmit}
@@ -256,19 +265,10 @@ export default function GenZRegistration({
                 type="submit"
                 disabled={isSubmitting}
                 className="mt-2 h-9 w-full cursor-pointer border-2 border-yellow-300 bg-red-600 px-3 text-[8px] font-black uppercase tracking-normal text-white shadow-[0_0_18px_rgba(250,204,21,0.45)] transition hover:bg-yellow-300 hover:text-black disabled:cursor-not-allowed disabled:opacity-60 md:mt-[1.4cqh] md:h-[3.4cqh] md:text-[0.58cqw]"
-              >
-                {isSubmitting ? 'Enviando...' : 'Registrarme'}
+            >
+              {isSubmitting ? 'Enviando...' : 'Registrarme'}
               </button>
             </form>
-            <CountdownButton
-              promoEnded={promoEnded}
-              timeLeft={timeLeft}
-              label={countdownLabel}
-              formatNumber={formatNumber}
-              onClick={scrollToForm}
-              pixelFontClassName={pixelFontClassName}
-              className="w-full md:hidden"
-            />
           </div>
           <CountdownButton
             promoEnded={promoEnded}
