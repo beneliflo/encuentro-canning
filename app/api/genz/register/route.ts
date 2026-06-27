@@ -2,15 +2,46 @@ import { NextResponse } from 'next/server'
 
 const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SHEET_GENZ_WEBHOOK_URL
 const SPREADSHEET_ID = '1VBEHJUowb28kMaMeVHA8dEE2ttE8fq0GT7CH2XcHH-0'
+const ALLOWED_ORIGINS = new Set([
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:3001',
+  'https://www.encuentrocanning.org',
+  'https://encuentrocanning.org',
+  'https://genz.emubaescuela.com',
+  'https://emubaescuela.com',
+  'https://www.emubaescuela.com',
+])
+
+function getCorsHeaders(request: Request) {
+  const origin = request.headers.get('origin')
+  const allowedOrigin = origin && ALLOWED_ORIGINS.has(origin) ? origin : ''
+
+  return {
+    ...(allowedOrigin ? { 'Access-Control-Allow-Origin': allowedOrigin } : {}),
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  }
+}
+
+export async function OPTIONS(request: Request) {
+  return new NextResponse(null, {
+    status: 204,
+    headers: getCorsHeaders(request),
+  })
+}
 
 export async function POST(request: Request) {
+  const corsHeaders = getCorsHeaders(request)
+
   try {
     const { nombreApellido, email, telefono, edad, iglesia } = await request.json()
 
     if (!nombreApellido || !email || !telefono || !edad || !iglesia) {
       return NextResponse.json(
         { error: 'Todos los campos son obligatorios' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       )
     }
 
@@ -20,7 +51,7 @@ export async function POST(request: Request) {
       )
       return NextResponse.json(
         { error: 'Server configuration error' },
-        { status: 500 }
+        { status: 500, headers: corsHeaders }
       )
     }
 
@@ -49,12 +80,12 @@ export async function POST(request: Request) {
       throw new Error(`Google Script error: ${response.status} - ${text.slice(0, 200)}`)
     }
 
-    return NextResponse.json({ status: 'ok' })
+    return NextResponse.json({ status: 'ok' }, { headers: corsHeaders })
   } catch (error) {
     console.error('Gen Z registration error:', error)
     return NextResponse.json(
       { error: 'Error al procesar el registro' },
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     )
   }
 }
