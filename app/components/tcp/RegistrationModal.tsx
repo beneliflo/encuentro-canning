@@ -25,17 +25,18 @@ export default function RegistrationModal({ isOpen, onClose }: RegistrationModal
     setError('')
 
     try {
-      // Call Google Sheets webhook directly
-      const webhookUrl = 'https://script.google.com/macros/s/AKfycbwbgSsqtFeZqUFADi-gYUjCl2MLECQ1WV00C470XtYz_oW8CWMDO6Na4Aa4CtR2dcFu/exec'
-      
-      const res = await fetch(webhookUrl, {
+      const isEmubaDomain = window.location.hostname.endsWith('emubaescuela.com')
+      const registrationEndpoint = isEmubaDomain
+        ? 'https://www.encuentrocanning.org/api/tcp/register'
+        : '/api/tcp/register'
+
+      const res = await fetch(registrationEndpoint, {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
-        redirect: 'follow',
       })
 
-      // Google Apps Script redirects after POST, so we check if the request completed
-      if (res.status >= 500) {
+      if (!res.ok) {
         throw new Error('Error al enviar el formulario')
       }
 

@@ -122,7 +122,12 @@ export default function GenZRegistration({
     setError('')
 
     try {
-      const response = await fetch('/api/genz/register', {
+      const isEmubaDomain = window.location.hostname.endsWith('emubaescuela.com')
+      const registrationEndpoint = isEmubaDomain
+        ? 'https://www.encuentrocanning.org/api/genz/register'
+        : '/api/genz/register'
+
+      const response = await fetch(registrationEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
