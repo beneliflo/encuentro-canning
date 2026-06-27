@@ -15,17 +15,27 @@ export const metadata: Metadata = {
   icons: {
     icon: '/genz/favicon.svg',
   },
+  alternates: {
+    canonical: 'https://genz.emubaescuela.com',
+  },
   openGraph: {
     title: 'Gen Z Game Over — Pre Sale',
     description: 'Registrate para recibir acceso anticipado a Gen Z Game Over.',
+    url: 'https://genz.emubaescuela.com',
     images: [
       {
-        url: '/genz/Pre sale Gen z Flyer.jpeg',
-        width: 1920,
-        height: 1081,
+        url: 'https://genz.emubaescuela.com/genz/og-image.png',
+        width: 1200,
+        height: 630,
         alt: 'Gen Z Game Over Pre Sale',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gen Z Game Over — Pre Sale',
+    description: 'Registrate para recibir acceso anticipado a Gen Z Game Over.',
+    images: ['https://genz.emubaescuela.com/genz/og-image.png'],
   },
 }
 

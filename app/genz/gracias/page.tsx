@@ -4,11 +4,21 @@ import Image from 'next/image'
 export const metadata: Metadata = {
   title: 'Gracias — Gen Z Game Over',
   description: 'Gracias por registrarte a Gen Z Game Over.',
+  icons: {
+    icon: '/genz/favicon.svg',
+  },
+  alternates: {
+    canonical: 'https://genz.emubaescuela.com/gracias',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default function GenZGraciasPage() {
   return (
-    <main className="relative min-h-[100svh] overflow-hidden bg-black text-white">
+    <main className="relative min-h-svh overflow-hidden bg-black text-white">
       <Image
         src="/genz/gracias-desktop.jpeg"
         alt="Gen Z Game Over"
