@@ -17,6 +17,20 @@ export function proxy(request: NextRequest) {
       return NextResponse.rewrite(url)
     }
   }
+
+  if (hostname === 'genz.emubaescuela.com') {
+    const url = request.nextUrl.clone()
+    
+    if (url.pathname === '/') {
+      url.pathname = '/genz'
+      return NextResponse.rewrite(url)
+    }
+    
+    if (!url.pathname.startsWith('/genz')) {
+      url.pathname = `/genz${url.pathname}`
+      return NextResponse.rewrite(url)
+    }
+  }
   
   return NextResponse.next()
 }
