@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { FormEvent, useEffect, useMemo, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 type TimeLeft = {
   days: number
@@ -13,6 +13,7 @@ type TimeLeft = {
 
 type DiscountPhase = {
   label: string
+  discount: string
   startsAt: Date
   endsAt: Date
 }
@@ -20,26 +21,31 @@ type DiscountPhase = {
 const DISCOUNT_PHASES: DiscountPhase[] = [
   {
     label: 'PRE SALE COMIENZA EN',
+    discount: '',
     startsAt: new Date('2026-01-01T00:00:00-03:00'),
     endsAt: new Date('2026-07-02T23:59:59-03:00'),
   },
   {
-    label: '45% OFF SOLO POR 24HS',
+    label: '45% OFF TERMINA EN',
+    discount: '45% OFF',
     startsAt: new Date('2026-07-03T00:00:00-03:00'),
     endsAt: new Date('2026-07-03T23:59:59-03:00'),
   },
   {
     label: '30% OFF JULIO',
+    discount: '30% OFF',
     startsAt: new Date('2026-07-04T00:00:00-03:00'),
     endsAt: new Date('2026-07-31T23:59:59-03:00'),
   },
   {
     label: '15% OFF AGOSTO',
+    discount: '15% OFF',
     startsAt: new Date('2026-08-01T00:00:00-03:00'),
     endsAt: new Date('2026-08-28T23:59:59-03:00'),
   },
   {
     label: '29/08 EN PUERTA',
+    discount: 'Entrada en puerta',
     startsAt: new Date('2026-08-29T00:00:00-03:00'),
     endsAt: new Date('2026-08-29T23:59:59-03:00'),
   },
@@ -53,13 +59,30 @@ function getDiscountPhase(now: Date) {
   )
 }
 
+const TICKET_URL = 'https://emuba.fint.app/eventos/gen-z-2026'
+const PRE_SALE_END = new Date('2026-07-03T23:59:59-03:00')
+
 export default function GenZRegistration({
   pixelFontClassName,
 }: {
   pixelFontClassName: string
 }) {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const initialPhase = useMemo(() => getDiscountPhase(new Date()), [])
+  const isPreSale = useMemo(() => new Date() <= PRE_SALE_END, [])
+  const [showForm, setShowForm] = useState(isPreSale)
+
+  const ticketUrl = useMemo(() => {
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']
+    const params = new URLSearchParams()
+    utmParams.forEach((key) => {
+      const val = searchParams.get(key)
+      if (val) params.set(key, val)
+    })
+    const qs = params.toString()
+    return qs ? `${TICKET_URL}?${qs}` : TICKET_URL
+  }, [searchParams])
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
@@ -68,6 +91,7 @@ export default function GenZRegistration({
     seconds: 0,
   })
   const [countdownLabel, setCountdownLabel] = useState(initialPhase.label)
+  const [currentDiscount, setCurrentDiscount] = useState(initialPhase.discount)
   const [promoEnded, setPromoEnded] = useState(false)
   const [formData, setFormData] = useState({
     nombreApellido: '',
@@ -81,12 +105,21 @@ export default function GenZRegistration({
   const [error, setError] = useState('')
 
   useEffect(() => {
+    const checkPreSale = () => {
+      if (new Date() > PRE_SALE_END) setShowForm(false)
+    }
+    const phaseInterval = window.setInterval(checkPreSale, 1000)
+    return () => window.clearInterval(phaseInterval)
+  }, [])
+
+  useEffect(() => {
     const updateCountdown = () => {
       const now = new Date()
       const currentPhase = getDiscountPhase(now)
       const difference = currentPhase.endsAt.getTime() - now.getTime()
 
       setCountdownLabel(currentPhase.label)
+        setCurrentDiscount(currentPhase.discount)
 
       if (difference > 0) {
         setTimeLeft({
@@ -181,6 +214,17 @@ export default function GenZRegistration({
               pixelFontClassName={pixelFontClassName}
               className="w-full md:hidden"
             />
+            {!showForm ? (
+              <a
+                href={ticketUrl}
+                className="flex w-full flex-col items-center justify-center border-2 border-yellow-300 bg-red-600 px-3 py-4 text-center font-black uppercase tracking-widest text-white shadow-[0_0_28px_rgba(250,204,21,0.55)] transition hover:bg-yellow-300 hover:text-black md:absolute md:right-[11cqw] md:top-[29cqh] md:w-[27cqw] md:max-w-none md:py-[2cqh]"
+              >
+                {currentDiscount && (
+                  <span className="block text-yellow-300 text-[11px] md:text-[1cqw] group-hover:text-black">{currentDiscount}</span>
+                )}
+                <span className="text-[10px] md:text-[0.8cqw]">Comprar entrada</span>
+              </a>
+            ) : (
             <form
               id="genz-form"
               onSubmit={handleSubmit}
@@ -188,7 +232,7 @@ export default function GenZRegistration({
             >
               <div className="mb-2 hidden justify-end md:mb-4 md:flex">
                 <div className="text-right font-black uppercase leading-none">
-                  <p className="text-yellow-300 md:text-[0.85cqw]">Pre Sale</p>
+                  <p className="text-yellow-300 md:text-[0.85cqw]">{currentDiscount || 'Pre Sale'}</p>
                   <p className="text-white md:text-[1.35cqw]">Registro</p>
                 </div>
               </div>
@@ -278,6 +322,7 @@ export default function GenZRegistration({
               {isSubmitting ? 'Enviando...' : submitCooldown ? 'Intentá en unos segundos...' : 'Registrarme'}
               </button>
             </form>
+            )}
           </div>
           <CountdownButton
             promoEnded={promoEnded}
