@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { Press_Start_2P } from 'next/font/google'
+import { Suspense } from 'react'
 import GenZRegistration from './GenZRegistration'
 
 const pressStart2P = Press_Start_2P({
@@ -40,5 +41,9 @@ export const metadata: Metadata = {
 }
 
 export default function GenZPage() {
-  return <GenZRegistration pixelFontClassName={pressStart2P.className} />
+  return (
+    <Suspense>
+      <GenZRegistration pixelFontClassName={pressStart2P.className} />
+    </Suspense>
+  )
 }
