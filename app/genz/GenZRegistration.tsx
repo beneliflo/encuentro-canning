@@ -77,6 +77,7 @@ export default function GenZRegistration({
     iglesia: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitCooldown, setSubmitCooldown] = useState(false)
   const [error, setError] = useState('')
 
   useEffect(() => {
@@ -118,6 +119,7 @@ export default function GenZRegistration({
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    if (isSubmitting || submitCooldown) return
     setIsSubmitting(true)
     setError('')
 
@@ -141,6 +143,8 @@ export default function GenZRegistration({
       router.push('/genz/gracias')
     } catch {
       setError('Hubo un error al enviar el formulario. Intentá de nuevo en unos segundos.')
+      setSubmitCooldown(true)
+      setTimeout(() => setSubmitCooldown(false), 10000)
     } finally {
       setIsSubmitting(false)
     }
@@ -268,10 +272,10 @@ export default function GenZRegistration({
 
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || submitCooldown}
                 className="mt-2 h-9 w-full cursor-pointer border-2 border-yellow-300 bg-red-600 px-3 text-[8px] font-black uppercase tracking-normal text-white shadow-[0_0_18px_rgba(250,204,21,0.45)] transition hover:bg-yellow-300 hover:text-black disabled:cursor-not-allowed disabled:opacity-60 md:mt-[1.4cqh] md:h-[3.4cqh] md:text-[0.58cqw]"
             >
-              {isSubmitting ? 'Enviando...' : 'Registrarme'}
+              {isSubmitting ? 'Enviando...' : submitCooldown ? 'Intentá en unos segundos...' : 'Registrarme'}
               </button>
             </form>
           </div>
