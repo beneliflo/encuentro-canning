@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SHEET_GENZ_WEBHOOK_URL
-const SPREADSHEET_ID = '1VBEHJUowb28kMaMeVHA8dEE2ttE8fq0GT7CH2XcHH-0'
+const SPREADSHEET_ID = '1_QRDprrHTucjoH_eBaDj6YcpoCy31-phbHGihIpZakU'
 const ALLOWED_ORIGINS = new Set([
   'http://localhost:3000',
   'http://localhost:3001',
