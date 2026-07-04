@@ -26,8 +26,8 @@ const DISCOUNT_PHASES: DiscountPhase[] = [
     endsAt: new Date('2026-07-02T23:59:59-03:00'),
   },
   {
-    label: '45% OFF TERMINA EN',
-    discount: '45% OFF',
+    label: 'PRE SALE TERMINA EN',
+    discount: 'Pre Sale',
     startsAt: new Date('2026-07-03T00:00:00-03:00'),
     endsAt: new Date('2026-07-06T23:59:59-03:00'),
   },
@@ -331,7 +331,7 @@ export default function GenZRegistration({
             formatNumber={formatNumber}
             onClick={scrollToForm}
             pixelFontClassName={pixelFontClassName}
-            className={`hidden md:absolute md:right-[15cqw] md:top-[40cqh] md:w-[27cqw] md:max-w-none ${showForm ? 'md:hidden' : 'md:block'}`}
+            className={`hidden md:absolute md:right-[15cqw] md:w-[27cqw] md:max-w-none ${showForm ? 'md:block md:top-[14cqh]' : 'md:block md:top-[40cqh]'}`}
           />
         </div>
       </section>
