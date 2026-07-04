@@ -331,7 +331,7 @@ export default function GenZRegistration({
             formatNumber={formatNumber}
             onClick={scrollToForm}
             pixelFontClassName={pixelFontClassName}
-            className="hidden md:absolute md:right-[15cqw] md:top-[40cqh] md:block md:w-[27cqw] md:max-w-none"
+            className={`hidden md:absolute md:right-[15cqw] md:top-[40cqh] md:w-[27cqw] md:max-w-none ${showForm ? 'md:hidden' : 'md:block'}`}
           />
         </div>
       </section>
