@@ -32,13 +32,13 @@ const DISCOUNT_PHASES: DiscountPhase[] = [
     endsAt: new Date('2026-07-03T23:59:59-03:00'),
   },
   {
-    label: '30% OFF JULIO',
+    label: '30% OFF TERMINA EN',
     discount: '30% OFF',
     startsAt: new Date('2026-07-04T00:00:00-03:00'),
     endsAt: new Date('2026-07-31T23:59:59-03:00'),
   },
   {
-    label: '15% OFF AGOSTO',
+    label: '15% OFF TERMINA EN',
     discount: '15% OFF',
     startsAt: new Date('2026-08-01T00:00:00-03:00'),
     endsAt: new Date('2026-08-28T23:59:59-03:00'),
@@ -217,10 +217,10 @@ export default function GenZRegistration({
             {!showForm ? (
               <a
                 href={ticketUrl}
-                className="flex w-full flex-col items-center justify-center border-2 border-yellow-300 bg-red-600 px-3 py-4 text-center font-black uppercase tracking-widest text-white shadow-[0_0_28px_rgba(250,204,21,0.55)] transition hover:bg-yellow-300 hover:text-black md:absolute md:right-[11cqw] md:top-[29cqh] md:w-[27cqw] md:max-w-none md:py-[2cqh]"
+                className="group flex w-full flex-col items-center justify-center border-2 border-yellow-300 bg-red-600 px-3 py-4 text-center font-black uppercase tracking-widest text-white shadow-[0_0_28px_rgba(250,204,21,0.55)] transition hover:bg-yellow-300 hover:text-black md:absolute md:right-[11cqw] md:top-[29cqh] md:w-[27cqw] md:max-w-none md:py-[2cqh]"
               >
                 {currentDiscount && (
-                  <span className="block text-yellow-300 text-[11px] md:text-[1cqw] group-hover:text-black">{currentDiscount}</span>
+                  <span className="block text-[11px] text-yellow-300 transition group-hover:text-black md:text-[1cqw]">{currentDiscount}</span>
                 )}
                 <span className="text-[10px] md:text-[0.8cqw]">Comprar entrada</span>
               </a>
