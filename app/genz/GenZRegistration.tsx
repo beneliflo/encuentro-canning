@@ -29,12 +29,12 @@ const DISCOUNT_PHASES: DiscountPhase[] = [
     label: '45% OFF TERMINA EN',
     discount: '45% OFF',
     startsAt: new Date('2026-07-03T00:00:00-03:00'),
-    endsAt: new Date('2026-07-03T23:59:59-03:00'),
+    endsAt: new Date('2026-07-06T23:59:59-03:00'),
   },
   {
     label: '30% OFF TERMINA EN',
     discount: '30% OFF',
-    startsAt: new Date('2026-07-04T00:00:00-03:00'),
+    startsAt: new Date('2026-07-07T00:00:00-03:00'),
     endsAt: new Date('2026-07-31T23:59:59-03:00'),
   },
   {
@@ -60,7 +60,7 @@ function getDiscountPhase(now: Date) {
 }
 
 const TICKET_URL = 'https://emuba.fint.app/eventos/gen-z-2026'
-const PRE_SALE_END = new Date('2026-07-03T23:59:59-03:00')
+const PRE_SALE_END = new Date('2026-07-06T23:59:59-03:00')
 
 export default function GenZRegistration({
   pixelFontClassName,
