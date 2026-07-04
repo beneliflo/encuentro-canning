@@ -217,7 +217,7 @@ export default function GenZRegistration({
             {!showForm ? (
               <a
                 href={ticketUrl}
-                className="group flex w-full flex-col items-center justify-center border-2 border-yellow-300 bg-red-600 px-3 py-4 text-center font-black uppercase tracking-widest text-white shadow-[0_0_28px_rgba(250,204,21,0.55)] transition hover:bg-yellow-300 hover:text-black md:absolute md:right-[11cqw] md:top-[29cqh] md:w-[27cqw] md:max-w-none md:py-[2cqh]"
+                className="group flex w-full flex-col items-center justify-center border-2 border-yellow-300 bg-red-600 px-3 py-4 text-center font-black uppercase tracking-widest text-white shadow-[0_0_28px_rgba(250,204,21,0.55)] transition hover:bg-yellow-300 hover:text-black md:absolute md:right-[15cqw] md:top-[54cqh] md:w-[27cqw] md:max-w-none md:py-[2cqh]"
               >
                 {currentDiscount && (
                   <span className="block text-[11px] text-yellow-300 transition group-hover:text-black md:text-[1cqw]">{currentDiscount}</span>
@@ -228,7 +228,7 @@ export default function GenZRegistration({
             <form
               id="genz-form"
               onSubmit={handleSubmit}
-              className="w-full border-2 border-red-500/80 bg-black/75 p-2 shadow-[0_0_28px_rgba(239,68,68,0.45)] backdrop-blur-sm md:absolute md:right-[11cqw] md:top-[29cqh] md:w-[27cqw] md:max-w-none md:p-[1.1cqw]"
+              className="w-full border-2 border-red-500/80 bg-black/75 p-2 shadow-[0_0_28px_rgba(239,68,68,0.45)] backdrop-blur-sm md:absolute md:right-[15cqw] md:top-[29cqh] md:w-[27cqw] md:max-w-none md:p-[1.1cqw]"
             >
               <div className="mb-2 hidden justify-end md:mb-4 md:flex">
                 <div className="text-right font-black uppercase leading-none">
@@ -331,7 +331,7 @@ export default function GenZRegistration({
             formatNumber={formatNumber}
             onClick={scrollToForm}
             pixelFontClassName={pixelFontClassName}
-            className="hidden md:absolute md:right-[11cqw] md:top-[15cqh] md:block md:w-[27cqw] md:max-w-none"
+            className="hidden md:absolute md:right-[15cqw] md:top-[40cqh] md:block md:w-[27cqw] md:max-w-none"
           />
         </div>
       </section>
