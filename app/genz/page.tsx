@@ -86,7 +86,7 @@ function Navbar() {
         unoptimized
       />
       <div className="relative z-10 mx-auto flex max-w-6xl items-center justify-between">
-        <a href="https://genz.emubaescuela.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
+        <a href="/" className="hover:opacity-80">
           <Image
             src="/genz/hero/emubax-logo.png"
             alt="EMUBAX"
@@ -140,7 +140,7 @@ function HeroSection() {
         />
 
         <div className="mt-12 flex flex-col gap-4 md:flex-row">
-          <a href="#registro" className="pixel-btn genz-hero-cta">
+          <a href="https://emuba.fint.app/eventos/gen-z-2026" className="pixel-btn genz-hero-cta">
             <span className="relative z-10">COMPRAR ENTRADAS</span>
           </a>
           <a
@@ -174,6 +174,17 @@ function SpeakerSection({
   const decorations = speakerDecorations[number] ?? []
   const avatar = speakerAvatars[number]
   const profile = speakerProfiles[number]
+  const nameGraphic = speakerNames[number]
+  const roleShapes =
+    number === 1
+      ? s1RoleShapes
+      : number === 2
+        ? s2RoleShapes
+        : number === 3
+          ? s3RoleShapes
+          : number === 4
+            ? s4RoleShapes
+            : undefined
 
   return (
     <section
@@ -244,14 +255,61 @@ function SpeakerSection({
 
       <div className={`relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-10 md:flex-row ${isEven ? 'md:flex-row-reverse' : ''}`}>
         <div className="flex-1 text-center md:text-left">
-          <p className="font-press-start text-xs uppercase tracking-[0.3em] text-white/70">SPEAKER {number}</p>
-          <h2 className="mt-4 font-press-start text-3xl uppercase leading-tight text-white md:text-5xl">
-            {name}
+          <h2>
+            {nameGraphic ? (
+              <Image
+                src={nameGraphic.src}
+                alt={name}
+                width={nameGraphic.width}
+                height={nameGraphic.height}
+                sizes={`${nameGraphic.width / 2}px`}
+                className={
+                  number === 1
+                    ? 'mx-auto h-auto w-full md:ml-auto md:mr-10'
+                    : number === 2
+                      ? 'mx-auto h-auto w-full md:mx-0 md:-translate-x-8'
+                      : number === 3
+                        ? 'mx-auto h-auto w-full md:ml-auto md:mr-8'
+                        : 'mx-auto h-auto w-full md:mx-0'
+                }
+                style={{ maxWidth: `${nameGraphic.width / 2}px` }}
+                unoptimized
+              />
+            ) : (
+              name
+            )}
           </h2>
-          <ul className="mt-6 space-y-2">
-            {roles.map((role) => (
-              <li key={role} className="font-press-start text-sm uppercase tracking-widest text-white md:text-base">
-                {role}
+          <ul
+            className={
+              number === 1
+                ? 'mt-14 flex flex-col items-center gap-2 md:items-end md:pr-10'
+                : number === 2
+                  ? 'mt-14 flex flex-col items-center gap-2 md:items-start'
+                  : number === 3
+                    ? 'mt-14 flex flex-col items-center gap-2 md:items-end md:pr-8'
+                    : number === 4
+                      ? 'mt-14 flex flex-col items-center gap-2 md:items-start'
+                  : 'mt-6 space-y-2'
+            }
+          >
+            {roles.map((role, index) => (
+              <li
+                key={role}
+                className={
+                  roleShapes
+                    ? `w-fit bg-black px-5 py-3 text-center [font-family:var(--font-press-start-2p)] text-base uppercase leading-[1.35] tracking-widest text-[#FFB500] md:text-lg ${number === 3 ? '' : 'whitespace-nowrap'}`
+                    : 'font-press-start text-sm uppercase tracking-widest text-white md:text-base'
+                }
+                style={roleShapes?.[index]}
+              >
+                {number === 3
+                  ? s3RoleLines[index].map((line, lineIndex) => (
+                      <span key={line}>
+                        {line}
+                        {lineIndex < s3RoleLines[index].length - 1 && <br />}
+                      </span>
+                    ))
+                  : role}
               </li>
             ))}
           </ul>
@@ -262,6 +320,43 @@ function SpeakerSection({
 
     </section>
   )
+}
+
+const s1RoleShapes = [
+  { clipPath: 'polygon(7% 0, 100% 0, 97% 100%, 0 100%)', transform: 'rotate(-1deg)' },
+  { clipPath: 'polygon(0 8%, 97% 0, 100% 100%, 3% 94%)', transform: 'rotate(1deg)' },
+  { clipPath: 'polygon(4% 0, 96% 6%, 100% 100%, 0 92%)', transform: 'rotate(2deg)' },
+]
+
+const s2RoleShapes = [
+  { clipPath: 'polygon(4% 8%, 100% 0, 93% 100%, 0 100%)', transform: 'rotate(-1deg)' },
+  { clipPath: 'polygon(0 5%, 100% 0, 97% 100%, 5% 94%)', transform: 'rotate(0deg)' },
+  { clipPath: 'polygon(0 0, 94% 5%, 100% 100%, 3% 92%)', transform: 'rotate(1deg)' },
+]
+
+const s3RoleShapes = [
+  { clipPath: 'polygon(3% 0, 96% 6%, 100% 100%, 0 96%)', transform: 'rotate(1deg)' },
+  { clipPath: 'polygon(8% 0, 96% 4%, 100% 94%, 0 100%)', transform: 'rotate(-1deg)' },
+  { clipPath: 'polygon(3% 5%, 100% 0, 100% 82%, 0 100%)', transform: 'rotate(-1deg)' },
+]
+
+const s3RoleLines = [
+  ['LIDER DE', 'ADOLESCENTES'],
+  ['DIR. GENERACIÓN', 'EMERGENTE (MISIÓN)'],
+  ['ADORADOR'],
+]
+
+const s4RoleShapes = [
+  { clipPath: 'polygon(0 8%, 100% 0, 94% 100%, 0 100%)', transform: 'rotate(-1deg)' },
+  { clipPath: 'polygon(7% 0, 100% 3%, 100% 100%, 0 96%)', transform: 'rotate(0deg)' },
+  { clipPath: 'polygon(8% 0, 100% 0, 95% 100%, 0 97%)', transform: 'rotate(1deg)' },
+]
+
+const speakerNames: Record<number, { src: string; width: number; height: number }> = {
+  1: { src: '/genz/decorations/s1-name.png', width: 846, height: 300 },
+  2: { src: '/genz/decorations/s2-name.png', width: 933, height: 537 },
+  3: { src: '/genz/decorations/s3-name.png', width: 948, height: 367 },
+  4: { src: '/genz/decorations/s4-name.png', width: 1007, height: 298 },
 }
 
 const speakerDecorations: Record<
