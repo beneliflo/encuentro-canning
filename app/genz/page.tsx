@@ -232,7 +232,7 @@ function SpeakerSection({
             height={profile.height}
             sizes="(min-width: 768px) 34vw, 62vw"
             className={`absolute h-auto w-[62%] md:w-[34%] ${profile.position} ${profile.rotateClass}`}
-            style={{ maxWidth: `${profile.width / 2}px`, bottom: profile.bottom }}
+            style={{ maxWidth: `${profile.displayWidth}px`, bottom: profile.bottom }}
             unoptimized
             priority={number <= 2}
           />
@@ -287,8 +287,8 @@ function SpeakerSection({
               width={profile.width}
               height={profile.height}
               sizes="80vw"
-              className={`relative z-[4] mx-auto mt-8 h-auto w-[80%] md:hidden ${profile.rotateClass}`}
-              style={{ maxWidth: `${profile.width / 2}px` }}
+              className={`relative z-[4] mx-auto mt-8 h-auto md:hidden ${profile.mobileWidthClass} ${profile.rotateClass}`}
+              style={{ maxWidth: `${profile.displayWidth}px` }}
               unoptimized
               priority={number <= 2}
             />
@@ -447,39 +447,56 @@ const speakerAvatars: Record<
 
 const speakerProfiles: Record<
   number,
-  { src: string; width: number; height: number; position: string; rotateClass: string; bottom: string }
+  {
+    src: string
+    width: number
+    height: number
+    displayWidth: number
+    mobileWidthClass: string
+    position: string
+    rotateClass: string
+    bottom: string
+  }
 > = {
   1: {
     src: '/genz/decorations/s1-profile-rigth.png',
     width: 755,
     height: 1332,
+    displayWidth: 384,
+    mobileWidthClass: 'w-[80%]',
     position: 'right-6 md:right-12',
     rotateClass: 'rotate-[4deg]',
-    bottom: '-20%',
+    bottom: '-9%',
   },
   2: {
     src: '/genz/decorations/s2-profile-left.png',
     width: 798,
     height: 1506,
+    displayWidth: 412,
+    mobileWidthClass: 'w-[75%]',
     position: 'left-6 md:left-12',
     rotateClass: '-rotate-[4deg]',
-    bottom: '-25%',
+    bottom: '-10%',
   },
   3: {
     src: '/genz/decorations/s3-profile-rigth.png',
     width: 681,
     height: 1272,
+    displayWidth: 363,
+    mobileWidthClass: 'w-[76%]',
     position: 'right-6 md:right-12',
     rotateClass: 'rotate-[4deg]',
-    bottom: '-20%',
+    bottom: '-9%',
   },
   4: {
     src: '/genz/decorations/s4-profile-left.png',
     width: 640,
     height: 1246,
+    displayWidth: 349,
+    mobileWidthClass: 'w-[73%]',
     position: 'left-6 md:left-12',
     rotateClass: '-rotate-[4deg]',
-    bottom: '-12%',
+    bottom: '-9%',
   },
 }
 
