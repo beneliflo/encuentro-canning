@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import GenzTicketLink from './GenzTicketLink'
 
 export const metadata: Metadata = {
   title: 'Gen Z Game Over — Encuentro de jóvenes',
@@ -140,9 +141,7 @@ function HeroSection() {
         />
 
         <div className="mt-12 flex flex-col gap-4 md:flex-row">
-          <a href="https://emuba.fint.app/eventos/gen-z-2026" className="pixel-btn genz-hero-cta">
-            <span className="relative z-10">COMPRAR ENTRADAS</span>
-          </a>
+          <GenzTicketLink />
           <a
             href="#speakers"
             className="hidden border-2 border-white bg-black/60 px-8 py-4 font-press-start text-xs uppercase tracking-widest text-white backdrop-blur-sm transition hover:bg-white hover:text-black md:text-sm"
