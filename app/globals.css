@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Upheaval';
+  src: url('/fonts/upheaval/upheavtt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @utility container {
   margin-inline: auto;
   padding-inline: 1.25rem;
@@ -17,6 +25,10 @@
     var(--font-roboto), ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-neue-haas: neue-haas-grotesk-display, sans-serif;
+  --font-press-start: var(--font-press-start-2p), 'Press Start 2P', cursive;
+  --font-neue-montreal:
+    var(--font-neue-montreal-local), 'Neue Montreal', 'Neue Haas Grotesk Display',
+    var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
 
   --color-hueso: #eff0ef;
   --color-dark: #242424;
@@ -86,4 +98,135 @@ body {
 
 .hero-player > video {
   object-fit: cover;
+}
+
+@layer components {
+  .pixel-btn {
+    position: relative;
+    z-index: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1rem 2rem;
+    font-family: var(--font-press-start-2p), 'Press Start 2P', cursive;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+    text-shadow:
+      -1px -1px 0 #000,
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000,
+      -1px  0   0 #000,
+       1px  0   0 #000,
+       0   -1px 0 #000,
+       0    1px 0 #000;
+    transition: transform 0.1s ease;
+  }
+
+  .pixel-btn::before,
+  .pixel-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transition: transform 0.1s ease;
+  }
+
+  .pixel-btn::before {
+    z-index: -2;
+    background-color: #FF3231;
+    transform: translate(8px, 8px);
+  }
+
+  .pixel-btn::after {
+    z-index: -1;
+    background-color: #FFB500;
+  }
+
+  .pixel-btn:hover::before {
+    transform: translate(4px, 4px);
+  }
+
+  .genz-hero-cta {
+    width: auto;
+    padding: 1.125rem 1rem;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+  }
+
+  .genz-hero-cta::before {
+    transform: translate(3.5px, 3.5px);
+  }
+
+  .genz-hero-cta:hover::before {
+    transform: translate(1.5px, 1.5px);
+  }
+
+  .location-address {
+    display: flex;
+    width: min(100%, 205.5px);
+    aspect-ratio: 411 / 153;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
+    text-align: center;
+    background-image: url('/genz/location/rectangle-address.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+  }
+
+  .location-cta {
+    padding: 2px;
+    background: #ff1744;
+    clip-path: polygon(0 14%, 3% 14%, 3% 0, 97% 0, 97% 14%, 100% 14%, 100% 86%, 97% 86%, 97% 100%, 3% 100%, 3% 86%, 0 86%);
+    transition: transform 0.15s ease;
+  }
+
+  .location-cta > span {
+    display: block;
+    padding: 1rem 2rem;
+    font-family: var(--font-press-start-2p), 'Press Start 2P', cursive;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    color: white;
+    background: rgb(3 7 27 / 92%);
+    clip-path: inherit;
+  }
+
+  .location-cta:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (min-width: 768px) {
+    .pixel-btn {
+      padding: 1.25rem 2.5rem;
+      font-size: 0.85rem;
+    }
+
+    .pixel-btn::before {
+      transform: translate(6px, 6px);
+    }
+
+    .pixel-btn:hover::before {
+      transform: translate(2px, 2px);
+    }
+
+    .genz-hero-cta {
+      width: auto;
+      padding: 1.125rem 1rem;
+      font-size: 0.9375rem;
+    }
+
+    .genz-hero-cta::before {
+      transform: translate(3.5px, 3.5px);
+    }
+
+    .genz-hero-cta:hover::before {
+      transform: translate(1.5px, 1.5px);
+    }
+  }
 }
