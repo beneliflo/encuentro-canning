@@ -166,11 +166,12 @@ body {
 
   .location-address {
     display: flex;
+    flex-direction: column;
     width: min(100%, 205.5px);
     aspect-ratio: 411 / 153;
     align-items: center;
     justify-content: center;
-    padding: 0 1.5rem;
+    padding: 0 0.75rem;
     text-align: center;
     background-image: url('/genz/location/rectangle-address.png');
     background-repeat: no-repeat;
@@ -227,6 +228,12 @@ body {
 
     .genz-hero-cta:hover::before {
       transform: translate(1.5px, 1.5px);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .location-address {
+      width: 260px;
     }
   }
 }

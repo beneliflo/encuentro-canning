@@ -3,9 +3,20 @@ import Image from 'next/image'
 import GenzTicketLink from './GenzTicketLink'
 
 export const metadata: Metadata = {
-  title: 'Gen Z Game Over — Encuentro de jóvenes',
+  title: {
+    absolute: 'GEN Z GAME OVER 2026 | Congreso para adolescentes',
+  },
   description:
-    'Gen Z Game Over — un encuentro para jóvenes con oradores, adoración y mucho más. Encuentro Canning.',
+    'GEN Z GAME OVER es el congreso para adolescentes de 11 a 17 años. Este 29 de agosto: desafíos, diversión y un encuentro real con Dios en Canning.',
+  keywords: [
+    'GEN Z GAME OVER',
+    'congreso para adolescentes',
+    'congreso cristiano para adolescentes',
+    'evento para adolescentes',
+    'jóvenes cristianos',
+    'Encuentro Canning',
+    'EMUBA',
+  ],
   icons: {
     icon: '/genz/favicon.svg',
   },
@@ -13,8 +24,9 @@ export const metadata: Metadata = {
     canonical: 'https://genz.emubaescuela.com',
   },
   openGraph: {
-    title: 'Gen Z Game Over — Encuentro de jóvenes',
-    description: 'Un encuentro para jóvenes con oradores, adoración y mucho más.',
+    title: 'GEN Z GAME OVER 2026 | Congreso para adolescentes',
+    description:
+      'Este 29 de agosto, adolescentes de 11 a 17 años vivirán una jornada de desafíos, diversión y un encuentro real con Dios en Canning.',
     url: 'https://genz.emubaescuela.com',
     images: [
       {
@@ -27,8 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gen Z Game Over — Encuentro de jóvenes',
-    description: 'Un encuentro para jóvenes con oradores, adoración y mucho más.',
+    title: 'GEN Z GAME OVER 2026 | Congreso para adolescentes',
+    description:
+      'Este 29 de agosto, adolescentes de 11 a 17 años vivirán una jornada de desafíos, diversión y un encuentro real con Dios en Canning.',
     images: ['https://genz.emubaescuela.com/genz/og-image.png'],
   },
 }
@@ -527,10 +540,9 @@ function LocationSection() {
               Canning
             </p>
 
-            <p className="location-address [font-family:var(--font-press-start-2p)] text-[0.55rem] uppercase leading-relaxed text-white sm:text-[0.65rem] xl:-mt-4 xl:text-sm">
-              Hipócrates 3320,
-              <br />
-              Canning
+            <p className="location-address [font-family:var(--font-press-start-2p)] text-[0.55rem] uppercase leading-[1.35] text-white sm:text-[0.65rem] xl:-mt-4 xl:text-[0.7rem]">
+              <span className="whitespace-nowrap">Hipócrates 3320,</span>
+              <span>Canning</span>
             </p>
           </div>
 
