@@ -121,7 +121,7 @@ function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[600px] flex-col items-center justify-center overflow-hidden bg-black px-6 py-20 md:min-h-[700px]"
+      className="relative flex min-h-[700px] flex-col items-center justify-center overflow-hidden bg-black px-6 py-20 md:min-h-[800px]"
     >
       <Image
         src="/genz/hero/bg-hero.png"
@@ -138,18 +138,18 @@ function HeroSection() {
           alt="GEN Z GAME OVER"
           width={1148}
           height={756}
-          className="w-full max-w-xs h-auto"
+          className="h-auto w-full max-w-sm"
           unoptimized
           priority
         />
 
-        <div className="mt-8 flex flex-col gap-4 md:flex-row">
-          <a href="#registro" className="pixel-btn">
+        <div className="mt-12 flex flex-col gap-4 md:flex-row">
+          <a href="#registro" className="pixel-btn genz-hero-cta">
             <span className="relative z-10">COMPRAR ENTRADAS</span>
           </a>
           <a
             href="#speakers"
-            className="border-2 border-white bg-black/60 px-8 py-4 font-press-start text-xs uppercase tracking-widest text-white backdrop-blur-sm transition hover:bg-white hover:text-black md:text-sm"
+            className="hidden border-2 border-white bg-black/60 px-8 py-4 font-press-start text-xs uppercase tracking-widest text-white backdrop-blur-sm transition hover:bg-white hover:text-black md:text-sm"
           >
             MÁS INFORMACIÓN
           </a>
