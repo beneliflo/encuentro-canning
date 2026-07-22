@@ -166,7 +166,7 @@ body {
 
   .location-address {
     display: flex;
-    width: min(100%, 411px);
+    width: min(100%, 205.5px);
     aspect-ratio: 411 / 153;
     align-items: center;
     justify-content: center;

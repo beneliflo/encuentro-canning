@@ -92,11 +92,11 @@ function Navbar() {
             alt="EMUBAX"
             width={488}
             height={96}
-            className="h-6 w-auto object-contain"
+            className="h-4 w-auto object-contain md:h-6"
             unoptimized
           />
         </a>
-        <ul className="flex gap-6 text-sm font-bold uppercase tracking-wider text-white">
+        <ul className="flex gap-3 text-[10px] font-bold uppercase tracking-wider text-white md:gap-6 md:text-sm">
           <li>
             <a href="#speakers" className="hover:text-yellow-300">
               ORADORES
@@ -204,7 +204,7 @@ function SpeakerSection({
       )}
 
       {avatar && (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 hidden overflow-hidden md:block">
           <Image
             src={avatar.src}
             alt=""
@@ -224,7 +224,7 @@ function SpeakerSection({
       )}
 
       {profile && (
-        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-[4] w-full max-w-6xl -translate-x-1/2 px-6 md:px-12">
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-[4] hidden w-full max-w-6xl -translate-x-1/2 px-6 md:block md:px-12">
           <Image
             src={profile.src}
             alt={`Foto de ${name}`}
@@ -253,7 +253,7 @@ function SpeakerSection({
         />
       ))}
 
-      <div className={`relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-10 md:flex-row ${isEven ? 'md:flex-row-reverse' : ''}`}>
+      <div className={`relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-10 lg:flex-row ${isEven ? 'lg:flex-row-reverse' : ''}`}>
         <div className="flex-1 text-center md:text-left">
           <h2>
             {nameGraphic ? (
@@ -279,16 +279,31 @@ function SpeakerSection({
               name
             )}
           </h2>
+
+          {profile && (
+            <Image
+              src={profile.src}
+              alt={`Foto de ${name}`}
+              width={profile.width}
+              height={profile.height}
+              sizes="80vw"
+              className={`relative z-[4] mx-auto mt-8 h-auto w-[80%] md:hidden ${profile.rotateClass}`}
+              style={{ maxWidth: `${profile.width / 2}px` }}
+              unoptimized
+              priority={number <= 2}
+            />
+          )}
+
           <ul
             className={
               number === 1
-                ? 'mt-14 flex flex-col items-center gap-2 md:items-end md:pr-10'
+                ? 'relative z-[12] -mt-24 flex flex-col items-center gap-2 md:mt-14 md:items-end md:pr-10'
                 : number === 2
-                  ? 'mt-14 flex flex-col items-center gap-2 md:items-start'
+                  ? 'relative z-[12] -mt-24 flex flex-col items-center gap-2 md:mt-14 md:items-start'
                   : number === 3
-                    ? 'mt-14 flex flex-col items-center gap-2 md:items-end md:pr-8'
+                    ? 'relative z-[12] -mt-24 flex flex-col items-center gap-2 md:mt-14 md:items-end md:pr-8'
                     : number === 4
-                      ? 'mt-14 flex flex-col items-center gap-2 md:items-start'
+                      ? 'relative z-[12] -mt-24 flex flex-col items-center gap-2 md:mt-14 md:items-start'
                   : 'mt-6 space-y-2'
             }
           >
@@ -297,7 +312,7 @@ function SpeakerSection({
                 key={role}
                 className={
                   roleShapes
-                    ? `w-fit bg-black px-5 py-3 text-center [font-family:var(--font-press-start-2p)] text-base uppercase leading-[1.35] tracking-widest text-[#FFB500] md:text-lg ${number === 3 ? '' : 'whitespace-nowrap'}`
+                    ? `w-fit bg-black px-4 py-2.5 text-center [font-family:var(--font-press-start-2p)] text-xs uppercase leading-[1.35] tracking-[0.08em] text-[#FFB500] md:px-5 md:py-3 md:text-lg md:tracking-widest ${number === 3 ? '' : 'whitespace-nowrap'}`
                     : 'font-press-start text-sm uppercase tracking-widest text-white md:text-base'
                 }
                 style={roleShapes?.[index]}
@@ -315,7 +330,7 @@ function SpeakerSection({
           </ul>
         </div>
 
-        <div className="h-72 flex-1 md:h-[440px]" aria-hidden="true" />
+        <div className="hidden h-[440px] w-full shrink-0 md:block lg:flex-1" aria-hidden="true" />
       </div>
 
     </section>
@@ -472,7 +487,7 @@ function LocationSection() {
   return (
     <section
       id="ubicacion"
-      className="relative overflow-hidden bg-black px-6 py-24 md:px-12"
+      className="relative overflow-hidden bg-black"
       style={{
         backgroundImage: "url('/genz/location/bg-ubicacion.png')",
         backgroundRepeat: 'repeat',
@@ -481,14 +496,14 @@ function LocationSection() {
       }}
     >
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 md:flex-row">
-        <div className="flex-1 text-center md:text-left">
-          <h2 className="[font-family:Upheaval] text-7xl uppercase leading-none tracking-wide text-white md:text-[7rem]">
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center xl:flex-row xl:gap-12 xl:px-12 xl:py-24">
+        <div className="w-full flex-1 px-6 py-24 text-center xl:px-0 xl:py-0 xl:text-left">
+          <h2 className="[font-family:Upheaval] text-6xl uppercase leading-none tracking-wide text-white sm:text-7xl md:text-[7rem]">
             Ubicación
           </h2>
 
-          <div className="mt-8 flex flex-col items-center gap-8 md:items-start lg:flex-row lg:items-start">
-            <p className="font-neue-montreal text-5xl font-bold leading-[0.95] text-white md:text-6xl">
+          <div className="mt-8 flex items-start justify-center gap-2 xl:justify-start xl:gap-8">
+            <p className="font-neue-montreal text-3xl font-bold leading-[0.95] text-white sm:text-4xl xl:text-6xl">
               Iglesia
               <br />
               Encuentro
@@ -496,7 +511,7 @@ function LocationSection() {
               Canning
             </p>
 
-            <p className="location-address [font-family:var(--font-press-start-2p)] text-xs uppercase leading-relaxed text-white md:text-sm lg:-mt-4">
+            <p className="location-address [font-family:var(--font-press-start-2p)] text-[0.55rem] uppercase leading-relaxed text-white sm:text-[0.65rem] xl:-mt-4 xl:text-sm">
               Hipócrates 3320,
               <br />
               Canning
@@ -513,12 +528,12 @@ function LocationSection() {
           </a>
         </div>
 
-        <div className="flex flex-1 justify-center">
+        <div className="flex w-full flex-1 justify-center">
           <a
             href="https://maps.app.goo.gl/jMtqnk7Xrsv4XmtH9"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition hover:scale-[1.02]"
+            className="block w-full transition hover:scale-[1.02] xl:max-w-[420.5px]"
           >
             <Image
               src="/genz/location/maps.png"
