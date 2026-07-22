@@ -513,8 +513,8 @@ function LocationSection() {
       }}
     >
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center xl:flex-row xl:gap-12 xl:px-12 xl:py-24">
-        <div className="w-full flex-1 px-6 py-24 text-center xl:px-0 xl:py-0 xl:text-left">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center xl:grid-cols-[0.9fr_1.1fr] xl:gap-12 xl:px-12 xl:py-24">
+        <div className="w-full px-6 py-24 text-center xl:px-0 xl:py-0 xl:text-left">
           <h2 className="[font-family:Upheaval] text-6xl uppercase leading-none tracking-wide text-white sm:text-7xl md:text-[7rem]">
             Ubicación
           </h2>
@@ -545,20 +545,20 @@ function LocationSection() {
           </a>
         </div>
 
-        <div className="flex w-full flex-1 justify-center">
+        <div className="flex w-full justify-center xl:justify-end">
           <a
             href="https://maps.app.goo.gl/jMtqnk7Xrsv4XmtH9"
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full transition hover:scale-[1.02] xl:max-w-[420.5px]"
+            className="block w-full transition hover:scale-[1.02] xl:max-w-[560px]"
           >
             <Image
               src="/genz/location/maps.png"
               alt="Abrir ubicación de Iglesia Encuentro Canning en Google Maps"
               width={841}
               height={731}
-              sizes="(min-width: 768px) 421px, calc(100vw - 48px)"
-              className="h-auto w-full max-w-[420.5px]"
+              sizes="(min-width: 1280px) 560px, calc(100vw - 48px)"
+              className="h-auto w-full xl:max-w-[560px]"
               unoptimized
             />
           </a>
