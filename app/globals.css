@@ -151,8 +151,8 @@ body {
 
   .genz-hero-cta {
     width: auto;
-    padding: 1rem 0.875rem;
-    font-size: 0.875rem;
+    padding: 1.125rem 1rem;
+    font-size: 0.9375rem;
     white-space: nowrap;
   }
 
@@ -162,6 +162,43 @@ body {
 
   .genz-hero-cta:hover::before {
     transform: translate(1.5px, 1.5px);
+  }
+
+  .location-address {
+    display: flex;
+    width: min(100%, 411px);
+    aspect-ratio: 411 / 153;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
+    text-align: center;
+    background-image: url('/genz/location/rectangle-address.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+  }
+
+  .location-cta {
+    padding: 2px;
+    background: #ff1744;
+    clip-path: polygon(0 14%, 3% 14%, 3% 0, 97% 0, 97% 14%, 100% 14%, 100% 86%, 97% 86%, 97% 100%, 3% 100%, 3% 86%, 0 86%);
+    transition: transform 0.15s ease;
+  }
+
+  .location-cta > span {
+    display: block;
+    padding: 1rem 2rem;
+    font-family: var(--font-press-start-2p), 'Press Start 2P', cursive;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    color: white;
+    background: rgb(3 7 27 / 92%);
+    clip-path: inherit;
+  }
+
+  .location-cta:hover {
+    transform: translateY(-2px);
   }
 
   @media (min-width: 768px) {
@@ -180,8 +217,8 @@ body {
 
     .genz-hero-cta {
       width: auto;
-      padding: 1rem 0.875rem;
-      font-size: 0.875rem;
+      padding: 1.125rem 1rem;
+      font-size: 0.9375rem;
     }
 
     .genz-hero-cta::before {

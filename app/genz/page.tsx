@@ -76,15 +76,15 @@ export default function GenZPage() {
 
 function Navbar() {
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 overflow-hidden px-6 py-4 md:px-12">
-      <Image
-        src="/genz/hero/bg-nav.png"
-        alt=""
-        fill
-        sizes="100vw"
-        className="absolute inset-0 z-0 object-cover"
-        unoptimized
-      />
+    <nav
+      className="fixed left-0 right-0 top-0 z-50 overflow-hidden px-6 py-4 md:px-12"
+      style={{
+        backgroundImage: "url('/genz/hero/bg-nav.png')",
+        backgroundRepeat: 'repeat',
+        backgroundSize: '1921px 122px',
+        backgroundPosition: 'center top',
+      }}
+    >
       <div className="relative z-10 mx-auto flex max-w-6xl items-center justify-between">
         <a href="/" className="hover:opacity-80">
           <Image
@@ -96,7 +96,7 @@ function Navbar() {
             unoptimized
           />
         </a>
-        <ul className="flex gap-6 text-xs font-bold uppercase tracking-wider text-white">
+        <ul className="flex gap-6 text-sm font-bold uppercase tracking-wider text-white">
           <li>
             <a href="#speakers" className="hover:text-yellow-300">
               ORADORES
@@ -134,7 +134,7 @@ function HeroSection() {
           alt="GEN Z GAME OVER"
           width={1148}
           height={756}
-          className="h-auto w-full max-w-sm"
+          className="h-auto w-full max-w-[26rem]"
           unoptimized
           priority
         />
@@ -470,57 +470,68 @@ const speakerProfiles: Record<
 
 function LocationSection() {
   return (
-    <section id="ubicacion" className="relative overflow-hidden bg-black px-6 py-24 md:px-12">
-      <PlaceholderImage
-        name="Fondo estrellado (location/background.jpg)"
-        className="absolute inset-0 z-0 opacity-50"
-        bgClass="bg-slate-950"
-      />
+    <section
+      id="ubicacion"
+      className="relative overflow-hidden bg-black px-6 py-24 md:px-12"
+      style={{
+        backgroundImage: "url('/genz/location/bg-ubicacion.png')",
+        backgroundRepeat: 'repeat',
+        backgroundSize: '960.5px 417.5px',
+        backgroundPosition: 'center top',
+      }}
+    >
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 md:flex-row">
         <div className="flex-1 text-center md:text-left">
-          <p className="font-press-start text-xs uppercase tracking-[0.3em] text-white/70">UBICACIÓN</p>
-          <h2 className="mt-4 font-press-start text-3xl text-white md:text-5xl">
-            Iglesia
-            <br />
-            Encuentro Canning
+          <h2 className="[font-family:Upheaval] text-7xl uppercase leading-none tracking-wide text-white md:text-[7rem]">
+            Ubicación
           </h2>
+
+          <div className="mt-8 flex flex-col items-center gap-8 md:items-start lg:flex-row lg:items-start">
+            <p className="font-neue-montreal text-5xl font-bold leading-[0.95] text-white md:text-6xl">
+              Iglesia
+              <br />
+              Encuentro
+              <br />
+              Canning
+            </p>
+
+            <p className="location-address [font-family:var(--font-press-start-2p)] text-xs uppercase leading-relaxed text-white md:text-sm lg:-mt-4">
+              Hipócrates 3320,
+              <br />
+              Canning
+            </p>
+          </div>
+
           <a
-            href="https://maps.app.goo.gl/6X8X9X8X8X8X8X8X8"
+            href="https://maps.app.goo.gl/jMtqnk7Xrsv4XmtH9"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-block border-2 border-yellow-300 bg-red-600 px-8 py-4 font-press-start text-xs uppercase tracking-widest text-white shadow-[0_0_28px_rgba(250,204,21,0.55)] transition hover:bg-yellow-300 hover:text-black md:text-sm"
+            className="location-cta mt-16 inline-block"
           >
-            CÓMO LLEGAR
+            <span>CÓMO LLEGAR</span>
           </a>
         </div>
 
-        <div className="flex-1">
-          <PlaceholderImage
-            name="Mapa de ubicación (location/map.png)"
-            className="h-80 w-full max-w-lg md:h-[450px]"
-            bgClass="bg-neutral-800"
-          />
+        <div className="flex flex-1 justify-center">
+          <a
+            href="https://maps.app.goo.gl/jMtqnk7Xrsv4XmtH9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition hover:scale-[1.02]"
+          >
+            <Image
+              src="/genz/location/maps.png"
+              alt="Abrir ubicación de Iglesia Encuentro Canning en Google Maps"
+              width={841}
+              height={731}
+              sizes="(min-width: 768px) 421px, calc(100vw - 48px)"
+              className="h-auto w-full max-w-[420.5px]"
+              unoptimized
+            />
+          </a>
         </div>
       </div>
     </section>
-  )
-}
-
-function PlaceholderImage({
-  name,
-  className = '',
-  bgClass = 'bg-neutral-800',
-}: {
-  name: string
-  className?: string
-  bgClass?: string
-}) {
-  return (
-    <div
-      className={`flex items-center justify-center border-2 border-dashed border-white/30 p-6 text-center ${bgClass} ${className}`}
-    >
-      <span className="text-xs font-bold uppercase tracking-wider text-white/60">{name}</span>
-    </div>
   )
 }
