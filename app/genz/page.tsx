@@ -44,7 +44,6 @@ export default function GenZPage() {
         bgImage="/genz/speakers/bg-speaker-1.png"
         bgColor="bg-red-600"
         decorationColor="bg-red-800"
-        imageName="speaker-1-sebastian"
       />
       <SpeakerSection
         number={2}
@@ -53,7 +52,6 @@ export default function GenZPage() {
         bgImage="/genz/speakers/bg-speaker-2.png"
         bgColor="bg-blue-600"
         decorationColor="bg-blue-800"
-        imageName="speaker-2-rigoberto"
       />
       <SpeakerSection
         number={3}
@@ -62,7 +60,6 @@ export default function GenZPage() {
         bgImage="/genz/speakers/bg-speaker-3.png"
         bgColor="bg-green-600"
         decorationColor="bg-green-800"
-        imageName="speaker-3-daiam"
       />
       <SpeakerSection
         number={4}
@@ -71,7 +68,6 @@ export default function GenZPage() {
         bgImage="/genz/speakers/bg-speaker-4.png"
         bgColor="bg-orange-600"
         decorationColor="bg-orange-800"
-        imageName="speaker-4-guido"
       />
       <LocationSection />
     </main>
@@ -166,7 +162,6 @@ function SpeakerSection({
   bgImage,
   bgColor,
   decorationColor,
-  imageName,
 }: {
   number: number
   name: string
@@ -174,14 +169,16 @@ function SpeakerSection({
   bgImage?: string
   bgColor: string
   decorationColor: string
-  imageName: string
 }) {
   const isEven = number % 2 === 0
+  const decorations = speakerDecorations[number] ?? []
+  const avatar = speakerAvatars[number]
+  const profile = speakerProfiles[number]
 
   return (
     <section
       id={number === 1 ? 'speakers' : undefined}
-      className={`relative overflow-hidden ${bgColor} px-6 py-20 md:px-12`}
+      className={`relative overflow-hidden ${bgColor} px-6 py-16 md:px-12`}
     >
       {bgImage && (
         <Image
@@ -194,6 +191,56 @@ function SpeakerSection({
           priority={number <= 2}
         />
       )}
+
+      {avatar && (
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <Image
+            src={avatar.src}
+            alt=""
+            width={avatar.width}
+            height={avatar.height}
+            sizes="(min-width: 768px) 48vw, 78vw"
+            className={`absolute bottom-0 z-[2] h-auto w-[78%] translate-y-[48%] md:w-[48%] ${avatar.position}`}
+            style={{
+              maxWidth: `${avatar.width / 2}px`,
+              mixBlendMode: avatar.blendMode,
+              opacity: avatar.opacity,
+            }}
+            unoptimized
+            priority={number <= 2}
+          />
+        </div>
+      )}
+
+      {profile && (
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-[4] w-full max-w-6xl -translate-x-1/2 px-6 md:px-12">
+          <Image
+            src={profile.src}
+            alt={`Foto de ${name}`}
+            width={profile.width}
+            height={profile.height}
+            sizes="(min-width: 768px) 34vw, 62vw"
+            className={`absolute h-auto w-[62%] md:w-[34%] ${profile.position} ${profile.rotateClass}`}
+            style={{ maxWidth: `${profile.width / 2}px`, bottom: profile.bottom }}
+            unoptimized
+            priority={number <= 2}
+          />
+        </div>
+      )}
+
+      {decorations.map((decoration) => (
+        <Image
+          key={decoration.src}
+          src={decoration.src}
+          alt=""
+          width={decoration.width}
+          height={decoration.height}
+          sizes={`${decoration.width / 2}px`}
+          className={`pointer-events-none absolute z-[5] h-auto ${decoration.position}`}
+          style={{ width: `${decoration.width / 2}px` }}
+          unoptimized
+        />
+      ))}
 
       <div className={`relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-10 md:flex-row ${isEven ? 'md:flex-row-reverse' : ''}`}>
         <div className="flex-1 text-center md:text-left">
@@ -210,17 +257,120 @@ function SpeakerSection({
           </ul>
         </div>
 
-        <div className="relative flex-1">
-          <PlaceholderImage
-            name={`Foto de ${name} (speakers/${imageName}.jpg)`}
-            className="h-80 w-full max-w-md md:h-[500px]"
-            bgClass="bg-neutral-900"
-          />
-        </div>
+        <div className="h-72 flex-1 md:h-[440px]" aria-hidden="true" />
       </div>
 
     </section>
   )
+}
+
+const speakerDecorations: Record<
+  number,
+  Array<{ src: string; width: number; height: number; position: string }>
+> = {
+  1: [
+    { src: '/genz/decorations/s1-top-left.png', width: 241, height: 240, position: 'left-0 top-0' },
+    { src: '/genz/decorations/s1-bottom-left.png', width: 241, height: 160, position: 'bottom-0 left-0' },
+    { src: '/genz/decorations/s1-bottom-rigth.png', width: 401, height: 240, position: 'bottom-0 right-0' },
+  ],
+  2: [
+    { src: '/genz/decorations/s2-top-left.png', width: 81, height: 81, position: 'left-0 top-0' },
+    { src: '/genz/decorations/s2-top-rigth.png', width: 161, height: 241, position: 'right-0 top-0' },
+    { src: '/genz/decorations/s2-bottom-left.png', width: 161, height: 241, position: 'bottom-0 left-0' },
+  ],
+  3: [
+    { src: '/genz/decorations/s3-top-left.png', width: 161, height: 240, position: 'left-0 top-0' },
+    { src: '/genz/decorations/s3-bottom-left.png', width: 241, height: 320, position: 'bottom-0 left-0' },
+    { src: '/genz/decorations/s3-bottom-rigth.png', width: 161, height: 400, position: 'bottom-0 right-0' },
+  ],
+  4: [
+    { src: '/genz/decorations/s4-top-rigth.png', width: 161, height: 240, position: 'right-0 top-0' },
+    { src: '/genz/decorations/s4-bottom-left.png', width: 321, height: 241, position: 'bottom-0 left-0' },
+    { src: '/genz/decorations/s4-bottom-rigth.png', width: 161, height: 321, position: 'bottom-0 right-0' },
+  ],
+}
+
+const speakerAvatars: Record<
+  number,
+  {
+    src: string
+    width: number
+    height: number
+    position: string
+    blendMode: 'normal' | 'soft-light'
+    opacity: number
+  }
+> = {
+  1: {
+    src: '/genz/decorations/s1-avatar-bottom-left.png',
+    width: 733,
+    height: 1172,
+    position: 'left-[-6%]',
+    blendMode: 'normal',
+    opacity: 0.5,
+  },
+  2: {
+    src: '/genz/decorations/s2-avatar-bottom-rigth.png',
+    width: 736,
+    height: 1320,
+    position: 'right-[-8%]',
+    blendMode: 'normal',
+    opacity: 0.5,
+  },
+  3: {
+    src: '/genz/decorations/s3-avatar-bottom-left.png',
+    width: 725,
+    height: 1238,
+    position: 'left-[-6%]',
+    blendMode: 'soft-light',
+    opacity: 1,
+  },
+  4: {
+    src: '/genz/decorations/s4-avatar-bottom-rigth.png',
+    width: 881,
+    height: 1454,
+    position: 'right-[-8%]',
+    blendMode: 'soft-light',
+    opacity: 1,
+  },
+}
+
+const speakerProfiles: Record<
+  number,
+  { src: string; width: number; height: number; position: string; rotateClass: string; bottom: string }
+> = {
+  1: {
+    src: '/genz/decorations/s1-profile-rigth.png',
+    width: 755,
+    height: 1332,
+    position: 'right-6 md:right-12',
+    rotateClass: 'rotate-[4deg]',
+    bottom: '-20%',
+  },
+  2: {
+    src: '/genz/decorations/s2-profile-left.png',
+    width: 798,
+    height: 1506,
+    position: 'left-6 md:left-12',
+    rotateClass: '-rotate-[4deg]',
+    bottom: '-25%',
+  },
+  3: {
+    src: '/genz/decorations/s3-profile-rigth.png',
+    width: 681,
+    height: 1272,
+    position: 'right-6 md:right-12',
+    rotateClass: 'rotate-[4deg]',
+    bottom: '-20%',
+  },
+  4: {
+    src: '/genz/decorations/s4-profile-left.png',
+    width: 640,
+    height: 1246,
+    position: 'left-6 md:left-12',
+    rotateClass: '-rotate-[4deg]',
+    bottom: '-12%',
+  },
 }
 
 function LocationSection() {
