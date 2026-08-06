@@ -1,6 +1,14 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import { Press_Start_2P } from 'next/font/google'
 import GenzTicketLink from './GenzTicketLink'
+import FixedDiscountCountdown from './FixedDiscountCountdown'
+
+const pressStart2P = Press_Start_2P({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -84,6 +92,7 @@ export default function GenZPage() {
         decorationColor="bg-orange-800"
       />
       <LocationSection />
+      <FixedDiscountCountdown pixelFontClassName={pressStart2P.className} />
     </main>
   )
 }
@@ -516,7 +525,7 @@ function LocationSection() {
   return (
     <section
       id="ubicacion"
-      className="relative overflow-hidden bg-black"
+      className="relative overflow-hidden bg-black pb-28 md:pb-44"
       style={{
         backgroundImage: "url('/genz/location/bg-ubicacion.png')",
         backgroundRepeat: 'repeat',
