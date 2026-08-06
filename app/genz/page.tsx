@@ -60,6 +60,7 @@ export default function GenZPage() {
     <main className="min-h-screen bg-black text-white">
       <Navbar />
       <HeroSection />
+      <VisionSection />
       <SpeakerSection
         number={1}
         name="Sebastian Sennewald"
@@ -95,6 +96,45 @@ export default function GenZPage() {
       <LocationSection />
       <FixedDiscountCountdown pixelFontClassName={pressStart2P.className} />
     </main>
+  )
+}
+
+function VisionSection() {
+  return (
+    <section className="relative overflow-hidden bg-[#05050b] px-6 py-20 text-white md:px-12 md:py-28">
+      <div className="pointer-events-none absolute -left-12 top-0 h-28 w-28 bg-red-600 md:h-44 md:w-44" />
+      <div className="pointer-events-none absolute -left-4 top-20 h-14 w-14 bg-[#ffb500] md:left-16 md:top-32 md:h-20 md:w-20" />
+      <div className="pointer-events-none absolute -right-16 bottom-0 h-32 w-32 bg-[#ffb500] md:h-52 md:w-52" />
+      <div className="pointer-events-none absolute -bottom-10 right-20 h-20 w-20 bg-red-600 md:right-36 md:h-28 md:w-28" />
+
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="grid gap-10 md:grid-cols-[0.72fr_1.28fr] md:gap-16 lg:gap-24">
+          <div>
+            <h2 className="[font-family:Upheaval] text-7xl uppercase leading-[0.82] tracking-wide text-white sm:text-8xl md:text-[7.5rem]">
+              Nuestra
+              <br />
+              visión
+            </h2>
+            <div className="mt-8 h-2 w-28 bg-red-600 shadow-[8px_8px_0_#ffb500]" />
+          </div>
+
+          <div className="space-y-6 font-neue-montreal text-lg leading-relaxed text-white/85 md:text-xl lg:text-2xl">
+            <p className="font-bold text-white">
+              La respuesta a una generación quebrantada es <span className="text-[#ffb500]">Jesús</span>, y los millones de adolescentes en todo el mundo necesitan desesperadamente la libertad que solo Él puede traer.
+            </p>
+            <p>
+              GEN Z nace con el deseo de despertar a cientos de adolescentes, a vivir con más hambre de Dios y ser enviados para relacionarse con el mundo y transformarlo.
+            </p>
+            <p>
+              Que al identificar lo que Dios hizo por ellos sientan el deseo inquebrantable de caminar en la oscuridad del mundo, alumbrando tan fuerte que cientos corran a ellos para conocer a Jesús.
+            </p>
+            <p>
+              Asimismo, ser tan cercanos y amigos del Espíritu Santo que sus casas, familias, colegios, amigos, salidas y todo lugar que ellos pisen traigan un avivamiento sin retorno.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 
