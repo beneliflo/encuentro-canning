@@ -155,6 +155,7 @@ function HeroSection() {
         aria-hidden="true"
         tabIndex={-1}
       >
+        <source src="/genz/hero/hero.webm" type="video/webm" />
         <source src="/genz/hero/hero.mp4" type="video/mp4" />
       </video>
 
