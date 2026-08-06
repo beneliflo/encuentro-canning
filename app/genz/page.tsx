@@ -205,7 +205,7 @@ function HeroSection() {
           alt="GEN Z GAME OVER"
           width={1148}
           height={756}
-          className="h-auto w-full max-w-[26rem]"
+          className="h-auto w-full max-w-[34rem]"
           unoptimized
           priority
         />
