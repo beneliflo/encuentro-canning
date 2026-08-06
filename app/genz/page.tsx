@@ -140,16 +140,21 @@ function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[700px] flex-col items-center justify-center overflow-hidden bg-black px-6 py-20 md:min-h-[800px]"
+      className="relative flex h-[100svh] max-h-[820px] flex-col items-center justify-center overflow-hidden bg-black px-6 py-20 md:max-h-[960px]"
     >
-      <Image
-        src="/genz/hero/bg-hero.png"
-        alt=""
-        fill
-        sizes="100vw"
-        className="absolute inset-0 z-0 object-cover opacity-60"
-        priority
-      />
+      <video
+        className="absolute inset-0 z-0 h-full w-full object-cover opacity-60"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        poster="/genz/hero/bg-hero.png"
+        aria-hidden="true"
+        tabIndex={-1}
+      >
+        <source src="/genz/hero/hero.mp4" type="video/mp4" />
+      </video>
 
       <div className="relative z-10 flex max-w-5xl flex-col items-center text-center">
         <Image
