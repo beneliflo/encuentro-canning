@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Press_Start_2P } from 'next/font/google'
 import GenzTicketLink from './GenzTicketLink'
 import FixedDiscountCountdown from './FixedDiscountCountdown'
+import SmoothAnchorLink from './SmoothAnchorLink'
 
 const pressStart2P = Press_Start_2P({
   subsets: ['latin'],
@@ -100,6 +101,7 @@ export default function GenZPage() {
 function Navbar() {
   return (
     <nav
+      data-genz-header
       className="fixed left-0 right-0 top-0 z-50 overflow-hidden px-6 py-4 md:px-12"
       style={{
         backgroundImage: "url('/genz/hero/bg-nav.png')",
@@ -121,14 +123,14 @@ function Navbar() {
         </a>
         <ul className="flex gap-3 text-[10px] font-bold uppercase tracking-wider text-white md:gap-6 md:text-sm">
           <li>
-            <a href="#speakers" className="hover:text-yellow-300">
+            <SmoothAnchorLink href="#speakers" className="hover:text-yellow-300">
               ORADORES
-            </a>
+            </SmoothAnchorLink>
           </li>
           <li>
-            <a href="#ubicacion" className="hover:text-yellow-300">
+            <SmoothAnchorLink href="#ubicacion" className="hover:text-yellow-300">
               UBICACIÓN
-            </a>
+            </SmoothAnchorLink>
           </li>
         </ul>
       </div>
@@ -169,12 +171,12 @@ function HeroSection() {
 
         <div className="mt-12 flex flex-col gap-4 md:flex-row">
           <GenzTicketLink />
-          <a
+          <SmoothAnchorLink
             href="#speakers"
             className="hidden border-2 border-white bg-black/60 px-8 py-4 font-press-start text-xs uppercase tracking-widest text-white backdrop-blur-sm transition hover:bg-white hover:text-black md:text-sm"
           >
             MÁS INFORMACIÓN
-          </a>
+          </SmoothAnchorLink>
         </div>
       </div>
     </section>
