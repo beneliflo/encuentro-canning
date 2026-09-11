@@ -35,6 +35,22 @@ const nextConfig = {
     ]
   },
 
+  async rewrites() {
+    return [
+      // FAM 2026 vive en su propio deploy de Vercel (repo FAM2026); acá solo
+      // se proxea para que se sirva en encuentrocanning.org/fam2026. El
+      // destino ya devuelve todo prefijado con /fam2026 (mismo basePath).
+      {
+        source: '/fam2026',
+        destination: 'https://fam2026.vercel.app/fam2026',
+      },
+      {
+        source: '/fam2026/:path*',
+        destination: 'https://fam2026.vercel.app/fam2026/:path*',
+      },
+    ]
+  },
+
   async redirects() {
     return [
       // Redirect /felicitaciones to /tcp for encuentrocanning.org
