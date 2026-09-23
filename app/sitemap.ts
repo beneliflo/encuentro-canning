@@ -21,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: 'https://encuentrocanning.org/fam2026',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: 'https://genz.emubaescuela.com',
       lastModified: new Date(),
       changeFrequency: 'weekly',
