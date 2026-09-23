@@ -171,14 +171,14 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        {/* <div>
+        <div>
           <Link
-            href="#"
-            className="text-lg font-bold uppercase text-[#EFF0EF] py-3 px-2 rounded-sm bg-[#6C8A8C]"
+            href="/fam2026"
+            className="text-lg font-bold uppercase text-[#EFF0EF] py-3 px-4 rounded-sm bg-[#6C8A8C] whitespace-nowrap"
           >
-            Donar
+            FAM 2026
           </Link>
-        </div> */}
+        </div>
       </div>
     </header>
   );
