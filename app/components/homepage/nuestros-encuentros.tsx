@@ -99,10 +99,10 @@ export default function NuestrosEncuentros() {
             <li className="relative aspect-363/260 pointer-events-none">
               {/* <Link href="#"> */}
               <Image
-                src="/images/uno-img.png"
+                src="/images/uno-comunidad.jpg"
                 fill
-                className="object-cover"
-                alt="grupo de conexion"
+                className="object-cover object-[center_53%]"
+                alt="Comunidad de jóvenes de UNO"
               />
               <div className="absolute inset-0 bg-dark/45" />
               <p className="absolute inset-0 flex items-center justify-center text-[43px] leading-[50px] px-6">

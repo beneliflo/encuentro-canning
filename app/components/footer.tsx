@@ -46,11 +46,8 @@ export default function Footer() {
               <h3 className="mb-5 text-2xl font-bold font-pragmatica text-hueso">
                 Nuestras reuniones:
               </h3>
-              <p className="mb-2 text-base font-medium uppercase text-cel">
-                Reunión central - domingos 10 am
-              </p>
               <p className="text-base font-medium uppercase text-cel">
-                Reunión de oración - jueves 7 pm
+                Reunión central - domingos 10 am
               </p>
             </div>
           </div>
